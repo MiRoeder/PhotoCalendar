@@ -8,12 +8,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
-import de.dreiroeders.workingonimages.BufferedImageSetPixImg_ABGR;
 import de.dreiroeders.workingonimages.Draw1ImageI;
-import de.dreiroeders.workingonimages.Draw1ImageT;
 import de.dreiroeders.workingonimages.Draw1ImageWithTxt;
-import de.dreiroeders.workingonimages.IHintsDrawImages;
-import de.dreiroeders.workingonimages.MiRoesDraw;
 import de.dreiroeders.workingonimages.SourceImage;
 
 
@@ -52,9 +48,7 @@ public class PhotoCalendar extends FotoKalender1 {
 		final String inDirGP = "C:/Users/MiRoe/Pictures/GalaxyS8/Pictures/";
 		final String inDirCo = "C:/Users/MiRoe/Pictures/Constanzess/Camera/";
 		final String inDirWhatsApp= "C:/Users/MiRoe/Pictures/GalaxyS8/WhatsApp/Media/WhatsApp Images/";
-		final String inDirWhatsAp = "C:/Users/MiRoe/Pictures/WhatsApp/Media/WhatsApp Images/";
 		final String inDirWhatsAp0 = "C:/Users/MiRoe/Pictures/WhatsApp/";
-		final String inDirFb1 = "C:/Users/MiRoe/Pictures/GalaxyS8/Facebook/";
 		final String inDirRBB = "C:/Users/MiRoe/Videos/rbb Fernsehen Weihnachtssingen an der Alten Försterei/";
 
 		m_trgOpt = trgOpt;
@@ -171,13 +165,13 @@ public class PhotoCalendar extends FotoKalender1 {
 			final float wCenterPic = .2f;
 			final float xCenterPic = (1f-wCenterPic)/2f;
 			final float yCenterPic = (1f-hCenterPic)/2f;
-			var img1 = new SourceImage(inDirWhatsAp0+"WhatsApp Bild 2023-06-04 um 13.29.31.jpg");
+			var img1 = new SourceImage("Examples.res/WhatsApp Bild 2023-06-04 um 13.29.31.jpg");
 			img1.setSourceBounds(new Rectangle(270, 680, 540, 350));
 			sheet.drawImage(img1.getImage(),                                          1f/2f, 1f/2f, 0, xCenterPic+wSteg     ,yCenterPic+hSteg     ,          wCenterPic-2*wSteg,         hCenterPic-2*hSteg);
-			sheet.drawImage(inDirWhatsAp0+"WhatsApp Bild 2023-06-04 um 13.15.18.jpg", 1f/2f, 4f/5f, 0, 0f                   ,                   0f, xCenterPic+wCenterPic-wSteg,yCenterPic                 );
-			sheet.drawImage(inDirWhatsAp0+"WhatsApp Bild 2023-06-04 um 13.15.49.jpg", 1f/2f, 1f/2f, 0, xCenterPic+wCenterPic,                   0f, 1f-xCenterPic-wCenterPic   ,yCenterPic+hCenterPic-hSteg);
-			sheet.drawImage(inDirFb1+"351535115_1761041277631953_2772123894799380056_n.jpg",.5f,.5f,0, xCenterPic+wSteg     ,yCenterPic+hCenterPic,    1f-xCenterPic+wSteg     ,1f-yCenterPic-hCenterPic   );
-			sheet.drawImage(inDirFb1+"351525974_776193984009985_4460773923173507186_n.jpg" ,.5f,.6f,0, 0f                   ,yCenterPic+hSteg     , xCenterPic                 ,1f-yCenterPic-hSteg        );
+			sheet.drawImage("Examples.res/WhatsApp Bild 2023-06-04 um 13.15.18.jpg", 1f/2f, 4f/5f, 0, 0f                   ,                   0f, xCenterPic+wCenterPic-wSteg,yCenterPic                 );
+			sheet.drawImage("Examples.res/WhatsApp Bild 2023-06-04 um 13.15.49.jpg", 1f/2f, 1f/2f, 0, xCenterPic+wCenterPic,                   0f, 1f-xCenterPic-wCenterPic   ,yCenterPic+hCenterPic-hSteg);
+			sheet.drawImage("Examples.res/351535115_1761041277631953_2772123894799380056_n.jpg",.5f,.5f,0, xCenterPic+wSteg     ,yCenterPic+hCenterPic,    1f-xCenterPic+wSteg     ,1f-yCenterPic-hCenterPic   );
+			sheet.drawImage("Examples.res/351525974_776193984009985_4460773923173507186_n.jpg" ,.5f,.6f,0, 0f                   ,yCenterPic+hSteg     , xCenterPic                 ,1f-yCenterPic-hSteg        );
 			sheet.drawCalDates();
 			sheet.writeInDir(strOutDir);
 		} catch (Exception ex) {
