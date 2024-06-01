@@ -298,14 +298,7 @@ public class PhotoCalendar extends FotoKalender1 {
 		}
 
 		if (trgOpt.bDoIt(Calendar.NOVEMBER)) try {
-			CalendarSheetAutoArrange1 sheet = new CalendarSheetAutoArrange1(THIS_YEAR, Calendar.NOVEMBER, mDates);
-			Draw1ImageI img;
-			img = new Draw1ImageI(inDirWhatsAp0+"WhatsApp Bild 2023-08-30 um 17.28.37.jpg");
-			sheet.addImage(img);
-			img = new Draw1ImageI(inDirWhatsAp0+"WhatsApp Bild 2023-08-30 um 17.28.38.jpg");
-			img.setCenterPoint(.43f, .5f);
-			sheet.addImage(img);
-			sheet.startMakingIt(strOutDir);
+			MakeSheetShadesOfGrey.startMaking(500, THIS_YEAR, Calendar.NOVEMBER, mDates, strOutDir);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
