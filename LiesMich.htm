@@ -11,15 +11,15 @@ Ich mag Fotokalender mit meinen eigenen Bildern und Daten, die f&uuml;r uns wich
 Sie sind auch ein gutes Geschenk f&uuml;r die Eltern und Gro&szlig;eltern.
 Ein Fotokalender besteht aus 13 Seiten. Eine Seite f&uuml;r jeden Monat und eine Titelseite.
 Dieses Programm unterst&uuml;tzt sie auf zwei Weisen die entsprechenden Seiten zu generieren.
-<ol>
+<ul>
 <li>Ihre eigenen Daten wie Geburtstage, Hochzeitstage, regionale Feiertage, Schulferien, Termine ihres Sportvereins oder &auml;hnliches definieren sie einmal im Programm. Dann werden sie automatisch jedes Jahr neu in den Kalender geschrieben.</li>
 <li>Ihre Bilder werden in das Kalenderblatt eingepasst. Sie k&ouml;nnen bei Bedarf gedreht werden. Mehrere Bilder k&ouml;nnen automatisch angeordnet werden.</li>
-</ol>
+</ul>
 
 <br/>
 
 Die generierten Seiten k&ouml;nnen sie an eine Firma wie
-<ol>
+<ul>
 <li> <a href="https://www.whitewall.com/de/fotokalender-erstellen" target="_blank">WHITE WALL</a> </li>
 <li> <a href="https://www.orwo.de/detail/277/fotokalender/wandkalender-selbst-gestalten" target="_blank">ORWO</a> </li>
 <li> <a href="https://www.myposter.de/fotokalender" target="_blank">MYPOSTER</a> </li>
@@ -27,16 +27,25 @@ Die generierten Seiten k&ouml;nnen sie an eine Firma wie
 <li> <a href="https://www.fotoservice-mms.de/fotokalender.html" target="_blank">MediaMarkt / SATURN</a> </li>
 <li> <a href="https://www.photobox.co.uk/shop/calendars-and-diaries" target="_blank">Photobox</a> </li>
 <li> <a href="https://www.google.com/search?q=photo+calendar+creator" target="_blank">und viele andere &hellip;</a> </li>
-</ol>
+</ul>
 schicken. 
 Bei den ersten 5 habe ich schon selbst bestellt und war zufrieden.
 Ich kann aber trotzdem keine Verantwortung f&uuml;r diese Firmen &uuml;bernehmen. Ich habe mit keiner dieser Firmen eine Vereinbarung.
 
 <br/>
 
-<h2>Um passende Seiten zu generieren, m&uuml;ssen sie das Programm entsprechend anpassen:</h2>
+<h2>Benutzung</h2>
+Ich benutze die Entwicklungsumgebung <a href="https://www.eclipse.org/">Eclipse</a>. 
+Um den FotoKalener dort ausf&uuml;hren und bearbeiten zu k&ouml;nnen, m&uuml;ssen Sie einfach die folgenden drei Dateien in Eclipse &ouml;ffnen:
+<ul>
+<li><code>DreiRoedersUtil/.project</code></li>
+<li><code>Painter/.project</code></li>
+<li><code>PhotoCalendar/.project</code></li>
+</ul>
+Um passende Seiten zu generieren, m&uuml;ssen sie das Programm entsprechend anpassen:
+
 <h3>Jahr und Startmonat festlegen</h3>
-Das Startjahr und den Startmonat setzt man in:
+Das Startjahr und den Startmonat setzt man in der Datei <code>PhotoCalendar/src/de/dreiroeders/fotokalender/FotoKalenderOpt.java</code>:
 <br/><code>de.dreiroeders.fotokalender.FotoKalenderOpt. YEAR1</code> und in
 <br/><code>de.dreiroeders.fotokalender.FotoKalenderOpt. MONTH1</code>.
 <br/>Ein Kalender besteht aus 13 Seiten. &Uuml;blicherweise den Monaten Januar bis Dezember und ein Titelblatt. 
@@ -44,15 +53,37 @@ Ich beginne jedoch gerne Kalender im Juli oder August, wenn die Termine meines B
 Dann benutze ich das Titelblatt auch als ganz normales Kalenderblatt und habe dadurch 13 Monate.
 Jeder kann das nat&uuml;rlich f&uuml;r sich entsprechend anpassen.
 
+<h3>Eigene Termine</h3>
+Eigene Termine werden in der Datei <code>PhotoCalendar/src/de/dreiroeders/fotokalender/PhotoKalender.java</code>
+in der Methode <code>addDates()</code> gesetzt.
+Ich habe so viele Termine, dass ich die Termine auf mehrere Subroutinen verteilte.
+Diese Subroutinen sind meistens in der Datei <code>PhotoCalendar/src/de/dreiroeders/fotokalender/FotoKalender.java</code> definiert.
+Mit Hilfe der &uuml;blichen Befehle der Entwicklungsumgebung k&ouml;nnen sie schnell gefunden werden.
+Am besten orientiert man sich an diesen Beispielen und setzt dann eigene Termine.
+Wer keine privaten Termine m&ouml;chte, kann nat&uuml;rlich auch alle Aufrufe entfernen.
 
+<h3>Eigene Bilder</h3>
+Eigene Bilder werden in der Datei <code>PhotoCalendar/src/de/dreiroeders/fotokalender/PhotoKalender.java</code>
+in der Methode <code>makeFamilyCal(FotoKalenderOpt trgOpt)</code> gesetzt.
+Am besten orientiert man sich an den Beispielen.
+Soll eins oder mehrere Bilder gleichm&auml;&szlig;ig auf einer Seite verteilt werden, dann bietet sich <code>Calendar.FEBRUARY</code> an.
+Die Bilder werden gleichm&auml;&szlig;ig auf einer Seite verteilt.
+Da meistens die Bilder nicht genau in die freien Felder passen, wird links und rechts oder oben und unten etwas abgeschnitten damit die Bilder genau auf die Seite passen.
+Um die Bilder genau zu positionieren bietet sich als Beispiel <code>Calendar.JUNE</code> an.
+
+<h3>Abschlu&szlig;</h3>
+Sind ein paar Seiten fertig, schaut man sich das Ergebnis an. 
+Dazu startet man <code>main(String[] args)</code> in Datei <code>PhotoCalendar/src/de/dreiroeders/fotokalender/FotoKalenderOpt.java</code>
+Dann versucht man die erzeugten Bild-Dateien im Ordner <code>Results</code> via Internet der ausgew&auml;hlten Firma zu &uuml;bergeben,
+damit diese den endg&uuml;ltigen Kalender druckt.
+Stellt man fest, dass die Abmessungen der eigenen Bilddateien nicht gut zu den gew&uuml;nschten Abmessungen der Firma passen,
+passt man die statische Variable <code>CalendarSheet.fWeight</code> entsprechend an.
+Daf&uuml;r bietet sich die Datei <code>PhotoCalendar/src/de/dreiroeders/fotokalender/FotoKalenderOpt.java</code> an.
+Diese Variable definiert das Verh&auml;ltnis von L&auml;nge und Breite der erzeugten Kalenderbl&auml;tter.
 
 <h2>Lizenzbedingungen</h2>
-Ich werde keine Anspr&uuml;che stellen.
+Ich ver&ouml;ffentliche meinen Code unter Lizenz <a href="https://www.gnu.org/licenses/gpl-3.0.html">GPLv3</a>.
 Aber ich benutze teilweise fremden Code:
-<h3><code>com.bric.math.Equations</code></h3>
-
-<h3><code>com.drew</code></h3>
-<code>metadata-extractor-2.11.0.jar</code>
 
 <h3 lang="en"><a href="https://math.nist.gov/javanumerics/jama/">JAMA : A Java Matrix Package by NIST</a></h3>
 
