@@ -20,7 +20,6 @@ public class PhotoCalendar extends FotoKalender1 {
 			Date curTime = new Date();
 			DateFormat dateFormatter = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT);
 			System.out.println("Procedure "+ PhotoCalendar.class.getName() +".main(args) started creating FotoKalender: "+ dateFormatter.format(curTime) +" "+ curTime.getTime() + " ms.");
-			//TODO: create empty temp directory
 			makeFamilyCal(0);
 			makeFamilyCal(1);
 		} catch (Exception ex) {
@@ -43,6 +42,7 @@ public class PhotoCalendar extends FotoKalender1 {
 	public void makeFamilyCal(FotoKalenderOpt trgOpt) throws Exception {
 		String strOutDir = trgOpt.m_strOutDir;
 
+		//TODO all of these constants have to be replaced by your own paths to your pictures.
 		final String inDirV21= "C:/Users/MiRoe/Pictures/2021 Vik/";
 		final String inDirG = "C:/Users/MiRoe/Pictures/GalaxyS8/Camera/";
 		final String inDirGP = "C:/Users/MiRoe/Pictures/GalaxyS8/Pictures/";
@@ -53,27 +53,9 @@ public class PhotoCalendar extends FotoKalender1 {
 
 		m_trgOpt = trgOpt;
 		
-		addFamilyEvents();
-		addStephansFamilyEvents();
-		//addOlafsFamilyEvents();
-		addBerlinHolidays();
-		//addBavarianPublicHolidays();
-		addVacations(trgOpt.m_bBerlinVacations, false);
-		addDaylightSavingTimeChanges();
-		addAdvents();
-		addSundays4Buying();
-		if (trgOpt.m_bBundesliga) {
-			MyFussballBundesliga.addMyFussballBundesliga(this);
-		}
-		if (trgOpt.m_bBundesliga2) {
-			MyFussballBundesliga2.addMyFussballBundesliga2(this);
-		}
-		addSoccerIntEvent();
-		addOlympiade();
-		addSpecialEvents();
-		addMuttertag();
-		//addMunichWiesn(2);
-
+		addDates();
+		
+		/* TODO Replace the file paths by links to your own pictures :*/
 		if (trgOpt.bDoIt(-1)) try { /* Titelbild */
 			CalendarSheetCenterImage sheet = new CalendarSheetCenterImage(THIS_YEAR, Calendar.JANUARY, mDates);
 			Draw1ImageI img;
@@ -95,8 +77,10 @@ public class PhotoCalendar extends FotoKalender1 {
 			final String inDir = "Examples.res/";
 			CalendarSheetAutoArrange1 sheet = new CalendarSheetAutoArrange1(THIS_YEAR, Calendar.FEBRUARY, mDates);
 			Draw1ImageI img;
-			img = new Draw1ImageI(inDir+"EingangGülPark.jpg");
-			sheet.addImage(img);
+			if (CalendarSheet.fWeight > 1) {
+				img = new Draw1ImageI(inDir+"EingangGülPark.jpg");
+				sheet.addImage(img);
+			}
 			img = new Draw1ImageI(inDir+"BarcelonaKirchePanaroma2.jpg");
 			sheet.addImage(img);
 			sheet.startMakingIt(strOutDir);
@@ -330,4 +314,27 @@ public class PhotoCalendar extends FotoKalender1 {
 		super(year);
 	}
 
+	public void addDates() {
+		/* TODO put your own events and dates here: Most of these methods are defined in base class FotoKalender :*/
+		addFamilyEvents();
+		addStephansFamilyEvents();
+		//addOlafsFamilyEvents();
+		addBerlinHolidays();
+		//addBavarianPublicHolidays();
+		addVacations(m_trgOpt.m_bBerlinVacations, false);
+		addDaylightSavingTimeChanges();
+		addAdvents();
+		addSundays4Buying();
+		if (m_trgOpt.m_bBundesliga) {
+			MyFussballBundesliga.addMyFussballBundesliga(this);
+		}
+		if (m_trgOpt.m_bBundesliga2) {
+			MyFussballBundesliga2.addMyFussballBundesliga2(this);
+		}
+		addSoccerIntEvent();
+		addOlympiade();
+		addSpecialEvents();
+		addMuttertag();
+		//addMunichWiesn(2);
+	}
 }
