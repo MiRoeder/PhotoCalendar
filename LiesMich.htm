@@ -36,7 +36,7 @@ Ich kann aber trotzdem keine Verantwortung f&uuml;r diese Firmen &uuml;bernehmen
 
 <h2>Benutzung</h2>
 Ich benutze die Entwicklungsumgebung <a href="https://www.eclipse.org/">Eclipse</a>. 
-Um den FotoKalener dort ausf&uuml;hren und bearbeiten zu k&ouml;nnen, m&uuml;ssen Sie einfach die folgenden drei Dateien in Eclipse &ouml;ffnen:
+Um den Fotokalender dort ausf&uuml;hren und bearbeiten zu k&ouml;nnen, m&uuml;ssen Sie einfach die folgenden drei Dateien in Eclipse &ouml;ffnen:
 <ul>
 <li><code>DreiRoedersUtil/.project</code></li>
 <li><code>Painter/.project</code></li>
@@ -69,13 +69,15 @@ Am besten orientiert man sich an den Beispielen.
 Soll eins oder mehrere Bilder gleichm&auml;&szlig;ig auf einer Seite verteilt werden, dann bietet sich <code>Calendar.FEBRUARY</code> an.
 Die Bilder werden gleichm&auml;&szlig;ig auf einer Seite verteilt.
 Da meistens die Bilder nicht genau in die freien Felder passen, wird links und rechts oder oben und unten etwas abgeschnitten damit die Bilder genau auf die Seite passen.
-Um die Bilder genau zu positionieren bietet sich als Beispiel <code>Calendar.JUNE</code> an.
+<br/>
+Um die Bilder genau zu positionieren, bietet sich als Beispiel <code>Calendar.JUNE</code> an.
 
 <h3>Abschlu&szlig;</h3>
 Sind ein paar Seiten fertig, schaut man sich das Ergebnis an. 
 Dazu startet man <code>main(String[] args)</code> in Datei <code>PhotoCalendar/src/de/dreiroeders/fotokalender/FotoKalenderOpt.java</code>
 Dann versucht man die erzeugten Bild-Dateien im Ordner <code>Results</code> via Internet der ausgew&auml;hlten Firma zu &uuml;bergeben,
 damit diese den endg&uuml;ltigen Kalender druckt.
+<br/>
 Stellt man fest, dass die Abmessungen der eigenen Bilddateien nicht gut zu den gew&uuml;nschten Abmessungen der Firma passen,
 passt man die statische Variable <code>CalendarSheet.fWeight</code> entsprechend an.
 Daf&uuml;r bietet sich die Datei <code>PhotoCalendar/src/de/dreiroeders/fotokalender/FotoKalenderOpt.java</code> an.
