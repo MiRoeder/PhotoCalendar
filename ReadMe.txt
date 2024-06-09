@@ -1,5 +1,4 @@
-Program to create Pages for a Personalized 
-Photo Calendar
+Program to create Pages for a Personalized Photo Calendar
 I like personalized photo calendars with my own pictures and my own dates. They are also a 
 good gift for parents and grandparents. You need 13 images: one for every month and one for 
 the title page. This program supports you in two ways to generate the corresponding pages. 
