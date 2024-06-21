@@ -1,32 +1,23 @@
-<!doctype html>
-<html lang=en>
-<head>
-<meta charset=utf-8>
-<title>Create Photo Calendar Pages</title>
-</head>
-<body>
-<h1>Program to create Pages for a Personalized Photo Calendar</h1>
-<p>
+#Create Photo Calendar Pages
+##Program to create Pages for a Personalized Photo Calendar
 I like personalized photo calendars with my own pictures and my own dates.
 They are also a good gift for parents and grandparents.
 You need 13 images: one for every month and one for the title page.
 This program supports you in two ways to generate the corresponding pages.
-<ul>
-<li>You define your own dates such as birthdays, wedding anniversaries, regional holidays, school holidays, dates for your sports club or similar once in the program.
-    They are then automatically added to the calendar every year.</li>
-<li>Your pictures will be fitted into the calendar page. They can be rotated if necessary. Multiple pictures can be arranged automatically.</li>
-</ul>
+
+* You define your own dates such as birthdays, wedding anniversaries, regional holidays, school holidays, dates for your sports club or similar once in the program.  They are then automatically added to the calendar every year.
+* Your pictures will be fitted into the calendar page. They can be rotated if necessary. Multiple pictures can be arranged automatically.
 
 At the end you will send these 13 pages to a company like
-<ul>
-<li> <a href="https://www.whitewall.com/de/fotokalender-erstellen" target="_blank">WHITE WALL</a> </li>
-<li> <a href="https://www.orwo.de/detail/277/fotokalender/wandkalender-selbst-gestalten" target="_blank">ORWO</a> </li>
-<li> <a href="https://www.myposter.de/fotokalender" target="_blank">MYPOSTER</a> </li>
-<li> <a href="https://www.posterxxl.de/fotokalender/wandkalender" target="_blank">posterXXL</a> </li>
-<li> <a href="https://www.fotoservice-mms.de/fotokalender.html" target="_blank">MediaMarkt / SATURN</a> </li>
-<li> <a href="https://www.photobox.co.uk/shop/calendars-and-diaries" target="_blank">Photobox</a> </li>
-<li> <a href="https://www.google.com/search?q=photo+calendar+creator" target="_blank">and many others &hellip;</a> </li>
-</ul>
+
+* (https://www.whitewall.com/de/fotokalender-erstelle)[WHITE WALL]
+* (https://www.orwo.de/detail/277/fotokalender/wandkalender-selbst-gestalten)[ORWO]
+* (https://www.myposter.de/fotokalender)[MYPOSTER]
+* (https://www.posterxxl.de/fotokalender/wandkalender)[posterXXL]
+* (https://www.fotoservice-mms.de/fotokalender.html)[MediaMarkt / SATURN]
+* (https://www.photobox.co.uk/shop/calendars-and-diaries)[Photobox]
+* (https://www.google.com/search?q=photo+calendar+creator)[and many others...]
+
 I already tried the first 5 companies myself and was satisfied. However, I cannot take responsibility for these companies. I do not have an agreement with any of them.
 
 <br/>
