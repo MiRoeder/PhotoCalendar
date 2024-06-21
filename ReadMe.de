@@ -20,19 +20,17 @@ At the end you will send these 13 pages to a company like
 
 I already tried the first 5 companies myself and was satisfied. However, I cannot take responsibility for these companies. I do not have an agreement with any of them.
 
-<br/>
-
-<h2>Usage</h2>
-I use the IDE <a href="https://www.eclipse.org/">Eclipse</a>. 
+###Usage
+I use the IDE (https://www.eclipse.org/)[Eclipse]. 
 To edit and run the photo calendar there, you have to open the following three project files:
-<ul>
-<li><code>DreiRoedersUtil/.project</code></li>
-<li><code>Painter/.project</code></li>
-<li><code>PhotoCalendar/.project</code></li>
-</ul>
+
+* `DreiRoedersUtil/.project`
+* `Painter/.project`
+* `PhotoCalendar/.project`
+
 To generate suitable pages, you must adapt the program accordingly:
 
-<h3>Set Year and Start Month</h3>
+####Set Year and Start Month
 The starting year and month will be set in the file <code>PhotoCalendar/src/de/dreiroeders/fotokalender/FotoKalenderOpt.java</code>:
 <br/><code>de.dreiroeders.fotokalender.FotoKalenderOpt. YEAR1</code> and in
 <br/><code>de.dreiroeders.fotokalender.FotoKalenderOpt. MONTH1</code>.
