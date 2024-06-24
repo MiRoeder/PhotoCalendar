@@ -86,18 +86,18 @@ public class MyFussballBundesliga {
 	}
 	
 
-	enum HinRückRunde {
+	enum HinRueckRunde {
 		HinRunde,
-		RückRunde
+		RueckRunde
 	}
 
 
 	public static void addTermin(
 		FotoKalender cal,
-		int nRükDays,
-		int nRükLastDay,
-		int nRükMonth, /* January = 1, ... December = 12 */
-		int nRükYear,
+		int nRuekDays,
+		int nRuekLastDay,
+		int nRuekMonth, /* January = 1, ... December = 12 */
+		int nRuekYear,
 		int nHinDays,
 		int nHinLastDay,
 		int nHinMonth, /* January = 1, ... December = 12 */
@@ -105,10 +105,10 @@ public class MyFussballBundesliga {
 		String str
 	) {
 		if (nHinYear == cal.THIS_YEAR) {
-			addTermin(cal, HinRückRunde.HinRunde, nHinDays, new GregorianCalendar(nHinYear, nHinMonth-1, nHinLastDay), str);
+			addTermin(cal, HinRueckRunde.HinRunde, nHinDays, new GregorianCalendar(nHinYear, nHinMonth-1, nHinLastDay), str);
 		}
-		if (nRükYear == cal.THIS_YEAR) {
-			addTermin(cal, HinRückRunde.RückRunde,nRükDays, new GregorianCalendar(nRükYear, nRükMonth-1, nRükLastDay), str);
+		if (nRuekYear == cal.THIS_YEAR) {
+			addTermin(cal, HinRueckRunde.RueckRunde,nRuekDays, new GregorianCalendar(nRuekYear, nRuekMonth-1, nRuekLastDay), str);
 		}
 	}
 	
@@ -125,13 +125,13 @@ public class MyFussballBundesliga {
 			GregorianCalendar cal1 = new GregorianCalendar(nYear, n1stMon-1, n1stDay);
 			GregorianCalendar cal2 = new GregorianCalendar(nYear, nLastMon-1,nLastDay);
 			int nDaysPlusMinus = (int)((cal2.getTimeInMillis() - cal1.getTimeInMillis()) / 86400000);
-			addTermin(cal, HinRückRunde.HinRunde, nDaysPlusMinus, cal2, str);
+			addTermin(cal, HinRueckRunde.HinRunde, nDaysPlusMinus, cal2, str);
 		}
 		
 
 	public static void addTermin(
 		FotoKalender cal,
-		HinRückRunde hinRück,
+		HinRueckRunde hinRueck,
 		int nDays,
 		GregorianCalendar lastDay,
 		String str
@@ -163,29 +163,29 @@ public class MyFussballBundesliga {
 		}
 		System.out.println("Spielen "+ nClubs +" Vereine");
 		Club selHin = null;
-		Club selRük = null;
+		Club selRuek = null;
 		float fValBestmatch = 0.95f;
 		for (int iB = 0; iB < strNames.length-1; ++iB) {
 			if (clubs[iB] != null) {
-				Club rückClub = null;
+				Club rueckClub = null;
 				int jB;
-				for (jB = iB+1; jB < strNames.length && rückClub == null; ++jB) {
-					rückClub = clubs[jB];
+				for (jB = iB+1; jB < strNames.length && rueckClub == null; ++jB) {
+					rueckClub = clubs[jB];
 				}
-				if (rückClub != null) {
-					float fCurMatch = hinRück == HinRückRunde.HinRunde ? clubs[iB].mfImpHeim * rückClub.mfImpAusw : clubs[iB].mfImpAusw * rückClub.mfImpHeim;
+				if (rueckClub != null) {
+					float fCurMatch = hinRueck == HinRueckRunde.HinRunde ? clubs[iB].mfImpHeim * rueckClub.mfImpAusw : clubs[iB].mfImpAusw * rueckClub.mfImpHeim;
 					if (fCurMatch > fValBestmatch) {
-						selHin = hinRück == HinRückRunde.HinRunde ? clubs[iB] : rückClub;
-						selRük = hinRück == HinRückRunde.HinRunde ? rückClub : clubs[iB];
+						selHin = hinRueck == HinRueckRunde.HinRunde ? clubs[iB] : rueckClub;
+						selRuek = hinRueck == HinRueckRunde.HinRunde ? rueckClub : clubs[iB];
 						fValBestmatch = fCurMatch;
 					}
 					iB = jB+1;
 				}
 			}
 		}
-		if (selHin != null && selRük != null) {
-			System.out.println("Ausgewähltes Spiel: "+ selHin.mStrIcoName +" - "+ selRük.mStrIcoName);
-			addTermin(cal, nDays, firstDay, lastDay, selHin.mStrIcoName, selRük.mStrIcoName, fValBestmatch);
+		if (selHin != null && selRuek != null) {
+			System.out.println("Ausgewähltes Spiel: "+ selHin.mStrIcoName +" - "+ selRuek.mStrIcoName);
+			addTermin(cal, nDays, firstDay, lastDay, selHin.mStrIcoName, selRuek.mStrIcoName, fValBestmatch);
 		}
 	}
 		
