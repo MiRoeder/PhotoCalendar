@@ -50,7 +50,7 @@ They can be found quickly using the usual commands in the development environmen
 It is best to follow these examples and then set your own events.
 If you don't want private events, you can of course remove all calls.
 
-#### Yout Own Pictures
+#### Your Own Pictures
 Your own images will be set in the file `PhotoCalendar/src/de/dreiroeders/fotokalender/PhotoKalender.java`
 in the method `makeFamilyCal(FotoKalenderOpt trgOpt)`.
 It is best to use the examples as a guide.
@@ -81,15 +81,15 @@ But I use some third-party code:
 ##### Authors
 JAMA's initial design, as well as this reference implementation, was developed by
 
-from [The MathWorks](http://www.mathworks.com/)
-Joe Hicklin
-[Cleve Moler](http://www.nist.gov/cgi-bin/exit_nist.cgi?timeout=5&amp;url=http://www.mathworks.com/company/cleve_bio.shtml)
+from [The MathWorks](http://www.mathworks.com/) :
+Joe Hicklin,
+[Cleve Moler](http://www.nist.gov/cgi-bin/exit_nist.cgi?timeout=5&amp;url=http://www.mathworks.com/company/cleve_bio.shtml) and 
 Peter Webb
 
-and from [NIST](http://www.nist.gov/)
-[Ronald F. Boisvert](https://math.nist.gov/~RBoisvert/)
-[Bruce Miller](https://math.nist.gov/~BMiller/)
-[Roldan Pozo](https://math.nist.gov/~RPozo/)
+and from [NIST](http://www.nist.gov/) :
+[Ronald F. Boisvert](https://math.nist.gov/~RBoisvert/),
+[Bruce Miller](https://math.nist.gov/~BMiller/),
+[Roldan Pozo](https://math.nist.gov/~RPozo/) and
 Karin Remington
 
 ##### Copyright Notice of Java Matrix Package
