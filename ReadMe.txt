@@ -34,7 +34,7 @@ Your own images will be set in the file PhotoCalendar/src/de/dreiroeders/fotokal
 To position the images precisely, Calendar.JUNE is a good example. 
 
 Completion
-Once a few pages are finished, you can look at the result. To do this, you start main(String[] args) in the file PhotoCalendar/src/de/dreiroeders/fotokalender/FotoKalenderOpt.java. Then you will find the generated image files in the Results folder. You will send these images to the selected company via the Internet so that they can print the final calendar. 
+Once a few pages are finished, you can look at the result. To do this, you start main(String[] args) in the file PhotoCalendar/src/de/dreiroeders/fotokalender/PhotoKalender.java. Then you will find the generated image files in the Results folder. You will send these images to the selected company via the Internet so that they can print the final calendar. 
 If you find that the dimensions of your own image files do not match the company's desired dimensions, adjust the static variable CalendarSheet.fWeight accordingly and rerun main(String[] args). The file PhotoCalendar/src/de/dreiroeders/fotokalender/FotoKalenderOpt.java is ideal for this. This variable defines the ratio of length to width of the calendar sheets generated. 
 
 License Terms
