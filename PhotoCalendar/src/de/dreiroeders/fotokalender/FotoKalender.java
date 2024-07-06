@@ -1120,7 +1120,7 @@ public class FotoKalender {
 		IDaysBackground img;
 		DaysBackgroundText txt;
 
-		DaysBackgroundHFlag gerFlag = new DaysBackgroundHFlag(1f, 0f, new Color[]{new Color(0,0,0), new Color(208,0,0), new Color(255,206,0)}, 5f/3f); // https://commons.wikimedia.org/wiki/File:Flag_of_Germany.svg
+		DaysBackgroundHFlag gerFlag = new DaysBackgroundHFlag(1f, 0f, new Color[]{new Color(0,0,0), new Color(255,0,0), new Color(255,204,0)}, 5f/3f); // https://de.wikipedia.org/wiki/Flagge_Deutschlands#Farbton-Empfehlung_f%C3%BCr_die_Bundesflagge_ab_1996
 
 		if (THIS_YEAR == 2024) {
 			game1 = new PersonalDate("{0,date,EE} ", 14, 6, 2024, (byte)0);
