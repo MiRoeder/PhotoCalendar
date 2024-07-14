@@ -1445,4 +1445,44 @@ public class FotoKalender {
 		}
 	}
 	
+	public static void createEmptyTmpDir() {
+		File tmpDir = new File("tmp");
+		System.out.println("directory for temp files: "+ tmpDir.getAbsolutePath());
+		tmpDir.mkdir();
+		File[] files = tmpDir.listFiles();
+		if (files == null) {
+			System.err.println("missing directory for temp files: "+ tmpDir.getAbsolutePath());
+		} else {
+			for (File f1 : files) {
+				boolean bDelSuc = f1.delete();
+				if (!bDelSuc) {
+					System.err.println("Could not delete "+ f1.getAbsolutePath());
+				}
+			}
+		}
+	}
+	
+	public static void waitForAllThreadsToFinish() {
+		/* Waiting for all Threads to finish */
+		Thread thisThread = Thread.currentThread();
+		int nThreads = thisThread.getThreadGroup().activeCount();
+		if (nThreads > 1) {
+			System.out.println("Waiting for all Threads to finish.");
+			Thread[] threads = new Thread[nThreads];
+			int nThreads2 = thisThread.getThreadGroup().enumerate(threads);
+			if (nThreads2 > nThreads) {
+				System.err.println("Number of Threads unexpectedly changed: "+ nThreads +" < "+ nThreads2);
+				nThreads2 = nThreads;
+			}
+			for (int iT = 0; iT < nThreads2; ++iT) {
+				if (threads[iT] != thisThread) {
+					try {
+						threads[iT].join();
+					} catch(Exception ex) {
+						ex.printStackTrace();
+					}
+				}
+			}
+		}
+	}
 }

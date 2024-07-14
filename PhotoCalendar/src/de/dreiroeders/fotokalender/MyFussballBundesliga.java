@@ -461,12 +461,11 @@ public class MyFussballBundesliga {
 			String strAuswIcoName,
 			float factor
 		) {
-		int nWeekDay = Calendar.SATURDAY;
+		int nWeekDay = lastDay.get(Calendar.DAY_OF_WEEK);
 		float deltaY;
 		if (nDays == 0) {
 			deltaY = 0f;
 		} else {
-			nWeekDay = lastDay.get(Calendar.DAY_OF_WEEK);
 			if      (nDays == 1 && nWeekDay == Calendar.WEDNESDAY) deltaY = -4f/9f;  // 4 Spiele am Dienstag
 			else if (nDays == 1 && nWeekDay == Calendar.SUNDAY)    deltaY = -6f/8f;  // 6 Spiele am Samstag
 			else if (nDays == 2 && nWeekDay == Calendar.SUNDAY)    deltaY = -(2*1+6)/9f; // 1 Spiel am Freitag + 6 Spiele am Samstag
@@ -476,13 +475,20 @@ public class MyFussballBundesliga {
 		}
 		File filHeim = new File("res/"+strHeimIcoName);
 		File filAusw = new File("res/"+strAuswIcoName);
+		int iDeltaY = Math.round(deltaY);
 		if (firstDay.get(Calendar.MONTH) == lastDay.get(Calendar.MONTH)) {
-			ArrayList<PersonalDate> alreadyEvents = cal.mDates.getCalEvents(lastDay);
-			deltaY += alreadyEvents.size() * 0.45f;
-			PersonalDate sp = PersonalDate.create2BitmapsBackground(filHeim, " : ", filAusw, factor, deltaY, lastDay);
+			GregorianCalendar cenDay = lastDay;
+			if (iDeltaY != 0) {
+				deltaY -= iDeltaY;
+				cenDay = (GregorianCalendar)(cenDay.clone());
+				cenDay.add(GregorianCalendar.DAY_OF_MONTH, iDeltaY);
+			}
+			ArrayList<PersonalDate> alreadyEvents = cal.mDates.getCalEvents(cenDay);
+			deltaY += alreadyEvents.size() * factor;
+			PersonalDate sp = PersonalDate.create2BitmapsBackground(filHeim, " : ", filAusw, factor, deltaY, cenDay);
 			cal.mDates.addCalEvent(sp);
-			for (int iD = 1; iD <= nDays; ++iD) {
-				cal.mDates.addCalEvent01(PersonalDate.createDate("{0,date,EE} ", sp.getDate(), -iD, (byte)0));
+			for (int iD = 0; iD <= nDays; ++iD) {
+				cal.mDates.addCalEvent01(PersonalDate.createDate("{0,date,EE} ", sp.getDate(), -iD-iDeltaY, (byte)0));
 			}
 		} else {
 			int n1 = 0;
@@ -553,6 +559,13 @@ public class MyFussballBundesliga {
 		public final float mfImpHeim;  // The importance of the club for you when it plays at home
 		public final float mfImpAusw;  // The importance of the club for you when it plays away
 		
+		/**
+		 * 
+		 * @param strIcoName The name of the icon.
+		 * 			It must contain the name of the club as used by the list in  addMyFussballBundesliga(FotoKalender cal)
+		 * @param fImpHeim   The importance of the club for you when it plays at home
+		 * @param fImpAusw   The importance of the club for you when it plays away
+		 */
 		public Club(String strIcoName, float fImpHeim, float fImpAusw) {
 			super();
 			this.mStrIcoName = strIcoName;
@@ -577,7 +590,7 @@ public class MyFussballBundesliga {
 			new Club("Bayer Leverkusen.png", 0f, 1f),
 			new Club("Borussia Mönchengladbach.jpg", 0f, 1f),
 			new Club("BVB 09 Dortmund.jpg", 0f, 1f),
-			new Club("Dynamo Dresden.png", .92f, 1f),
+			new Club("Dynamo Dresden.png", .0f, 1f),
 			new Club("Eintr Frankfurt.jpg", 0f, 1f),
 			new Club("Eintracht Braunschweig.png", 0f, 1f),
 			new Club("FC Augsburg.jpg", 0f, 1f),
@@ -586,14 +599,14 @@ public class MyFussballBundesliga {
 			new Club("FC Ingolstadt 04.jpg", 0f, 1f),
 			new Club("FC Köln.jpg", 0f, 1f),
 			new Club("FC Kaiserslautern.png", 0f, 1f),
-			new Club("FC Magdeburg.png", .93f, 1f),
-			new Club("FC St. Pauli.png", .92f, 1f),
+			new Club("FC Magdeburg.png", .0f, 1f),
+			new Club("FC St. Pauli.png", .0f, 1f),
 			new Club("Fortuna_Düsseldorf.svg.png", 0f, 1f),
 			new Club("FSV Mainz 05.jpg", 0f, 1f),
-			new Club("Hamburger SV.jpg", .93f, 1f),
+			new Club("Hamburger SV.jpg", .0f, 1f),
 			new Club("Hannover 96.jpg", .94f, 1f),
-			new Club("Hansa Rostock.png", .93f, 1f),
-			new Club("Hertha BSC.jpg", 2f, 1.1f),
+			new Club("Hansa Rostock.png", .0f, 1f),
+			new Club("Hertha BSC.jpg", 1f, 1.1f),
 			new Club("Holstein Kiel.png", 0f, 1f),
 			new Club("Karlsruher SC.png", .93f, 1f),
 			new Club("RB Leipzig.png", 0f, 1f),
@@ -606,10 +619,10 @@ public class MyFussballBundesliga {
 			new Club("SV Wehen Wiesbaden.png", 0f, 1f),
 			new Club("SV Werder Bremen.jpg", .93f, 1f),
 			new Club("TSG 1899 Hoffenheim.jpg", 0f, 1f),
-			new Club("UnionBerlin.png", 1.01f, 1f),
+			new Club("UnionBerlin.png", 1.1f, 1f),
 			new Club("VfB Stuttgart.png", 0f, 1f),
 			new Club("VfL Osnabrück.png", .93f, 1f),
-			new Club("VfL Wolfsburg.jpg", .93f, 1f),
+			new Club("VfL Wolfsburg.jpg", .0f, 1f),
 			new Club("VfL_Bochum.png", 0f, 1f),
 			new Club("SSV Jahn Regensburg.png", 0f, 1f),
 			new Club("Preußen Münster.png", 0f, 1f),

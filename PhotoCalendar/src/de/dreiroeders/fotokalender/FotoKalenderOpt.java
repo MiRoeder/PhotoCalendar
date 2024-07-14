@@ -23,6 +23,8 @@ public class FotoKalenderOpt {
 
 	public String m_strOutDir;
 	
+	public boolean m_bFreeTmpDirAfterRun;
+	
 	public boolean[] m_bDoIt; /* Für die 12 Monate eines Jahres und das Titelblatt */
 	/* java.util.Calendar :
 	 * public static final int JANUARY = 0;
@@ -76,6 +78,7 @@ public class FotoKalenderOpt {
 		result.m_bBundesliga = true;
 		result.m_bBundesliga2 = true;
 		result.m_bAndreMarlies = false;
+		result.m_bFreeTmpDirAfterRun = result.m_bFinal;
 		if (!result.m_bFinal) {
 			String strBackBackgroundCol;
 			if (CalendarSheet.sBackBackgroundCol == null) {
@@ -104,88 +107,36 @@ public class FotoKalenderOpt {
 	public static FotoKalenderOpt ForAdriana(int year) {
 		CalendarSheet.fWeight = 1.65f; // myposter.de BIG BLANCO DIN A3 quer or https://www.myposter.de/wandkalender/blanko
 		CalendarSheet.sBackBackgroundCol = Color.WHITE;
-		//CalendarSheet.fWeight = 1.70f; //for whitewall.com Kalender dezent DIN A3 quer
-		//CalendarSheet.fWeight = 2.00f; //1.92f or a little bit more; // fotoquelle.de Vordergrundbild
+		//CalendarSheet.fWeight = 1.75f; //for whitewall.com Kalender dezent DIN A3 quer
+		//CalendarSheet.fWeight = 1.92f; //1.92f ... 2.00f ; // fotoquelle.de Vordergrundbild
 		//CalendarSheet.fWeight = 1.73f; // posterXXL.de Vordergrundbild
-		//attrCalendarSheet.fWeight = CalendarSheet.FWeight_whitewall_A2_hoch;
+		//CalendarSheet.fWeight = CalendarSheet.FWeight_whitewall_A2_hoch;
 		//CalendarSheet.fWeight = 28f/13f*26f/22f; // https://foto-shop.tchibo.de/shop/composer/callComposer.do?productId=4478&lang=de-DE
 		//CalendarSheet.fWeight = 1.41f; // https://foto-shop.tchibo.de/shop/composer/callComposer.do?productId=4478&lang=de-DE ohne Vorlage
-		CalendarSheet.sBackBackgroundCol = Color.WHITE;
+		//CalendarSheet.fWeight = 2.5f; // Titelbild for Facebook
+		//CalendarSheet.sBackBackgroundCol = Color.WHITE;
 		FotoKalenderOpt result = new FotoKalenderOpt();
+		result.m_nYear = year;
 		result.m_bFinal = FINAL;
 		result.m_bBerlinVacations = true;
 		result.m_bBundesliga = true;
 		result.m_bBundesliga2 = true;
-		result.m_bAndreMarlies = true;
-		if (!result.m_bFinal) {
-			String strBackBackgroundCol;
-			if (CalendarSheet.sBackBackgroundCol.equals(Color.WHITE)) {
-				strBackBackgroundCol = "W";
-			} else {
-				strBackBackgroundCol = Integer.toHexString(CalendarSheet.sBackBackgroundCol.hashCode());
-			}
-			result.m_strOutDir = "tmp/2024_Adri/#"+ strBackBackgroundCol +"_"+ CalendarSheet.fWeight +"/";
-		} else {
-			result.m_strOutDir = "results/2024_01/Adri/"+ CalendarSheet.fWeight +"/";
-			if (year == 2024) {
-				result.init_m_bDoIt(Calendar.JANUARY, Calendar.DECEMBER);
-			}
-			if (year == 2025) {
-				result.m_bDoIt[Calendar.JANUARY] = FINAL;		
-			}
-		}
-		return result;
-	}
-	
-	public static FotoKalenderOpt ForAndreMarlies() {
-		CalendarSheet.fWeight = 2.00f; //1.92f or a little bit more; // fotoquelle.de Vordergrundbild
-		//CalendarSheet.fWeight = 1.73f; // posterXXL.de Vordergrundbild
-		//attrCalendarSheet.fWeight = CalendarSheet.FWeight_whitewall_A2_hoch;
-		//CalendarSheet.fWeight = 28f/13f*26f/22f; // https://foto-shop.tchibo.de/shop/composer/callComposer.do?productId=4478&lang=de-DE
-		//CalendarSheet.fWeight = 1.41f; // https://foto-shop.tchibo.de/shop/composer/callComposer.do?productId=4478&lang=de-DE ohne Vorlage
-		CalendarSheet.sBackBackgroundCol = Color.WHITE;
-		FotoKalenderOpt result = new FotoKalenderOpt();
-		result.m_bFinal = FINAL;
-		result.m_bBundesliga = false;
-		result.m_bBerlinVacations = true;
-		result.m_bAndreMarlies = true;
-		if (!result.m_bFinal) {
-			String strBackBackgroundCol;
-			if (CalendarSheet.sBackBackgroundCol.equals(Color.WHITE)) {
-				strBackBackgroundCol = "W";
-			} else {
-				strBackBackgroundCol = Integer.toHexString(CalendarSheet.sBackBackgroundCol.hashCode());
-			}
-			result.m_strOutDir = "tmp/AndreMarlies/#"+ strBackBackgroundCol +"_"+ CalendarSheet.fWeight +"/";
-		} else {
-			result.m_strOutDir = "results/2023/AndreMarlies/"+ CalendarSheet.fWeight +"/";
-		}
-		return result;
-	}
-	
-	public static FotoKalenderOpt ForRolfChrista(int year) {
-		CalendarSheet.fWeight = CalendarSheet.FWeight_whitewall_A2_hoch;
-		CalendarSheet.sBackBackgroundCol = Color.WHITE;
-		FotoKalenderOpt result = new FotoKalenderOpt();
-		result.m_bFinal = FINAL;
-		result.m_bBundesliga = false;
-		result.m_bBerlinVacations = false;
 		result.m_bAndreMarlies = false;
+		result.m_bFreeTmpDirAfterRun = result.m_bFinal;
 		if (!result.m_bFinal) {
 			String strBackBackgroundCol;
-			if (CalendarSheet.sBackBackgroundCol.equals(Color.WHITE)) {
+			if (CalendarSheet.sBackBackgroundCol == null) {
+				strBackBackgroundCol = "N";
+			} else if (CalendarSheet.sBackBackgroundCol.equals(Color.WHITE)) {
 				strBackBackgroundCol = "W";
 			} else {
 				strBackBackgroundCol = Integer.toHexString(CalendarSheet.sBackBackgroundCol.hashCode());
 			}
-			result.m_strOutDir = "tmp/RolfChrista/#"+ strBackBackgroundCol +"_"+ CalendarSheet.fWeight +"/";
+			result.m_strOutDir = "tmp/Pub_Adr_" + YEAR1 +"-"+ (MONTH1+1) + "/#"+ strBackBackgroundCol +"_"+ CalendarSheet.fWeight +"/";
+			result.init_m_bDoIt(FINAL);
 		} else {
-			result.m_strOutDir = "results/2023/RolfChrista/"+ CalendarSheet.fWeight +"/";
+			result.m_strOutDir = "results/Adr_" + YEAR1 +"-"+ (MONTH1+1) +"/"+ CalendarSheet.fWeight +"/";
 		}
-		result.init_m_bDoIt(result.m_bFinal && year == 2023);
-		result.m_bDoIt[Calendar.JANUARY] = result.m_bFinal;
-		result.m_bDoIt[Calendar.JULY] = year == 2023;
-		result.m_bDoIt[12] = false;
 		return result;
 	}
 	

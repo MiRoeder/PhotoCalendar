@@ -24,15 +24,20 @@ public class FotoKalender1 extends FotoKalender {
 			Date curTime = new Date();
 			DateFormat dateFormatter = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT);
 			System.out.println("Procedure "+ FotoKalender1.class.getName() +".main(args) started creating FotoKalender: "+ dateFormatter.format(curTime) +" "+ curTime.getTime() + " ms.");
+			createEmptyTmpDir();
 			makeFamilyCal(0);
-			makeFamilyCal(1);
+			FotoKalenderOpt trgOpt = makeFamilyCal(1);
+			if (trgOpt.m_bFreeTmpDirAfterRun) {
+				waitForAllThreadsToFinish();
+				createEmptyTmpDir();
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 	}
 	
 		
-	public static void makeFamilyCal(int nDeltaYear) throws Exception {
+	public static FotoKalenderOpt makeFamilyCal(int nDeltaYear) throws Exception {
 		FotoKalenderOpt trgOpt = FotoKalenderOpt.Current(nDeltaYear);
 		FotoKalender1 mainObj = new FotoKalender1(trgOpt.m_nYear);
 		for (int iMonth = -1; iMonth <= Calendar.DECEMBER; ++iMonth) {
@@ -41,6 +46,7 @@ public class FotoKalender1 extends FotoKalender {
 				break;
 			}
 		}
+		return trgOpt;
 	}
 	
 	public void makeFamilyCal(FotoKalenderOpt trgOpt) throws Exception {
