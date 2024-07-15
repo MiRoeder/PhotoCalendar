@@ -20,12 +20,12 @@ public class MyFussballBundesliga2 extends MyFussballBundesliga {
 		addTermin(cal, 3, 8, 4, 8, 2024, " 1 3 Karlsruher SC 1_FC Nürnberg"); // 
 		addTermin(cal, 3, 8, 4, 8, 2024, " 1 4 Hannover 96 SSV Jahn Regensburg"); // 
 		addTermin(cal, 3, 8, 4, 8, 2024, " 1 5 SpVgg Greuther Fürth Preußen Münster"); // 
-		addTermin(cal, 3, 8, 4, 8, 2024, " 1 6 Hertha BSC SC Paderborn 07"); // 
+		addTermin(cal, 3, 8, 3, 8, 2024, " 1 6 Hertha BSC SC Paderborn 07"); // 
 		addTermin(cal, 3, 8, 4, 8, 2024, " 1 7 FC Schalke 04 Eintracht Braunschweig"); // 
 		addTermin(cal, 3, 8, 4, 8, 2024, " 1 8 1_FC Magdeburg SV Elversberg"); // 
 		addTermin(cal, 3, 8, 4, 8, 2024, " 1 9 SSV_Ulm_1846_Fussball 1_FC Kaiserslautern"); // 
 		addTermin(cal, 9, 8,11, 8, 2024, " 2 10 Fortuna Düsseldorf Karlsruher SC"); // 
-		addTermin(cal, 9, 8,11, 8, 2024, " 2 11 Hamburger SV Hertha BSC"); // 
+		addTermin(cal,10, 8,10, 8, 2024, " 2 11 Hamburger SV Hertha BSC"); // 
 		addTermin(cal, 9, 8,11, 8, 2024, " 2 12 SC Paderborn 07 SV Darmstadt 98"); // 
 		addTermin(cal, 9, 8,11, 8, 2024, " 2 13 SV Elversberg 1_FC Köln"); // 
 		addTermin(cal, 9, 8,11, 8, 2024, " 2 14 1_FC Nürnberg FC Schalke 04"); // 

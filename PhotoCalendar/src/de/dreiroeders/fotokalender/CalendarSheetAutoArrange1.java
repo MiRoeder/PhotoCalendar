@@ -9,9 +9,10 @@ import java.util.Iterator;
 
 import de.dreiroeders.workingonimages.DefaultPicsPosesI;
 import de.dreiroeders.workingonimages.Draw1ImageI;
+import de.dreiroeders.workingonimages.IHintsDrawImages;
 
 
-public class CalendarSheetAutoArrange1 extends CalendarSheet implements Runnable {
+public class CalendarSheetAutoArrange1 extends CalendarSheet implements Runnable, ICalendarSheetAddImage {
 
 	public int mPreferedWidth;
 	public int mPreferedHeight;
@@ -32,6 +33,12 @@ public class CalendarSheetAutoArrange1 extends CalendarSheet implements Runnable
 		mPics.add(img);
 	}
 	
+	public void addImage(Draw1ImageI img, IHintsDrawImages hints) {
+		if (img.isOk()) {
+			mPics.add(img);
+		}
+	}
+
 	public void setPicRelWidth(float picRelWidth) {
 		mCalcPos.mPicRelWidth = picRelWidth;
 	}

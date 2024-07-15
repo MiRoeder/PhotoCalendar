@@ -1,6 +1,5 @@
 package de.dreiroeders.fotokalender;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.text.DateFormat;
@@ -11,7 +10,6 @@ import java.util.Random;
 import de.dreiroeders.workingonimages.BufferedImageSetPixImg_ABGR;
 import de.dreiroeders.workingonimages.Draw1ImageI;
 import de.dreiroeders.workingonimages.Draw1ImageT;
-import de.dreiroeders.workingonimages.Draw1ImageWithTxt;
 import de.dreiroeders.workingonimages.IHintsDrawImages;
 import de.dreiroeders.workingonimages.MiRoesDraw;
 import de.dreiroeders.workingonimages.SourceImage;
@@ -240,95 +238,26 @@ public class FotoKalender1 extends FotoKalender {
 		}
 
 		if (trgOpt.bDoIt(Calendar.AUGUST)) {
-			CalendarSheetCenterImage sheetCI;
-			sheetCI = new CalendarSheetCenterImage(THIS_YEAR, Calendar.AUGUST, mDates);
-			Draw1ImageI img;
-			img = new Draw1ImageI(inDirWhatsAp0+"WhatsApp Bild 2023-07-15 um 19.43.25.jpg"); // 1600x900
-			sheetCI.setImage1(img);
-			if (CalendarSheet.fWeight < 2 || 3 < CalendarSheet.fWeight) {
-				img = new Draw1ImageI(inDirG+"20221202_114315.jpg");
-				img.dRot = 90;
-				sheetCI.addImage1(img);
+			boolean bIsTitleSheet = THIS_YEAR == 2025;
+			CalendarSheetAutoArrange1 sheet = new CalendarSheetAutoArrange1(THIS_YEAR, Calendar.AUGUST, mDates);
+			addManyImages2024Vik(sheet, null, new Random(THIS_YEAR*12+Calendar.AUGUST+2), bIsTitleSheet ? 1f : .15f);
+			if (bIsTitleSheet) {
+				addImages2024_Winter_Vik(sheet, null, null, 1f);
 			}
-			if (CalendarSheetCenterImage.fWeight > 1.9f) {
-				img = new Draw1ImageI(inDirG+"20221203_110020.jpg");
-				img.dRot = 180;
-				sheetCI.addImage1(img);
+			Thread thr = sheet.startMakingIt(strOutDir);
+			if (bIsTitleSheet) {
+				thr.join();
+				renameToTitle(strOutDir, "2508.jpg");
 			}
-			if (.9f < CalendarSheet.fWeight && CalendarSheet.fWeight < 1.96f) {
-				img = new Draw1ImageI(inDirG+"20221202_114310.jpg");
-				img.dRot = 90;
-				sheetCI.addImage1(img);
-				img = new Draw1ImageI(inDirG+"20221202_114333.jpg");
-				img.dRot = 0;
-				sheetCI.addImage1(img);
-				img = new Draw1ImageI(inDirG+"20221202_114335.jpg");
-				img.dRot = -.02f;
-				sheetCI.addImage1(img);
-				img = new Draw1ImageI(inDirG+"20221202_114337.jpg");
-				img.dRot = -.05f;
-				sheetCI.addImage1(img);
-				if (CalendarSheetCenterImage.fWeight > 1.9f) {
-					img = new Draw1ImageI(inDirG+"20221203_105817.jpg");
-					img.dRot = 180;
-					img.setCenterPoint(.5f, .4f);
-					sheetCI.addImage1(img);
-				}
-				img = new Draw1ImageI(inDirG+"20221203_105817_001.jpg");
-				img.dRot = 180;
-				img.setCenterPoint(.5f, .43f);
-				sheetCI.addImage1(img);
-				img = new Draw1ImageI(inDirG+"20221203_105859.jpg");
-				img.dRot = 180;
-				sheetCI.addImage1(img);
-				img = new Draw1ImageI(inDirG+"20221203_105850.jpg");
-				img.dRot = 90;
-				sheetCI.addImage1(img);
-				img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\GalaxyS8\\Pictures\\Whatsapp\\IMG-20220410-WA0003.jpg");
-				sheetCI.addImage2(img);
-				final String strImages21 = "C:\\Users\\MiRoe\\Pictures\\WhatsApp\\";
-				img = new Draw1ImageI(strImages21+"WhatsApp Bild 2022-11-25 um 17.58.34.jpg");
-				img.setCenterPoint(.5f, .3f);
-				sheetCI.addImage2(img);
-				img = new Draw1ImageI(strImages21+"WhatsApp Bild 2022-12-24 um 01.39.57_2.jpg");
-				sheetCI.addImage2(img);
-				img = new Draw1ImageI(inDirV21+"WhatsApp Image 2021-08-21 at 20.13.53 (2).jpeg");
-				sheetCI.addImage2(img);
-				img = new Draw1ImageI(inDirV21+"WhatsApp Image 2021-08-07 at 11.54.06 (1).jpeg");
-				img.setCenterPoint(.5f, .4f);
-				sheetCI.addImage2(img);
-				img = new Draw1ImageI(inDirV21+"WhatsApp Image 2021-07-31 at 16.42.48.jpeg");
-				sheetCI.addImage2(img);
-				img = new Draw1ImageI(inDirV21+"WhatsApp Image 2021-08-10 at 16.47.13 (2).jpeg");
-				sheetCI.addImage2(img);
-				final String strImages = "C:\\Users\\MiRoe\\Pictures\\GalaxyS8\\Pictures\\";
-				img = new Draw1ImageI(strImages+"signal-2021-08-14-183040.jpg");
-				sheetCI.addImage2(img);
-				img = new Draw1ImageI(strImages+"signal-2021-08-14-201821.jpg");
-				sheetCI.addImage2(img);
-				img = new Draw1ImageI(strImages+"signal-2022-06-25-22-54-48-898.jpg");
-				sheetCI.addImage2(img);
-				img = new Draw1ImageI(strImages+"signal-2022-06-25-22-55-22-518.jpg");
-				sheetCI.addImage2(img);
-				img = new Draw1ImageI(strImages+"signal-2022-06-25-23-10-37-955.jpg");
-				sheetCI.addImage2(img);
-				img = new Draw1ImageI(strImages+"signal-2021-09-05-135702.jpg");
-				sheetCI.addImage2(img);
-				img = new Draw1ImageI(strImages+"signal-2021-09-05-185155.jpg");
-				img.setCenterPoint(.5f, 6f/16f);
-				sheetCI.addImage2(img);
-			}
-			sheetCI.startMakingIt(strOutDir);
+			
 		}
 		
 		if (trgOpt.bDoIt(Calendar.SEPTEMBER)) try {
 			var sheetCI = new CalendarSheetCenterImage(THIS_YEAR,  Calendar.SEPTEMBER, mDates);
-			Draw1ImageWithTxt img1;
-			img1 = new Draw1ImageWithTxt("C:\\Users\\MiRoe\\OneDrive\\Adesso\\Handy\\Pictures\\Camera\\20220821_174416b.jpg",
-					                     "Fotografin: Sophie Viktoria Köhler (3 Jahre)",
-					                     new Color(224, 32, 128), Font.SERIF, Font.ITALIC, 200 );
+			Draw1ImageI img1;
+			img1 = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-06-27 um 18.04.24_79c869c8.jpg");
 			sheetCI.setImage1(img1);
-			addManyImages(sheetCI, new Random(THIS_YEAR-2022), .5f);
+			addManyImages2024Vik(sheetCI, null, new Random(THIS_YEAR*12+Calendar.SEPTEMBER), .4f);
 			sheetCI.startMakingIt(strOutDir);
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -586,7 +515,6 @@ public class FotoKalender1 extends FotoKalender {
 		}
 		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
 			img = new Draw1ImageI(inDirVik2+"20220416_204733.jpg");
-			img.dRot = 0;
 			sheet.addImage2(img);
 		}
 		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
@@ -751,7 +679,7 @@ public class FotoKalender1 extends FotoKalender {
 			img.dRot = 90;
 			sheet.addImage2(img);
 		}
-	}
+	} /* end  addManyImages(CalendarSheetCenterImage sheet, Random randomGen, float maxRandomToPaint) */
 
 	void addAndres2023Images(ICalendarSheetAddImage sheet, IHintsDrawImages hints, Random randomGen, float maxRandomToPaint) {
 		final String inDirAndre2023 = "C:\\Users\\MiRoe\\Pictures\\2023 Famile Senior Köhler\\";
@@ -839,6 +767,204 @@ public class FotoKalender1 extends FotoKalender {
 			img = new Draw1ImageI(inDirAndre2023+"VideoCapture_20230514-150439.jpg");
 			sheet.addImage(img, hints);
 		}
+	} /* end  addAndres2023Images(ICalendarSheetAddImage sheet, IHintsDrawImages hints, Random randomGen, float maxRandomToPaint)  */
+
+	void addManyImages2024Vik(ICalendarSheetAddImage sheet, IHintsDrawImages hints, Random randomGen, float maxRandomToPaint) {
+		Draw1ImageI img;
+		boolean bAddedImage = false;
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-06-13 um 12.32.13_28967e48.jpg");
+			img.setCenterPoint(.6f, .5f);
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-06-27 um 14.31.24_14f1d972.jpg");
+			img.setCenterPoint(.5f, .3f);
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-06-27 um 14.31.24_66612c5d.jpg");
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-06-27 um 14.31.25_2ec8d15a.jpg");
+			img.setCenterPoint(.6f, .5f);
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-06-27 um 14.31.25_97703e13.jpg");
+			img.setCenterPoint(.45f, .5f);
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-04 um 19.21.06_529e8da9.jpg");
+			img.setCenterPoint(.55f, .5f);
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-04 um 19.22.04_0e12eede.jpg");
+			img.setCenterPoint(.4f, .5f);
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-08 um 12.55.31_0c2a71bc.jpg");
+			img.setCenterPoint(.4f, .5f);
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-08 um 12.55.31_5bbc7308.jpg");
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.48_03b1c05a.jpg");
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.48_33bfe06e.jpg");
+			sheet.addImage(img, hints);
+		}
+		/* The next two pictures are very similar, so only one of them is enough */
+		bAddedImage = randomGen == null || randomGen.nextFloat() < maxRandomToPaint;
+		if (bAddedImage) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.48_652ed2a6.jpg");
+			img.setCenterPoint(.4f, .5f);
+			sheet.addImage(img, hints);
+		}
+		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.48_637516d8.jpg");
+			img.setCenterPoint(.6f, .45f);
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.48_ba70e503.jpg");
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.49_28cfac0c.jpg");
+			sheet.addImage(img, hints);
+		}
+		/* The next two pictures are very similar, so only one of them is enough */
+		bAddedImage = randomGen == null || randomGen.nextFloat() < maxRandomToPaint;
+		if (bAddedImage) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.49_284886d2.jpg");
+			sheet.addImage(img, hints);
+		}
+		if (bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.49_23401443.jpg");
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.49_c8fefea7.jpg");
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.49_ee28eca1.jpg");
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.49_ff229a69.jpg");
+			sheet.addImage(img, hints);
+		}
+		/* The next nine pictures are very similar, so only one of them is enough */
+		bAddedImage = randomGen == null || randomGen.nextFloat() < maxRandomToPaint;
+		if (bAddedImage) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.51_0ab75f79.jpg");
+			img.setCenterPoint(.52f, .35f);
+			sheet.addImage(img, hints);
+		}
+		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.51_14c8f1d6.jpg");
+			img.setCenterPoint(.52f, .35f);
+			sheet.addImage(img, hints);
+			bAddedImage = true;
+		}
+		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.51_5873f787.jpg");
+			img.setCenterPoint(.45f, .5f);
+			sheet.addImage(img, hints);
+			bAddedImage = true;
+		}
+		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.51_e56be3e4.jpg");
+			sheet.addImage(img, hints);
+			bAddedImage = true;
+		}
+		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.52_0cabe4a1.jpg");
+			sheet.addImage(img, hints);
+			bAddedImage = true;
+		}
+		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.52_0fafdc70.jpg");
+			img.setCenterPoint(.45f, .5f);
+			sheet.addImage(img, hints);
+			bAddedImage = true;
+		}
+		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.52_1f647e82.jpg");
+			img.setCenterPoint(.52f, .35f);
+			sheet.addImage(img, hints);
+			bAddedImage = true;
+		}
+		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.52_5af1927b.jpg");
+			sheet.addImage(img, hints);
+			bAddedImage = true;
+		}
+		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.52_6dffb8cc.jpg");
+			sheet.addImage(img, hints);
+			bAddedImage = true;
+		}
+		/* The next two pictures are very similar, so only one of them is enough */
+		bAddedImage = randomGen == null || randomGen.nextFloat() < maxRandomToPaint;
+		if (bAddedImage) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.52_d1e53a26.jpg");
+			img.setCenterPoint(.4f,  .5f);
+			sheet.addImage(img, hints);
+		}
+		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.52_ec1adaac.jpg");
+			sheet.addImage(img, hints);
+		}
+		/* The next three pictures are very similar, so only one of them is enough */
+		bAddedImage = randomGen == null || randomGen.nextFloat() < maxRandomToPaint;
+		if (bAddedImage) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.53_5c64e910.jpg");
+			img.setCenterPoint(.4f, .5f);
+			sheet.addImage(img, hints);
+		}
+		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.53_511676e9.jpg");
+			sheet.addImage(img, hints);
+			bAddedImage = true;
+		}
+		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.53_f295cce5.jpg");
+			sheet.addImage(img, hints);
+			bAddedImage = true;
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-13 um 11.50.36_738278c7.jpg");
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240520_174924.jpg");
+			img.setCenterPoint(.5f, .6f);
+			img.dRot = 90;
+			sheet.addImage(img, hints);
+		}
+	} /* end  addManyImages2024Vik(CalendarSheetCenterImage sheet, Random randomGen, float maxRandomToPaint) */
+	
+	void addImages2024_Winter_Vik(ICalendarSheetAddImage sheet, IHintsDrawImages hints, Random randomGen, float maxRandomToPaint) {
+		Draw1ImageI img;
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240105_111528.jpg");
+			img.setCenterPoint(.45f, .5f);
+			img.dRot = 90;
+			sheet.addImage(img, hints);
+		}
 	}
+
 }
 

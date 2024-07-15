@@ -43,13 +43,15 @@ public class CalendarSheetCenterImage
 	}
 
 	public void addImage(Draw1ImageI img, IHintsDrawImages hints) {
-		int jI;
-		if (mPics[0].size() > mPics[1].size()) {
-			jI = 1;
-		} else {
-			jI = 0;
+		if (img.isOk()) {
+			int jI;
+			if (mPics[0].size() > mPics[1].size()) {
+				jI = 1;
+			} else {
+				jI = 0;
+			}
+			mPics[jI].add(img);
 		}
-		mPics[jI].add(img);
 	}
 
 	public void addImages(File inDir, FileFilter fileFilter) {

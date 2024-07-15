@@ -14,8 +14,6 @@ import javax.imageio.ImageIO;
 
 public class SourceImage {
 	
-	private Rectangle m_srcRect;
-
 	public static String[] splitDirNames(String pathName) {
 		if (pathName == null) {
 			return new String[]{"."};
@@ -26,6 +24,8 @@ public class SourceImage {
 	
 	private String m_srcFileName;
 	private BufferedImage m_image;
+	private Rectangle m_srcRect;
+	private int m_iStatus;
 	
 	public static synchronized BufferedImage ImageIO_read(File inFile) throws IOException {
 		return ImageIO.read(inFile);
@@ -33,14 +33,17 @@ public class SourceImage {
 	
 	public SourceImage(File srcFile) {
 		m_srcFileName = srcFile.getAbsolutePath();
+		m_iStatus = 0;
 	}
 
 	public SourceImage(String srcFileName) {
 		m_srcFileName = srcFileName;
+		m_iStatus = 0;
 	}
 
 	public SourceImage(BufferedImage image) {
 		m_image = image;
+		m_iStatus = +1;
 	}
 
 	public void setSourceBounds(Rectangle rect) {
@@ -53,6 +56,23 @@ public class SourceImage {
 			setImageFromSrcFileName();
 		}
 		return m_image;
+	}
+	
+	public boolean isOk() {
+		if (m_iStatus > 0) {
+			return true;
+		} else
+		if (m_iStatus < 0) {
+			return false;
+		} else
+		if (m_srcFileName == null || m_srcFileName.length() <= 0) {
+			return false;
+		} else {
+			if (m_image == null) {
+				setImageFromSrcFileName();
+			}
+		}
+		return m_iStatus > 0;
 	}
 	
 	public int getWidth() {
@@ -114,11 +134,13 @@ public class SourceImage {
 			System.out.println("\""+ m_srcFileName +"\" mapped to \""+ inFile.getAbsolutePath() +"\"");
 			try {
 			    m_image = ImageIO_read(inFile);
+			    m_iStatus = +1;
 			    if (m_srcRect != null) {
 			    	m_image = m_image.getSubimage(m_srcRect.x, m_srcRect.y, m_srcRect.width, m_srcRect.height);
 			    }
 			} catch (Exception ex) {
 				ex.printStackTrace();
+				m_iStatus = -1;
 				if (m_srcRect != null) {
 					m_image = new BufferedImage(m_srcRect.width, m_srcRect.height, BufferedImage.TYPE_3BYTE_BGR);						
 				} else {
