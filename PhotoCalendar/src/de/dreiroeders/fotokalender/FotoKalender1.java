@@ -52,7 +52,6 @@ public class FotoKalender1 extends FotoKalender {
 
 		final String inDirV21= "C:\\Users\\MiRoe\\Pictures\\2021 Vik\\";
 		final String inDirG = "C:\\Users\\MiRoe\\Pictures\\GalaxyS8\\Camera\\";
-		final String inDirGP = "C:\\Users\\MiRoe\\Pictures\\GalaxyS8\\Pictures\\";
 		final String inDirCo = "C:\\Users\\MiRoe\\Pictures\\Constanzess\\Camera\\";
 		final String inDirWhatsApp= "C:\\Users\\MiRoe\\Pictures\\GalaxyS8\\WhatsApp\\Media\\WhatsApp Images\\";
 		final String inDirWhatsAp = "C:\\Users\\MiRoe\\Pictures\\WhatsApp\\Media\\WhatsApp Images\\";
@@ -122,7 +121,30 @@ public class FotoKalender1 extends FotoKalender {
 		}
 
 		if (trgOpt.bDoIt(Calendar.MARCH)) {
-			makeViksGeburtstag(Calendar.MARCH, strOutDir);
+			try {
+				final String inDir1 = "http://www.3roeders.de/OmasHaus/";
+				CalendarSheet sheet = new CalendarSheet(THIS_YEAR, Calendar.MARCH, mDates);
+				sheet.prepareImage(4000);
+				double wSteg = 0.005; // interspace width
+				double hSteg = wSteg*CalendarSheet.fWeight; // interspace height
+				double hText = 0.1;
+				double hTxt = hText-hSteg;  // text height
+				double h1 = 0.45; // Height of the images in the first row
+				double wImg2 = (1d-wSteg)/2; // Width of the image in the first row
+				sheet.drawSerifText("Berliner Häuser",             0    ,  0.00,  1d  ,  hTxt);
+				sheet.drawImage(inDir1+"IMG_0216.JPG", .5,.5, 0,   0    , hText, wImg2, h1);
+				sheet.drawImage(inDir1+"IMG_0222.JPG", .5,.5, 0, 1-wImg2, hText, wImg2, h1);
+				double y2 = hText+h1+hSteg; // Y-Coord of the images in the second row
+				double wC2 = .2;			// Width of the image in the center of the second row 
+				double w2 = (1-wC2)/2;		// Width of the other images in the second row
+				sheet.drawImage(inDir1+"IMG_0231.JPG", .5,.5, 0,        0, y2,  w2         , 1-y2);
+				sheet.drawImage(inDir1+"IMG_0246.JPG", .5,.5, 0, w2+wSteg, y2,  wC2-2*wSteg, 1-y2);
+				sheet.drawImage(inDir1+"IMG_0202.JPG", .5,.5, 0,     1-w2, y2,  w2         , 1-y2);
+				sheet.drawCalDates();
+				sheet.writeInDir(strOutDir);
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}  
 		}
 
 		if (trgOpt.bDoIt(Calendar.APRIL)) try {
