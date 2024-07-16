@@ -126,33 +126,7 @@ public class FotoKalender1 extends FotoKalender {
 		}
 
 		if (trgOpt.bDoIt(Calendar.APRIL)) try {
-			CalendarSheet sheet;
-			sheet = new CalendarSheet(THIS_YEAR, Calendar.APRIL, mDates);
-			sheet.prepareImage(5000);
-			if (CalendarSheet.fWeight < 1) {
-				sheet.drawImage(inDirCo+"20220319_101538.jpg",               .6, .6, 0,   0f,.203f, .235f, .241f);
-				sheet.drawImage(inDirWhatsApp+"IMG-20220319-WA0008.jpg",     .4, .5, 0,   0f,   0f, .235f, .200f);
-				sheet.drawImage(inDirGP+"signal-2022-03-21-10-14-04-593.jpg",.4, .5, 0, .24f,   0f, .385f, .444f);
-				sheet.drawImage(inDirCo+"20220319_151128.jpg",               .5, .4,90, .63f,  .0f, .385f, .444f);
-				sheet.drawImage(inDirWhatsApp+"IMG-20220320-WA0008.jpg",     .5, .5, 0, .0f , .67f, .395f, .33f);
-				sheet.drawImage(inDirG+"20220319_172357.jpg",                .5, .5, 0, .40f, .67f, .600f, .33f);
-				sheet.drawImage(inDirWhatsApp+"IMG-20220320-WA0012.jpg",     .5, .5, 0,   0f, .447f,.275f, .22f);
-				sheet.drawImage(inDirWhatsApp+"IMG-20220320-WA0016.jpg",     .6, .5, 0, .28f ,.447f,.385f, .22f);
-				sheet.drawImage(inDirWhatsApp+"IMG-20220321-WA0000.jpg",     .5, .5, 0, .67f, .447f,.330f, .22f);
-			} else {
-				sheet.drawImage(inDirWhatsApp+"IMG-20220319-WA0008.jpg",     .4, .54,0,   0f,   0f, .157f, .200f);
-				sheet.drawImage(inDirCo+"20220319_101538.jpg",               .6, .6, 0,   0f,.205f, .157f, .320f);
-				sheet.drawImage(inDirWhatsApp+"IMG-20220320-WA0006",         .6, .54,0,   0f,.53f , .157f, .135f);
-				sheet.drawImage(inDirGP+"signal-2022-03-21-10-14-04-593.jpg",.35,.55,0, .16f,   0f, .247f, .665f);
-				sheet.drawImage(inDirCo+"20220319_151128.jpg",               .5, .4,90, .41f,  .0f, .297f, .665f);
-				sheet.drawImage(inDirWhatsApp+"IMG-20220321-WA0000.jpg",     .5, .5, 0, .71f,   0f, .290f, .33f);
-				sheet.drawImage(inDirG+"20220319_172357.jpg",                .5, .5, 0, .71f,.335f, .290f, .33f);
-				sheet.drawImage(inDirWhatsApp+"IMG-20220320-WA0012.jpg",     .5, .5, 0,   0f, .67f, .187f, .33f);
-				sheet.drawImage(inDirWhatsApp+"IMG-20220320-WA0004.jpg",     .5, .5, 0, .19f, .67f, .517f, .33f);
-				sheet.drawImage(inDirCo+"20220319_172513.jpg",               .5, .5,90, .71f, .67f, .290f, .33f);
-			}
-			sheet.drawCalDates();
-			sheet.writeInDir(strOutDir);
+			makeGeniessenAutobahnVsZug(Calendar.APRIL, strOutDir);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

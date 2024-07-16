@@ -186,6 +186,23 @@ public class FotoKalender {
 		}
 	}
 	
+	public void makeGeniessenAutobahnVsZug(int nMonth, String strOutDir) {
+		try {
+			final String inDir1 = "C:\\Users\\MiRoe\\Pictures\\2024_Vik\\";
+			CalendarSheet sheet = new CalendarSheet(THIS_YEAR, nMonth, mDates);
+			sheet.prepareImage(3000);
+			double hText = 0.07;
+			double hTxt = hText-0.003;  // text height
+			sheet.drawSerifText("Manche Leute genießen das Leben in vollen Zügen.",                  0,    0.00, 1d, hTxt     );
+			sheet.drawSerifText("Andere lieber auf der Autobahn.",                                   0,   hText, 1d, hTxt     );
+			sheet.drawImage(inDir1+"WhatsApp Bild 2024-07-08 um 12.55.31_5bbc7308.jpg", 0.5, 0.5, 0, 0, 2*hText, 1d, 1-2*hText);
+			sheet.drawCalDates();
+			sheet.writeInDir(strOutDir);	
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}  
+	}
+
 	public void makeSportIsMord(int nMonth, String strOutDir) {
 		try {
 			CalendarSheet sheet = new CalendarSheet(THIS_YEAR, nMonth, this.mDates);
