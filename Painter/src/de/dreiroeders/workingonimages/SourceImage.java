@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
+import de.dreiroeders.net.HttpFile;
 
 
 public class SourceImage {
@@ -53,7 +54,7 @@ public class SourceImage {
 	
 	public BufferedImage getImage() {
 		if (m_image == null && m_srcFileName != null) {
-			setImageFromSrcFileName();
+			setImageFromSrcName();
 		}
 		return m_image;
 	}
@@ -69,7 +70,7 @@ public class SourceImage {
 			return false;
 		} else {
 			if (m_image == null) {
-				setImageFromSrcFileName();
+				setImageFromSrcName();
 			}
 		}
 		return m_iStatus > 0;
@@ -103,13 +104,44 @@ public class SourceImage {
 		sSrcDirs.add(new SrcDir("C:\\Users\\MiRoe\\Pictures"));
 	}
 	
-	private void setImageFromSrcFileName() {
+	private static int nCurrentNumber = 1000;
+	
+	public static synchronized int getNextNumer() {
+		return ++nCurrentNumber;
+	}
+	
+	public static File loadFile(String internetAddr) throws Exception {
+		int nr = getNextNumer();
+		File retVal = new File("tmp/www"+nr);
+		HttpFile.HttpToFile(internetAddr, retVal, 10);
+		return retVal;
+	}
+
+	private void setImageFromSrcName() {
+		if (m_srcFileName == null) {
+			m_iStatus = -1;
+			writeFilePaths("null = 0");
+		} else
+		if (m_srcFileName.contains("://")) {
+			try {
+				File loadedFile = loadFile(m_srcFileName);
+				setImageFromSrcFileName(loadedFile);
+			} catch (Exception ex) {
+				ex.printStackTrace();
+				m_iStatus = -1;
+				writeFilePaths("m_srcFileName");
+			}
+		} else {
+			setImageFromSrcFileName(new File(m_srcFileName));
+		}
+	}
+	
+	private void setImageFromSrcFileName(File inFile) {
 		if (sSrcDirs == null) {
 			initSrcDirs();
 		}
-		File inFile = new File(m_srcFileName);
 		if (!inFile.exists()) {
-			String names[] = splitDirNames(m_srcFileName);
+			String names[] = splitDirNames(inFile.getAbsolutePath());
 			for (int iP = 0; iP < names.length && !inFile.exists(); ++iP) {
 				for (int iS = 0; iS < sSrcDirs.size() && !inFile.exists(); ++iS) {
 					if (sSrcDirs.get(iS).m_bExists) {
