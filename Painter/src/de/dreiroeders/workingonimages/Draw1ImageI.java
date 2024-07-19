@@ -10,7 +10,15 @@ import java.io.File;
 public class Draw1ImageI extends SourceImage {
 
 	public Point         iCenterPoint;
+	
+	/**
+	 * dRot  defines the clockwise rotation of the source image.
+	 *      If you enter a value between -10 (counter clockwise) and +10 (clockwise), the value will be measured in radians. (Means 2*Pi is a complete circle)
+	 *      If you enter a value lower than -10 or higher than +10 the value be measured as degrees. (360 degrees is a circle).
+	 *      But if you enter 360, the method will rotate the source image in an other way. The image will be rotated, so that as much as possible fits into the target area.
+	 */
 	public float         dRot;
+	
 	public BufferedImage outputImage;
 	public Rectangle     iOutRect;
 	private EFillType    mFillType;
