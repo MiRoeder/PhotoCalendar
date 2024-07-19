@@ -11,12 +11,15 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Random;
 import java.util.TimeZone;
 
 import javax.imageio.ImageIO;
 
 import de.dreiroeders.workingonimages.BufferedImageSetPixImg_ABGR;
 import de.dreiroeders.workingonimages.BuffrdImgSetPixelD;
+import de.dreiroeders.workingonimages.Draw1ImageI;
+import de.dreiroeders.workingonimages.IHintsDrawImages;
 import de.dreiroeders.workingonimages.MiRoesDraw;
 
 
@@ -827,7 +830,7 @@ public class FotoKalender {
 	
 	public void makeRiversHorseShoe(int month, String strOutDir) {
 		try {
-			final String s0 = "C:\\Users\\MiRoe\\Pictures\\2015-Amerika\\";
+			final String s0 = "http://www.3roeders.de/USA2015/";
 			CalendarSheet sheet = new CalendarSheet(THIS_YEAR, month, this.mDates);
 			Color backCol = sheet.getDefaultBackgroundCol();
 			sheet.prepareImage(6698, backCol);
@@ -848,25 +851,26 @@ public class FotoKalender {
 				int f2W = Math.min(f2H * 4912 / 3264, sheet.getUsuableWidth()/2) - sheet.getUsuableWidth()/100-1;
 				sheet.drawImage(s0+"DSC04922.JPG", 0.5, 0.5, 0, 0, 0, f2W, f2H);
 			}
-			sheet.drawImage(s0+"HorseShoe5.png", 0.5, 0.5, +4*Math.PI/180, f1X, y4, f1Widt, f1High);
+			sheet.drawImage(s0+"HorseShoe5.jpg", 0.5, 0.5, +4*Math.PI/180, f1X, y4, f1Widt, f1High);
 			// DSC05144.jpg: [3264x4912], DSC05149.jpg + DSC05192.jpg [4912x3264]
 			f1High = Math.max(0.20f, y4-0.01f) * sheet.getUsuableHeight();
 			f1Widt = Math.min(f1High * 4912 / 3264, sheet.getUsuableWidth()/2) - sheet.getUsuableWidth()/100-1;
 			final int w19 = (int)f1Widt+1;
 			final int x19 = sheet.getUsuableWidth()-w19;
 			final int h19 = (int)f1High;
-			sheet.drawImage(s0+"DSC05192.jpg",   0.5, 0.5,              0, x19, 0.00, w19, h19);
+			sheet.drawImage(s0+"DSC05192.JPG",   0.5, 0.5,              0, x19, 0.00, w19, h19);
 			sheet.getPainter().setColor(sheet.getBackgroundCol());
 			sheet.getPainter().fillRect(sheet.getX1()+x19-sheet.getDX(0.005), sheet.getY1()    , sheet.getDX(0.005), h19+sheet.getDY(0.008));
 			sheet.getPainter().fillRect(sheet.getX1()+x19                   , sheet.getY1()+h19, x19               ,     sheet.getDY(0.008));
 			
 			f1High = 0.30f  * sheet.getUsuableHeight();
 			f1Widt = f1High * 4912 / 3264;
-			sheet.drawImage(s0+"5149.tmp\\DSC05149e.png",                  0.5, 0.5, 0, 1-f1Widt, 1f-f1High, f1Widt, f1High);
-			sheet.drawImage(s0+"5149.tmp\\DSC05149 mehr Konstrast m2.png", 0.5, 0.5, 0, 1-f1Widt, 1f-f1High, f1Widt, f1High);
+			sheet.drawImage(s0+"DSC05149e.png",                  0.5, 0.5, 0, 1-f1Widt, 1f-f1High, f1Widt, f1High);
+			sheet.drawImage(s0+"DSC05149%20mehr%20Konstrast%20m2.png",
+					                                             0.5, 0.5, 0, 1-f1Widt, 1f-f1High, f1Widt, f1High);
 			f1High = 0.30f  * sheet.getUsuableHeight();
 			f1Widt = f1High * 3048 / 4269;
-			sheet.drawImage(s0+"5144.tmp\\DSC05144f.png",                  0.5, 0.5, 0, 0,        1f-f1High, f1Widt, f1High);
+			sheet.drawImage(s0+"DSC05144f.png",                  0.5, 0.5, 0, 0,        1f-f1High, f1Widt, f1High);
 			
 			sheet.drawCalDates();
 			sheet.writeInDir(strOutDir);
@@ -951,6 +955,42 @@ public class FotoKalender {
 		}
 	} /* end makeDampflok(int nMonth, final String strOutDir) */
 
+	void addManyPlaygroundImages(ICalendarSheetAddImage sheet, IHintsDrawImages hints, Random randomGen, float maxRandomToPaint) {
+		Draw1ImageI img;
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("https://www.3roeders.de/SamsungGalS23/20240520_175054.jpg");
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("https://www.3roeders.de/SamsungGalS23/20240520_174924.jpg");
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("https://www.3roeders.de/pixabay.com/castle-239083_1280.jpg");
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("https://www.3roeders.de/pixabay.com/castle-239086_1280.jpg");
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("https://www.3roeders.de/SamsungGalS23/20240520_180459.png");
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("https://www.3roeders.de/SamsungGalS23/20240520_175650.jpg");
+			img.dRot = 90;
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("https://www.3roeders.de/pixabay.com/slide-2686421_1280.jpg");
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("https://www.3roeders.de/pixabay.com/playground-1051219_1280.jpg");
+			sheet.addImage(img, hints);
+		}
+	}
 	
 	public static void renameToTitle(String strOutDir, String strOldName) {
 		int nIStrExt = strOldName.lastIndexOf('.');

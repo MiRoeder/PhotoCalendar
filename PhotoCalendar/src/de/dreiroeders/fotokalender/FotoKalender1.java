@@ -122,26 +122,13 @@ public class FotoKalender1 extends FotoKalender {
 
 		if (trgOpt.bDoIt(Calendar.MARCH)) {
 			try {
-				final String inDir1 = "http://www.3roeders.de/OmasHaus/";
-				CalendarSheet sheet = new CalendarSheet(THIS_YEAR, Calendar.MARCH, mDates);
-				sheet.prepareImage(4000);
-				double wSteg = 0.005; // interspace width
-				double hSteg = wSteg*CalendarSheet.fWeight; // interspace height
-				double hText = 0.1;
-				double hTxt = hText-hSteg;  // text height
-				double h1 = 0.45; // Height of the images in the first row
-				double wImg2 = (1d-wSteg)/2; // Width of the image in the first row
-				sheet.drawSerifText("Berliner Häuser",             0    ,  0.00,  1d  ,  hTxt);
-				sheet.drawImage(inDir1+"IMG_0216.JPG", .5,.5, 0,   0    , hText, wImg2, h1);
-				sheet.drawImage(inDir1+"IMG_0222.JPG", .5,.5, 0, 1-wImg2, hText, wImg2, h1);
-				double y2 = hText+h1+hSteg; // Y-Coord of the images in the second row
-				double wC2 = .2;			// Width of the image in the center of the second row 
-				double w2 = (1-wC2)/2;		// Width of the other images in the second row
-				sheet.drawImage(inDir1+"IMG_0231.JPG", .5,.5, 0,        0, y2,  w2         , 1-y2);
-				sheet.drawImage(inDir1+"IMG_0246.JPG", .5,.5, 0, w2+wSteg, y2,  wC2-2*wSteg, 1-y2);
-				sheet.drawImage(inDir1+"IMG_0202.JPG", .5,.5, 0,     1-w2, y2,  w2         , 1-y2);
-				sheet.drawCalDates();
-				sheet.writeInDir(strOutDir);
+				CalendarSheetCenterImage sheet = new CalendarSheetCenterImage(THIS_YEAR, Calendar.MARCH, mDates);
+				Draw1ImageI img;
+				img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.48_03b1c05a.jpg");
+				img.setSourceBounds(new Rectangle(875, 200, 380, 670));
+				sheet.setImage1(img);
+				addManyImages2024Vik(sheet, null, new Random(THIS_YEAR*12+Calendar.MARCH), .2f);
+				sheet.startMakingIt(strOutDir);
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}  
@@ -887,6 +874,7 @@ public class FotoKalender1 extends FotoKalender {
 		}
 		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
 			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.52_0cabe4a1.jpg");
+			img.setCenterPoint(.5f, .25f);
 			sheet.addImage(img, hints);
 			bAddedImage = true;
 		}
@@ -916,7 +904,7 @@ public class FotoKalender1 extends FotoKalender {
 		bAddedImage = randomGen == null || randomGen.nextFloat() < maxRandomToPaint;
 		if (bAddedImage) {
 			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.52_d1e53a26.jpg");
-			img.setCenterPoint(.4f,  .5f);
+			img.setCenterPoint(.4f, .5f);
 			sheet.addImage(img, hints);
 		}
 		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {

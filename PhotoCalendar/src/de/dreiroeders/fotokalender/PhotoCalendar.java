@@ -6,14 +6,12 @@ import java.awt.Rectangle;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Random;
 
 import de.dreiroeders.workingonimages.Draw1ImageI;
 import de.dreiroeders.workingonimages.Draw1ImageWithTxt;
 import de.dreiroeders.workingonimages.SourceImage;
 
-
-public class PhotoCalendar extends FotoKalender1 {
+public class PhotoCalendar extends FotoKalender {
 
 	public static void main(String[] args) {
 		try {
@@ -80,16 +78,7 @@ public class PhotoCalendar extends FotoKalender1 {
 		}
 
 		if (trgOpt.bDoIt(Calendar.FEBRUARY)) try {
-			final String inDir = "Examples.res/";
-			CalendarSheetAutoArrange1 sheet = new CalendarSheetAutoArrange1(THIS_YEAR, Calendar.FEBRUARY, mDates);
-			Draw1ImageI img;
-			if (CalendarSheet.fWeight > 1) {
-				img = new Draw1ImageI(inDir+"EingangGülPark.jpg");
-				sheet.addImage(img);
-			}
-			img = new Draw1ImageI(inDir+"BarcelonaKirchePanaroma2.jpg");
-			sheet.addImage(img);
-			sheet.startMakingIt(strOutDir);
+			makeAllWaysToBerlin(Calendar.FEBRUARY, 10, strOutDir);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -154,17 +143,15 @@ public class PhotoCalendar extends FotoKalender1 {
 		}
 
 		if (trgOpt.bDoIt(Calendar.MAY)) {
-			final String inDirVik2 = "C:/Users/MiRoe/Pictures/Bilder von Stephan 2022/2022_01_01 Viktoria in 2022/";
+			final String inDir = "Examples.res/";
 			CalendarSheetAutoArrange1 sheet = new CalendarSheetAutoArrange1(THIS_YEAR, Calendar.MAY, mDates);
 			Draw1ImageI img;
-			img = new Draw1ImageI(inDirCo+"20210720_161347.jpg");
-			img.dRot = 90;
-			img.setCenterPoint(.4f, .5f);
+			if (CalendarSheet.fWeight > 1) {
+				img = new Draw1ImageI(inDir+"EingangGülPark.jpg");
+				sheet.addImage(img);
+			}
+			img = new Draw1ImageI(inDir+"BarcelonaKirchePanaroma2.jpg");
 			sheet.addImage(img);
-			img = new Draw1ImageI(inDirVik2+"20220331_163804.jpg");
-			img.dRot = 90;
-			sheet.addImage(img);
-			sheet.setPreferedSize(CalendarSheet.fWeight > 1 ? 1 : 0);
 			sheet.startMakingIt(strOutDir);
 		}
 
@@ -286,7 +273,7 @@ public class PhotoCalendar extends FotoKalender1 {
 					                     "Fotografin: Sophie Viktoria Köhler (3 Jahre)",
 					                     new Color(224, 32, 128), Font.SERIF, Font.ITALIC, 200 );
 			sheetCI.setImage1(img1);
-			addManyImages(sheetCI, new Random(THIS_YEAR-2021), .5f);
+			addManyPlaygroundImages(sheetCI, null, null, 1f);
 			sheetCI.startMakingIt(strOutDir);
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -337,8 +324,7 @@ public class PhotoCalendar extends FotoKalender1 {
 		
 		System.out.println("Kalender "+ THIS_YEAR +" creating / created in "+ strOutDir);
 	} /* end of makeFamilyCal(int year) */
-
-
+	
 	public PhotoCalendar(int year) {
 		super(year);
 	}
