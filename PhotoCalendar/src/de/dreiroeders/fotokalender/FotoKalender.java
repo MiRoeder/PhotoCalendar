@@ -469,7 +469,7 @@ public class FotoKalender {
 	@SuppressWarnings("static-access")
 	public void make9Windows(int month, String strOutDir) {
 		try {
-			final String s0 = "C:\\Users\\MiRoe\\Pictures\\2015-Amerika\\";
+			final String s0 = "http://www.3roeders.de/USA2015/";
 			CalendarSheet sheet = new CalendarSheet(THIS_YEAR, month, this.mDates);
 			final int USABLE_WIDTH = 4960;	// maximale Kantenlänge bei posterxxl.de angeblich 8000 pixel
 			sheet.prepareImage(USABLE_WIDTH, new Color(255, 224, 192));
@@ -485,29 +485,29 @@ public class FotoKalender {
 			sheet.drawText(TITLE, font1, Color.BLACK, x0-wi/2, yL);
 			
 			if (sheet.fWeight > 1.0) {
-				sheet.drawImage(s0+"DSC04911.jpg", 0.5,  0.5, 0f, 0.00, 0.05, 0.31, 0.31);
-				sheet.drawImage(s0+"DSC04838.jpg", 0.5,  0.3, 0f, 0.32, 0.05, 0.36, 0.30);
-				sheet.drawImage(s0+"DSC04833.jpg", 0.5,  0.4, 0f, 0.69, 0.05, 0.31, 0.31);
-				sheet.drawImage(s0+"USA_Arches_NP_Delicate_Arch.jpg",
+				sheet.drawImage(s0+"DSC04911.JPG", 0.5,  0.5, 0f, 0.00, 0.05, 0.31, 0.31);
+				sheet.drawImage(s0+"DSC04838.JPG", 0.5,  0.3, 0f, 0.32, 0.05, 0.36, 0.30);
+				sheet.drawImage(s0+"DSC04833.JPG", 0.5,  0.4, 0f, 0.69, 0.05, 0.31, 0.31);
+				sheet.drawImage("https://upload.wikimedia.org/wikipedia/commons/b/b2/Delicate_Arch_Arches_NP.JPG",
 												   0.5,  0.5, 0f, 0.00, 0.37, 0.31, 0.36);
-				sheet.drawImage(s0+"DSC04889.jpg", 0.5,  0.5, 0f, 0.32, 0.36, 0.36, 0.37);
-				sheet.drawImage(s0+"DSC04888.jpg", 0.5,  0.4, 0f, 0.69, 0.37, 0.31, 0.36);
-				//sheet.drawImage(s0+"DSC04877.jpg", 0.5,  0.5, 0f, 0.00, 0.74, 0.31, 0.26);
-				sheet.drawImage(s0+"DSC04840.jpg", 0.5,  0.5, 0f, 0.00, 0.74, 0.31, 0.26);
-				sheet.drawImage(s0+"DSC04891.jpg", 0.5,  0.5, 0f, 0.32, 0.74, 0.36, 0.26);
-				sheet.drawImage(s0+"DSC04882.jpg", 0.5,  0.5, 0f, 0.69, 0.74, 0.31, 0.26);
+				sheet.drawImage(s0+"DSC04889.JPG", 0.5,  0.5, 0f, 0.32, 0.36, 0.36, 0.37);
+				sheet.drawImage(s0+"DSC04888.JPG", 0.5,  0.4, 0f, 0.69, 0.37, 0.31, 0.36);
+				//sheet.drawImage(s0+"DSC04877.JPG", 0.5,  0.5, 0f, 0.00, 0.74, 0.31, 0.26);
+				sheet.drawImage(s0+"DSC04840.JPG", 0.5,  0.5, 0f, 0.00, 0.74, 0.31, 0.26);
+				sheet.drawImage(s0+"DSC04891.JPG", 0.5,  0.5, 0f, 0.32, 0.74, 0.36, 0.26);
+				sheet.drawImage(s0+"DSC04882.JPG", 0.5,  0.5, 0f, 0.69, 0.74, 0.31, 0.26);
 			} else {
-				sheet.drawImage(s0+"DSC04809.jpg", 0.5,  0.5,0.05f,0.00,0.05, 0.495, 0.186);
-				sheet.drawImage(s0+"DSC04911.jpg", 0.5,  0.5, 0f, 0.50, 0.05, 0.495, 0.186);
-				sheet.drawImage(s0+"DSC04838.jpg", 0.5,  0.3, 0f, 0.00, 0.24, 0.495, 0.156);
-				sheet.drawImage(s0+"DSC04833.jpg", 0.5,  0.4, 0f, 0.50, 0.24, 0.495, 0.156);
-				sheet.drawImage(s0+"USA_Arches_NP_Delicate_Arch.jpg",
+				sheet.drawImage(s0+"DSC04809.JPG", 0.5,  0.5,0.05f,0.00,0.05, 0.495, 0.186);
+				sheet.drawImage(s0+"DSC04911.JPG", 0.5,  0.5, 0f, 0.50, 0.05, 0.495, 0.186);
+				sheet.drawImage(s0+"DSC04838.JPG", 0.5,  0.3, 0f, 0.00, 0.24, 0.495, 0.156);
+				sheet.drawImage(s0+"DSC04833.JPG", 0.5,  0.4, 0f, 0.50, 0.24, 0.495, 0.156);
+				sheet.drawImage("https://upload.wikimedia.org/wikipedia/commons/b/b2/Delicate_Arch_Arches_NP.JPG",
 												   0.5,  0.45,0f, 0.00, 0.40, 0.495, 0.250);
-				sheet.drawImage(s0+"DSC04889.jpg", 0.5,  0.5, 0f, 0.50, 0.40, 0.495, 0.250);
-				sheet.drawImage(s0+"DSC04888.jpg", 0.45, 0.4, 0f, 0.00, 0.654,0.495, 0.156);
-				sheet.drawImage(s0+"DSC04840.jpg", 0.5,  0.5, 0f, 0.50, 0.654,0.495, 0.156);
-				sheet.drawImage(s0+"DSC04891.jpg", 0.5,  0.5, 0f, 0.00, 0.814,0.495, 0.186);
-				sheet.drawImage(s0+"DSC04882.jpg", 0.5,  0.5, 0f, 0.50, 0.814,0.495, 0.186);				
+				sheet.drawImage(s0+"DSC04889.JPG", 0.5,  0.5, 0f, 0.50, 0.40, 0.495, 0.250);
+				sheet.drawImage(s0+"DSC04888.JPG", 0.45, 0.4, 0f, 0.00, 0.654,0.495, 0.156);
+				sheet.drawImage(s0+"DSC04840.JPG", 0.5,  0.5, 0f, 0.50, 0.654,0.495, 0.156);
+				sheet.drawImage(s0+"DSC04891.JPG", 0.5,  0.5, 0f, 0.00, 0.814,0.495, 0.186);
+				sheet.drawImage(s0+"DSC04882.JPG", 0.5,  0.5, 0f, 0.50, 0.814,0.495, 0.186);				
 			}
 
 			sheet.drawCalDates();
@@ -519,24 +519,24 @@ public class FotoKalender {
 	
 	public void makeHeartAntelopeCanyon(int month, String strOutDir) {
 		try {
-			final String inDir1 = "C:\\Users\\MiRoe\\Pictures\\2015-Amerika\\";
+			final String inDir1 = "http://www.3roeders.de/USA2015/";
 			CalendarSheet sheet = new CalendarSheet(THIS_YEAR, month, this.mDates);
 			sheet.prepareImage(6818, new Color(26,5,4));
-			sheet.drawPartImage(inDir1+ "DSC05435.jpg", 0.4, 0.5, 0.999, 0.999, 2.44,
+			sheet.drawPartImage(inDir1+ "DSC05435.jpg", 0.4, 0.5, 0.999, 0.999, 2.44-1.57,
 					                                                 0.10 , 0.05,     0.90, 0.95);
 			
-			sheet.drawImage(inDir1+ "DSC05396.jpg", 0.5, 0.5, 0.00,  0.0  , 0.00                       , 0.24, 0.20);
-			sheet.drawImage(inDir1+ "DSC05389.jpg", 0.3, 0.5, 0.00,  0.0  , sheet.getflLastY() + 0.005f, 0.18, 0.13);
-			sheet.drawImage(inDir1+ "DSC05397.jpg", 0.5, 0.5, 90,    0.0  , sheet.getflLastY() + 0.005f, 0.18, 0.27);
-			sheet.drawImage(inDir1+ "DSC05398.jpg", 0.5, 0.5, 0.00,  0.0  , sheet.getflLastY() + 0.005f, 0.18, 0.19);
+			sheet.drawImage(inDir1+ "DSC05396.JPG", 0.5, 0.5, 0.00,  0.0  , 0.00                       , 0.24, 0.20);
+			sheet.drawImage(inDir1+ "DSC05389.JPG", 0.3, 0.5, 0.00,  0.0  , sheet.getflLastY() + 0.005f, 0.18, 0.13);
+			sheet.drawImage(inDir1+ "DSC05397.JPG", 0.5, 0.5, 90,    0.0  , sheet.getflLastY() + 0.005f, 0.18, 0.27);
+			sheet.drawImage(inDir1+ "DSC05398.JPG", 0.5, 0.5, 0.00,  0.0  , sheet.getflLastY() + 0.005f, 0.18, 0.19);
 			float curY = sheet.getflLastY() + 0.005f;
 			if (curY < 0.97) {
 			    sheet.drawImage(inDir1+ "DSC05468_Calendar.png",
                  	                                0.5, 0.5, 0.00,  0.0,  curY,                         0.25, 1-curY);
 			}
-			sheet.drawImage(inDir1+ "DSC05408.jpg", 0.48,0.55,90,    0.77,  0.0,      0.23, 0.75);
-			File inFile = new File(inDir1+ "DSC05460.jpg");
-			BufferedImage inImage = ImageIO.read(inFile);
+			sheet.drawImage(inDir1+ "DSC05408.JPG", 0.48,0.55,90,    0.77,  0.0,      0.23, 0.75);
+			SourceImage inFile = new SourceImage(inDir1+ "DSC05460.JPG");
+			BufferedImage inImage = inFile.getImage();
 			BufferedImageSetPixImg_ABGR outImg = new BufferedImageSetPixImg_ABGR(inImage, 1f);
 			int wD = inImage.getWidth()/2;
 			int hD = inImage.getHeight()*11/30;
