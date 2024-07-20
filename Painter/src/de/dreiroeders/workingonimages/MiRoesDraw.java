@@ -236,8 +236,8 @@ public class MiRoesDraw {
 			double tWidth,
 			double tHeight
 			) throws IOException {
-		File inFile = new File(strInFileName);
-		BufferedImage inImage = ImageIO.read(inFile);
+		SourceImage inFile = new SourceImage(strInFileName);
+		BufferedImage inImage = inFile.getImage();
 		int iCPX;
 		if (centerPointX < 1.0) {
 			int imW = inImage.getWidth();
