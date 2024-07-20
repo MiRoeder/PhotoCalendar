@@ -78,7 +78,7 @@ public class PhotoCalendar extends FotoKalender {
 		}
 
 		if (trgOpt.bDoIt(Calendar.FEBRUARY)) try {
-			makeAllWaysToBerlin(Calendar.FEBRUARY, 10, strOutDir);
+			makeAllWaysToBerlin(Calendar.FEBRUARY, 0, strOutDir);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

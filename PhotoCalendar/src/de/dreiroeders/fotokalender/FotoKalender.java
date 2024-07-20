@@ -21,6 +21,7 @@ import de.dreiroeders.workingonimages.BuffrdImgSetPixelD;
 import de.dreiroeders.workingonimages.Draw1ImageI;
 import de.dreiroeders.workingonimages.IHintsDrawImages;
 import de.dreiroeders.workingonimages.MiRoesDraw;
+import de.dreiroeders.workingonimages.SourceImage;
 
 
 
@@ -679,14 +680,18 @@ public class FotoKalender {
 			int height = sheet.getUsuableHeight();
 			int width  = sheet.getUsuableWidth();
 
-			final String sPgTrains = "C:\\Users\\MiRoe\\Pictures\\MichasHandy bis Oktober 2016\\DSC_0037.jpg";
-			final String sPgAutobN = "C:\\Users\\MiRoe\\Pictures\\Von Michaels NOKIA Lumia 900\\Filmrolle\\WP_000402.jpg";
-			final String sPgAutoS1 = "C:\\Users\\MiRoe\\Pictures\\MichasHandy bis Oktober 2016\\DSC_0400.jpg";
-			final String sPgAutoS2 = "C:\\Users\\MiRoe\\Pictures\\MichasHandy bis Oktober 2016\\DSC_0406.jpg";
-			final String sBerlinerSicht = "C:\\Users\\MiRoe\\Pictures\\GalaxyS8\\facebook\\16729010_1278263245599383_3741105259719508601_n.jpg";
-			final int iWBerlinerSicht = 726;
-			final int iHBerlinerSicht = 960;
-
+			SourceImage sPgTrains  = new SourceImage("http://www.3roeders.de/MiHandy-2016-10/DSC_0037.png");
+			SourceImage sPgAutobN  = new SourceImage("http://www.3roeders.de/MiNokiaLum900/WP_000402.png");
+			SourceImage sPgAutoS1  = new SourceImage("http://www.3roeders.de/MiHandy-2016-10/DSC_0400.png");
+			// https://de.wikipedia.org/wiki/Datei:Deutschland_aus_Berliner_Sicht.svg
+			SourceImage sBerlinerSicht
+				= new SourceImage("https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Deutschland_aus_Berliner_Sicht.svg/725px-Deutschland_aus_Berliner_Sicht.svg.png");
+			int iWBerlinerSicht = 0;
+			int iHBerlinerSicht = 1;
+			if (sBerlinerSicht.isOk()) {
+				iWBerlinerSicht = sBerlinerSicht.getWidth();
+				iHBerlinerSicht = sBerlinerSicht.getHeight();
+			}
 			int h1 = Math.min(height/12, width/14);
 			Font font1 = new Font("Arial", Font.PLAIN, h1);
 			int y1 = h1;
@@ -728,25 +733,23 @@ public class FotoKalender {
 			sheet.drawText(str12, font1, Color.DARK_GRAY, x4, y1);
 			sheet.drawText(str21, font1, Color.DARK_GRAY, x1, y2);
 			sheet.drawText(str22, font1, Color.DARK_GRAY, x5, y2);
-			
-			if (nOpt <= 3) {
-				sheet.drawImage(sPgTrains, 0.52, 0.44, -0.03,            0.00, 0.14, 1.00, 0.26);
-				sheet.drawImage(sPgAutobN, 0.5,  0.16,  0.06,            0.00, 0.41, 1.00, 0.28);
-				float fH3 = 0.29f;
-				int iH3 = sheet.getY(1) - sheet.getY(1-fH3);
-				int iXBerlinerSicht = iH3 * iWBerlinerSicht / iHBerlinerSicht;
-				sheet.drawImage(sBerlinerSicht, 0.5,0.5, 0,              0.00, 1-fH3, iXBerlinerSicht, fH3);
-				sheet.drawPartImage(sPgAutoS1, 0.5, 0.45, 0.3, 0.25, 0f, iXBerlinerSicht+20,
-						                                                       1-fH3, 
-						                                                             sheet.getUsuableWidth()-iXBerlinerSicht-20, 
-						                                                                   fH3 );
-			} else {
-				sheet.drawImage(sPgTrains, 0.53, 0.45, -0.04,            0.00, 0.22, 0.50, 0.38);
-				sheet.drawImage(sPgAutobN, 0.5,  0.29, 0.065,            0.51, 0.22, 0.49, 0.38);
-				sheet.drawPartImage(sPgAutoS1, 0.5, 0.4, 0.3, 0.3, 0f,0.00, 0.61, 0.50, 0.38);
-				sheet.drawImage(sPgAutoS2, 0.56, 0.25, 0.065,            0.51, 0.61, 0.49, 0.38);
-			}
-			
+
+			float fY1 = 0.14f;
+			float fH1 = 0.20f;
+			float fY2 = fY1 + fH1 + 0.008f;
+			float fH22 = 1f - fY2;
+			float fH21 = fH22/2 - 0.004f;
+			int iH22 = sheet.getY(1) - sheet.getY(1-fH22);
+			int iW22 = iH22 * iWBerlinerSicht / iHBerlinerSicht;
+			int iX22 = sheet.getUsuableWidth()-iW22;
+			int iY22 = sheet.getUsuableHeight()-iH22;
+			int iW21 = iX22-1-sheet.getUsuableWidth()/100;
+
+			sheet.drawImage(sPgAutoS1,      0.5, 0.3 ,  0f , 0.00, fY1,  1.00, fH1);
+			sheet.drawImage(sPgTrains, 		0.5, 0.5, -0.03, 0.00, fY2,  iW21, fH21);
+			sheet.drawImage(sPgAutobN, 		0.5, 0.20, 0.05, 0.00,1-fH21,iW21, fH21);
+			sheet.drawImage(sBerlinerSicht, 0.5, 0.5,  0  , iX22, iY22,  iW22, iH22);
+
 			Graphics2D painter = sheet.getPainter();
 			
 			LineMetrics lm = font1.getLineMetrics(str21, painter.getFontRenderContext());
@@ -784,7 +787,7 @@ public class FotoKalender {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-	}
+	} /* end of makeAllWaysToBerlin(int month, int nOpt, String strOutDir) */
 	
 	public void makeRiversHorseShoeAndMosel(int month, String strOutDir) {
 		try {

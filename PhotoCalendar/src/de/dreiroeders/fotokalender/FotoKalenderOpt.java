@@ -52,7 +52,8 @@ public class FotoKalenderOpt {
 				result.init_m_bDoIt(Calendar.JANUARY, MONTH1);
 			} else {
 				result.init_m_bDoIt(FINAL);
-				//todo or not todo: result.init_m_bDoIt(Calendar.JANUARY, Calendar.JANUARY);
+				//todo or not todo:
+				result.init_m_bDoIt(Calendar.FEBRUARY, Calendar.FEBRUARY);
 			}
 		}
 		MiRoesDraw.bDoDiagOut = !FINAL;
