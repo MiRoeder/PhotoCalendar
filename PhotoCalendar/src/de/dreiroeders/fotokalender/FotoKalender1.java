@@ -2,6 +2,7 @@ package de.dreiroeders.fotokalender;
 
 import java.awt.Font;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -50,13 +51,10 @@ public class FotoKalender1 extends FotoKalender {
 	public void makeFamilyCal(FotoKalenderOpt trgOpt) throws Exception {
 		String strOutDir = trgOpt.m_strOutDir;
 
-		final String inDirV21= "C:\\Users\\MiRoe\\Pictures\\2021 Vik\\";
 		final String inDirG = "C:\\Users\\MiRoe\\Pictures\\GalaxyS8\\Camera\\";
 		final String inDirCo = "C:\\Users\\MiRoe\\Pictures\\Constanzess\\Camera\\";
 		final String inDirWhatsApp= "C:\\Users\\MiRoe\\Pictures\\GalaxyS8\\WhatsApp\\Media\\WhatsApp Images\\";
-		final String inDirWhatsAp = "C:\\Users\\MiRoe\\Pictures\\WhatsApp\\Media\\WhatsApp Images\\";
 		final String inDirWhatsAp0 = "C:\\Users\\MiRoe\\Pictures\\WhatsApp\\";
-		final String inDirFb1 = "C:\\Users\\MiRoe\\Pictures\\GalaxyS8\\Facebook\\";
 		final String inDirRBB = "C:\\Users\\MiRoe\\Videos\\rbb Fernsehen Weihnachtssingen an der Alten Försterei\\";
 
 		m_trgOpt = trgOpt;
@@ -165,13 +163,13 @@ public class FotoKalender1 extends FotoKalender {
 			final float wCenterPic = .2f;
 			final float xCenterPic = (1f-wCenterPic)/2f;
 			final float yCenterPic = (1f-hCenterPic)/2f;
-			var img1 = new SourceImage(inDirWhatsAp0+"WhatsApp Bild 2023-06-04 um 13.29.31.jpg");
+			var img1 = new SourceImage("Examples.res/WhatsApp Bild 2023-06-04 um 13.29.31.jpg");
 			img1.setSourceBounds(new Rectangle(270, 680, 540, 350));
 			sheet.drawImage(img1.getImage(),                                          1f/2f, 1f/2f, 0, xCenterPic+wSteg     ,yCenterPic+hSteg     ,          wCenterPic-2*wSteg,         hCenterPic-2*hSteg);
-			sheet.drawImage(inDirWhatsAp0+"WhatsApp Bild 2023-06-04 um 13.15.18.jpg", 1f/2f, 4f/5f, 0, 0f                   ,                   0f, xCenterPic+wCenterPic-wSteg,yCenterPic                 );
-			sheet.drawImage(inDirWhatsAp0+"WhatsApp Bild 2023-06-04 um 13.15.49.jpg", 1f/2f, 1f/2f, 0, xCenterPic+wCenterPic,                   0f, 1f-xCenterPic-wCenterPic   ,yCenterPic+hCenterPic-hSteg);
-			sheet.drawImage(inDirFb1+"351535115_1761041277631953_2772123894799380056_n.jpg",.5f,.5f,0, xCenterPic+wSteg     ,yCenterPic+hCenterPic,    1f-xCenterPic+wSteg     ,1f-yCenterPic-hCenterPic   );
-			sheet.drawImage(inDirFb1+"351525974_776193984009985_4460773923173507186_n.jpg" ,.5f,.6f,0, 0f                   ,yCenterPic+hSteg     , xCenterPic                 ,1f-yCenterPic-hSteg        );
+			sheet.drawImage("Examples.res/WhatsApp Bild 2023-06-04 um 13.15.18.jpg", 1f/2f, 4f/5f, 0, 0f                   ,                   0f, xCenterPic+wCenterPic-wSteg,yCenterPic                 );
+			sheet.drawImage("Examples.res/WhatsApp Bild 2023-06-04 um 13.15.49.jpg", 1f/2f, 1f/2f, 0, xCenterPic+wCenterPic,                   0f, 1f-xCenterPic-wCenterPic   ,yCenterPic+hCenterPic-hSteg);
+			sheet.drawImage("Examples.res/351535115_1761041277631953_2772123894799380056_n.jpg",.5f,.5f,0, xCenterPic+wSteg     ,yCenterPic+hCenterPic,    1f-xCenterPic+wSteg     ,1f-yCenterPic-hCenterPic   );
+			sheet.drawImage("Examples.res/351525974_776193984009985_4460773923173507186_n.jpg" ,.5f,.6f,0, 0f                   ,yCenterPic+hSteg     , xCenterPic                 ,1f-yCenterPic-hSteg        );
 			sheet.drawCalDates();
 			sheet.writeInDir(strOutDir);
 		} catch (Exception ex) {
@@ -181,40 +179,31 @@ public class FotoKalender1 extends FotoKalender {
 		if (trgOpt.bDoIt(Calendar.JULY)) try {
 			CalendarSheetCenterImage sheetCI;
 			sheetCI = new CalendarSheetCenterImage(THIS_YEAR, Calendar.JULY, mDates);
-			Draw1ImageI img0 = new Draw1ImageI(inDirWhatsAp0+"WhatsApp Bild 2023-07-02 um 11.48.54.jpg");
-			sheetCI.setImage1(img0);
-			if (CalendarSheet.fWeight < 2 || 3 < CalendarSheet.fWeight) {
-				Draw1ImageI img;
-				img = new Draw1ImageI(inDirG+"20210205_101418.jpg");
-				img.dRot = 0;
-				sheetCI.addImage1(img);
-			}
-			if (.9f < CalendarSheet.fWeight && CalendarSheet.fWeight < 1.96f) {
-				Draw1ImageI img;
-				img = new Draw1ImageI(inDirG+"20210108_094950.jpg");
-				img.dRot = 0;
-				sheetCI.addImage1(img);
-				img = new Draw1ImageI(inDirG+"20210308_103506.jpg");
-				img.dRot = 90;
-				img.setCenterPoint(.4f, .5f);
-				sheetCI.addImage1(img);
-				img = new Draw1ImageI(inDirG+"20210308_103522.jpg");
-				img.dRot = 90;
-				sheetCI.addImage1(img);
-				img = new Draw1ImageI(inDirCo+"20210720_161347.jpg");
-				img.dRot = 90;
-				img.setCenterPoint(.4f, .5f);
-				sheetCI.addImage1(img);
-				for (int iI = 1; iI <= 4; ++iI)
-					if (iI != 3) {
-						img = new Draw1ImageI(inDirV21+"WhatsApp Image 2021-03-22 at 12.48.41 ("+ iI +").jpeg");
-						sheetCI.addImage2(img);
+			Draw1ImageI img0 = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.53_f2_1.jpg");
+			SourceImage imgD = new SourceImage("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.53_f2_Dunkel.jpg");
+			/* Mix the pictures:
+			 * In the top region use the more dark version of the picture and
+			 * in the lower part of the picture use the brighter picture:
+			 */
+			BufferedImage image0 = img0.getImage();
+			BufferedImage imageD = imgD.getImage();
+			int iW = Math.min(img0.getWidth(), imgD.getWidth());
+			int iH = Math.min(img0.getHeight(), imgD.getHeight());
+			for (int iY = 0; iY < iH; ++iY) {
+				float facH = (float)iY/(float)(iH)*4 -.2f;
+				facH = Math.max(0f, Math.min(facH, 1f));
+				float facD = 1f-facH;
+				for (int iX = 0; iX < iW; ++iX) {
+					int iRGBH = image0.getRGB(iX, iY);
+					int iRGBD = imageD.getRGB(iX, iY);
+					int iRGB0 = Math.round((iRGBH & 0xFF0000) * facH + (iRGBD & 0xFF0000) * facD) & 0xFF0000
+							 |  Math.round((iRGBH & 0x00FF00) * facH + (iRGBD & 0x00FF00) * facD) & 0x00FF00
+							 |  Math.round((iRGBH & 0x0000FF) * facH + (iRGBD & 0x0000FF) * facD) & 0x0000FF ;
+					image0.setRGB(iX, iY, iRGB0);
 				}
-				img = new Draw1ImageI(inDirWhatsAp+"WhatsApp Image 2022-07-30 at 19.24.49.jpeg");
-				img.setCenterPoint(.5f, .3f);
-				sheetCI.addImage2(img);
 			}
-			addManyImages(sheetCI, new Random(THIS_YEAR), .3f);
+			sheetCI.setImage1(img0);
+			addManyImages2024Vik(sheetCI, null, new Random(THIS_YEAR*12+Calendar.JULY), .8f);
 			sheetCI.startMakingIt(strOutDir);
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -236,12 +225,19 @@ public class FotoKalender1 extends FotoKalender {
 		}
 		
 		if (trgOpt.bDoIt(Calendar.SEPTEMBER)) try {
-			var sheetCI = new CalendarSheetCenterImage(THIS_YEAR,  Calendar.SEPTEMBER, mDates);
-			Draw1ImageI img1;
-			img1 = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-06-27 um 18.04.24_79c869c8.jpg");
-			sheetCI.setImage1(img1);
-			addManyImages2024Vik(sheetCI, null, new Random(THIS_YEAR*12+Calendar.SEPTEMBER), .4f);
-			sheetCI.startMakingIt(strOutDir);
+			var sheet = new CalendarSheet(THIS_YEAR,  Calendar.SEPTEMBER, mDates);
+			SourceImage img1;
+			img1 = new SourceImage("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-06-27 um 18.04.24_79c869c8.jpg");
+			sheet.prepareImage(img1.getWidth());
+			sheet.drawImage(img1, .5,.46, 0, 0, 0.01, 1f, .99);
+			SourceImage img2 = new SourceImage("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-19 um 17.18.37_2321601f.jpg");
+			int iW = img2.getWidth();
+			int iH = img2.getHeight();
+			int iTH = sheet.getUsuableHeight()*9/26;
+			int iTW = iTH * iW / iH;
+			sheet.drawImage(img2, .5,.5, 0, (sheet.getUsuableWidth()-iTW)/2, 0, iTW, iTH);
+			sheet.drawCalDates();
+			sheet.writeInDir(strOutDir);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
