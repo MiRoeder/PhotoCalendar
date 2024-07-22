@@ -8,6 +8,7 @@ import java.awt.RenderingHints;
 import java.awt.font.FontRenderContext;
 import java.awt.font.LineMetrics;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
@@ -309,15 +310,21 @@ public class MiRoesDraw {
 			int tHeight
 			) throws IOException {
 		double sin, cos;
-		if (89.99 < rotator && rotator < 90.01) {
+		if (-10 < rotator && rotator < 10) {
+			sin = Math.sin(rotator);
+			cos = Math.cos(rotator);
+		} else if (89.99 < rotator && rotator < 90.01) {
 			sin = 1.0;
 			cos = 0.0;
 		} else if (-90.01 < rotator && rotator < -89.99) {
 			sin = -1.0;
 			cos = 0.0;
+		} else if (179.99 < rotator && rotator < 180.01) {
+			sin = 0.0;
+			cos = -1.0;
 		} else {
-			sin = Math.sin(rotator);
-			cos = Math.cos(rotator);
+			sin = Math.sin(rotator*Math.PI/180);
+			cos = Math.cos(rotator*Math.PI/180);
 		}
 		double fac = Math.min((double)tWidth/minWidth, (double)tHeight/minHeight);
 		final int ExtraRand = 1000;
@@ -332,12 +339,24 @@ public class MiRoesDraw {
 		painter2.setBackground(new Color(0x80,0x80,0x80, 0));
 		painter2.clearRect(0, 0, tWidth+2*ExtraRand, tHeight+2*ExtraRand);
 		painter2.drawImage(inImage, transform, null);
+		if (bDoDiagOut) {
+			Point2D[] srcEdges = new Point2D[4];
+			Point2D[] dstEdges = new Point2D[4];
+			srcEdges[0] = new Point(0,                  0);
+			srcEdges[1] = new Point(inImage.getWidth(), 0);
+			srcEdges[2] = new Point(inImage.getWidth(), inImage.getHeight());
+			srcEdges[3] = new Point(0,                  inImage.getHeight());
+			transform.transform(srcEdges, 0, dstEdges, 0, 4);
+			System.out.println("drawPartImage(...): new Edges clockwise: ["+ dstEdges[0] +" , "+ dstEdges[1] +" , "+ dstEdges[2] +" , "+ dstEdges[3] +"]");
+		}
 		for (int iiC = 0; iiC < 8; ++iiC) {
 			painter2.setColor(new Color((iiC & 2) *127, (iiC & 4) *63, (iiC & 1) * 255));
 			painter2.drawRect(ExtraRand-iiC-1, ExtraRand-iiC-1, tWidth+2*iiC, tHeight+2*iiC);
 		}
 		painter2.dispose();
-		diagOut(image2);
+		Object dg = diagOut(image2);
+		String strDg = dg instanceof File ? ((File)dg).getName() : String.valueOf(dg);
+		System.out.println("MiRoesDraw.drawPartImage(...): factor = "+ fac +" "+ transform.getDeterminant() +" > "+ strDg);
 		Graphics2D painter = outputImage.createGraphics();
 		boolean bRes = painter.drawImage(image2, tx0, ty0, tx0+tWidth, ty0+tHeight, ExtraRand, ExtraRand, ExtraRand+tWidth-1, ExtraRand+tHeight-1, null);
 		assert(bRes);

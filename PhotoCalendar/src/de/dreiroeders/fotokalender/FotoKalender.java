@@ -521,11 +521,12 @@ public class FotoKalender {
 		try {
 			final String inDir1 = "http://www.3roeders.de/USA2015/";
 			CalendarSheet sheet = new CalendarSheet(THIS_YEAR, month, this.mDates);
-			sheet.prepareImage(6818, new Color(26,5,4));
-			sheet.drawPartImage(inDir1+ "DSC05435.jpg", 0.4, 0.5, 0.999, 0.999, 2.44-1.57,
-					                                                 0.10 , 0.05,     0.90, 0.95);
+			sheet.prepareImage(4000, new Color(63, 0, 3));
+			// DSC05435.jpg : 3264 Pixel x 4912 Pixel
+			sheet.drawPartImage(inDir1+ "DSC05435.jpg", 0.5, 0.5, 4600, 3000,
+					                                          1.10,  0.0  , 0.0,                         0.90, 1);
 			
-			sheet.drawImage(inDir1+ "DSC05396.JPG", 0.5, 0.5, 0.00,  0.0  , 0.00                       , 0.24, 0.20);
+			sheet.drawImage(inDir1+ "DSC05396.JPG", 0.5, 0.5, 0.00,  0.0  , 0.00                       , 0.22, 0.20);
 			sheet.drawImage(inDir1+ "DSC05389.JPG", 0.3, 0.5, 0.00,  0.0  , sheet.getflLastY() + 0.005f, 0.18, 0.13);
 			sheet.drawImage(inDir1+ "DSC05397.JPG", 0.5, 0.5, 90,    0.0  , sheet.getflLastY() + 0.005f, 0.18, 0.27);
 			sheet.drawImage(inDir1+ "DSC05398.JPG", 0.5, 0.5, 0.00,  0.0  , sheet.getflLastY() + 0.005f, 0.18, 0.19);
@@ -538,8 +539,8 @@ public class FotoKalender {
 			SourceImage inFile = new SourceImage(inDir1+ "DSC05460.JPG");
 			BufferedImage inImage = inFile.getImage();
 			BufferedImageSetPixImg_ABGR outImg = new BufferedImageSetPixImg_ABGR(inImage, 1f);
-			int wD = inImage.getWidth()/2;
-			int hD = inImage.getHeight()*11/30;
+			int wD = inImage.getWidth()*3/4;
+			int hD = inImage.getHeight()*19/30;
 			for (int iX = 0; iX < wD; ++iX) {
 				float fMY = (float)(wD-iX)/wD;
 				for (int iY = 0; iY < fMY*hD; ++iY) {
@@ -551,7 +552,7 @@ public class FotoKalender {
 					outImg.setAlpha(iX, iY, alpha);
 				}
 			}
-			sheet.drawImage(outImg.getImage(0),     0.5, 0.5, 0.00,  0.67 , 0.75,      0.33, 0.25);
+			sheet.drawImage(outImg.getImage(0),     0.5, 0.4, 0.00,  0.67 , 0.75,      0.33, 0.25);
 			sheet.getPainter(); // to restore sheet.mPainter
 			sheet.drawCalDates();
 			sheet.writeInDir(strOutDir);
