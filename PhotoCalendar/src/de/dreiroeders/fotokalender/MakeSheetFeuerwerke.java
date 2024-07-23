@@ -94,104 +94,95 @@ public class MakeSheetFeuerwerke extends Thread {
 		mSheet.drawImageA(new MakeDarkTransparentRoundRect(img1.getImage(0)    ,  .5,  .5,-rotC, 0.800, fY8-.25f,0.200,0.25f));
 		writeYear();
 		if (m_nOpt > 0) {
-			final int nCols = CalendarSheet.fWeight < 1 ? 3 : 6;
+			SourceImage imgFabianVerbrenntPapier = new SourceImage("http://www.3roeders.de/Signal/signal-2021-09-05-185912.jpg");
+			int nCols = imgFabianVerbrenntPapier.isOk() ? 1 : 0;
+			// TGIF 2022 - week51
+			SourceImage imgXMasMenPutInGarbage = new SourceImage("https://blogger.googleusercontent.com/img/a/AVvXsEi1SSLp0KrgQCKk67f9ns9r_D9Gfnn2BC6mSHMX8ZO9U-9QmboN6AIOJSFcQhRRnfll9XSHYuy_mDxzQM8LM9KBr3NAE__K8W4UdT3J9tVbzQ-pQgxfIIzbmGz3vSinLaN-caSFJcGK0Q5Jlz_kx1itQW_B5cm28JzsgV9jVBxGKHs_LZvvG3_cl_js=s420");
+			if (imgXMasMenPutInGarbage.isOk()) {
+				++nCols;
+			}
+			// TGIF 2024 - week22
+			SourceImage imgDeepLearning = new SourceImage("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEicO7UjPnP5DsTmTDGX8jssmsgdHCszdX38onClGHmyDMTfXLgPUJYMoTX3csGGc7vpUandtsfpRy1ClxUlbJo1GJOm0zPftYOvwMX7gwoKEqd0PrwUiQxEgdpJEUHpjWQBWpKmkqmpD9q1TvrD3AGK0gMfjWrZeBjFu6EuV4d7KW6gLvpKZd12SSnwY1I/s772/pc11_deeplearning.jpg");
+			if (imgDeepLearning.isOk()) {
+				++nCols;
+			}
+			// TGIF 2024 - week12
+			SourceImage imgHaeufigerErnaehrungsfehler = new SourceImage("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhODJSzhkIBp671XKkQcstsGmpSHuaDMVdLkUI0NnL1brjEpltGFJ52D2b-eOgrCZLaW7bTaaTgl2GDwsqfecwT0ZsI8ASe3Y1w368ebVcjV0Jf_W_YDhyozVePzhq_qqE6RXJJrOQs2Jw62u18s325KzZc9CJMIMFq6XajBKCvo7SXLJbT1tt2TaLkIhk/s320/essen01_diaet02.jpg");
+			if (imgHaeufigerErnaehrungsfehler.isOk()) {
+				++nCols;
+			}
+			// TGIF 2024 - week18
+			SourceImage imgPerfekteFrau = new SourceImage("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijQFeICxcFvmPQ9l9J32oWMKrLA4DE1bQvbgPGbmbsu9VtCts4qtHMb5vJR2Cheb_7JmZ5GxTrxYBK5SjoIPDnWQ5scJivaboJWyUlyCuzC1shYQ4AWMHkucj5ivBuL3YjNRaxpgIF4Z0vBxYvhVHu4IWYJMkID-ZQVPf9nhCaXQz-GEtw0dItNb_5iRo/s640/arbeit09_kellnerin.jpg");
+			if (imgPerfekteFrau.isOk()) {
+				++nCols;
+			}
+
 			final float wSteg = CalendarSheet.fWeight < 1 ? .005f : .003f;
 			final float wCol1 = (1 - (nCols-1)*wSteg) / nCols;
-			final float wText = wCol1/3f;
-			final float wPic = wCol1-wText;
 			final Color colTxt = new Color(255,224,192);
-			mSheet.drawText("Achtung! Bitte im neuen Jahr "+ SHOW_YEAR +" beachten:", colTxt, Font.SANS_SERIF, Font.PLAIN, .1f, 0.8f, .8f, 0.048);
-			final String strFabianVerbrenntPapier = "http://www.3roeders.de/Signal/signal-2021-09-05-185912.jpg";
-			float wText01 = 0.01f;
-			mSheet.drawText("Alte Akten",               colTxt, Font.SERIF,      Font.PLAIN, wText01, 0.850, wText-wText01, 0.025f);
-			mSheet.drawText("vernichten",               colTxt, Font.SERIF,      Font.PLAIN, wText01, 0.885, wText-wText01, 0.025f);
-			mSheet.drawText("  gemäß",                  colTxt, Font.SERIF,      Font.PLAIN, wText01, 0.920, wText-wText01, 0.025f);
-			mSheet.drawText("DSGVO:",                   colTxt, Font.SERIF,      Font.PLAIN, wText01, 0.955, wText-wText01, 0.025f);
-			mSheet.drawImage(strFabianVerbrenntPapier                      , 0.5, 0.5, 0,  wText, 0.850, wPic , 0.150f);
-			float xC = wCol1 + wSteg;
-			String strAufFrauenHoer;
-			float iWidAFH, iHeiAFH;
-			if (THIS_YEAR <= 2024) {
-				// Charles Schlecht Angezogen
-				strAufFrauenHoer = "C:\\Users\\MiRoe\\Pictures\\GalaxyS8\\Facebook\\FB_IMG_1663422808486b.jpg"; // 892x914 pixel
-				iWidAFH = 892; iHeiAFH = 914;
-			} else
-			if ((THIS_YEAR & 1) == 0 /* gerade Jahre */) {
-				// Löwin faucht Löwe an.
-				strAufFrauenHoer = "C:\\Users\\MiRoe\\Pictures\\GalaxyS8\\Facebook\\FB_IMG_1664953678923.jpg"; // 640x1386 pixel, benutzt volle Breite, aber  nur Höhe von 380 bis 990
-				iWidAFH = 640; iHeiAFH = 1386-2*380;
-			} else
-			if ((THIS_YEAR & 3) == 1 /* nach Schaltjahren */) {
-				// Israelin mit Maschinenpistole hält Mann an der Hand
-				strAufFrauenHoer = "C:\\Users\\MiRoe\\Pictures\\GalaxyS8\\Facebook\\FB_IMG_1628713071363.jpg"; // 572x960
-				iWidAFH = 572; iHeiAFH = 960;
-			} else {
-				// Frau sagt, Mann sei nicht von ihr dominiert.
-				strAufFrauenHoer = "C:\\Users\\MiRoe\\Pictures\\GalaxyS8\\Facebook\\40392902_1943019619097605_5584471711262179328_n.jpg"; // 720x638 pixel inklusive Rand
-				iWidAFH = 720; iHeiAFH = 638;
+			mSheet.drawText("Achtung! Bitte im neuen Jahr "+ SHOW_YEAR +" beachten:", colTxt, Font.SANS_SERIF, Font.PLAIN, .1f, 0.75f, .8f, 0.048);
+			float xC = 0f;
+			if (imgFabianVerbrenntPapier.isOk()) {
+				float wText = wCol1/3f;
+				float wPic = wCol1-wText;
+				mSheet.drawImage(imgFabianVerbrenntPapier          , 0.5, 0.5, 0,  xC+wText, 0.800, wPic , 0.200f);
+				mSheet.drawText("Alte Akten", colTxt, Font.SERIF,      Font.PLAIN, xC,       0.850, wText, 0.025f);
+				mSheet.drawText("vernichten", colTxt, Font.SERIF,      Font.PLAIN, xC,       0.885, wText, 0.025f);
+				mSheet.drawText("  gemäß",    colTxt, Font.SERIF,      Font.PLAIN, xC,       0.920, wText, 0.025f);
+				mSheet.drawText("DSGVO:",     colTxt, Font.SERIF,      Font.PLAIN, xC,       0.955, wText, 0.025f);
+				xC = wCol1 + wSteg;
 			}
-			float fWidAFH = iWidAFH/iHeiAFH/mSheet.getUsuableWidth()*mSheet.getUsuableHeight()*.150f;		
-			float fWiTAFH = wCol1 - fWidAFH;
-			if (fWiTAFH > .05f) {
-				mSheet.drawText("    Den",          colTxt, Font.SERIF,      Font.PLAIN, xC, 0.860,fWiTAFH, 0.025f);
-				mSheet.drawText(" Frauen",          colTxt, Font.SERIF,      Font.PLAIN, xC, 0.895,fWiTAFH, 0.025f);
-				mSheet.drawText("zuhören:",         colTxt, Font.SERIF,      Font.PLAIN, xC, 0.930,fWiTAFH, 0.025f);
-			}
-			mSheet.drawImage(strAufFrauenHoer                           , 0.5, 0.5, 0,    xC+wCol1-fWidAFH,
-					                                                                          0.850,fWidAFH, 0.150f);
-			xC += wCol1 + wSteg;
-			final String strRegenbogenZumToilettenhaus = "C:\\Users\\MiRoe\\Pictures\\GalaxyS8\\Facebook\\FB_IMG_1663919192758.jpg";
-			mSheet.drawText("Nicht alles",           colTxt, Font.SERIF,      Font.PLAIN, xC, 0.850, wText, 0.025f);
-			mSheet.drawText("glauben, was",          colTxt, Font.SERIF,      Font.PLAIN, xC, 0.885, wText, 0.025f);
-			mSheet.drawText("im Internet",           colTxt, Font.SERIF,      Font.PLAIN, xC, 0.920, wText, 0.025f);
-			mSheet.drawText("  steht:",              colTxt, Font.SERIF,      Font.PLAIN, xC, 0.955, wText, 0.025f);
-			mSheet.drawImage(strRegenbogenZumToilettenhaus         , 0.5, 0.5, 0,   xC+wText, 0.850, wPic , 0.150f);
-			if (nCols >= 6) {
-				final String strSchokoEiVsRiegel = "C:\\Users\\MiRoe\\Pictures\\GalaxyS8\\Facebook\\FB_IMG_1614413609587.jpg";
-				iWidAFH = 706f; iHeiAFH = 960f;
+			if (imgXMasMenPutInGarbage.isOk()) {
+				float wPicSrc = imgXMasMenPutInGarbage.getWidth()/imgXMasMenPutInGarbage.getHeight()*mSheet.getUsuableHeight()*.200f;	
+				float wText = wCol1/3f;
+				float wPicTrg = (wCol1-wText)*mSheet.getUsuableWidth();
+				float wPic = Math.min(wPicSrc, wPicTrg);
+				mSheet.drawImage(imgXMasMenPutInGarbage           , 0.5, 0.5, 0,  xC+wText, 0.800, wPic , 0.200f);
+				mSheet.drawText(" Alten ",   colTxt, Font.SERIF,      Font.PLAIN, xC,       0.850, wText, 0.025f);
+				mSheet.drawText(" Kram",     colTxt, Font.SERIF,      Font.PLAIN, xC,       0.885, wText, 0.025f);
+				mSheet.drawText("weg-",      colTxt, Font.SERIF,      Font.PLAIN, xC,       0.920, wText, 0.025f);
+				mSheet.drawText("schmeißen", colTxt, Font.SERIF,      Font.PLAIN, xC,       0.955, wText, 0.025f);
 				xC += wCol1 + wSteg;
-				fWidAFH = iWidAFH/iHeiAFH/mSheet.getUsuableWidth()*mSheet.getUsuableHeight()*.150f;		
-				fWiTAFH = wCol1 - fWidAFH;
-				if (fWiTAFH > .05f) {
-					mSheet.drawText(" Sich",         colTxt, Font.SERIF,      Font.PLAIN, xC, 0.860,fWiTAFH, 0.025f);
-					mSheet.drawText(" gesund",       colTxt, Font.SERIF,      Font.PLAIN, xC, 0.895,fWiTAFH, 0.025f);
-					mSheet.drawText("ernähren:",     colTxt, Font.SERIF,      Font.PLAIN, xC, 0.930,fWiTAFH, 0.025f);
-				}
-				mSheet.drawImage(strSchokoEiVsRiegel                    , 0.5, 0.5, 0,    xC+wCol1-fWidAFH,
-                                                                                              0.850,fWidAFH, 0.150f);
 			}
-			if (nCols >= 4) {
-				final String strKatzekauftStreu = "C:\\Users\\MiRoe\\Pictures\\GalaxyS8\\Facebook\\FB_IMG_1603107441186.jpg";
-				iWidAFH = 746f; iHeiAFH = 960f;
+			if (imgHaeufigerErnaehrungsfehler.isOk()) {
+				float wPicSrc = imgHaeufigerErnaehrungsfehler.getWidth()/imgHaeufigerErnaehrungsfehler.getHeight()*mSheet.getUsuableHeight()*.200f;	
+				float wText = wCol1/3f;
+				float wPicTrg = (wCol1-wText)*mSheet.getUsuableWidth();
+				float wPic = Math.min(wPicSrc, wPicTrg);
+				mSheet.drawImage(imgHaeufigerErnaehrungsfehler    , 0.5, 0.5, 0,  xC+wText, 0.800, wPic , 0.200f);
+				mSheet.drawText(" Sich ",    colTxt, Font.SERIF,      Font.PLAIN, xC,       0.860, wText, 0.025f);
+				mSheet.drawText("gesund",    colTxt, Font.SERIF,      Font.PLAIN, xC,       0.895, wText, 0.025f);
+				mSheet.drawText("ernähren:", colTxt, Font.SERIF,      Font.PLAIN, xC,       0.930, wText, 0.025f);
 				xC += wCol1 + wSteg;
-				fWidAFH = iWidAFH/iHeiAFH/mSheet.getUsuableWidth()*mSheet.getUsuableHeight()*.150f;		
-				fWiTAFH = wCol1 - fWidAFH;
-				if (fWiTAFH > .05f) {
-					mSheet.drawText("Rechtzeitig",   colTxt, Font.SERIF,      Font.PLAIN, xC, 0.860,fWiTAFH, 0.025f);
-					mSheet.drawText("Vorsorge",      colTxt, Font.SERIF,      Font.PLAIN, xC, 0.895,fWiTAFH, 0.025f);
-					mSheet.drawText("treffen:",      colTxt, Font.SERIF,      Font.PLAIN, xC, 0.930,fWiTAFH, 0.025f);
-				}
-				mSheet.drawImage(strKatzekauftStreu                     , 0.5, 0.5, 0,    xC+wCol1-fWidAFH,
-                                                                                              0.850,fWidAFH, 0.150f);
 			}
-			if (nCols >= 5) {
-				final String strFrauSehrWarmAngezogen = "C:\\Users\\MiRoe\\Pictures\\GalaxyS8\\Facebook\\43698285_1921852824578075_7129875109858246656_n.jpg";
-				iWidAFH = 795f; iHeiAFH = 960f;
+			if (imgDeepLearning.isOk()) {
+				float wPicSrc = imgDeepLearning.getWidth()/imgDeepLearning.getHeight()*mSheet.getUsuableHeight()*.200f;	
+				float wText = wCol1/3f;
+				float wPicTrg = (wCol1-wText)*mSheet.getUsuableWidth();
+				float wPic = Math.min(wPicSrc, wPicTrg);
+				mSheet.drawImage(imgDeepLearning                        , 0.5, 0.5, 0,  xC+wText, 0.800, wPic , 0.200f);
+				mSheet.drawText("Aktuellen",       colTxt, Font.SERIF,      Font.PLAIN, xC,       0.850, wText, 0.025f);
+				mSheet.drawText("Stand der",       colTxt, Font.SERIF,      Font.PLAIN, xC,       0.885, wText, 0.025f);
+				mSheet.drawText("Technik",         colTxt, Font.SERIF,      Font.PLAIN, xC,       0.920, wText, 0.025f);
+				mSheet.drawText("verwenden",       colTxt, Font.SERIF,      Font.PLAIN, xC,       0.955, wText, 0.025f);
 				xC += wCol1 + wSteg;
-				fWidAFH = iWidAFH/iHeiAFH/mSheet.getUsuableWidth()*mSheet.getUsuableHeight()*.150f;		
-				fWiTAFH = wCol1 - fWidAFH;
-				if (fWiTAFH > .05f) {
-					mSheet.drawText("Auf kalte",     colTxt, Font.SERIF,      Font.PLAIN, xC, 0.860,fWiTAFH, 0.025f);
-					mSheet.drawText("Temperaturen",  colTxt, Font.SERIF,      Font.PLAIN, xC, 0.895,fWiTAFH, 0.025f);
-					mSheet.drawText("vorbereiten:",  colTxt, Font.SERIF,      Font.PLAIN, xC, 0.930,fWiTAFH, 0.025f);
-				}
-				mSheet.drawImage(strFrauSehrWarmAngezogen               , 0.5, 0.5, 0,    xC+wCol1-fWidAFH,
-                                                                                              0.850,fWidAFH, 0.150f);
+			}
+			if (imgPerfekteFrau.isOk()) {
+				float wPicSrc = imgPerfekteFrau.getWidth()/imgPerfekteFrau.getHeight()*mSheet.getUsuableHeight()*.200f;	
+				float wText = wCol1/3f;
+				float wPicTrg = (wCol1-wText)*mSheet.getUsuableWidth();
+				float wPic = Math.min(wPicSrc, wPicTrg);
+				mSheet.drawImage(imgPerfekteFrau                      , 0.5, 0.5, 0,  xC+wText, 0.800, wPic , 0.200f);
+				mSheet.drawText("Die perfekte",  colTxt, Font.SERIF,      Font.PLAIN, xC,       0.850, wText, 0.025f);
+				mSheet.drawText("Frau ist",      colTxt, Font.SERIF,      Font.PLAIN, xC,       0.885, wText, 0.025f);
+				mSheet.drawText("selten. Warte", colTxt, Font.SERIF,      Font.PLAIN, xC,       0.920, wText, 0.025f);
+				mSheet.drawText("nicht auf sie", colTxt, Font.SERIF,      Font.PLAIN, xC,       0.955, wText, 0.025f);
+				xC += wCol1 + wSteg;
 			}
 		}
 		mSheet.drawCalDates();
 		mSheet.writeExJpg(StrOUT_DIR);
-	}
+	} /* end of makeFeuerwerkBerlin() */
 	
 	public void writeYear() {
 		String strYear = Integer.toString(SHOW_YEAR);
