@@ -119,7 +119,7 @@ public class MakeSheetFeuerwerke extends Thread {
 
 			final float wSteg = CalendarSheet.fWeight < 1 ? .005f : .003f;
 			final float wCol1 = (1 - (nCols-1)*wSteg) / nCols;
-			final Color colTxt = new Color(255,224,192);
+			final Color colTxt = new Color(128,192,255);
 			mSheet.drawText("Achtung! Bitte im neuen Jahr "+ SHOW_YEAR +" beachten:", colTxt, Font.SANS_SERIF, Font.PLAIN, .1f, 0.75f, .8f, 0.048);
 			float xC = 0f;
 			if (imgFabianVerbrenntPapier.isOk()) {
@@ -133,7 +133,7 @@ public class MakeSheetFeuerwerke extends Thread {
 				xC = wCol1 + wSteg;
 			}
 			if (imgXMasMenPutInGarbage.isOk()) {
-				float wPicSrc = imgXMasMenPutInGarbage.getWidth()/imgXMasMenPutInGarbage.getHeight()*mSheet.getUsuableHeight()*.200f;	
+				float wPicSrc = 0.200f*imgXMasMenPutInGarbage.getWidth()/imgXMasMenPutInGarbage.getHeight()*mSheet.getUsuableHeight();	
 				float wText = wCol1/3f;
 				float wPicTrg = (wCol1-wText)*mSheet.getUsuableWidth();
 				float wPic = Math.min(wPicSrc, wPicTrg);
@@ -145,7 +145,7 @@ public class MakeSheetFeuerwerke extends Thread {
 				xC += wCol1 + wSteg;
 			}
 			if (imgHaeufigerErnaehrungsfehler.isOk()) {
-				float wPicSrc = imgHaeufigerErnaehrungsfehler.getWidth()/imgHaeufigerErnaehrungsfehler.getHeight()*mSheet.getUsuableHeight()*.200f;	
+				float wPicSrc = 0.200f*imgHaeufigerErnaehrungsfehler.getWidth()/imgHaeufigerErnaehrungsfehler.getHeight()*mSheet.getUsuableHeight();	
 				float wText = wCol1/3f;
 				float wPicTrg = (wCol1-wText)*mSheet.getUsuableWidth();
 				float wPic = Math.min(wPicSrc, wPicTrg);
@@ -156,7 +156,7 @@ public class MakeSheetFeuerwerke extends Thread {
 				xC += wCol1 + wSteg;
 			}
 			if (imgDeepLearning.isOk()) {
-				float wPicSrc = imgDeepLearning.getWidth()/imgDeepLearning.getHeight()*mSheet.getUsuableHeight()*.200f;	
+				float wPicSrc = 0.200f*imgDeepLearning.getWidth()/imgDeepLearning.getHeight()*mSheet.getUsuableHeight();	
 				float wText = wCol1/3f;
 				float wPicTrg = (wCol1-wText)*mSheet.getUsuableWidth();
 				float wPic = Math.min(wPicSrc, wPicTrg);
@@ -168,11 +168,12 @@ public class MakeSheetFeuerwerke extends Thread {
 				xC += wCol1 + wSteg;
 			}
 			if (imgPerfekteFrau.isOk()) {
-				float wPicSrc = imgPerfekteFrau.getWidth()/imgPerfekteFrau.getHeight()*mSheet.getUsuableHeight()*.200f;	
+				float wPicSrc = 0.200f*imgPerfekteFrau.getWidth()/imgPerfekteFrau.getHeight()*mSheet.getUsuableHeight();	
 				float wText = wCol1/3f;
 				float wPicTrg = (wCol1-wText)*mSheet.getUsuableWidth();
 				float wPic = Math.min(wPicSrc, wPicTrg);
-				mSheet.drawImage(imgPerfekteFrau                      , 0.5, 0.5, 0,  xC+wText, 0.800, wPic , 0.200f);
+				float centX = .75f-wPic/wPicSrc/4;
+				mSheet.drawImage(imgPerfekteFrau                    , centX, 0.5, 0,  xC+wText, 0.800, wPic , 0.200f);
 				mSheet.drawText("Die perfekte",  colTxt, Font.SERIF,      Font.PLAIN, xC,       0.850, wText, 0.025f);
 				mSheet.drawText("Frau ist",      colTxt, Font.SERIF,      Font.PLAIN, xC,       0.885, wText, 0.025f);
 				mSheet.drawText("selten. Warte", colTxt, Font.SERIF,      Font.PLAIN, xC,       0.920, wText, 0.025f);
