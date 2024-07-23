@@ -9,7 +9,7 @@ import java.util.Calendar;
 import de.dreiroeders.workingonimages.BufferedImageSetPixImg_ABGR;
 import de.dreiroeders.workingonimages.Draw1ImageI;
 import de.dreiroeders.workingonimages.EFillType;
-import de.dreiroeders.workingonimages.MiRoesDraw;
+import de.dreiroeders.workingonimages.*;
 
 public class MakeSheetFeuerwerke extends Thread {
 
@@ -66,27 +66,22 @@ public class MakeSheetFeuerwerke extends Thread {
 	}
 
 	public void makeFeuerwerkBerlin() throws Exception {
-		final String picRuedi2 = "C:\\Users\\MiRoe\\Pictures\\Feuerwerke\\Rüdi 2023_2.jpg";
-		final String picRuedi5 = "C:\\Users\\MiRoe\\Pictures\\Feuerwerke\\Rüdi 2023_5.jpg";
-		final String picRuedi6 = "C:\\Users\\MiRoe\\Pictures\\Feuerwerke\\Rüdi 2023_6.jpg";
-		final String picRuediKlo = "C:\\Users\\MiRoe\\Pictures\\2014-00-Neujahr\\DSC01809.jpg";
-		final String picSingleShot = "C:\\Users\\MiRoe\\Pictures\\StephanVoss.Photography\\14249945_560232590835354_8475951493338221019_o.jpg";
-		final String picDoubleShot = "C:\\Users\\MiRoe\\Pictures\\StephanVoss.Photography\\14241630_560232587502021_75377561652038508_o.jpg";
-		final String picOneMainShot = "C:\\Users\\MiRoe\\Pictures\\StephanVoss.Photography\\14231366_559825760876037_3945436754805404728_o.jpg";
-		final String picOlympiaStadionV ="C:\\Users\\MiRoe\\Pictures\\StephanVoss.Photography\\14206092_559280470930566_8645061835383203573_o.jpg";
-		final String picOlympiaStadionY ="C:\\Users\\MiRoe\\Pictures\\TTShots\\11225309_483641278480679_1550620057679272192_o.jpg";
-		final String picWannseeInFlammen ="C:\\Users\\MiRoe\\Pictures\\View.Berlin\\14567422_608592452653424_6636659909416388905_o.jpg";
-		final String picLinksFeuerwerkUeberRundbau = "C:\\Users\\MiRoe\\Pictures\\TTShots\\1916431_552377371607069_3269690000311110224_n.jpg";
-		float h3 = m_nOpt > 0 ? .6f : .8f;
+		final String picRuedi2 = "http://www.3roeders.de/Feuerwerke/Ruedi2023_2.jpg";
+		final String picRuedi5 = "http://www.3roeders.de/Feuerwerke/Ruedi2023_5.jpg";
+		final String picRuedi6 = "http://www.3roeders.de/Feuerwerke/Ruedi2023_6.jpg";
+		final String picRuediKlo = "http://www.3roeders.de/2014-00-Neujahr/DSC01809.JPG";
+		float h3 = .8f;
 		final float fY8=h3+0.165f;
 		mSheet = new CalendarSheet(THIS_YEAR, nMonth, CAL_Dates);
 		mSheet.prepareImage(5000, Color.BLACK);
 		BufferedImageSetPixImg_ABGR img1;
 		float rotC;
-		if ((THIS_YEAR & 1) == 1 /* ungerade Jahre */) {
-			mSheet.drawImage(picOlympiaStadionV  , 0.5, 0.5, 0.0 , 0.000, 0.200, 1f, h3);
+		SourceImage srcMainImg = new SourceImage("https://upload.wikimedia.org/wikipedia/commons/4/49/New_Year_Berlin.jpg");
+		if (srcMainImg.isOk()) {
+			mSheet.drawImage(srcMainImg , 0.5, 0.5, 0.0 , 0.000, 0.000, 1f, 1f);
 		} else {
-			mSheet.drawImage(picOlympiaStadionY  , 0.5, 0.5, 0.0 , 0.000, 0.000, 1f, 0.800);
+			srcMainImg = new SourceImage("https://upload.wikimedia.org/wikipedia/commons/4/49/New_Year_Berlin.jpg");
+			//TODO
 		}
 		img1 = mkPicFeuerwerk(picRuedi2, 0.5f);
 		mSheet.drawImageA(new MakeDarkTransparentRoundRect(img1.getImage(0)    , 0.5, 0.2,   0 , 0.000, 0.000, 0.350, 0.35));
@@ -94,26 +89,9 @@ public class MakeSheetFeuerwerke extends Thread {
 		mSheet.drawImageA(new MakeDarkTransparentRoundRect(img1.getImage(0)    , 0.5, 0.3,   0 , 0.650, 0.300, 0.350, 0.35));
 		img1 = mkPicFeuerwerk(picRuedi6, 0.4f);
 		mSheet.drawImageA(new MakeDarkTransparentRoundRect(img1.getImage(0)    , 0.5, 0.3,   0 , 0.700, 0.400, 0.300, 0.35));
-		img1 = mkPicFeuerwerk(picSingleShot, 0.4f);
-		mSheet.drawImageA(new MakeDarkTransparentRoundRect(img1.getImage(0)    , 0.6, 0.5, 180 , 0.650, 0.000, 0.350, 0.35));
-		img1 = mkPicFeuerwerk(picOneMainShot, 0.4f);
-		mSheet.drawImageA(new MakeDarkTransparentRoundRect(img1.getImage(0)    , 0.5, 0.5, 0.0 , 0.000, 0.000, 0.000, 0.48));
-		img1 = mkPicFeuerwerk(picDoubleShot, 0.4f);
-		MakeDarkTransparentRoundRect imgDoubleShot = new MakeDarkTransparentRoundRect(
-				                                           img1.getImage(0)    , 0.4, 0.4, 0.0 , 0.500, 0.000, 0.000, 0.48);
-		imgDoubleShot.mSizeRound = 1000;
-		mSheet.drawImageA(imgDoubleShot);
-		img1 = mkPicFeuerwerk(picWannseeInFlammen, 0.4f);
-		mSheet.drawImageA(new MakeDarkTransparentRoundRect(img1.getImage(0)    , 0.75,0.35,0.0 , 1.000, 0.200, 0.000, 0.48));
-		img1 = mkPicFeuerwerk(picLinksFeuerwerkUeberRundbau, 0.4f);
-		MiRoesDraw.diagOut(img1.getImage(0));
-		mSheet.drawImageA(new MakeDarkTransparent(img1.getImage(0)             , 0.4, 0.4, 0.0 , 0.000, 0.000, 0.000, fY8));
-		mSheet.drawImageA(new MakeDarkTransparent(img1.getImage(0)             , 0.4, 0.4, 0.0 , 0.600, 0.500, 0.000, fY8-0.500f));
 		img1 = mkPicFeuerwerk(picRuediKlo, 0.8f);
 		rotC = (float)(2456-2528) / (2829-4267) * 0.8f;
 		mSheet.drawImageA(new MakeDarkTransparentRoundRect(img1.getImage(0)    ,  .5,  .5,-rotC, 0.800, fY8-.25f,0.200,0.25f));
-		mSheet.drawText("Bilder von www.facebook.com/StephanVoss.Photography, www.facebook.com/View.Berlin und von www.facebook.com/TTShots",
-				    mSheet.getDefaultTextCol(), Font.SANS_SERIF, Font.ITALIC,                       0,fY8+0.005f,1f, 0.02 );
 		writeYear();
 		if (m_nOpt > 0) {
 			final int nCols = CalendarSheet.fWeight < 1 ? 3 : 6;
@@ -123,7 +101,7 @@ public class MakeSheetFeuerwerke extends Thread {
 			final float wPic = wCol1-wText;
 			final Color colTxt = new Color(255,224,192);
 			mSheet.drawText("Achtung! Bitte im neuen Jahr "+ SHOW_YEAR +" beachten:", colTxt, Font.SANS_SERIF, Font.PLAIN, .1f, 0.8f, .8f, 0.048);
-			final String strFabianVerbrenntPapier = "C:\\Users\\MiRoe\\Pictures\\GalaxyS8\\Signal\\signal-2021-09-05-185912.jpg";
+			final String strFabianVerbrenntPapier = "http://www.3roeders.de/Signal/signal-2021-09-05-185912.jpg";
 			float wText01 = 0.01f;
 			mSheet.drawText("Alte Akten",               colTxt, Font.SERIF,      Font.PLAIN, wText01, 0.850, wText-wText01, 0.025f);
 			mSheet.drawText("vernichten",               colTxt, Font.SERIF,      Font.PLAIN, wText01, 0.885, wText-wText01, 0.025f);

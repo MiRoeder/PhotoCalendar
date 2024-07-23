@@ -7,6 +7,10 @@ public class BufferedImageGetPixImg implements IGetPixImg {
 
 	protected BufferedImage mImage;
 	
+	public BufferedImageGetPixImg() {
+		this.mImage = null;
+	}
+	
 	public BufferedImageGetPixImg(BufferedImage image) {
 		this.mImage = image;
 	}

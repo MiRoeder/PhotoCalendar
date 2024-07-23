@@ -45,6 +45,7 @@ public class FotoKalenderOpt {
 			} else {
 				result.init_m_bDoIt(FINAL);
 				//todo or not todo: result.init_m_bDoIt(Calendar.AUGUST, Calendar.AUGUST);
+				//result.m_bDoIt[Calendar.DECEMBER] = true;
 			}
 		}
 		if (year == YEAR1+1) {
@@ -52,8 +53,8 @@ public class FotoKalenderOpt {
 				result.init_m_bDoIt(Calendar.JANUARY, MONTH1);
 			} else {
 				result.init_m_bDoIt(FINAL);
-				//todo or not todo:
-				result.init_m_bDoIt(Calendar.FEBRUARY, Calendar.FEBRUARY);
+				//todo or not todo:	result.init_m_bDoIt(Calendar.FEBRUARY, Calendar.FEBRUARY);
+				result.m_bDoIt[Calendar.JANUARY] = true;
 			}
 		}
 		MiRoesDraw.bDoDiagOut = !FINAL;

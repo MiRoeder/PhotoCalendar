@@ -135,11 +135,11 @@ public class FotoKalender {
 			sheet.prepareImage(3494);
 			sheet.drawText("Weiﬂe Weihnachten?", sheet.getDefaultTextCol(), "Times New Roman", 0, 0, 0.00, 1, 0.04);
 			sheet.drawText("23. Dezember 2012:", sheet.getDefaultTextCol(), "Times New Roman", 0, 0, 0.05, 1, 0.03);
-			sheet.drawImage("C:\\Users\\MiRoe\\Pictures\\Dezember2012\\2012-12-23.png",
-					                                                                0.5, 0.6,  0, 0, 0.09, 1, 0.41 );
+			sheet.drawImage("http://www.3roeders.de/Dezember2012/2012-12-23.png",
+					                                                                0.5, 0.5,  0, 0, 0.09, 1, 0.41 );
 			sheet.drawText("24. Dezember 2012:", sheet.getDefaultTextCol(), "Times New Roman", 0, 0, 0.51, 1, 0.03);
-			sheet.drawImage("C:\\Users\\MiRoe\\Pictures\\Dezember2012\\2012-12-24 ohne Giebel.png",
-                                                                                    0.5, 0.6,  0, 0, 0.55, 1, 0.45 );
+			sheet.drawImage("http://www.3roeders.de/Dezember2012/2012-12-24%20ohne%20Giebel.png",
+                                                                                    0.5, 0.55, 0, 0, 0.55, 1, 0.45 );
 			sheet.drawCalDates();
 			sheet.writeInDir(strOutDir);	
 		} catch (Exception ex) {

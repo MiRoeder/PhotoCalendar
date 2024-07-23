@@ -16,7 +16,6 @@ public class BufferedImageSetPixImg_ABGR extends BufferedImageGetPixImg implemen
 	private BufferedImage mImage2 = null;
 	
 	public BufferedImageSetPixImg_ABGR(int width, int height, float maxColorValue) {
-		super(null);
 		mImage = new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR);
 		mMaxColorValue = maxColorValue;
 		if (maxColorValue >= 255.5f/255f) {
@@ -50,7 +49,7 @@ public class BufferedImageSetPixImg_ABGR extends BufferedImageGetPixImg implemen
 	}
 
 	public BufferedImageSetPixImg_ABGR(String strFileName) throws IOException {
-		this(new File(strFileName));
+		this(new SourceImage(strFileName));
 	}
 	
 	public BufferedImageSetPixImg_ABGR(File strFile) throws IOException {
@@ -58,8 +57,13 @@ public class BufferedImageSetPixImg_ABGR extends BufferedImageGetPixImg implemen
 	}
 	
 	public BufferedImageSetPixImg_ABGR(SourceImage file) throws IOException {
-		super(file.getImage());
-		init(1f, true);
+		if (file.isOk()) {
+			mImage = file.getImage();
+			init(1f, true);
+		} else {
+			mImage = new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR);
+			mImage.setRGB(0, 0, 0);
+		}
 	}
 	
 	public BufferedImageSetPixImg_ABGR(BufferedImage image, float maxColorValue) {
