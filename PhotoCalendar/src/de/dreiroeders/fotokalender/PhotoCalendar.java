@@ -105,7 +105,7 @@ public class PhotoCalendar extends FotoKalender {
 		}
 
 		if (trgOpt.bDoIt(Calendar.APRIL)) try {
-			makeFussballMitOlympiaStadion(Calendar.APRIL, strOutDir);
+			makeTramToDrogenbos(Calendar.APRIL, strOutDir);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

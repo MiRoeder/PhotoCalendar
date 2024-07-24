@@ -3,6 +3,7 @@ package de.dreiroeders.fotokalender;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.font.LineMetrics;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
@@ -329,7 +330,6 @@ public class FotoKalender {
 		}
 	}
 
-	@SuppressWarnings("static-access")
 	public void makeFamilyInZooWider(int month, String strOutDir) {
 		try {
 			Color bckCol = new Color(255, 224, 192);
@@ -789,7 +789,52 @@ public class FotoKalender {
 			ex.printStackTrace();
 		}
 	} /* end of makeAllWaysToBerlin(int month, int nOpt, String strOutDir) */
-	
+
+	public void makeTramToDrogenbos(int month, String strOutDir) {
+		try {
+			CalendarSheet sheet = new CalendarSheet(THIS_YEAR, month, this.mDates);
+			sheet.prepareImage(3414f);
+			final Color colTxt = new Color(128,192,255);
+			
+			SourceImage srcTram  = new SourceImage("http://www.3roeders.de/SamsungGalS23/20230727_114310.jpg");
+			// Original size 3414 x 2685
+			Rectangle rectDestinationIndicator = new Rectangle(1454, 1106, 160, 40);
+			sheet.drawText("Warum so ein großer Aufwand?", colTxt, Font.SERIF, Font.PLAIN, 0, 0   , 1f, 0.06);
+			sheet.drawText("In Brüssel fährt die Strassenbahn Linie Nr. 82 direkt zum Drogenboss", 
+														   colTxt, Font.SERIF, Font.PLAIN, 0, 0.07, 1f, 0.06);
+			
+			sheet.drawImage(srcTram, .5f, .5f, 0,                                          0, 0.4,  1d, 0.6);
+			srcTram.setSourceBounds(rectDestinationIndicator);
+			int x0 = sheet.getX1();
+			int y0 = sheet.getY1();
+			int xDI = sheet.getX(rectDestinationIndicator.getX()/3414f);
+			int wDI = sheet.getDX(rectDestinationIndicator.getWidth()/3414f);
+			int yDI = sheet.getY(0.585);
+			int hDI = sheet.getDY(0.05);
+			int hBDI = sheet.getDY(0.14);
+			int wBDI = (int)Math.round(hBDI*rectDestinationIndicator.getWidth()/rectDestinationIndicator.getHeight());
+			int xBDI = xDI+(wDI-wBDI)/2;
+			int yBDI = sheet.getY(0.14);
+			sheet.drawImage(srcTram, .5f, .5f, 0, xBDI-x0, yBDI-y0, wBDI, hBDI);
+			Graphics2D painter = sheet.getPainter();
+			painter.setColor(new Color(128, 128, 255, 128));
+			int wLines = hDI/3;
+			for (int iWO = 0; iWO < wLines; ++iWO) {
+				painter.drawOval(xDI-iWO/2, yDI-iWO/2, wDI+iWO, hDI+iWO);
+			}
+			wLines = hDI/5;
+			for (int iWO = 0; iWO < wLines; ++iWO) {
+				painter.drawLine(xDI+wDI/2 - wLines/2+iWO, yDI                , xBDI+wBDI/2 - wLines/2+iWO, yBDI+hBDI);
+				painter.drawLine(xBDI+wBDI/2 - wLines/2+iWO-wDI, yBDI+hBDI+wDI, xBDI+wBDI/2 - wLines/2+iWO, yBDI+hBDI);
+				painter.drawLine(xBDI+wBDI/2 - wLines/2+iWO+wDI, yBDI+hBDI+wDI, xBDI+wBDI/2 - wLines/2+iWO, yBDI+hBDI);
+			}
+			sheet.drawCalDates();
+			sheet.writeInDir(strOutDir);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	} /* end of makeAllWaysToBerlin(int month, int nOpt, String strOutDir) */
+
 	public void makeRiversHorseShoeAndMosel(int month, String strOutDir) {
 		try {
 			final String s0 = "C:\\Users\\MiRoe\\Pictures\\2015-Amerika\\";

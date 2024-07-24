@@ -9,7 +9,7 @@ import java.util.Calendar;
 import de.dreiroeders.workingonimages.BufferedImageSetPixImg_ABGR;
 import de.dreiroeders.workingonimages.Draw1ImageI;
 import de.dreiroeders.workingonimages.EFillType;
-import de.dreiroeders.workingonimages.*;
+import de.dreiroeders.workingonimages.SourceImage;
 
 public class MakeSheetFeuerwerke extends Thread {
 
