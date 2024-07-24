@@ -93,7 +93,7 @@ public class FotoKalenderOpt {
 			result.m_strOutDir = "tmp/" + YEAR1 + "_Public/#"+ strBackBackgroundCol +"_"+ CalendarSheet.fWeight +"/";
 			result.init_m_bDoIt(FINAL);
 		} else {
-			result.m_strOutDir = "results/" + YEAR1 + "/"+ CalendarSheet.fWeight +"/";
+			result.m_strOutDir = "results/" + YEAR1 +"-"+ (MONTH1+1) +"/"+ CalendarSheet.fWeight +"/";
 		}
 		return result;
 	}
