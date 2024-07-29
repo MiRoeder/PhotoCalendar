@@ -1,8 +1,9 @@
 package de.dreiroeders.fotokalender;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
+import java.io.File;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -11,12 +12,15 @@ import java.util.Random;
 import de.dreiroeders.workingonimages.BufferedImageSetPixImg_ABGR;
 import de.dreiroeders.workingonimages.Draw1ImageI;
 import de.dreiroeders.workingonimages.Draw1ImageT;
+import de.dreiroeders.workingonimages.Draw1ImageWithTxt;
 import de.dreiroeders.workingonimages.IHintsDrawImages;
 import de.dreiroeders.workingonimages.MiRoesDraw;
 import de.dreiroeders.workingonimages.SourceImage;
 
 
 public class FotoKalender1 extends FotoKalender {
+
+	final String inDirAndre2023 = "C:\\Users\\MiRoe\\Pictures\\2023 Famile Senior Köhler\\";
 
 	public static void main(String[] args) {
 		try {
@@ -52,8 +56,6 @@ public class FotoKalender1 extends FotoKalender {
 		String strOutDir = trgOpt.m_strOutDir;
 
 		final String inDirG = "C:\\Users\\MiRoe\\Pictures\\GalaxyS8\\Camera\\";
-		final String inDirCo = "C:\\Users\\MiRoe\\Pictures\\Constanzess\\Camera\\";
-		final String inDirWhatsApp= "C:\\Users\\MiRoe\\Pictures\\GalaxyS8\\WhatsApp\\Media\\WhatsApp Images\\";
 		final String inDirWhatsAp0 = "C:\\Users\\MiRoe\\Pictures\\WhatsApp\\";
 		final String inDirRBB = "C:\\Users\\MiRoe\\Videos\\rbb Fernsehen Weihnachtssingen an der Alten Försterei\\";
 
@@ -92,41 +94,75 @@ public class FotoKalender1 extends FotoKalender {
 		}
 
 		if (trgOpt.bDoIt(Calendar.JANUARY)) try {
-			MakeSheetFeuerwerke.startMaking(trgOpt.m_nYear, Calendar.JANUARY, mDates, strOutDir, 1);
+			var sheet = new CalendarSheetAutoArrange1(THIS_YEAR, Calendar.JANUARY, mDates);
+			Draw1ImageI img;
+			img = new Draw1ImageI(inDirMsGal23+"20240101_001137.jpg");
+			sheet.addImage(img);
+			img = new Draw1ImageI(inDirMsGal23+"20231229_233122.jpg");
+			sheet.addImage(img);
+			img = new Draw1ImageI(inDirMsGal23+"20231227_165047.jpg");
+			sheet.addImage(img);
+			img = new Draw1ImageI(inDirMsGal23+"20231229_164946.jpg");
+			sheet.addImage(img);
+			sheet.startMakingIt(strOutDir);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 
 		if (trgOpt.bDoIt(Calendar.FEBRUARY)) try {
-			final String inWelcomeVik = "C:\\Users\\MiRoe\\Pictures\\2019 Sophie Viktoria\\2019-10-05 Willkommensfeier\\";
-			CalendarSheet sheet;
-			sheet = new CalendarSheet(THIS_YEAR, Calendar.FEBRUARY, mDates);
-			sheet.prepareImage(5000/0.8022486772486772);
-			float h1 = .7f;
-			sheet.drawImage(inWelcomeVik+"20191005_144940.jpg",.5 , .5,  0,   0,  0, .497, h1);
-			sheet.drawImage(inDirCo+"20210514_131018c.jpg",    .45, .5,  0,.503,  0, .497, h1);
-			float y2 = h1+0.006f*CalendarSheet.fWeight;
-			float h2 = 1f-y2;
-			sheet.drawImage(inDirCo+"20211125_133159.jpg",     .5 , .5,-90,   0, y2, .2  , h2);
-			sheet.drawImage(inDirG +"20230618_163202.jpg",     .5 , .5, 90,.206, y2, .17 , h2);
-			sheet.drawImage(inDirG +"20230629_183230.jpg",     .5 , .5,  0,.382, y2, .236, h2);
-			sheet.drawImage(inDirG +"20230629_182954.jpg",     .5 , .5, 90,.624, y2, .17 , h2);
-			sheet.drawImage(inDirG +"20230629_173651.jpg",     .35, .5,  0,.8  , y2, .2  , h2);
-			sheet.drawCalDates();
-			sheet.writeInDir(strOutDir);
+			CalendarSheetCenterImage sheet = new CalendarSheetCenterImage(THIS_YEAR, Calendar.FEBRUARY, mDates);
+			Draw1ImageI img;
+			img = new Draw1ImageI(inDirMsGal23+"20231213_161310.jpg");
+			int iW = img.getWidth();
+			int iH = img.getHeight();
+			int iL = iW/10;
+			int iT = iH/3;
+			int iB = iH/9;
+			img.setSourceBounds(new Rectangle(iL, iT, iW-iL, iH-iT-iB));
+			img.dRot = 90;
+			sheet.setImage1(img);
+			img = new Draw1ImageI(inDirMsGal23+"20231219_103628.jpg");
+			sheet.addImage1(img);
+			img = new Draw1ImageI(inDirMsGal23+"20240112_195820.jpg");
+			sheet.addImage1(img);
+			img = new Draw1ImageI(inDirMsGal23+"20231213_163001.jpg");
+			img.setCenterPoint(.47f, .5f);
+			img.dRot = 90;
+			sheet.addImage1(img);
+			img = new Draw1ImageI(inDirMsGal23+"20240105_111528.jpg");
+			img.setCenterPoint(.44f, .4f);
+			img.dRot = 90;
+			sheet.addImage2(img);
+			sheet.startMakingIt(strOutDir);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 
 		if (trgOpt.bDoIt(Calendar.MARCH)) {
 			try {
-				CalendarSheetCenterImage sheet = new CalendarSheetCenterImage(THIS_YEAR, Calendar.MARCH, mDates);
-				Draw1ImageI img;
-				img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.48_03b1c05a.jpg");
-				img.setSourceBounds(new Rectangle(875, 200, 380, 670));
-				sheet.setImage1(img);
-				addManyImages2024Vik(sheet, null, new Random(THIS_YEAR*12+Calendar.MARCH), .2f);
-				sheet.startMakingIt(strOutDir);
+				if (trgOpt.m_bAndreMarlies) {
+					 makeViksGeburtstag(Calendar.MARCH, strOutDir);
+				} else {
+					CalendarSheetCenterImage sheet = new CalendarSheetCenterImage(THIS_YEAR, Calendar.MARCH, mDates);
+					Draw1ImageI img;
+					img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.48_03b1c05a.jpg");
+					img.setSourceBounds(new Rectangle(875, 200, 380, 670));
+					sheet.setImage1(img);
+					img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.49_ee28eca1.jpg");
+					img.setCenterPoint(.5f, .45f);
+					sheet.addImage1(img);
+					img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.53_5c64e910.jpg");
+					img.setCenterPoint(.45f, .5f);
+					sheet.addImage1(img);
+					img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-06-27 um 14.31.24_66612c5d.jpg");
+					sheet.addImage2(img);
+					img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.52_0cabe4a1.jpg");
+					img.setCenterPoint(.5f, .22f);
+					sheet.addImage2(img);
+					img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_170252.jpg");
+					sheet.addImage2(img);
+					sheet.startMakingIt(strOutDir);
+				}
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}  
@@ -138,73 +174,85 @@ public class FotoKalender1 extends FotoKalender {
 			ex.printStackTrace();
 		}
 
-		if (trgOpt.bDoIt(Calendar.MAY)) {
-			final String inDirVik2 = "C:\\Users\\MiRoe\\Pictures\\Bilder von Stephan 2022\\2022_01_01 Viktoria in 2022\\";
-			CalendarSheetAutoArrange1 sheet = new CalendarSheetAutoArrange1(THIS_YEAR, Calendar.MAY, mDates);
-			Draw1ImageI img;
-			img = new Draw1ImageI(inDirCo+"20210720_161347.jpg");
-			img.dRot = 90;
-			img.setCenterPoint(.4f, .5f);
-			sheet.addImage(img);
-			img = new Draw1ImageI(inDirVik2+"20220331_163804.jpg");
-			img.dRot = 90;
-			sheet.addImage(img);
-			sheet.setPreferedSize(CalendarSheet.fWeight > 1 ? 1 : 0);
-			sheet.startMakingIt(strOutDir);
+		if (trgOpt.bDoIt(Calendar.MAY)) try {
+			var sheetCI = new CalendarSheetCenterImage(THIS_YEAR,  Calendar.MAY, mDates);
+			var img0 = new SourceImage("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_170240.jpg");
+			int iW = img0.getWidth();
+			int iH = img0.getHeight();
+			int iL = iW/8;
+			img0.setSourceBounds(new Rectangle(iL, 0, iW-iL, iH));
+			Draw1ImageWithTxt img1;
+			img1 = new Draw1ImageWithTxt(img0,
+					                     "Fotografin: Sophie Viktoria Köhler (5 Jahre)",
+					                     new Color(224, 32, 128), Font.SERIF, Font.ITALIC, 200 );
+			sheetCI.setImage1(img1);
+			addImagesByVik202407(sheetCI, null, new Random(THIS_YEAR*12+Calendar.MAY), .6f);
+			sheetCI.startMakingIt(strOutDir);
+		} catch (Exception ex) {
+			ex.printStackTrace();
 		}
 
 		if (trgOpt.bDoIt(Calendar.JUNE)) try {
-			CalendarSheet sheet;
-			sheet = new CalendarSheet(THIS_YEAR, Calendar.JUNE, mDates);
-			sheet.prepareImage(3750/0.9927248677248678-1);
-			final float hSteg = 0.008f;
-			final float wSteg = hSteg/CalendarSheet.fWeight;
-			final float hCenterPic = .2f;
-			final float wCenterPic = .2f;
-			final float xCenterPic = (1f-wCenterPic)/2f;
-			final float yCenterPic = (1f-hCenterPic)/2f;
-			var img1 = new SourceImage("Examples.res/WhatsApp Bild 2023-06-04 um 13.29.31.jpg");
-			img1.setSourceBounds(new Rectangle(270, 680, 540, 350));
-			sheet.drawImage(img1.getImage(),                                          1f/2f, 1f/2f, 0, xCenterPic+wSteg     ,yCenterPic+hSteg     ,          wCenterPic-2*wSteg,         hCenterPic-2*hSteg);
-			sheet.drawImage("Examples.res/WhatsApp Bild 2023-06-04 um 13.15.18.jpg", 1f/2f, 4f/5f, 0, 0f                   ,                   0f, xCenterPic+wCenterPic-wSteg,yCenterPic                 );
-			sheet.drawImage("Examples.res/WhatsApp Bild 2023-06-04 um 13.15.49.jpg", 1f/2f, 1f/2f, 0, xCenterPic+wCenterPic,                   0f, 1f-xCenterPic-wCenterPic   ,yCenterPic+hCenterPic-hSteg);
-			sheet.drawImage("Examples.res/351535115_1761041277631953_2772123894799380056_n.jpg",.5f,.5f,0, xCenterPic+wSteg     ,yCenterPic+hCenterPic,    1f-xCenterPic+wSteg     ,1f-yCenterPic-hCenterPic   );
-			sheet.drawImage("Examples.res/351525974_776193984009985_4460773923173507186_n.jpg" ,.5f,.6f,0, 0f                   ,yCenterPic+hSteg     , xCenterPic                 ,1f-yCenterPic-hSteg        );
-			sheet.drawCalDates();
-			sheet.writeInDir(strOutDir);
+			if (trgOpt.m_bAndreMarlies) {
+				CalendarSheetCenterImage sheet = new CalendarSheetCenterImage(THIS_YEAR, Calendar.JUNE, mDates);
+				Draw1ImageI img;
+				img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.48_03b1c05a.jpg");
+				img.setSourceBounds(new Rectangle(875, 200, 380, 670));
+				sheet.setImage1(img);
+				img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.52_0cabe4a1.jpg");
+				img.setCenterPoint(.5f, .3f);
+				sheet.addImage1(img);
+				img = new Draw1ImageI(inDirAndre2023+"20230512_165329.jpg");
+				sheet.addImage1(img);
+				img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-06-27 um 14.31.24_66612c5d.jpg");
+				sheet.addImage2(img);
+				img = new Draw1ImageI(inDirAndre2023+"20230513_103938.jpg");
+				sheet.addImage2(img);
+				img = new Draw1ImageI(inDirAndre2023+"20230514_173327.jpg");
+				img.dRot = 180;
+				sheet.addImage2(img);
+				sheet.startMakingIt(strOutDir);
+			} else {
+				CalendarSheet sheet;
+				sheet = new CalendarSheet(THIS_YEAR, Calendar.JUNE, mDates);
+				sheet.prepareImage(3750/0.9927248677248678-1);
+				final float hSteg = 0.008f;
+				final float wSteg = hSteg/CalendarSheet.fWeight;
+				final float hCenterPic = .2f;
+				final float wCenterPic = .2f;
+				final float xCenterPic = (1f-wCenterPic)/2f;
+				final float yCenterPic = (1f-hCenterPic)/2f;
+				var img1 = new SourceImage("Examples.res/WhatsApp Bild 2023-06-04 um 13.29.31.jpg");
+				img1.setSourceBounds(new Rectangle(270, 680, 540, 350));
+				sheet.drawImage(img1.getImage(),                                              1f/2f, 1f/2f, 0, xCenterPic+wSteg     ,yCenterPic+hSteg     ,          wCenterPic-2*wSteg,         hCenterPic-2*hSteg);
+				sheet.drawImage("Examples.res/WhatsApp Bild 2023-06-04 um 13.15.18.jpg",      1f/2f, 4f/5f, 0, 0f                   ,                   0f, xCenterPic+wCenterPic-wSteg,yCenterPic                 );
+				sheet.drawImage("Examples.res/WhatsApp Bild 2023-06-04 um 13.15.49.jpg",      1f/2f, 1f/2f, 0, xCenterPic+wCenterPic,                   0f, 1f-xCenterPic-wCenterPic   ,yCenterPic+hCenterPic-hSteg);
+				sheet.drawImage("Examples.res/351535115_1761041277631953_2772123894799380056_n.jpg",.5f,.5f,0, xCenterPic+wSteg     ,yCenterPic+hCenterPic,    1f-xCenterPic+wSteg     ,1f-yCenterPic-hCenterPic   );
+				sheet.drawImage("Examples.res/351525974_776193984009985_4460773923173507186_n.jpg" ,.5f,.6f,0, 0f                   ,yCenterPic+hSteg     , xCenterPic                 ,1f-yCenterPic-hSteg        );
+				sheet.drawCalDates();
+				sheet.writeInDir(strOutDir);
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();    
 		}
 
 		if (trgOpt.bDoIt(Calendar.JULY)) try {
-			CalendarSheetCenterImage sheetCI;
-			sheetCI = new CalendarSheetCenterImage(THIS_YEAR, Calendar.JULY, mDates);
-			Draw1ImageI img0 = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.53_f2_1.jpg");
-			SourceImage imgD = new SourceImage("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.53_f2_Dunkel.jpg");
-			/* Mix the pictures:
-			 * In the top region use the more dark version of the picture and
-			 * in the lower part of the picture use the brighter picture:
-			 */
-			BufferedImage image0 = img0.getImage();
-			BufferedImage imageD = imgD.getImage();
-			int iW = Math.min(img0.getWidth(), imgD.getWidth());
-			int iH = Math.min(img0.getHeight(), imgD.getHeight());
-			for (int iY = 0; iY < iH; ++iY) {
-				float facH = (float)iY/(float)(iH)*4 -.2f;
-				facH = Math.max(0f, Math.min(facH, 1f));
-				float facD = 1f-facH;
-				for (int iX = 0; iX < iW; ++iX) {
-					int iRGBH = image0.getRGB(iX, iY);
-					int iRGBD = imageD.getRGB(iX, iY);
-					int iRGB0 = Math.round((iRGBH & 0xFF0000) * facH + (iRGBD & 0xFF0000) * facD) & 0xFF0000
-							 |  Math.round((iRGBH & 0x00FF00) * facH + (iRGBD & 0x00FF00) * facD) & 0x00FF00
-							 |  Math.round((iRGBH & 0x0000FF) * facH + (iRGBD & 0x0000FF) * facD) & 0x0000FF ;
-					image0.setRGB(iX, iY, iRGB0);
-				}
-			}
-			sheetCI.setImage1(img0);
-			addManyImages2024Vik(sheetCI, null, new Random(THIS_YEAR*12+Calendar.JULY), .8f);
-			sheetCI.startMakingIt(strOutDir);
+			var sheet = new CalendarSheetAutoArrange1(THIS_YEAR, Calendar.JULY, mDates);
+			Draw1ImageI img; 
+			img = new Draw1ImageI(inDirMsGal23+"20240611_205308.jpg");
+			sheet.addImage(img);
+			img = new Draw1ImageI(inDirMsGal23+"20240606_164949a.jpg");
+			sheet.addImage(img);
+			img = new Draw1ImageI(inDirMsGal23+"20240604_155404a.jpg");
+			img.setCenterPoint(.5f, .41f);
+			img.dRot = -0.01f;
+			sheet.addImage(img);
+			img = new Draw1ImageI(inDirMsGal23+"20240603_152716.jpg");
+			sheet.addImage(img);
+			img = new Draw1ImageI(inDirMsGal23+"20240607_110330.jpg");
+			img.setCenterPoint(.6f, .52f);
+			sheet.addImage(img);
+			sheet.startMakingIt(strOutDir);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -212,7 +260,8 @@ public class FotoKalender1 extends FotoKalender {
 		if (trgOpt.bDoIt(Calendar.AUGUST)) {
 			boolean bIsTitleSheet = THIS_YEAR == 2025;
 			CalendarSheetAutoArrange1 sheet = new CalendarSheetAutoArrange1(THIS_YEAR, Calendar.AUGUST, mDates);
-			addManyImages2024Vik(sheet, null, new Random(THIS_YEAR*12+Calendar.AUGUST+2), bIsTitleSheet ? 1f : .15f);
+			addAndres2023Images(sheet, null, new Random(THIS_YEAR*12+Calendar.AUGUST+100000), bIsTitleSheet ? .5f : .15f);
+			addManyImages2024Vik(sheet, null, new Random(THIS_YEAR*12+Calendar.AUGUST+100000), bIsTitleSheet ? .5f : .15f);
 			if (bIsTitleSheet) {
 				addImages2024_Winter_Vik(sheet, null, null, 1f);
 			}
@@ -221,21 +270,37 @@ public class FotoKalender1 extends FotoKalender {
 				thr.join();
 				renameToTitle(strOutDir, "2508.jpg");
 			}
-			
 		}
 		
 		if (trgOpt.bDoIt(Calendar.SEPTEMBER)) try {
+			final String strSchool = "C:\\Users\\MiRoe\\Pictures\\GrundschuleMahlsdorf\\";
+			final String inDirVik2 = "C:\\Users\\MiRoe\\Pictures\\Bilder von Stephan 2022\\2022_01_01 Viktoria in 2022\\";
+			final String inDirV21= "C:\\Users\\MiRoe\\Pictures\\2021 Vik\\";
 			var sheet = new CalendarSheet(THIS_YEAR,  Calendar.SEPTEMBER, mDates);
+			sheet.prepareImage(5000);
 			SourceImage img1;
 			img1 = new SourceImage("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-06-27 um 18.04.24_79c869c8.jpg");
-			sheet.prepareImage(img1.getWidth());
-			sheet.drawImage(img1, .5,.46, 0, 0, 0.01, 1f, .99);
 			SourceImage img2 = new SourceImage("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-19 um 17.18.37_2321601f.jpg");
-			int iW = img2.getWidth();
-			int iH = img2.getHeight();
-			int iTH = sheet.getUsuableHeight()*9/26;
-			int iTW = iTH * iW / iH;
-			sheet.drawImage(img2, .5,.5, 0, (sheet.getUsuableWidth()-iTW)/2, 0, iTW, iTH);
+			int iSteg = sheet.getUsuableHeight()/200;
+			int iWC = img2.getWidth();
+			int iHC = img2.getHeight();
+			int iH2 = sheet.getUsuableHeight()*10/26;
+			int iW2 = iH2 * iWC / iHC;
+			int iW1 = (sheet.getUsuableWidth() -iW2-iSteg)/2;
+			int iH1 = (sheet.getUsuableHeight()-iH2-iSteg)/2;
+			int iX2 = iW1+iSteg;
+			int iX3 = iX2+iW2+iSteg;
+			int iY2 = iH1+iSteg;
+			int iY3 = iY2+iH2+iSteg;
+			sheet.drawImage(inDirAndre2023+"20230519_192036.jpg",     .5,.5, 0, 0  , 0  , iW1, iH1);
+			sheet.drawImage(inDirAndre2023+"IMG-20230517-WA0019.jpg", .5,.6, 0, iX2, 0  , iW2, iH1);
+			sheet.drawImage(inDirVik2+"20220511_074609.jpg",          .5,.5,90, iX3, 0  , iW2, iH1+iH2+iSteg);
+			sheet.drawImage(inDirV21+"WhatsApp Image 2021-08-21 at 20.13.53 (2).jpeg",
+																	  .5,.5, 0, 0  , iY2, iW1, iH2);
+			sheet.drawImage(img2,                                     .5,.5, 0, iX2, iY2, iW2, iH2);
+			sheet.drawImage(strSchool+"Kletterhaeuser.jpg",           .5,.5, 0, 0  , iY3, iW1, iH1);
+			sheet.drawImage(img1,                                     .5,.5, 0, iX2, iY3, iW2, iH1);
+			sheet.drawImage(strSchool+"22_Commputerraum-1024x680.jpg",.5,.5, 0, iX3, iY3, iW1, iH1);
 			sheet.drawCalDates();
 			sheet.writeInDir(strOutDir);
 		} catch (Exception ex) {
@@ -245,33 +310,30 @@ public class FotoKalender1 extends FotoKalender {
 		if (trgOpt.bDoIt(Calendar.OCTOBER)) try {
 			CalendarSheetAutoArrange1 sheet = new CalendarSheetAutoArrange1(THIS_YEAR, Calendar.OCTOBER, mDates);
 			Draw1ImageI img;
-			img = new Draw1ImageI(inDirWhatsApp+"IMG-20220319-WA0016b.jpg");
+			img = new Draw1ImageI(inDirMsGal23+"20240414_165444(0).jpg");
 			sheet.addImage(img);
-			img = new Draw1ImageI(inDirWhatsApp+"IMG-20220320-WA0017.jpg");
+			img = new Draw1ImageI(inDirMsGal23+"20240414_164712(0).jpg");
+			img.setCenterPoint(.3f, .5f);
+			img.dRot = 90;
 			sheet.addImage(img);
-			img = new Draw1ImageI(inDirWhatsApp+"IMG-20220320-WA0015.jpg");
-			img.setCenterPoint(0.45f, 0.5f);
+			img = new Draw1ImageI(inDirMsGal23+"20240414_164117.jpg");
+			img.dRot = 90;
 			sheet.addImage(img);
-			img = new Draw1ImageI(inDirWhatsApp+"IMG-20220320-WA0016.jpg");
-			img.setCenterPoint(.6f, .5f);
+			img = new Draw1ImageI(inDirMsGal23+"20240414_175021.jpg");
+			img.setSourceBounds(new Rectangle(1900, 1300, 1300, 800));
+			img.dRot = -15;
 			sheet.addImage(img);
-			Thread executer = sheet.startMakingIt(strOutDir);
-			executer.join();
-			if (THIS_YEAR == 2024) {
-				//renameToTitle(strOutDir, "2410.jpg");
-			}
+			sheet.startMakingIt(strOutDir);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 
 		if (trgOpt.bDoIt(Calendar.NOVEMBER)) try {
-			CalendarSheetAutoArrange1 sheet = new CalendarSheetAutoArrange1(THIS_YEAR, Calendar.NOVEMBER, mDates);
+			var sheet = new CalendarSheetCenterImage(THIS_YEAR, Calendar.NOVEMBER, mDates);
 			Draw1ImageI img;
-			img = new Draw1ImageI(inDirWhatsAp0+"WhatsApp Bild 2023-08-30 um 17.28.37.jpg");
-			sheet.addImage(img);
-			img = new Draw1ImageI(inDirWhatsAp0+"WhatsApp Bild 2023-08-30 um 17.28.38.jpg");
-			img.setCenterPoint(.43f, .5f);
-			sheet.addImage(img);
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20231217_125530.jpg");
+			sheet.setImage1(img);
+			addManyImages(new File("C:\\Users\\MiRoe\\Pictures\\2021 Vik"), "jpeg", sheet, null, new Random(THIS_YEAR*12+Calendar.NOVEMBER), 0.2f, 2f);
 			sheet.startMakingIt(strOutDir);
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -286,10 +348,19 @@ public class FotoKalender1 extends FotoKalender {
 			float y2 = h1+0.006f*CalendarSheet.fWeight;
 			float h2 = 1f-y2;
 			sheet.drawImage(inDirWhatsAp0+"WhatsApp Bild 2022-12-23 um 21.05.59.jpg",.46, .53,0,   0, y2, .25 , h2);
-			sheet.drawImage(inDirWhatsAp0+"WhatsApp Bild 2022-12-24 um 22.08.38.jpg",.5 , .5, 0,.256, y2, .17 , h2);
-			sheet.drawImage(inDirG +                           "20221224_180530.jpg",.45, .6, 0,.432, y2, .136, h2);
-			sheet.drawImage(inDirWhatsAp0+"WhatsApp Bild 2022-12-24 um 22.08.44.jpg",.55, .5, 0,.574, y2, .17 , h2);
-			sheet.drawImage(inDirWhatsAp0+"WhatsApp Bild 2022-12-25 um 12.11.54_3.jpg",.5,.5, 0, .75 , y2,.25 , h2);
+			if (trgOpt.m_bAndreMarlies) {
+				sheet.drawImage(inDirWhatsAp0+"WhatsApp Bild 2022-12-24 um 22.08.38.jpg",.5 , .5, 0,.256, y2, .17 , h2);
+				sheet.drawImage(inDirG +                           "20221224_180530.jpg",.45, .6, 0,.432, y2, .136, h2);
+				sheet.drawImage(inDirWhatsAp0+"WhatsApp Bild 2022-12-24 um 22.08.44.jpg",.55, .5, 0,.574, y2, .17 , h2);
+				sheet.drawImage(inDirWhatsAp0+"WhatsApp Bild 2022-12-25 um 12.11.54_3.jpg",.5,.5, 0, .75 , y2,.25 , h2);
+			} else {
+				float wSteg = 0.006f;
+				sheet.drawImage(inDirMsGal23 + "20231224_135039.jpg"          ,.5 , .5, 90,         .256, y2, .16 , h2);
+				float x4 = sheet.getflLastX();
+				float w5 = (1-x4)/2 - wSteg;
+				sheet.drawImage(inDirMsGal23 + "20231224_145748.jpg"          ,.5 , .5, 0, x4+  wSteg   , y2,  w5 , h2);
+				sheet.drawImage(inDirMsGal23 + "20231224_155821.jpg"          ,.5 , .5, 0, x4+2*wSteg+w5, y2,  w5 , h2);
+			}
 			sheet.drawCalDates();
 			sheet.writeInDir(strOutDir);
 		} catch (Exception ex) {
@@ -661,7 +732,6 @@ public class FotoKalender1 extends FotoKalender {
 	} /* end  addManyImages(CalendarSheetCenterImage sheet, Random randomGen, float maxRandomToPaint) */
 
 	void addAndres2023Images(ICalendarSheetAddImage sheet, IHintsDrawImages hints, Random randomGen, float maxRandomToPaint) {
-		final String inDirAndre2023 = "C:\\Users\\MiRoe\\Pictures\\2023 Famile Senior Köhler\\";
 		Draw1ImageI img;
 		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
 			img = new Draw1ImageI(inDirAndre2023+"20230512_055736.jpg");
@@ -765,13 +835,18 @@ public class FotoKalender1 extends FotoKalender {
 			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-06-27 um 14.31.24_66612c5d.jpg");
 			sheet.addImage(img, hints);
 		}
-		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint/2) {
 			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-06-27 um 14.31.25_2ec8d15a.jpg");
-			img.setCenterPoint(.6f, .5f);
+			img.setCenterPoint(.5f, .5f);
 			sheet.addImage(img, hints);
 		}
 		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
 			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-06-27 um 14.31.25_97703e13.jpg");
+			img.setCenterPoint(.45f, .5f);
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-06-27 um 18.04.24_79c869c8.jpg");
 			img.setCenterPoint(.45f, .5f);
 			sheet.addImage(img, hints);
 		}
@@ -794,7 +869,8 @@ public class FotoKalender1 extends FotoKalender {
 			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-08 um 12.55.31_5bbc7308.jpg");
 			sheet.addImage(img, hints);
 		}
-		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+		boolean bAddVik1 = randomGen == null || randomGen.nextFloat() < maxRandomToPaint;
+		if (bAddVik1) {
 			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.48_03b1c05a.jpg");
 			sheet.addImage(img, hints);
 		}
@@ -822,79 +898,81 @@ public class FotoKalender1 extends FotoKalender {
 			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.49_28cfac0c.jpg");
 			sheet.addImage(img, hints);
 		}
-		/* The next two pictures are very similar, so only one of them is enough */
-		bAddedImage = randomGen == null || randomGen.nextFloat() < maxRandomToPaint;
-		if (bAddedImage) {
+		/* Some of the next pictures are very similar, so only one of them is enough */
+		boolean bAddedAdrSteph = randomGen == null || randomGen.nextFloat() < maxRandomToPaint;
+		if (bAddedAdrSteph) {
 			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.49_284886d2.jpg");
 			sheet.addImage(img, hints);
 		}
-		if (bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+		if (!bAddedAdrSteph && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
 			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.49_23401443.jpg");
 			sheet.addImage(img, hints);
 		}
-		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+		if (!bAddVik1 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
 			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.49_c8fefea7.jpg");
 			sheet.addImage(img, hints);
 		}
-		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+		if (!bAddedAdrSteph && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
 			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.49_ee28eca1.jpg");
 			sheet.addImage(img, hints);
+			bAddedAdrSteph = true;
 		}
 		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
 			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.49_ff229a69.jpg");
 			sheet.addImage(img, hints);
 		}
 		/* The next nine pictures are very similar, so only one of them is enough */
-		bAddedImage = randomGen == null || randomGen.nextFloat() < maxRandomToPaint;
-		if (bAddedImage) {
+		if (!bAddedAdrSteph && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
 			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.51_0ab75f79.jpg");
 			img.setCenterPoint(.52f, .35f);
 			sheet.addImage(img, hints);
+			bAddedAdrSteph = true;
 		}
-		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+		if (!bAddedAdrSteph && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
 			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.51_14c8f1d6.jpg");
 			img.setCenterPoint(.52f, .35f);
 			sheet.addImage(img, hints);
-			bAddedImage = true;
+			bAddedAdrSteph = true;
 		}
-		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+		if (!bAddedAdrSteph && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
 			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.51_5873f787.jpg");
 			img.setCenterPoint(.45f, .5f);
 			sheet.addImage(img, hints);
-			bAddedImage = true;
+			bAddedAdrSteph = true;
 		}
-		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+		if (!bAddedAdrSteph && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
 			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.51_e56be3e4.jpg");
+			img.setCenterPoint(.5f, .2f);
 			sheet.addImage(img, hints);
-			bAddedImage = true;
+			bAddedAdrSteph = true;
 		}
-		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+		if (!bAddedAdrSteph && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
 			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.52_0cabe4a1.jpg");
 			img.setCenterPoint(.5f, .25f);
 			sheet.addImage(img, hints);
-			bAddedImage = true;
+			bAddedAdrSteph = true;
 		}
-		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+		if (!bAddedAdrSteph && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
 			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.52_0fafdc70.jpg");
 			img.setCenterPoint(.45f, .5f);
 			sheet.addImage(img, hints);
-			bAddedImage = true;
+			bAddedAdrSteph = true;
 		}
-		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+		if (!bAddedAdrSteph && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
 			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.52_1f647e82.jpg");
 			img.setCenterPoint(.52f, .35f);
 			sheet.addImage(img, hints);
-			bAddedImage = true;
+			bAddedAdrSteph = true;
 		}
-		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+		if (!bAddedAdrSteph && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
 			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.52_5af1927b.jpg");
 			sheet.addImage(img, hints);
-			bAddedImage = true;
+			bAddedAdrSteph = true;
 		}
-		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+		if (!bAddedAdrSteph && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
 			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.52_6dffb8cc.jpg");
 			sheet.addImage(img, hints);
-			bAddedImage = true;
+			bAddedAdrSteph = true;
 		}
 		/* The next two pictures are very similar, so only one of them is enough */
 		bAddedImage = randomGen == null || randomGen.nextFloat() < maxRandomToPaint;
@@ -905,6 +983,7 @@ public class FotoKalender1 extends FotoKalender {
 		}
 		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
 			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.52_ec1adaac.jpg");
+			img.setCenterPoint(.4f, .5f);
 			sheet.addImage(img, hints);
 		}
 		/* The next three pictures are very similar, so only one of them is enough */
@@ -930,11 +1009,42 @@ public class FotoKalender1 extends FotoKalender {
 		}
 		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
 			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240520_174924.jpg");
-			img.setCenterPoint(.5f, .6f);
 			img.dRot = 90;
 			sheet.addImage(img, hints);
 		}
+		bAddedImage = randomGen == null || randomGen.nextFloat() < maxRandomToPaint;
+		if (bAddedImage) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_170240.jpg");
+			img.setCenterPoint(.6f, .5f);
+			sheet.addImage(img, hints);
+		}
+		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_172356.jpg");
+			img.dRot = 90;
+			sheet.addImage(img, hints);
+			bAddedImage = true;
+		}
+		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_172419.jpg");
+			img.dRot = 90;
+			sheet.addImage(img, hints);
+			bAddedImage = true;
+		}
+		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_170707.jpg");
+			img.dRot = -60;
+			img.setCenterPoint(.7f, .7f);
+			sheet.addImage(img, hints);
+			bAddedImage = true;
+		}
+		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_170252.jpg");
+			img.setCenterPoint(.5f, .7f);
+			sheet.addImage(img, hints);
+			bAddedImage = true;
+		}
 	} /* end  addManyImages2024Vik(CalendarSheetCenterImage sheet, Random randomGen, float maxRandomToPaint) */
+	
 	
 	void addImages2024_Winter_Vik(ICalendarSheetAddImage sheet, IHintsDrawImages hints, Random randomGen, float maxRandomToPaint) {
 		Draw1ImageI img;
@@ -945,6 +1055,145 @@ public class FotoKalender1 extends FotoKalender {
 			sheet.addImage(img, hints);
 		}
 	}
+
+	
+	void addImagesByVik202407(ICalendarSheetAddImage sheet, IHintsDrawImages hints, Random randomGen, float maxRandomToPaint) {
+		Draw1ImageI img;
+		boolean bAddedImage = randomGen == null || randomGen.nextFloat() < maxRandomToPaint;
+		if (bAddedImage) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_170831.jpg");
+			img.dRot = 90;
+			sheet.addImage(img, hints);
+		}
+		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_170929.jpg");
+			img.dRot = 180;
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_171601.jpg");
+			img.dRot = 0;
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_171729.jpg");
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_171833.jpg");
+			img.dRot = 0;
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_171941.jpg");
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_172215.jpg");
+			img.dRot = 90;
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_172243.jpg");
+			img.dRot = 90;
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_172259.jpg");
+			img.dRot = 90;
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_172334.jpg");
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_172356.jpg");
+			img.dRot = 90;
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_172419.jpg");
+			img.dRot = 90;
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_172510.jpg");
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_172555.jpg");
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_170103.jpg");
+			img.dRot = 180;
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_170106.jpg");
+			img.dRot = 180;
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_170124.jpg");
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_170240.jpg");
+			var rect = new Rectangle(200, 0, img.getWidth()-200, img.getHeight());
+			img.setSourceBounds(rect);
+			img.setCenterPoint(.5f, .55f);
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_170252.jpg");
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_170308.jpg");
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_170431.jpg");
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_170451.jpg");
+			sheet.addImage(img, hints);
+		}
+		bAddedImage = randomGen == null || randomGen.nextFloat() < maxRandomToPaint;
+		if (bAddedImage) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_170609.jpg");
+			sheet.addImage(img, hints);
+		}
+		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_170611.jpg");
+			sheet.addImage(img, hints);
+			bAddedImage = true;
+		}
+		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_170613.jpg");
+			sheet.addImage(img, hints);
+			bAddedImage = true;
+		}
+		if (!bAddedImage && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_170615.jpg");
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_170707.jpg");
+			img.dRot = -60;
+			img.setCenterPoint(.7f, .7f);
+			sheet.addImage(img, hints);
+		}
+		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
+			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_170741.jpg");
+			img.dRot = 90;
+			sheet.addImage(img, hints);
+		}
+	} /* end  addImagesByVik202407(ICalendarSheetAddImage sheet, IHintsDrawImages hints, Random randomGen, float maxRandomToPaint)  */
+
 
 }
 

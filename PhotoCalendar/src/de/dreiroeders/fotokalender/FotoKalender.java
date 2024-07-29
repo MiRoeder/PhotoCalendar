@@ -17,13 +17,14 @@ import java.util.TimeZone;
 
 import javax.imageio.ImageIO;
 
+import de.dreiroeders.io.MiRoeFileExtFilter;
 import de.dreiroeders.workingonimages.BufferedImageSetPixImg_ABGR;
 import de.dreiroeders.workingonimages.BuffrdImgSetPixelD;
 import de.dreiroeders.workingonimages.Draw1ImageI;
 import de.dreiroeders.workingonimages.IHintsDrawImages;
 import de.dreiroeders.workingonimages.MiRoesDraw;
 import de.dreiroeders.workingonimages.SourceImage;
-
+import de.dreiroeders.workingonimages.EFillType;
 
 
 public class FotoKalender {
@@ -40,13 +41,13 @@ public class FotoKalender {
 		mDates = new PersonalDates(THIS_YEAR);
 	}
 
-	
+	public static final String inDirMsGal23 = "C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\";
+
 	public void makeViksGeburtstag(int nMonth, String strOutDir) {
 		try {
 			CalendarSheet sheet = new CalendarSheet(THIS_YEAR, nMonth, this.mDates);
 			final String inDir1 = "C:\\Users\\MiRoe\\Pictures\\2019 Sophie Viktoria\\1_Abend_der_Geburt\\";
 			final String inDirV21 = "C:\\Users\\MiRoe\\Pictures\\2021 Vik\\";
-			final String inDirWhatsApp1 = "C:\\Users\\MiRoe\\Pictures\\WhatsApp\\Media\\WhatsApp Images\\";
 			final String inDirConny = "C:\\Users\\MiRoe\\Pictures\\Constanzess\\Camera\\";
 			final String inDirStep = "C:\\Users\\MiRoe\\Pictures\\Bilder von Stephan 2022\\2022_04_10 Kindergeburtstag\\";
 			sheet.prepareImage(3867);
@@ -81,16 +82,16 @@ public class FotoKalender {
 			}
 			float hGK = facWid*720/sheet.getUsuableHeight();
 			if (y7 > 0.98f) {
-				sheet.drawImage(inDirStep+"20220410_145536.jpg" ,                        .5, 0.5, 0, 0.000f, 0.44f*y3,     0.4 , h2);
+				sheet.drawImage(inDirMsGal23+"20240414_143854.jpg" ,                 .43, 0.5, 0, 0.000f, 0.44f*y3,       0.4 , h2);
 				float y6 = 0.44f*y3+hGK*.9f;
 				if (y6 < 0.95f && y6 < y7) {
-					sheet.drawImage(inDirV21+"WhatsApp Image 2021-12-11 at 13.34.17.jpeg",.5,0.5, 0, 0.402, y6     ,       0.2 ,y7-y6);
+					sheet.drawImage(inDirStep+"20220410_145536.jpg"                   ,.5,0.5, 0, 0.402,   y6     ,       0.2 ,y7-y6);
 				} else {
 					System.out.println("Problem in  makeViksGeburtstag(,) : y6 = "+ y6);
 				}
-				sheet.drawImage(inDirWhatsApp1+"IMG-20221121-WA0009.jpg",                .5, 0.55,0, 0.604,  0.44f*y3,     0.396, h2);
-				sheet.drawImage(inDirV21+"Geburtstagskuchen.png",                        .5, 0.5, 0, 0.402f, 0.44f*y3,     0.2  , hGK);
-				makeNumberOnViksGeburtstagskuchen(sheet,                                             0.480f,0.44f*y3+0.1f ,0.06f, hGK/4f);
+				sheet.drawImage(inDirMsGal23+"20240414_131107.jpg",                   .5, 0.5, 0, 0.604,  0.44f*y3,     0.396, h2);
+				sheet.drawImage(inDirV21+"Geburtstagskuchen.png",                     .5, 0.5, 0, 0.402f, 0.44f*y3,     0.2  , hGK);
+				makeNumberOnViksGeburtstagskuchen(sheet,                                          0.480f,0.44f*y3+0.1f ,0.06f, hGK/4f);
 			} else {
 				sheet.drawImage(inDirConny+"20220402_152520b.jpg",                        .4 ,.3, 0, 0.0  , 0.44*y3,  1f   , 1-0.44*y3);
 			}
@@ -1038,6 +1039,26 @@ public class FotoKalender {
 		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
 			img = new Draw1ImageI("https://www.3roeders.de/pixabay.com/playground-1051219_1280.jpg");
 			sheet.addImage(img, hints);
+		}
+	}
+	
+	public void addManyImages(File directory, String sFileExt, ICalendarSheetAddImage sheet, IHintsDrawImages hints, Random randomGen, float maxRandomToPaint, float failFactor) {
+		if (failFactor < 1f) {
+			failFactor = 1f;
+			if (randomGen != null) {
+				System.err.println("FotoKalender.addManyImages: parameter failFactor will be ignored.");
+			}
+		}
+		File[] inFiles = directory.listFiles(new MiRoeFileExtFilter(sFileExt));
+		float curMxRnd2Paint = maxRandomToPaint;
+		for (File f1 : inFiles) {
+			if (randomGen == null || randomGen.nextFloat() < curMxRnd2Paint) {
+				Draw1ImageI img = new Draw1ImageI(f1, EFillType.CutSource);
+				sheet.addImage(img, hints);
+				curMxRnd2Paint *= failFactor;
+			} else {
+				curMxRnd2Paint = maxRandomToPaint;
+			}
 		}
 	}
 	

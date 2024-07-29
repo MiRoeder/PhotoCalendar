@@ -22,6 +22,15 @@ public class Draw1ImageWithTxt extends Draw1ImageI {
 		this.m_height = height;
 	}
 
+	public Draw1ImageWithTxt(SourceImage src, String sBottomText, Color colorText, String strFontName, int iFontStyle, int height) {
+		super(src.getImage());
+		this.m_sBottomText = sBottomText;
+		this.m_colorText = colorText;
+		this.m_strFontName = strFontName;
+		this.m_iFontStyle = iFontStyle;
+		this.m_height = height;
+	}
+
 	@Override
 	public void drawOnIntermediate(BufferedImage imgIntermediate, int iXExtraRand, int iYExtraRand, Graphics2D painter,
 			AffineTransform transform) {

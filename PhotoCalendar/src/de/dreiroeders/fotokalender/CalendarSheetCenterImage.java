@@ -22,6 +22,7 @@ public class CalendarSheetCenterImage
 	private Draw1ImageI centerImage;
 	private ArrayList<Draw1ImageI>[] mPics;
 	
+	@SuppressWarnings("unchecked")
 	public CalendarSheetCenterImage(int nYear, int month, PersonalDates mDates) {
 		super(nYear, month, mDates);
 		mPics = new ArrayList[2];
