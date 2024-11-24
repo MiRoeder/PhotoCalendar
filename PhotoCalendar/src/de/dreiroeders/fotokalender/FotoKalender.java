@@ -527,11 +527,11 @@ public class FotoKalender {
 			sheet.drawPartImage(inDir1+ "DSC05435.jpg", 0.5, 0.5, 4600, 3000,
 					                                          1.10,  0.0  , 0.0,                         0.90, 1);
 			
-			sheet.drawImage(inDir1+ "DSC05396.JPG", 0.5, 0.5, 0.00,  0.0  , 0.00                       , 0.22, 0.20);
-			sheet.drawImage(inDir1+ "DSC05389.JPG", 0.3, 0.5, 0.00,  0.0  , sheet.getflLastY() + 0.005f, 0.18, 0.13);
-			sheet.drawImage(inDir1+ "DSC05397.JPG", 0.5, 0.5, 90,    0.0  , sheet.getflLastY() + 0.005f, 0.18, 0.27);
-			sheet.drawImage(inDir1+ "DSC05398.JPG", 0.5, 0.5, 0.00,  0.0  , sheet.getflLastY() + 0.005f, 0.18, 0.19);
-			float curY = sheet.getflLastY() + 0.005f;
+			sheet.drawImage(inDir1+ "DSC05396.JPG", 0.5, 0.5, 0.00,  0.0  , 0.00                       , 0.17, 0.20);
+			sheet.drawImage(inDir1+ "DSC05389.JPG", 0.3, 0.5, 0.00,  0.0  , sheet.getflLastY() + 0.005f, 0.17, 0.13);
+			sheet.drawImage(inDir1+ "DSC05397.JPG", 0.5, 0.5, 90,    0.0  , sheet.getflLastY() + 0.005f, 0.17, 0.27);
+			sheet.drawImage(inDir1+ "DSC05398.JPG", 0.5, 0.5, 0.00,  0.0  , sheet.getflLastY() + 0.005f, 0.17, 0.19);
+			float curY = sheet.getflLastY() + 0.01f;
 			if (curY < 0.97) {
 			    sheet.drawImage(inDir1+ "DSC05468_Calendar.png",
                  	                                0.5, 0.5, 0.00,  0.0,  curY,                         0.25, 1-curY);
@@ -1082,14 +1082,21 @@ public class FotoKalender {
 		PersonalDate hochzeit;
 		mDates.addCalEvent(PersonalDate.createBirthday("* Michael", 15, 3, THIS_YEAR));
 		mDates.addCalEvent(PersonalDate.createBirthday("* Constanze", 11, 8, THIS_YEAR));
-		hochzeit = PersonalDate.create1BitmapsBackground("Constanze", new File("res\\Hochzeitsringe.png"), "Michael", 1f, 0f, 7, 5, THIS_YEAR);
+		hochzeit = PersonalDate.create1BitmapsBackground("Constanze", new File("res/Hochzeitsringe.png"), "Michael", 1f, 0f, 7, 5, THIS_YEAR);
 		mDates.addCalEvent(hochzeit);
 		mDates.addCalEvent(PersonalDate.createBirthday("* Adriana", 20, 12, THIS_YEAR));
 		mDates.addCalEvent(PersonalDate.createBirthday("* Stephan", 16, 2, THIS_YEAR));
 		mDates.addCalEvent(PersonalDate.createBirthday("* Viktoria", 31, 3, THIS_YEAR));
 		mDates.addCalEvent(PersonalDate.createBirthday("Einschulung Viktoria", 7, 9, 2024));
-		hochzeit = PersonalDate.create1BitmapsBackground("Adriana", new File("res\\Hochzeitsringe.png"), "Stephan", 1f, 0f, 16, 12, THIS_YEAR);
+		hochzeit = PersonalDate.create1BitmapsBackground("Adriana", new File("res/Hochzeitsringe.png"), "Stephan", 1f, 0f, 16, 12, THIS_YEAR);
 		mDates.addCalEvent(hochzeit);
+		if (THIS_YEAR == 2025) {
+			var KabarettBesuch = new PersonalDate("{0,date,EE} ", 22, 2, 2025, (byte)0);
+			KabarettBesuch.mBackgrounds = new ArrayList<IDaysBackground>(1);
+			DaysBackgroundImage img = new DaysBackgroundImage(2, 0f, new File("C:\\Users\\MiRoe\\Pictures\\Juergen_von_der_Lippe.png"), .8f);
+			KabarettBesuch.mBackgrounds.add(img);
+			mDates.addCalEvent(KabarettBesuch);
+		}
 	}
 	
 	public void addStephansFamilyEvents() {
@@ -1206,10 +1213,10 @@ public class FotoKalender {
 	}
 	
 	public void addSundays4Buying() {
-		// https://www.morgenpost.de/berlin/article237317419/Verkaufsoffene-Sonntage-2023-in-Berlin-Das-sind-die-Termine.html
-		if (this.THIS_YEAR == 2023) {
+		// Berliner Morgenpost 2. November 2024
+		if (this.THIS_YEAR == 2025) {
 			GregorianCalendar sun4buy;
-			sun4buy = new GregorianCalendar(2023, Calendar.JANUARY, 29);  //29. Januar 2023 - Anlass ist die Grüne Woche in Berlin
+			sun4buy = new GregorianCalendar(2025, Calendar.JANUARY, 26);  //Anlass ist die Grüne Woche in Berlin
 			mDates.addCalEvent(new PersonalDate("", sun4buy, PersonalDate.SUNDAY4BUYING));
 			//sun4buy = new GregorianCalendar(2020, Calendar.FEBRUARY, 23);  //Berlinale 17. Februar 2019
 			//mDates.addCalEvent(new PersonalDate("", sun4buy, PersonalDate.SUNDAY4BUYING));
@@ -1217,7 +1224,7 @@ public class FotoKalender {
 			//mDates.addCalEvent(new PersonalDate("", sun4buy, PersonalDate.SUNDAY4BUYING));
 			//sun4buy = new GregorianCalendar(2020, Calendar.JUNE, 21);  // Fête de la musique
 			//mDates.addCalEvent(new PersonalDate("", sun4buy, PersonalDate.SUNDAY4BUYING));
-			sun4buy = new GregorianCalendar(2023, Calendar.SEPTEMBER, 3); // 3. September 2023 - Anlass ist die Internationale Funkausstellung (IFA)
+			sun4buy = new GregorianCalendar(2025, Calendar.SEPTEMBER, 7); // Anlass ist die Internationale Funkausstellung (IFA)
 			mDates.addCalEvent(new PersonalDate("", sun4buy, PersonalDate.SUNDAY4BUYING));
 			// 01.10.2017: Feier zum Tag der Deutschen Einheit, Eröffnungswochenende Berlin leuchtet – Lichterfest 2017 
 			//sun4buy = new GregorianCalendar(2017, Calendar.OCTOBER, 1);
@@ -1229,14 +1236,15 @@ public class FotoKalender {
 			//mDates.addCalEvent(new PersonalDate("", sun4buy, PersonalDate.SUNDAY4BUYING));
 		}
 		// Adventssonntage: Veranstaltung von zahlreichen Weihnachtsmärkten, bereits in addAdvents() gesetzt
-		if (this.THIS_YEAR > 2023) {
+		// 7. und 21. Dezember 2025
+		if (this.THIS_YEAR > 2025) {
 			// vorläufige Einschätzungen:
 			GregorianCalendar sun4buy;
 			sun4buy = new GregorianCalendar(2023, Calendar.JANUARY, 29);  //29. Januar 2023 - Anlass ist die Grüne Woche in Berlin
 			sun4buy.add(GregorianCalendar.DAY_OF_YEAR, (this.THIS_YEAR - 2023)*52); // wohl 52 Wochen später in 2024
 			mDates.addCalEvent(new PersonalDate("", sun4buy, PersonalDate.SUNDAY4BUYING));
-			sun4buy = new GregorianCalendar(2023, Calendar.SEPTEMBER, 3); // 3. September 2023 - Anlass ist die Internationale Funkausstellung (IFA)
-			sun4buy.add(GregorianCalendar.DAY_OF_YEAR, (this.THIS_YEAR - 2023)*52+7); // 08.09.2024 Anlass: Internationale Funkausstellung IFA
+			sun4buy = new GregorianCalendar(2025, Calendar.SEPTEMBER, 7); // Anlass ist die Internationale Funkausstellung (IFA)
+			sun4buy.add(GregorianCalendar.DAY_OF_YEAR, (this.THIS_YEAR - 2025)*52); // 08.09.2024 Anlass: Internationale Funkausstellung IFA
 			mDates.addCalEvent(new PersonalDate("", sun4buy, PersonalDate.SUNDAY4BUYING));
 		}
 	}
@@ -1322,6 +1330,7 @@ public class FotoKalender {
 				easterSunday = EasterSunday.createEasterSunday(THIS_YEAR);
 			}
 			addVacations("{0,date,EE} Schulfrei",  3, 2, 2025     ,  8, 2, 2025); //Winterferien 2025
+			addVacations("{0,date,EE} Schulfrei",  2, 2, 2026     ,  7, 2, 2026); //Winterferien 2026
 			
 			GregorianCalendar march7 = new GregorianCalendar(THIS_YEAR, GregorianCalendar.MARCH, 7);
 			if (march7.get(GregorianCalendar.DAY_OF_WEEK) == GregorianCalendar.MONDAY) {
@@ -1332,6 +1341,7 @@ public class FotoKalender {
 				mDates.addCalEvent(PersonalDate.createDate("{0,date,EE} Schulfrei", march9, 0, PersonalDate.ADRIANA_HAS_FREE));
 			}
 
+			// Osterferien usually a week before Easter and a week after Easter
 			GregorianCalendar ferien1 = (GregorianCalendar)easterSunday.clone();
 			GregorianCalendar ferien9 = (GregorianCalendar)easterSunday.clone();
 			ferien1.add(GregorianCalendar.DAY_OF_MONTH, -7);
@@ -1345,6 +1355,8 @@ public class FotoKalender {
 			if (nYear != 2024) {
 			    mDates.addCalEvent(PersonalDate.createDate("{0,date,EE} Schulfrei", easterSunday, +51, PersonalDate.ADRIANA_HAS_FREE)); // Dienstag nach Pfingsten
 			}
+			
+			// bridge day before or after May 1st:
 			GregorianCalendar april30 = new GregorianCalendar(THIS_YEAR, GregorianCalendar.APRIL, 30);
 			if (april30.get(GregorianCalendar.DAY_OF_WEEK) == GregorianCalendar.MONDAY) {
 				mDates.addCalEvent(PersonalDate.createDate("{0,date,EE} Schulfrei", april30, 0, PersonalDate.ADRIANA_HAS_FREE));
@@ -1353,11 +1365,15 @@ public class FotoKalender {
 			if (may02.get(GregorianCalendar.DAY_OF_WEEK) == GregorianCalendar.FRIDAY) {
 				mDates.addCalEvent(PersonalDate.createDate("{0,date,EE} Schulfrei", may02, 0, PersonalDate.ADRIANA_HAS_FREE));
 			}
-			addVacations("{0,date,EE} Schulfrei", 18, 7, 2024, 30, 8, 2024); 	// Sommerferien 2024
+			
 			addVacations("{0,date,EE} Schulfrei", 24, 7, 2025,  6, 9, 2025); 	// Sommerferien 2025
-			addVacations("{0,date,EE} Schulfrei", 21,10, 2024,  2,11, 2024);	// Herbstferien 2024
-			addVacations("{0,date,EE} Schulfrei", 23,12, 2023,  5, 1, 2024); 	// Weihnachtsferien 2023/24
+			addVacations("{0,date,EE} Schulfrei",  9, 7, 2026, 22, 8, 2026); 	// Sommerferien 2026
+			addVacations("{0,date,EE} Schulfrei",  1, 7, 2027, 14, 8, 2027); 	// Sommerferien 2027
+			addVacations("{0,date,EE} Schulfrei", 20,10, 2025,  1,11, 2025);	// Herbstferien 2025
+			addVacations("{0,date,EE} Schulfrei", 19,10, 2026, 31,10, 2026);	// Herbstferien 2026
+			addVacations("{0,date,EE} Schulfrei", 11,10, 2027, 23,10, 2027);	// Herbstferien 2027
 			addVacations("{0,date,EE} Schulfrei", 23,12, 2024, 31,12, 2024); 	// Weihnachtsferien 2024/25
+			addVacations("{0,date,EE} Schulfrei", 22,12, 2025,  2, 1, 2026); 	// Weihnachtsferien 2025/26
 			GregorianCalendar oct2 = new GregorianCalendar(THIS_YEAR, GregorianCalendar.OCTOBER, 2);
 			if (oct2.get(GregorianCalendar.DAY_OF_WEEK) == GregorianCalendar.MONDAY) {
 				mDates.addCalEvent(PersonalDate.createDate("{0,date,EE} Schulfrei", oct2, 0, PersonalDate.ADRIANA_HAS_FREE));

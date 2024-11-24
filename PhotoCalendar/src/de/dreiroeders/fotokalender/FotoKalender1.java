@@ -18,9 +18,10 @@ import de.dreiroeders.workingonimages.MiRoesDraw;
 import de.dreiroeders.workingonimages.SourceImage;
 
 
-public class FotoKalender1 extends FotoKalender {
+public class FotoKalender1 extends PhotoCalendar {
 
 	final String inDirAndre2023 = "C:\\Users\\MiRoe\\Pictures\\2023 Famile Senior Köhler\\";
+	final String inDirS23 = "C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\";
 
 	public static void main(String[] args) {
 		try {
@@ -273,17 +274,12 @@ public class FotoKalender1 extends FotoKalender {
 		}
 		
 		if (trgOpt.bDoIt(Calendar.SEPTEMBER)) try {
-			final String strSchool = "C:\\Users\\MiRoe\\Pictures\\GrundschuleMahlsdorf\\";
-			final String inDirVik2 = "C:\\Users\\MiRoe\\Pictures\\Bilder von Stephan 2022\\2022_01_01 Viktoria in 2022\\";
-			final String inDirV21= "C:\\Users\\MiRoe\\Pictures\\2021 Vik\\";
 			var sheet = new CalendarSheet(THIS_YEAR,  Calendar.SEPTEMBER, mDates);
 			sheet.prepareImage(5000);
-			SourceImage img1;
-			img1 = new SourceImage("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-06-27 um 18.04.24_79c869c8.jpg");
-			SourceImage img2 = new SourceImage("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-19 um 17.18.37_2321601f.jpg");
+			SourceImage img22 = new SourceImage(inDirWhatsAp0+"WhatsApp Bild 2024-10-19 um 14.49.11_ca431885.jpg");
 			int iSteg = sheet.getUsuableHeight()/200;
-			int iWC = img2.getWidth();
-			int iHC = img2.getHeight();
+			int iWC = img22.getWidth();
+			int iHC = img22.getHeight();
 			int iH2 = sheet.getUsuableHeight()*10/26;
 			int iW2 = iH2 * iWC / iHC;
 			int iW1 = (sheet.getUsuableWidth() -iW2-iSteg)/2;
@@ -292,15 +288,17 @@ public class FotoKalender1 extends FotoKalender {
 			int iX3 = iX2+iW2+iSteg;
 			int iY2 = iH1+iSteg;
 			int iY3 = iY2+iH2+iSteg;
-			sheet.drawImage(inDirAndre2023+"20230519_192036.jpg",     .5,.5, 0, 0  , 0  , iW1, iH1);
-			sheet.drawImage(inDirAndre2023+"IMG-20230517-WA0019.jpg", .5,.6, 0, iX2, 0  , iW2, iH1);
-			sheet.drawImage(inDirVik2+"20220511_074609.jpg",          .5,.5,90, iX3, 0  , iW2, iH1+iH2+iSteg);
-			sheet.drawImage(inDirV21+"WhatsApp Image 2021-08-21 at 20.13.53 (2).jpeg",
-																	  .5,.5, 0, 0  , iY2, iW1, iH2);
-			sheet.drawImage(img2,                                     .5,.5, 0, iX2, iY2, iW2, iH2);
-			sheet.drawImage(strSchool+"Kletterhaeuser.jpg",           .5,.5, 0, 0  , iY3, iW1, iH1);
-			sheet.drawImage(img1,                                     .5,.5, 0, iX2, iY3, iW2, iH1);
-			sheet.drawImage(strSchool+"22_Commputerraum-1024x680.jpg",.5,.5, 0, iX3, iY3, iW1, iH1);
+			int iW30 = (sheet.getUsuableWidth()-2*iSteg)/3;
+			int iX32 = iW30+iSteg;
+			int iX33 = iX32+iW30+iSteg;
+			sheet.drawImage(inDirS23+"20240907_191423.jpg",                                    .5,.49,.03,0,   0  , iW1, iH1);
+			sheet.drawImage(inDirS23+"20240907_130533.jpg",                                    .5, .5, 0, iX2, 0  , iW2, iH1);
+			sheet.drawImage(inDirWhatsAp0+"WhatsApp Bild 2024-09-07 um 13.32.11_b0bc51a5.jpg",.45,.43, 0, iX3, 0  , iW1, iH1+iH2+iSteg);
+			sheet.drawImage(inDirS23+"20240907_191543.jpg",									   .6, .5,90, 0  , iY2, iW1, iH2);
+			sheet.drawImage(img22,                                                             .5, .5, 0, iX2, iY2, iW2, iH2);
+			sheet.drawImage(inDirS23+"20240907_191522.jpg",                                    .5,.41,180,0  , iY3,iW30, iH1);
+			sheet.drawImage(inDirS23+"20240907_195350.jpg",                                    .5, .5, 0,iX32, iY3,iW30, iH1);
+			sheet.drawImage(inDirWhatsAp0+"WhatsApp Bild 2024-09-08 um 15.10.20_f3c8ca0a.jpg", .5, .5, 0,iX33, iY3,iW30, iH1);
 			sheet.drawCalDates();
 			sheet.writeInDir(strOutDir);
 		} catch (Exception ex) {
