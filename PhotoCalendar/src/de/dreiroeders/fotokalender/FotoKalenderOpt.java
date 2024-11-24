@@ -39,6 +39,9 @@ public class FotoKalenderOpt {
 	public static FotoKalenderOpt Current(int nDeltaYear) {
 		int year = nDeltaYear+YEAR1;
 		FotoKalenderOpt result = ForMichael(year);
+		if (!FINAL) {
+			CalendarSheet.maxWidth = 3000; // to save space and time for draft versions
+		}
 		if (year == YEAR1) {
 			if (FINAL) {
 				result.init_m_bDoIt(MONTH1, Calendar.DECEMBER);

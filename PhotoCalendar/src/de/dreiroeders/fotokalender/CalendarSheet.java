@@ -37,6 +37,9 @@ public class CalendarSheet {
 	public static final float FWeight_whitewall_A2_hoch_facX1 = 1f/7f;
 	public static final float FWeight_whitewall_A2_hoch = (17.3f/21f)/(1+FWeight_whitewall_A2_hoch_facX1); // de.whitewall.com MARKANT (WEISS) A2 hoch 
 	
+	public static int maxWidth = 20000;
+	public static int maxHeight= 20000;
+	
 	public static Color sBackBackgroundCol;
 	public Color mBackBackgroundCol;
 	protected Color mColBack = null;
@@ -105,17 +108,13 @@ public class CalendarSheet {
 			usuableWidth = usuableWidth*3/2;
 			System.out.println("Wanted weight "+ usuableWidth0 +" pixels, but poor quality, replaced by: "+ usuableWidth);
 		}
-		if (usuableWidth > 8000) {
-			System.out.println("Wanted weight "+ usuableWidth0 +" pixels, but posterxxl.de : war mal maximale Kantenlänge 8000px");
-			usuableWidth = 8000;
-		}
-		if (usuableWidth > 25000) {
-			usuableWidth = 25000;
+		if (usuableWidth > maxWidth) {
+			usuableWidth = maxWidth;
 			System.out.println("Wanted weight "+ usuableWidth0 +" pixels, but limited for this test to "+ usuableWidth);
 		}
 		int usuableHeight = usuableHeight0;
-		if (usuableHeight > 8000) {
-			usuableHeight = 8000;
+		if (usuableHeight > maxHeight) {
+			usuableHeight = maxHeight;
 			usuableWidth = 1;
 			System.out.println("Wanted height "+ usuableHeight0 +" pixels, but limited for this test to "+ usuableHeight);
 		}
