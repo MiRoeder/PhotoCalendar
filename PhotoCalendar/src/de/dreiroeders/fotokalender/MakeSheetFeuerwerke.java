@@ -3,6 +3,7 @@ package de.dreiroeders.fotokalender;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.Calendar;
 
@@ -78,7 +79,15 @@ public class MakeSheetFeuerwerke extends Thread {
 		float rotC;
 		SourceImage srcMainImg = new SourceImage("https://upload.wikimedia.org/wikipedia/commons/4/49/New_Year_Berlin.jpg");
 		if (srcMainImg.isOk()) {
-			mSheet.drawImage(srcMainImg , 0.5, 0.5, 0.0 , 0.000, 0.000, 1f, 1f);
+			BufferedImage mainImg = srcMainImg.getImage();
+			for (int ix = 0; ix < srcMainImg.getWidth(); ++ix) {
+				for (int iy = 0; iy < srcMainImg.getHeight(); ++iy) {
+					int dwPix = mainImg.getRGB(ix, iy);
+					dwPix = (((dwPix>>16)&0xFF)*3/4<<16) | (((dwPix>>8)&0xFF)*3/4<<8) | (((dwPix)&0xFF)*3/4);
+					mainImg.setRGB(ix, iy, dwPix);
+				}				
+			}
+			mSheet.drawImage(mainImg , 0.5, 0.5, 0.0 , 0.000, 0.000, 1f, .799f);
 		} else {
 			srcMainImg = new SourceImage("https://upload.wikimedia.org/wikipedia/commons/4/49/New_Year_Berlin.jpg");
 			//TODO
@@ -119,7 +128,7 @@ public class MakeSheetFeuerwerke extends Thread {
 
 			final float wSteg = CalendarSheet.fWeight < 1 ? .005f : .003f;
 			final float wCol1 = (1 - (nCols-1)*wSteg) / nCols;
-			final Color colTxt = new Color(128,192,255);
+			final Color colTxt = new Color(192,224,255);
 			mSheet.drawText("Achtung! Bitte im neuen Jahr "+ SHOW_YEAR +" beachten:", colTxt, Font.SANS_SERIF, Font.PLAIN, .1f, 0.75f, .8f, 0.048);
 			float xC = 0f;
 			if (imgFabianVerbrenntPapier.isOk()) {
