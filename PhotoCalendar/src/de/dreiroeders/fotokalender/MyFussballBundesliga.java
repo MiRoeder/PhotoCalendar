@@ -124,10 +124,10 @@ public class MyFussballBundesliga {
 		addTermin(cal,29,11, 1,12, 2024, " 12 104 Sport-Club Freiburg Borussia Mönchengladbach"); // 
 		addTermin(cal,29,11, 1,12, 2024, " 12 105 FC Augsburg VfL Bochum 1848"); // 
 		addTermin(cal,29,11, 1,12, 2024, " 12 106 1_FSV Mainz 05 TSG Hoffenheim"); // 
-		addTermin(cal,29,11, 1,12, 2024, " 12 107 1_FC Union Berlin Bayer 04 Leverkusen"); // 
+		addTermin(cal,30,11,30,11, 2024, " 12 107 1_FC Union Berlin Bayer 04 Leverkusen"); // 
 		addTermin(cal,29,11, 1,12, 2024, " 12 108 FC St_ Pauli Holstein Kiel"); // 
 		addTermin(cal, 6,12, 8,12, 2024, " 13 109 Bayer 04 Leverkusen FC St_ Pauli"); // 
-		addTermin(cal, 6,12, 8,12, 2024, " 13 110 VfB Stuttgart 1_FC Union Berlin"); // 
+		addTermin(cal, 6,12, 6,12, 2024, " 13 110 VfB Stuttgart 1_FC Union Berlin"); // 
 		addTermin(cal, 6,12, 8,12, 2024, " 13 111 FC Bayern München 1_FC Heidenheim 1846"); // 
 		addTermin(cal, 6,12, 8,12, 2024, " 13 112 Eintracht Frankfurt FC Augsburg"); // 
 		addTermin(cal, 6,12, 8,12, 2024, " 13 113 TSG Hoffenheim Sport-Club Freiburg"); // 
@@ -142,21 +142,21 @@ public class MyFussballBundesliga {
 		addTermin(cal,13,12,15,12, 2024, " 14 122 FC Augsburg Bayer 04 Leverkusen"); // 
 		addTermin(cal,13,12,15,12, 2024, " 14 123 1_FSV Mainz 05 FC Bayern München"); // 
 		addTermin(cal,13,12,15,12, 2024, " 14 124 Borussia Mönchengladbach Holstein Kiel"); // 
-		addTermin(cal,13,12,15,12, 2024, " 14 125 1_FC Union Berlin VfL Bochum 1848"); // 
+		addTermin(cal,14,12,14,12, 2024, " 14 125 1_FC Union Berlin VfL Bochum 1848"); // 
 		addTermin(cal,13,12,15,12, 2024, " 14 126 FC St_ Pauli SV Werder Bremen"); // 
 		addTermin(cal,20,12,22,12, 2024, " 15 127 Bayer 04 Leverkusen Sport-Club Freiburg"); // 
 		addTermin(cal,20,12,22,12, 2024, " 15 128 VfB Stuttgart FC St_ Pauli"); // 
 		addTermin(cal,20,12,22,12, 2024, " 15 129 FC Bayern München RB Leipzig"); // 
 		addTermin(cal,20,12,22,12, 2024, " 15 130 Eintracht Frankfurt 1_FSV Mainz 05"); // 
 		addTermin(cal,20,12,22,12, 2024, " 15 131 TSG Hoffenheim Borussia Mönchengladbach"); // 
-		addTermin(cal,20,12,22,12, 2024, " 15 132 SV Werder Bremen 1_FC Union Berlin"); // 
+		addTermin(cal,21,12,21,12, 2024, " 15 132 SV Werder Bremen 1_FC Union Berlin"); // 
 		addTermin(cal,20,12,22,12, 2024, " 15 133 VfL Wolfsburg Borussia Dortmund"); // 
 		addTermin(cal,20,12,22,12, 2024, " 15 134 VfL Bochum 1848 1_FC Heidenheim 1846"); // 
 		addTermin(cal,20,12,22,12, 2024, " 15 135 Holstein Kiel FC Augsburg"); // 
 		addTermin(cal,10, 1,12, 1, 2025, " 16 136 RB Leipzig SV Werder Bremen"); // 
 		addTermin(cal,10, 1,12, 1, 2025, " 16 137 Borussia Dortmund Bayer 04 Leverkusen"); // 
 		addTermin(cal,10, 1,12, 1, 2025, " 16 138 TSG Hoffenheim VfL Wolfsburg"); // 
-		addTermin(cal,10, 1,12, 1, 2025, " 16 139 1_FC Heidenheim 1846 1_FC Union Berlin"); // 
+		addTermin(cal,11, 1,11, 1, 2025, " 16 139 1_FC Heidenheim 1846 1_FC Union Berlin"); // 
 		addTermin(cal,10, 1,12, 1, 2025, " 16 140 Sport-Club Freiburg Holstein Kiel"); // 
 		addTermin(cal,10, 1,12, 1, 2025, " 16 141 FC Augsburg VfB Stuttgart"); // 
 		addTermin(cal,10, 1,12, 1, 2025, " 16 142 1_FSV Mainz 05 VfL Bochum 1848"); // 
@@ -168,7 +168,7 @@ public class MyFussballBundesliga {
 		addTermin(cal,14, 1,15, 1, 2025, " 17 148 Eintracht Frankfurt Sport-Club Freiburg"); // 
 		addTermin(cal,14, 1,15, 1, 2025, " 17 149 SV Werder Bremen 1_FC Heidenheim 1846"); // 
 		addTermin(cal,14, 1,15, 1, 2025, " 17 150 VfL Wolfsburg Borussia Mönchengladbach"); // 
-		addTermin(cal,14, 1,15, 1, 2025, " 17 151 1_FC Union Berlin FC Augsburg"); // 
+		addTermin(cal,15, 1,15, 1, 2025, " 17 151 1_FC Union Berlin FC Augsburg"); // 
 		addTermin(cal,14, 1,15, 1, 2025, " 17 152 VfL Bochum 1848 FC St_ Pauli"); // 
 		addTermin(cal,14, 1,15, 1, 2025, " 17 153 Holstein Kiel Borussia Dortmund"); // 
 		addTermin(cal,17, 1,19, 1, 2025, " 18 154 Bayer 04 Leverkusen Borussia Mönchengladbach"); // 
@@ -177,7 +177,7 @@ public class MyFussballBundesliga {
 		addTermin(cal,17, 1,19, 1, 2025, " 18 157 Eintracht Frankfurt Borussia Dortmund"); // 
 		addTermin(cal,17, 1,19, 1, 2025, " 18 158 1_FC Heidenheim 1846 FC St_ Pauli"); // 
 		addTermin(cal,17, 1,19, 1, 2025, " 18 159 SV Werder Bremen FC Augsburg"); // 
-		addTermin(cal,17, 1,19, 1, 2025, " 18 160 1_FC Union Berlin 1_FSV Mainz 05"); // 
+		addTermin(cal,19, 1,19, 1, 2025, " 18 160 1_FC Union Berlin 1_FSV Mainz 05"); // 
 		addTermin(cal,17, 1,19, 1, 2025, " 18 161 VfL Bochum 1848 RB Leipzig"); // 
 		addTermin(cal,17, 1,19, 1, 2025, " 18 162 Holstein Kiel TSG Hoffenheim"); // 
 		addTermin(cal,24, 1,26, 1, 2025, " 19 163 RB Leipzig Bayer 04 Leverkusen"); // 
@@ -188,7 +188,7 @@ public class MyFussballBundesliga {
 		addTermin(cal,24, 1,26, 1, 2025, " 19 168 VfL Wolfsburg Holstein Kiel"); // 
 		addTermin(cal,24, 1,26, 1, 2025, " 19 169 1_FSV Mainz 05 VfB Stuttgart"); // 
 		addTermin(cal,24, 1,26, 1, 2025, " 19 170 Borussia Mönchengladbach VfL Bochum 1848"); // 
-		addTermin(cal,24, 1,26, 1, 2025, " 19 171 FC St_ Pauli 1_FC Union Berlin"); // 
+		addTermin(cal,26, 1,26, 1, 2025, " 19 171 FC St_ Pauli 1_FC Union Berlin"); // 
 		addTermin(cal,31, 1, 2, 2, 2025, " 20 172 Bayer 04 Leverkusen TSG Hoffenheim"); // 
 		addTermin(cal,31, 1, 2, 2, 2025, " 20 173 VfB Stuttgart Borussia Mönchengladbach"); // 
 		addTermin(cal,31, 1, 2, 2, 2025, " 20 174 FC Bayern München Holstein Kiel"); // 
@@ -484,7 +484,7 @@ public class MyFussballBundesliga {
 				cenDay.add(GregorianCalendar.DAY_OF_MONTH, iDeltaY);
 			}
 			ArrayList<PersonalDate> alreadyEvents = cal.mDates.getCalEvents(cenDay);
-			deltaY += alreadyEvents.size() * factor;
+			deltaY += alreadyEvents.size() * Math.min(factor, 0.3f);
 			PersonalDate sp = PersonalDate.create2BitmapsBackground(filHeim, " : ", filAusw, factor, deltaY, cenDay);
 			cal.mDates.addCalEvent(sp);
 			for (int iD = 0; iD <= nDays; ++iD) {
@@ -589,7 +589,7 @@ public class MyFussballBundesliga {
 			new Club("Arminia_Bielefeld.png", 0f, 1f),
 			new Club("Bayer Leverkusen.png", 0f, 1f),
 			new Club("Borussia Mönchengladbach.jpg", 0f, 1f),
-			new Club("BVB 09 Dortmund.jpg", 0.91f, 1f),
+			new Club("BVB 09 Dortmund.jpg", 0f, 1f),
 			new Club("Dynamo Dresden.png", .0f, 1f),
 			new Club("Eintr Frankfurt.jpg", 0f, 1f),
 			new Club("Eintracht Braunschweig.png", 0f, 1f),
@@ -597,7 +597,7 @@ public class MyFussballBundesliga {
 			new Club("FC Bayern München.jpg", 0f, 1f),
 			new Club("FC Heidenheim 1846.png", 0f, 1f),
 			new Club("FC Ingolstadt 04.jpg", 0f, 1f),
-			new Club("FC Köln.jpg", 0f, 1f),
+			new Club("FC Köln.jpg", 0.9f, 1f),
 			new Club("FC Kaiserslautern.png", 0f, 1f),
 			new Club("FC Magdeburg.png", .0f, 1f),
 			new Club("FC St. Pauli.png", .0f, 1f),

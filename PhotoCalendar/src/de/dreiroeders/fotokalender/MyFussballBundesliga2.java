@@ -109,7 +109,7 @@ public class MyFussballBundesliga2 extends MyFussballBundesliga {
 		addTermin(cal, 1,11, 3,11, 2024, " 11 92 Hannover 96 Karlsruher SC"); // 
 		addTermin(cal, 1,11, 3,11, 2024, " 11 93 SC Paderborn 07 Eintracht Braunschweig"); // 
 		addTermin(cal, 1,11, 3,11, 2024, " 11 94 SpVgg Greuther Fürth SV Darmstadt 98"); // 
-		addTermin(cal, 1,11, 3,11, 2024, " 11 95 Hertha BSC 1_FC Köln"); // 
+		addTermin(cal, 2,11, 2,11, 2024, " 11 95 Hertha BSC 1_FC Köln"); // 
 		addTermin(cal, 1,11, 3,11, 2024, " 11 96 1_FC Kaiserslautern 1_FC Magdeburg"); // 
 		addTermin(cal, 1,11, 3,11, 2024, " 11 97 SSV_Ulm_1846_Fussball FC Schalke 04"); // 
 		addTermin(cal, 1,11, 3,11, 2024, " 11 98 Preußen Münster Fortuna Düsseldorf"); // 
@@ -128,7 +128,7 @@ public class MyFussballBundesliga2 extends MyFussballBundesliga {
 		addTermin(cal,22,11,24,11, 2024, " 13 111 Hannover 96 SV Darmstadt 98"); // 
 		addTermin(cal,22,11,24,11, 2024, " 13 112 SC Paderborn 07 1_FC Nürnberg"); // 
 		addTermin(cal,22,11,24,11, 2024, " 13 113 SpVgg Greuther Fürth Karlsruher SC"); // 
-		addTermin(cal,22,11,24,11, 2024, " 13 114 Hertha BSC SSV_Ulm_1846_Fussball"); // 
+		addTermin(cal,23,11,23,11, 2024, " 13 114 Hertha BSC SSV_Ulm_1846_Fussball"); // 
 		addTermin(cal,22,11,24,11, 2024, " 13 115 1_FC Kaiserslautern Eintracht Braunschweig"); // 
 		addTermin(cal,22,11,24,11, 2024, " 13 116 Preußen Münster 1_FC Köln"); // 
 		addTermin(cal,22,11,24,11, 2024, " 13 117 SSV Jahn Regensburg 1_FC Magdeburg"); // 
@@ -138,14 +138,14 @@ public class MyFussballBundesliga2 extends MyFussballBundesliga {
 		addTermin(cal,29,11, 1,12, 2024, " 14 121 FC Schalke 04 1_FC Kaiserslautern"); // 
 		addTermin(cal,29,11, 1,12, 2024, " 14 122 SV Elversberg SC Paderborn 07"); // 
 		addTermin(cal,29,11, 1,12, 2024, " 14 123 1_FC Nürnberg Fortuna Düsseldorf"); // 
-		addTermin(cal,29,11, 1,12, 2024, " 14 124 1_FC Magdeburg Hertha BSC"); // 
+		addTermin(cal,29,11,29,11, 2024, " 14 124 1_FC Magdeburg Hertha BSC"); // 
 		addTermin(cal,29,11, 1,12, 2024, " 14 125 Eintracht Braunschweig SSV Jahn Regensburg"); // 
 		addTermin(cal,29,11, 1,12, 2024, " 14 126 SSV_Ulm_1846_Fussball SpVgg Greuther Fürth"); // 
 		addTermin(cal, 6,12, 8,12, 2024, " 15 127 Fortuna Düsseldorf Eintracht Braunschweig"); // 
 		addTermin(cal, 6,12, 8,12, 2024, " 15 128 Hamburger SV SV Darmstadt 98"); // 
 		addTermin(cal, 6,12, 8,12, 2024, " 15 129 Hannover 96 SSV_Ulm_1846_Fussball"); // 
 		addTermin(cal, 6,12, 8,12, 2024, " 15 130 SC Paderborn 07 FC Schalke 04"); // 
-		addTermin(cal, 6,12, 8,12, 2024, " 15 131 SpVgg Greuther Fürth Hertha BSC"); // 
+		addTermin(cal, 7,12, 7,12, 2024, " 15 131 SpVgg Greuther Fürth Hertha BSC"); // 
 		addTermin(cal, 6,12, 8,12, 2024, " 15 132 SV Elversberg 1_FC Nürnberg"); // 
 		addTermin(cal, 6,12, 8,12, 2024, " 15 133 1_FC Kaiserslautern Karlsruher SC"); // 
 		addTermin(cal, 6,12, 8,12, 2024, " 15 134 Preußen Münster 1_FC Magdeburg"); // 
@@ -154,14 +154,14 @@ public class MyFussballBundesliga2 extends MyFussballBundesliga {
 		addTermin(cal,13,12,15,12, 2024, " 16 137 SV Darmstadt 98 1_FC Kaiserslautern"); // 
 		addTermin(cal,13,12,15,12, 2024, " 16 138 Karlsruher SC SSV Jahn Regensburg"); // 
 		addTermin(cal,13,12,15,12, 2024, " 16 139 SpVgg Greuther Fürth Hannover 96"); // 
-		addTermin(cal,13,12,15,12, 2024, " 16 140 Hertha BSC Preußen Münster"); // 
+		addTermin(cal,13,12,13,12, 2024, " 16 140 Hertha BSC Preußen Münster"); // 
 		addTermin(cal,13,12,15,12, 2024, " 16 141 FC Schalke 04 Fortuna Düsseldorf"); // 
 		addTermin(cal,13,12,15,12, 2024, " 16 142 1_FC Magdeburg SC Paderborn 07"); // 
 		addTermin(cal,13,12,15,12, 2024, " 16 143 Eintracht Braunschweig SV Elversberg"); // 
 		addTermin(cal,13,12,15,12, 2024, " 16 144 SSV_Ulm_1846_Fussball Hamburger SV"); // 
 		addTermin(cal,20,12,22,12, 2024, " 17 145 Fortuna Düsseldorf 1_FC Magdeburg"); // 
 		addTermin(cal,20,12,22,12, 2024, " 17 146 Hamburger SV SpVgg Greuther Fürth"); // 
-		addTermin(cal,20,12,22,12, 2024, " 17 147 Hannover 96 Hertha BSC"); // 
+		addTermin(cal,22,12,22,12, 2024, " 17 147 Hannover 96 Hertha BSC"); // 
 		addTermin(cal,20,12,22,12, 2024, " 17 148 SC Paderborn 07 Karlsruher SC"); // 
 		addTermin(cal,20,12,22,12, 2024, " 17 149 SV Elversberg FC Schalke 04"); // 
 		addTermin(cal,20,12,22,12, 2024, " 17 150 1_FC Nürnberg Eintracht Braunschweig"); // 
@@ -170,7 +170,7 @@ public class MyFussballBundesliga2 extends MyFussballBundesliga {
 		addTermin(cal,20,12,22,12, 2024, " 17 153 SSV Jahn Regensburg SV Darmstadt 98"); // 
 		addTermin(cal,17, 1,19, 1, 2025, " 18 154 Fortuna Düsseldorf SV Darmstadt 98"); // 
 		addTermin(cal,17, 1,19, 1, 2025, " 18 155 Hamburger SV 1_FC Köln"); // 
-		addTermin(cal,17, 1,19, 1, 2025, " 18 156 SC Paderborn 07 Hertha BSC"); // 
+		addTermin(cal,19, 1,19, 1, 2025, " 18 156 SC Paderborn 07 Hertha BSC"); // 
 		addTermin(cal,17, 1,19, 1, 2025, " 18 157 SV Elversberg 1_FC Magdeburg"); // 
 		addTermin(cal,17, 1,19, 1, 2025, " 18 158 1_FC Nürnberg Karlsruher SC"); // 
 		addTermin(cal,17, 1,19, 1, 2025, " 18 159 1_FC Kaiserslautern SSV_Ulm_1846_Fussball"); // 
@@ -182,7 +182,7 @@ public class MyFussballBundesliga2 extends MyFussballBundesliga {
 		addTermin(cal,24, 1,26, 1, 2025, " 19 165 Karlsruher SC Fortuna Düsseldorf"); // 
 		addTermin(cal,24, 1,26, 1, 2025, " 19 166 Hannover 96 Preußen Münster"); // 
 		addTermin(cal,24, 1,26, 1, 2025, " 19 167 SpVgg Greuther Fürth 1_FC Kaiserslautern"); // 
-		addTermin(cal,24, 1,26, 1, 2025, " 19 168 Hertha BSC Hamburger SV"); // 
+		addTermin(cal,25, 1,25, 1, 2025, " 19 168 Hertha BSC Hamburger SV"); // 
 		addTermin(cal,24, 1,26, 1, 2025, " 19 169 FC Schalke 04 1_FC Nürnberg"); // 
 		addTermin(cal,24, 1,26, 1, 2025, " 19 170 1_FC Magdeburg Eintracht Braunschweig"); // 
 		addTermin(cal,24, 1,26, 1, 2025, " 19 171 SSV_Ulm_1846_Fussball SSV Jahn Regensburg"); // 
@@ -322,6 +322,8 @@ public class MyFussballBundesliga2 extends MyFussballBundesliga {
 		addTermin(cal,18, 5,18, 5, 2025, " 34 305 Eintracht Braunschweig 1_FC Nürnberg"); // 
 		addTermin(cal,18, 5,18, 5, 2025, " 34 306 SSV_Ulm_1846_Fussball Preußen Münster"); // 
 
+		addTermin(cal, 4,12, 4,12, 2024, " Pokal  1_FC Köln Hertha BSC");
+		
 		if (cal.THIS_YEAR == 2025) {
 			// 2.BUNDESLIGA START am Freitag 2. August 2024. Im Jahr 2025 dann wohl 52 Wochen später
 			File herthaIco = new File("res/Hertha BSC.jpg");
