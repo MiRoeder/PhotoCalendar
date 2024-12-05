@@ -1131,6 +1131,12 @@ public class FotoKalender {
 		// https://groups.google.com/g/comp.lang.java.programmer/c/ej5Gx8zurpM?pli=1
 		ev1 = new PersonalDate("ADFC Sternfahrt", d1, PersonalDate.PRIO_BIRTHDAY);
 		mDates.addCalEvent(ev1);
+		// Wahl zum deutschen Bundestag 23. Februar 2025 :
+		if (THIS_YEAR == 2025) {
+			d1 =  new GregorianCalendar(2025, Calendar.FEBRUARY, 23);
+			ev1 = new PersonalDate("Bundestagswahl", d1, PersonalDate.PRIO_BIRTHDAY);
+		}
+		mDates.addCalEvent(ev1);
 	}
 	
 	public void addGermanPublicHolidays() {
