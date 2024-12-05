@@ -12,8 +12,8 @@ public class CalcDefaultPicPos {
 	
 	public int mNoLines;
 		
-	public float mfImgStegW = 0.005f;
-    public float mfImgStegH = 0.005f;
+	public int mfImgStegW = 1;
+    public int mfImgStegH = 1;
 
     public float mfHeightOf1Line;
     public float mfWidthOf1Pic;
@@ -30,7 +30,7 @@ public class CalcDefaultPicPos {
 		mfDNCols = 0.49f;
 	}
 
-	public void setStegWH(float fImgStegW) {
+	public void setStegWH(int fImgStegW) {
 		mfImgStegW = fImgStegW;
 		float fac;
 		if (mMainPaintReg != null) {
@@ -38,7 +38,7 @@ public class CalcDefaultPicPos {
 		} else {
 			fac = 1f;
 		}
-		mfImgStegH = fImgStegW * fac;
+		mfImgStegH = (int)(fImgStegW * fac + .5f);
 	}
 	
 	public void setIter0() {

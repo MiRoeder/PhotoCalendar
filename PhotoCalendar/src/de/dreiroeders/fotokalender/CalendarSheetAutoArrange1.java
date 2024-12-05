@@ -131,8 +131,9 @@ public class CalendarSheetAutoArrange1 extends CalendarSheet implements Runnable
 			srcWid1 = img1.getWidth();
 			srcHei1 = img1.getHeight();
 		}
-		mCalcPos.mfImgStegW = srcWid1/100+1;
-		mCalcPos.mfImgStegH = srcHei1/100+1;
+		int iSteg = Math.max(srcWid1, srcHei1)/200+1;
+		mCalcPos.mfImgStegW = iSteg;
+		mCalcPos.mfImgStegH = iSteg;
 		if (mPics.size() < 4) {
 			mPreferedWidth  = srcWid1;
 			mPreferedHeight = srcHei1;

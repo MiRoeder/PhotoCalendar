@@ -119,7 +119,7 @@ public class MakeSheetShadesOfGrey extends Thread {
 		sheet.diagOnKey();
 		
 		CalcDefaultPicPos calcPos = new CalcDefaultPicPos();
-		calcPos.setStegWH(0f);
+		calcPos.setStegWH(0);
 		calcPos.mMainPaintReg = new Rectangle(sheet.getX(0f), sheet.getY(y2), sheet.getUsuableWidth(), sheet.getDY(1f-y2));
 		calcPos.mPicRelWidth = 4.5f;
 		calcPos.mNoPics = NO_Shades;
