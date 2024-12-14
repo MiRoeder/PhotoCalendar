@@ -1,9 +1,7 @@
 package de.dreiroeders.fotokalender;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
-import java.io.File;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -12,7 +10,6 @@ import java.util.Random;
 import de.dreiroeders.workingonimages.BufferedImageSetPixImg_ABGR;
 import de.dreiroeders.workingonimages.Draw1ImageI;
 import de.dreiroeders.workingonimages.Draw1ImageT;
-import de.dreiroeders.workingonimages.Draw1ImageWithTxt;
 import de.dreiroeders.workingonimages.IHintsDrawImages;
 import de.dreiroeders.workingonimages.MiRoesDraw;
 import de.dreiroeders.workingonimages.SourceImage;
@@ -134,33 +131,7 @@ public class FotoKalender1 extends PhotoCalendar {
 		}
 
 		if (trgOpt.bDoIt(Calendar.MARCH)) {
-			try {
-				if (trgOpt.m_bAndreMarlies) {
-					 makeViksGeburtstag(Calendar.MARCH, strOutDir);
-				} else {
-					CalendarSheetCenterImage sheet = new CalendarSheetCenterImage(THIS_YEAR, Calendar.MARCH, mDates);
-					Draw1ImageI img;
-					img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.48_03b1c05a.jpg");
-					img.setSourceBounds(new Rectangle(875, 200, 380, 670));
-					sheet.setImage1(img);
-					img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.49_ee28eca1.jpg");
-					img.setCenterPoint(.5f, .45f);
-					sheet.addImage1(img);
-					img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.53_5c64e910.jpg");
-					img.setCenterPoint(.45f, .5f);
-					sheet.addImage1(img);
-					img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-06-27 um 14.31.24_66612c5d.jpg");
-					sheet.addImage2(img);
-					img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\2024_Vik\\WhatsApp Bild 2024-07-12 um 21.47.52_0cabe4a1.jpg");
-					img.setCenterPoint(.5f, .22f);
-					sheet.addImage2(img);
-					img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_170252.jpg");
-					sheet.addImage2(img);
-					sheet.startMakingIt(strOutDir);
-				}
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			}  
+		    makeViksGeburtstag(Calendar.MARCH, strOutDir);
 		}
 
 		if (trgOpt.bDoIt(Calendar.APRIL)) try {
@@ -175,7 +146,7 @@ public class FotoKalender1 extends PhotoCalendar {
 			final float yCenterPic = (1f-hCenterPic)/2f;
 			var img1 = new SourceImage(inDirWhatsApp+"IMG-20220319-WA0008.jpg");
 			//img1.setSourceBounds(new Rectangle(270, 680, 540, 350));
-			float wRightTop = (1f-xCenterPic-wCenterPic)/2f-wSteg;
+			float wRightTop = (1f-xCenterPic-wCenterPic-wSteg)/2f;
 			sheet.drawImage(img1.getImage()                             ,.5f ,.5f , 0, xCenterPic+wSteg     ,yCenterPic+hSteg     ,          wCenterPic-2*wSteg,         hCenterPic-2*hSteg);
 			sheet.drawImage(inDirWhatsApp+"IMG-20220320-WA0004.jpg"     ,.5f ,.5f , 0, 0f                   ,                   0f, xCenterPic+wCenterPic-wSteg,yCenterPic                 );
 			sheet.drawImage(inDirCo+"20220319_101538.jpg"               ,.62f,.6f , 0, xCenterPic+wCenterPic,                   0f,                   wRightTop,yCenterPic+hCenterPic-hSteg);
@@ -190,19 +161,12 @@ public class FotoKalender1 extends PhotoCalendar {
 		}
 
 		if (trgOpt.bDoIt(Calendar.MAY)) try {
-			var sheetCI = new CalendarSheetCenterImage(THIS_YEAR,  Calendar.MAY, mDates);
-			var img0 = new SourceImage("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20240721_170240.jpg");
-			int iW = img0.getWidth();
-			int iH = img0.getHeight();
-			int iL = iW/8;
-			img0.setSourceBounds(new Rectangle(iL, 0, iW-iL, iH));
-			Draw1ImageWithTxt img1;
-			img1 = new Draw1ImageWithTxt(img0,
-					                     "Fotografin: Sophie Viktoria Köhler (5 Jahre)",
-					                     new Color(224, 32, 128), Font.SERIF, Font.ITALIC, 200 );
-			sheetCI.setImage1(img1);
-			addImagesByVik202407(sheetCI, null, new Random(THIS_YEAR*12+Calendar.MAY), .6f);
-			sheetCI.startMakingIt(strOutDir);
+			CalendarSheet sheet;
+			sheet = new CalendarSheet(THIS_YEAR, Calendar.MAY, mDates);
+			sheet.prepareImage(4000);
+			sheet.drawImage(inDirWhatsApp+"IMG-20230715-WA0012", .5f, .5f, 0, 0, 0, 1, 1);
+			sheet.drawCalDates();
+			sheet.writeInDir(strOutDir);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -252,22 +216,7 @@ public class FotoKalender1 extends PhotoCalendar {
 		}
 
 		if (trgOpt.bDoIt(Calendar.JULY)) try {
-			var sheet = new CalendarSheetAutoArrange1(THIS_YEAR, Calendar.JULY, mDates);
-			Draw1ImageI img; 
-			img = new Draw1ImageI(inDirMsGal23+"20240611_205308.jpg");
-			sheet.addImage(img);
-			img = new Draw1ImageI(inDirMsGal23+"20240606_164949a.jpg");
-			sheet.addImage(img);
-			img = new Draw1ImageI(inDirMsGal23+"20240604_155404a.jpg");
-			img.setCenterPoint(.5f, .41f);
-			img.dRot = -0.01f;
-			sheet.addImage(img);
-			img = new Draw1ImageI(inDirMsGal23+"20240603_152716.jpg");
-			sheet.addImage(img);
-			img = new Draw1ImageI(inDirMsGal23+"20240607_110330.jpg");
-			img.setCenterPoint(.6f, .52f);
-			sheet.addImage(img);
-			sheet.startMakingIt(strOutDir);
+			makeGeniessenAutobahnVsZug(Calendar.JULY, strOutDir);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -288,7 +237,7 @@ public class FotoKalender1 extends PhotoCalendar {
 			int iSteg = sheet.getUsuableHeight()/200;
 			int iWC = img22.getWidth();
 			int iHC = img22.getHeight();
-			int iH2 = sheet.getUsuableHeight()*10/26;
+			int iH2 = sheet.getUsuableHeight()*55/100;
 			int iW2 = iH2 * iWC / iHC;
 			int iW1 = (sheet.getUsuableWidth() -iW2-iSteg)/2;
 			int iH1 = (sheet.getUsuableHeight()-iH2-iSteg)/2;
@@ -299,12 +248,12 @@ public class FotoKalender1 extends PhotoCalendar {
 			int iW30 = (sheet.getUsuableWidth()-2*iSteg)/3;
 			int iX32 = iW30+iSteg;
 			int iX33 = iX32+iW30+iSteg;
-			sheet.drawImage(inDirS23+"20240907_191423.jpg",                                    .5,.49,.03,0,   0  , iW1, iH1);
-			sheet.drawImage(inDirS23+"20240907_130533.jpg",                                    .5, .5, 0, iX2, 0  , iW2, iH1);
+			sheet.drawImage(inDirS23+"20240907_191423.jpg",                                    .5,.49,.03,0,    0  , iW1, iH1);
+			sheet.drawImage(inDirS23+"20240907_130533.jpg",                                    .5, .6, 0, iX2, 0  , iW2, iH1);
 			sheet.drawImage(inDirWhatsAp0+"WhatsApp Bild 2024-09-07 um 13.32.11_b0bc51a5.jpg",.45,.43, 0, iX3, 0  , iW1, iH1+iH2+iSteg);
 			sheet.drawImage(inDirS23+"20240907_191543.jpg",									   .6, .5,90, 0  , iY2, iW1, iH2);
 			sheet.drawImage(img22,                                                             .5, .5, 0, iX2, iY2, iW2, iH2);
-			sheet.drawImage(inDirS23+"20240907_191522.jpg",                                    .5,.41,180,0  , iY3,iW30, iH1);
+			sheet.drawImage(inDirS23+"20240907_191522.jpg",                                    .5, .3,180,0  , iY3,iW30, iH1);
 			sheet.drawImage(inDirS23+"20240907_195350.jpg",                                    .5, .5, 0,iX32, iY3,iW30, iH1);
 			sheet.drawImage(inDirWhatsAp0+"WhatsApp Bild 2024-09-08 um 15.10.20_f3c8ca0a.jpg", .5, .5, 0,iX33, iY3,iW30, iH1);
 			sheet.drawCalDates();
@@ -316,13 +265,13 @@ public class FotoKalender1 extends PhotoCalendar {
 		if (trgOpt.bDoIt(Calendar.OCTOBER)) try {
 			CalendarSheetAutoArrange1 sheet = new CalendarSheetAutoArrange1(THIS_YEAR, Calendar.OCTOBER, mDates);
 			Draw1ImageI img;
-			img = new Draw1ImageI(inDirWhatsAp0+"WhatsApp Bild 2023-10-31 um 08.56.58_6ab96f41 (heller).jpg");
-			sheet.addImage(img);
 			img = new Draw1ImageI(inDirMsGal23+"20240414_165444(0).jpg");
 			sheet.addImage(img);
 			img = new Draw1ImageI(inDirMsGal23+"20240414_164712(0).jpg");
 			img.setCenterPoint(.3f, .5f);
 			img.dRot = 90;
+			sheet.addImage(img);
+			img = new Draw1ImageI(inDirWhatsAp0+"WhatsApp Bild 2023-10-31 um 08.56.58_6ab96f41 (heller).jpg");
 			sheet.addImage(img);
 			img = new Draw1ImageI(inDirMsGal23+"20240414_175021.jpg");
 			img.setSourceBounds(new Rectangle(1900, 1300, 1300, 800));
@@ -334,11 +283,17 @@ public class FotoKalender1 extends PhotoCalendar {
 		}
 
 		if (trgOpt.bDoIt(Calendar.NOVEMBER)) try {
-			var sheet = new CalendarSheetCenterImage(THIS_YEAR, Calendar.NOVEMBER, mDates);
+			final String inDir = "C:/Users/MiRoe/Pictures/SamsungGalS23/Pictures/";
+			CalendarSheetAutoArrange1 sheet = new CalendarSheetAutoArrange1(THIS_YEAR, Calendar.NOVEMBER, mDates);
 			Draw1ImageI img;
-			img = new Draw1ImageI("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20231217_125530.jpg");
-			sheet.setImage1(img);
-			addManyImages(new File("C:\\Users\\MiRoe\\Pictures\\2021 Vik"), "jpeg", sheet, null, new Random(THIS_YEAR*12+Calendar.NOVEMBER), 0.2f, 2f);
+			img = new Draw1ImageI(inDir+"signal-2023-02-05-16-24-54-650.jpg");
+			sheet.addImage(img);
+			img = new Draw1ImageI(inDir+"signal-2023-02-05-12-54-23-214.jpg");
+			sheet.addImage(img);
+			img = new Draw1ImageI(inDir+"signal-2023-04-16-15-17-25-998.jpg");
+			sheet.addImage(img);
+			img = new Draw1ImageI(inDir+"signal-2023-04-16-15-17-55-465.jpg");
+			sheet.addImage(img);
 			sheet.startMakingIt(strOutDir);
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -346,9 +301,13 @@ public class FotoKalender1 extends PhotoCalendar {
 
 		if (trgOpt.bDoIt(Calendar.DECEMBER)) try {
 			var sheet = new CalendarSheet(THIS_YEAR, Calendar.DECEMBER, mDates);
-			sheet.prepareImage(2000/0.899074074074074);
+			sheet.prepareImage(4000);
 			float h1 = .7f;
-			sheet.drawImage(inDirRBB+"vlcsnap-2023-07-06-13h04m24s808_auto_PhotoShop.png",.67,.5,0,0,  0, .497, h1);
+			if ((THIS_YEAR & 1) == 0) {
+				sheet.drawImage(inDirRBB+"vlcsnap-2023-07-06-13h04m24s808_auto_PhotoShop.png",.67,.5,0,0,  0, .497, h1);
+			} else {
+				sheet.drawImage(inDirWhatsApp+"IMG-20221217-WA0002.jpg                      ",.5 ,.5,0,0,  0, .497, h1);				
+			}
 			sheet.drawImage(inDirWhatsAp0+"WhatsApp Bild 2022-12-23 um 21.09.36.jpg",.5, .5,  0,.503,  0, .497, h1);
 			float y2 = h1+0.006f*CalendarSheet.fWeight;
 			float h2 = 1f-y2;
@@ -363,8 +322,13 @@ public class FotoKalender1 extends PhotoCalendar {
 				sheet.drawImage(inDirMsGal23 + "20231224_135039.jpg"          ,.5 , .5, 90,         .256, y2, .16 , h2);
 				float x4 = sheet.getflLastX();
 				float w5 = (1-x4)/2 - wSteg;
-				sheet.drawImage(inDirMsGal23 + "20231224_145748.jpg"          ,.5 , .5, 0, x4+  wSteg   , y2,  w5 , h2);
-				sheet.drawImage(inDirMsGal23 + "20231224_155821.jpg"          ,.5 , .5, 0, x4+2*wSteg+w5, y2,  w5 , h2);
+				if ((THIS_YEAR & 1) == 0) {
+					sheet.drawImage(inDirMsGal23 + "20231224_145748.jpg"      ,.5 , .5, 0, x4+  wSteg   , y2,  w5 , h2);
+					sheet.drawImage(inDirMsGal23 + "20231224_155821.jpg"      ,.5 , .5, 0, x4+2*wSteg+w5, y2,  w5 , h2);
+				} else {
+					sheet.drawImage(inDirMsGal23 + "20231224_145715.jpg"      ,.6 , .5,90, x4+  wSteg   , y2,  w5 , h2);
+					sheet.drawImage(inDirMsGal23 + "20231224_135024.jpg"      ,.5 , .5, 0, x4+2*wSteg+w5, y2,  w5 , h2);
+				}
 			}
 			sheet.drawCalDates();
 			sheet.writeInDir(strOutDir);

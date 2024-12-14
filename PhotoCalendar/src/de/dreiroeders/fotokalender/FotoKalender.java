@@ -50,6 +50,7 @@ public class FotoKalender {
 			final String inDirV21 = "C:\\Users\\MiRoe\\Pictures\\2021 Vik\\";
 			final String inDirConny = "C:\\Users\\MiRoe\\Pictures\\Constanzess\\Camera\\";
 			final String inDirStep = "C:\\Users\\MiRoe\\Pictures\\Bilder von Stephan 2022\\2022_04_10 Kindergeburtstag\\";
+			final String inDirWhatsApp= "C:\\Users\\MiRoe\\Pictures\\GalaxyS8\\WhatsApp\\Media\\WhatsApp Images\\";
 			sheet.prepareImage(3867);
 			Color colTxt = sheet.getDefaultTextCol();
 			String strLine2;
@@ -82,10 +83,10 @@ public class FotoKalender {
 			}
 			float hGK = facWid*720/sheet.getUsuableHeight();
 			if (y7 > 0.98f) {
-				sheet.drawImage(inDirMsGal23+"20240414_143854.jpg" ,                 .43, 0.5, 0, 0.000f, 0.44f*y3,       0.4 , h2);
+				sheet.drawImage(inDirWhatsApp+"IMG-20230401-WA0003.jpg" ,            .57, 0.5, 0, 0.000f, 0.44f*y3,       0.4 , h2);
 				float y6 = 0.44f*y3+hGK*.9f;
 				if (y6 < 0.95f && y6 < y7) {
-					sheet.drawImage(inDirStep+"20220410_145536.jpg"                   ,.5,0.5, 0, 0.402,   y6     ,       0.2 ,y7-y6);
+					sheet.drawImage(inDirStep+"20220410_145536.jpg"                 , .5, 0.5, 0, 0.402,   y6     ,       0.2 ,y7-y6);
 				} else {
 					System.out.println("Problem in  makeViksGeburtstag(,) : y6 = "+ y6);
 				}
@@ -201,7 +202,8 @@ public class FotoKalender {
 			double hTxt = hText-0.003;  // text height
 			sheet.drawSerifText("Manche Leute genießen das Leben in vollen Zügen.",                  0,    0.00, 1d, hTxt     );
 			sheet.drawSerifText("Andere lieber auf der Autobahn.",                                   0,   hText, 1d, hTxt     );
-			sheet.drawImage(inDir1+"WhatsApp Bild 2024-07-08 um 12.55.31_5bbc7308.jpg", 0.5, 0.5, 0, 0, 2*hText, 1d, 1-2*hText);
+			sheet.drawImage(inDirMsGal23+"20230908_155301.jpg",                         .5, .5, 0,   0f, 2*hText,.498, 1-2*hText);
+			sheet.drawImage(inDir1+"WhatsApp Bild 2024-07-08 um 12.55.31_5bbc7308.jpg", .4, .5, 0, .502, 2*hText,.498, 1-2*hText);
 			sheet.drawCalDates();
 			sheet.writeInDir(strOutDir);	
 		} catch (Exception ex) {
