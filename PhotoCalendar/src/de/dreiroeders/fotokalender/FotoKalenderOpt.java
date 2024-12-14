@@ -38,7 +38,7 @@ public class FotoKalenderOpt {
 
 	public static FotoKalenderOpt Current(int nDeltaYear) {
 		int year = nDeltaYear+YEAR1;
-		FotoKalenderOpt result = ForMichael(year);
+		FotoKalenderOpt result = forMichael(year);
 		if (!FINAL) {
 			CalendarSheet.maxWidth = 3000; // to save space and time for draft versions
 		}
@@ -65,7 +65,7 @@ public class FotoKalenderOpt {
 	}
 	
 
-	public static FotoKalenderOpt ForMichael(int year) {
+	public static FotoKalenderOpt forMichael(int year) {
 		CalendarSheet.fWeight = 1.65f; // myposter.de BIG BLANCO DIN A3 quer or https://www.myposter.de/wandkalender/blanko
 		CalendarSheet.sBackBackgroundCol = Color.WHITE;
 		//CalendarSheet.fWeight = 1.75f; //for whitewall.com Kalender dezent DIN A3 quer
@@ -101,15 +101,15 @@ public class FotoKalenderOpt {
 		return result;
 	}
 
-	public static FotoKalenderOpt ForConny(int year) {
-		var result = ForMichael(year);
+	public static FotoKalenderOpt forConny(int year) {
+		var result = forMichael(year);
 		result.m_strOutDir = "results/2023_24/Conny(ohne Union)/"+ CalendarSheet.fWeight +"/";
 		result.m_bBundesliga = false;
 		return result;
 		
 	}
 	
-	public static FotoKalenderOpt ForAdriana(int year) {
+	public static FotoKalenderOpt forAdriana(int year) {
 		CalendarSheet.fWeight = 1.65f; // myposter.de BIG BLANCO DIN A3 quer or https://www.myposter.de/wandkalender/blanko
 		CalendarSheet.sBackBackgroundCol = Color.WHITE;
 		//CalendarSheet.fWeight = 1.75f; //for whitewall.com Kalender dezent DIN A3 quer
