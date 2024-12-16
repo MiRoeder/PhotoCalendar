@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.Shape;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
@@ -582,6 +583,40 @@ public class CalendarSheet {
 	
 	/**
 	 * 
+	 * @param strInFileName File name of the source image
+	 * @param centerPointX  the X-Coord of the center point. Usually, you will put here 0.5f.
+	 * @param centerPointY  the Y-Coord of the center point. Usually, you will put here 0.5f.
+	 * 			It should be the point where the most interesting thing in the image is located.
+	 *          If the source image will be rotated or truncated, these parameters will be used.
+	 *          You can enter a number between 0 and 1 here. Then the value will be multiplied by the actual width and height of the source image.
+	 *          Or you enter exactly the center point measured in pixels.
+	 * @param rotator       Usually you will put here 0.0.
+	 *          It defines the clockwise rotation of the source image.
+	 *          If you enter a value between -10 (counter clockwise) and +10 (clockwise), the value will be measured in radians. (Means 2*Pi is a complete circle)
+	 *          If you enter a value lower than -10 or higher than +10 the value be measured as degrees. (360 degrees is a circle).
+	 *          But if you enter 360, the method will rotate the source image in an other way. The image will be rotated, so that as much as possible fits into the target area.
+	 * @param clip			Must use the coordinates of the whole CalendarSheet.
+	 */
+	public void drawImage(
+			String strInFileName,
+			double centerPointX,
+			double centerPointY,
+			double rotator,
+			Shape  clip
+			) {
+		try {
+			SourceImage src = new SourceImage(strInFileName);
+			BufferedImage inImage = src.getImage();
+			drawImage(inImage, centerPointX, centerPointY, rotator, clip);
+		} catch (Exception ex) {
+			System.err.println("Problem with " + strInFileName);
+			ex.printStackTrace();
+		}
+	}
+
+	
+	/**
+	 * 
 	 * @param src           the source image
 	 * @param centerPointX  the X-Coord of the center point. Usually, you will put here 0.5f.
 	 * @param centerPointY  the Y-Coord of the center point. Usually, you will put here 0.5f.
@@ -653,6 +688,17 @@ public class CalendarSheet {
 			double tHeight
 			) {
 		Draw1ImageA img = new Draw1ImageA(inImage, centerPointX, centerPointY, rotator, tx0, ty0, tWidth, tHeight);
+		drawImageA(img);
+	}
+	
+	public void drawImage(
+			BufferedImage inImage,
+			double centerPointX,
+			double centerPointY,
+			double rotator,
+			Shape  clip
+			) {
+		Draw1ImageA img = new Draw1ImageA(inImage, centerPointX, centerPointY, rotator, clip);
 		drawImageA(img);
 	}
 	

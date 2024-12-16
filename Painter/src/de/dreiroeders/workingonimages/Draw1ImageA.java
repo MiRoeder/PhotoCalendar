@@ -1,6 +1,7 @@
 package de.dreiroeders.workingonimages;
 
 import java.awt.Point;
+import java.awt.Shape;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
@@ -12,6 +13,7 @@ public class Draw1ImageA extends Draw1ImageI {
 
 	public Draw1ImageA(String srcFileName) {
 		super(srcFileName);
+		mClip = null;
 	}
 
 	public Draw1ImageA(BufferedImage image) {
@@ -48,6 +50,23 @@ public class Draw1ImageA extends Draw1ImageI {
 		aCenterPoint = new Point2D.Double(centerPointX, centerPointY);
 		dRot = (float)rotator;
 		aOutRect = new Rectangle2D.Double(tx0, ty0, tWidth, tHeight);
+	}
+
+	public Draw1ImageA(
+			BufferedImage image,
+			double centerPointX,
+			double centerPointY,
+			double rotator,
+			Shape clip
+		) {
+		super(image);
+		mClip = clip;
+		aCenterPoint = new Point2D.Double(centerPointX, centerPointY);
+		dRot = (float)rotator;
+		iOutRect = clip.getBounds();
+		if (iOutRect.getWidth() < 2 || iOutRect.getHeight() < 2) {
+			System.err.println("Sorry! The clip must use the coordinates of the whole CalendarSheet.");
+		}
 	}
 
 	public void setCenterPoint() {

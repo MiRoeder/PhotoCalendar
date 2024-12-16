@@ -108,6 +108,9 @@ public class MiRoesDraw {
 		String strDg = dg instanceof File ? ((File)dg).getName() : String.valueOf(dg);
 		System.out.println("MiRoesDraw.drawImage("+ img +"): factor = "+ fac +" "+ det +" > "+ strDg);
 		Graphics2D painter = img.outputImage.createGraphics();
+		if (img.mClip != null) {
+			painter.clip(img.mClip);
+		}
 		boolean bRes = painter.drawImage(image2, img.iOutRect.x, img.iOutRect.y, img.iOutRect.x+img.iOutRect.width, img.iOutRect.y+img.iOutRect.height, ExtraRand, ExtraRand, ExtraRand+img.iOutRect.width-1, ExtraRand+img.iOutRect.height-1, null);
 		assert(bRes);
 		painter.dispose();

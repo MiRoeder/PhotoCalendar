@@ -3,6 +3,7 @@ package de.dreiroeders.workingonimages;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.Shape;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -22,19 +23,23 @@ public class Draw1ImageI extends SourceImage {
 	public BufferedImage outputImage;
 	public Rectangle     iOutRect;
 	private EFillType    mFillType;
-	
+	public Shape		 mClip;
+
 	public Draw1ImageI(BufferedImage image) {
 		super(image);
+		mClip = null;
 		mFillType = EFillType.CutSource;
 	}
 
 	public Draw1ImageI(String srcFileName) {
 		super(srcFileName);
+		mClip = null;
 		mFillType = EFillType.CutSource;
 	}
 
 	public Draw1ImageI(File srcFile, EFillType fillType) {
 		super(srcFile);
+		mClip = null;
 		mFillType = fillType;
 	}
 
@@ -133,7 +138,9 @@ public class Draw1ImageI extends SourceImage {
 			res.append(outputImage.getHeight());
 			res.append("] */");
 		}
-
+		if (mClip != null) {
+			res.append(" extra clipping area!");
+		}
 		return res.toString();
 	}
 
