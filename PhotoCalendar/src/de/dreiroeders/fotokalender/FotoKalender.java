@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.font.LineMetrics;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Path2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
@@ -21,10 +22,10 @@ import de.dreiroeders.io.MiRoeFileExtFilter;
 import de.dreiroeders.workingonimages.BufferedImageSetPixImg_ABGR;
 import de.dreiroeders.workingonimages.BuffrdImgSetPixelD;
 import de.dreiroeders.workingonimages.Draw1ImageI;
+import de.dreiroeders.workingonimages.EFillType;
 import de.dreiroeders.workingonimages.IHintsDrawImages;
 import de.dreiroeders.workingonimages.MiRoesDraw;
 import de.dreiroeders.workingonimages.SourceImage;
-import de.dreiroeders.workingonimages.EFillType;
 
 
 public class FotoKalender {
@@ -200,10 +201,24 @@ public class FotoKalender {
 			sheet.prepareImage(3000);
 			double hText = 0.07;
 			double hTxt = hText-0.003;  // text height
+			int iText2 = sheet.getUsuableHeight()*14/100;
 			sheet.drawSerifText("Manche Leute genießen das Leben in vollen Zügen.",                  0,    0.00, 1d, hTxt     );
 			sheet.drawSerifText("Andere lieber auf der Autobahn.",                                   0,   hText, 1d, hTxt     );
-			sheet.drawImage(inDirMsGal23+"20230908_155301.jpg",                         .5, .5, 0,   0f, 2*hText,.498, 1-2*hText);
-			sheet.drawImage(inDir1+"WhatsApp Bild 2024-07-08 um 12.55.31_5bbc7308.jpg", .4, .5, 0, .502, 2*hText,.498, 1-2*hText);
+			Path2D trapezShape;
+			trapezShape = new Path2D.Double();
+			trapezShape.moveTo(sheet.getX1(), sheet.getY(0.05)+iText2);
+			trapezShape.lineTo(sheet.getX(0.4), sheet.getY(0.05)+iText2);
+			trapezShape.lineTo(sheet.getX(0.605), sheet.getY(1));
+			trapezShape.lineTo(sheet.getX1(), sheet.getY(1));
+			trapezShape.closePath();
+			sheet.drawImage(inDirMsGal23+"20230908_155301.jpg",                         .5, .5, 0, trapezShape);
+			trapezShape = new Path2D.Double();
+			trapezShape.moveTo(sheet.getX(0.395), sheet.getY1()+iText2);
+			trapezShape.lineTo(sheet.getX(1), sheet.getY1()+iText2);
+			trapezShape.lineTo(sheet.getX(1), sheet.getY(.95));
+			trapezShape.lineTo(sheet.getX(0.6), sheet.getY(.95));
+			trapezShape.closePath();
+			sheet.drawImage(inDir1+"WhatsApp Bild 2024-07-08 um 12.55.31_5bbc7308.jpg", .4, .5, 0, trapezShape);
 			sheet.drawCalDates();
 			sheet.writeInDir(strOutDir);	
 		} catch (Exception ex) {
@@ -1092,7 +1107,7 @@ public class FotoKalender {
 		mDates.addCalEvent(PersonalDate.createBirthday("Einschulung Viktoria", 7, 9, 2024));
 		hochzeit = PersonalDate.create1BitmapsBackground("Adriana", new File("res/Hochzeitsringe.png"), "Stephan", 1f, 0f, 16, 12, THIS_YEAR);
 		mDates.addCalEvent(hochzeit);
-		if (THIS_YEAR == 2025) {
+		if (THIS_YEAR == 25) { //TODO
 			var KabarettBesuch = new PersonalDate("{0,date,EE} ", 22, 2, 2025, (byte)0);
 			KabarettBesuch.mBackgrounds = new ArrayList<IDaysBackground>(1);
 			DaysBackgroundImage img = new DaysBackgroundImage(2, 0f, new File("C:\\Users\\MiRoe\\Pictures\\Juergen_von_der_Lippe.png"), .8f);

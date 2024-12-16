@@ -6,8 +6,8 @@ import de.dreiroeders.workingonimages.MiRoesDraw;
 
 public class FotoKalenderOpt {
 
-	public static final int YEAR1 = 2024;
-	public static final int MONTH1 = Calendar.AUGUST;
+	public static final int YEAR1 = 2025;
+	public static final int MONTH1 = Calendar.JANUARY;
 	public static final boolean FINAL = true; // use false, if you want to create a single page to check its appearance or a draft version
 	
 	public              boolean m_bFinal;
