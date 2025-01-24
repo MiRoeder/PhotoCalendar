@@ -63,8 +63,8 @@ public class FotoKalender1 extends PhotoCalendar {
 		m_trgOpt = trgOpt;
 		
 		addFamilyEvents();
-		addStephansFamilyEvents();
-		//addOlafsFamilyEvents();
+		//addStephansFamilyEvents();
+		addOlafsFamilyEvents();
 		addBerlinHolidays();
 		//addBavarianPublicHolidays();
 		addVacations(trgOpt.m_bBerlinVacations, false);
@@ -95,7 +95,31 @@ public class FotoKalender1 extends PhotoCalendar {
 		}
 
 		if (trgOpt.bDoIt(Calendar.JANUARY)) try {
-			MakeSheetFeuerwerke.startMaking(trgOpt.m_nYear, Calendar.JANUARY, mDates, strOutDir, 1);
+			if (trgOpt.m_nYear == 2025) {
+				MakeSheetFeuerwerke.startMaking(trgOpt.m_nYear, Calendar.JANUARY, mDates, strOutDir, 1);
+			} else {
+				CalendarSheet sheet;
+				sheet = new CalendarSheet(trgOpt.m_nYear, Calendar.JANUARY, mDates);
+				sheet.prepareImage(4000);
+				final float hSteg = 0.008f;
+				final float wSteg = hSteg/CalendarSheet.fWeight;
+				final float hCenterPic = .2f;
+				final float wCenterPic = .14f;
+				final float xCenterPic = (1f-wCenterPic)/2f;
+				final float yCenterPic = (1f-hCenterPic)/2f;
+				var img1 = new SourceImage(inDirWhatsApp+"IMG-20220319-WA0008.jpg");
+				//img1.setSourceBounds(new Rectangle(270, 680, 540, 350));
+				float wRightTop = (1f-xCenterPic-wCenterPic-wSteg)/2f;
+				sheet.drawImage(img1.getImage()                             ,.5f ,.5f , 0, xCenterPic+wSteg     ,yCenterPic+hSteg     ,          wCenterPic-2*wSteg,         hCenterPic-2*hSteg);
+				sheet.drawImage(inDirWhatsApp+"IMG-20220320-WA0004.jpg"     ,.5f ,.5f , 0, 0f                   ,                   0f, xCenterPic+wCenterPic-wSteg,yCenterPic                 );
+				sheet.drawImage(inDirCo+"20220319_101538.jpg"               ,.62f,.6f , 0, xCenterPic+wCenterPic,                   0f,                   wRightTop,yCenterPic+hCenterPic-hSteg);
+				sheet.drawImage(inDirGP+"signal-2022-03-21-10-14-04-593.jpg",.3f ,.6f , 0, 1f-wRightTop         ,                   0f,                   wRightTop,yCenterPic+hCenterPic-hSteg);
+				sheet.drawImage(inDirWhatsApp+"IMG-20220319-WA0016b.jpg"    ,.5f ,.5f , 0, xCenterPic+wSteg     ,yCenterPic+hCenterPic,    1f-xCenterPic+wSteg     ,1f-yCenterPic-hCenterPic   );
+				sheet.drawImage(inDirWhatsApp+"IMG-20220320-WA0018.jpg"     ,.5f, .5f , 0, 0f                   ,yCenterPic+hSteg     , xCenterPic                 ,1f-yCenterPic-hSteg        );
+				sheet.drawCalDates();
+				sheet.writeInDir(strOutDir);
+				renameToTitle(strOutDir, "26.01.jpg");
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -131,12 +155,8 @@ public class FotoKalender1 extends PhotoCalendar {
 		}
 
 		if (trgOpt.bDoIt(Calendar.MARCH)) {
-		    makeViksGeburtstag(Calendar.MARCH, strOutDir);
-		}
-
-		if (trgOpt.bDoIt(Calendar.APRIL)) try {
 			CalendarSheet sheet;
-			sheet = new CalendarSheet(THIS_YEAR, Calendar.APRIL, mDates);
+			sheet = new CalendarSheet(THIS_YEAR, Calendar.MARCH, mDates);
 			sheet.prepareImage(4000);
 			final float hSteg = 0.008f;
 			final float wSteg = hSteg/CalendarSheet.fWeight;
@@ -155,7 +175,9 @@ public class FotoKalender1 extends PhotoCalendar {
 			sheet.drawImage(inDirWhatsApp+"IMG-20220320-WA0018.jpg"     ,.5f, .5f , 0, 0f                   ,yCenterPic+hSteg     , xCenterPic                 ,1f-yCenterPic-hSteg        );
 			sheet.drawCalDates();
 			sheet.writeInDir(strOutDir);
-			
+		}
+
+		if (trgOpt.bDoIt(Calendar.APRIL)) try {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
