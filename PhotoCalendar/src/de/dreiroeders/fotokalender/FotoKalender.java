@@ -1642,6 +1642,7 @@ public class FotoKalender {
 				nThreads2 = nThreads;
 			}
 			for (int iT = 0; iT < nThreads2; ++iT) {
+				System.out.println("Waiting for Thread: "+threads[iT].getName());
 				if (threads[iT] != thisThread) {
 					try {
 						threads[iT].join(30000);
@@ -1652,17 +1653,27 @@ public class FotoKalender {
 			}
 			int nThreads3 = thisThread.getThreadGroup().enumerate(threads);
 			while (nThreads3 > 1) {
-				System.err.println("Still "+ nThreads3 +" running!");
+				System.err.println("Still "+ nThreads3 +" threads running! If you want to abort, press 'X'");
 				for (int iT = 0; iT < nThreads3; ++iT) {
 					if (threads[iT] != thisThread) {
 						try {
-							threads[iT].join(30000);
+							System.out.println("Waiting for Thread: "+threads[iT].getName());
+							threads[iT].join(2000);
+							if (System.in.available() > 0) {
+								int inChar = System.in.read();
+								System.out.println("Key No. "+ inChar +" pressed.");
+								if (inChar == 'X' || inChar == 'x') {
+									nThreads3 = -1;
+								}
+							}
 						} catch(Exception ex) {
 							MiRoeIoUtil.logException("", ex);
 						}
 					}
 				}
-				nThreads3 = thisThread.getThreadGroup().enumerate(threads);
+				if (nThreads3 > 0) {
+					nThreads3 = thisThread.getThreadGroup().enumerate(threads);
+				}
 			}
 		}
 	}
