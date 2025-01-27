@@ -8,6 +8,7 @@ import java.util.GregorianCalendar;
 
 import javax.imageio.ImageIO;
 
+import de.dreiroeders.io.MiRoeIoUtil;
 import de.dreiroeders.workingonimages.MiRoesDraw;
 
 public class DaysBackgroundImage extends DaysBackground1 {
@@ -31,6 +32,10 @@ public class DaysBackgroundImage extends DaysBackground1 {
 		BufferedImage maskImage = null;
 		try {
 			sheet.disposePainter();
+			if (!mBackgroundIco.exists()) {
+				String sIco = mBackgroundIco.getPath();
+				mBackgroundIco = new File("PhotoCalendar/"+sIco);
+			}
 			String strFileName = mBackgroundIco.getName();
 			int iExt = strFileName.lastIndexOf('.');
 			if (iExt > 0) {
@@ -71,7 +76,7 @@ public class DaysBackgroundImage extends DaysBackground1 {
 			MiRoesDraw.diagOut(maskImage);
 			sheet.drawMasked(backImage, maskImage, mAlpha, iX, y0);
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			MiRoeIoUtil.logException("", ex);
 			System.out.println("Problems: "+ MiRoesDraw.diagSize(backImage) +" \""+ String.valueOf(maskFile) +"\":"+ MiRoesDraw.diagSize(maskImage) +" "+ iX +" "+ y0);
 		}
 		if (backP != null) {

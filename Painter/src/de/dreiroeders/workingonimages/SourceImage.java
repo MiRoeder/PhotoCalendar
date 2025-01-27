@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
 import de.dreiroeders.net.HttpFile;
+import de.dreiroeders.io.MiRoeIoUtil;
 
 
 public class SourceImage {
@@ -44,7 +45,7 @@ public class SourceImage {
 
 	public SourceImage(BufferedImage image) {
 		m_image = image;
-		m_iStatus = +1;
+		m_iStatus = 1;
 	}
 
 	public void setSourceBounds(Rectangle rect) {
@@ -84,7 +85,7 @@ public class SourceImage {
 		return getImage().getHeight();
 	}
 	
-	private class SrcDir {
+	private static class SrcDir {
 		public File mDir;
 		public boolean m_bExists;
 		
@@ -99,7 +100,7 @@ public class SourceImage {
 	private static ArrayList<SrcDir> sSrcDirs;
 	
 	private void initSrcDirs() {
-		sSrcDirs = new ArrayList<SrcDir>(3);
+		sSrcDirs = new ArrayList</*SrcDir*/>(3);
 		sSrcDirs.add(new SrcDir("PhotoCalendar"));
 		sSrcDirs.add(new SrcDir("Bilder"));
 		sSrcDirs.add(new SrcDir("C:\\Users\\MiRoe\\Pictures"));
@@ -128,7 +129,7 @@ public class SourceImage {
 				File loadedFile = loadFile(m_srcFileName);
 				setImageFromSrcFileName(loadedFile);
 			} catch (Exception ex) {
-				ex.printStackTrace();
+				MiRoeIoUtil.logException("Problem with "+m_srcFileName, ex);
 				m_iStatus = -1;
 				writeFilePaths("m_srcFileName");
 			}
@@ -142,7 +143,7 @@ public class SourceImage {
 			initSrcDirs();
 		}
 		if (!inFile.exists()) {
-			String names[] = splitDirNames(inFile.getAbsolutePath());
+			String[] names = splitDirNames(inFile.getAbsolutePath());
 			for (int iP = 0; iP < names.length && !inFile.exists(); ++iP) {
 				for (int iS = 0; iS < sSrcDirs.size() && !inFile.exists(); ++iS) {
 					if (sSrcDirs.get(iS).m_bExists) {
@@ -167,12 +168,12 @@ public class SourceImage {
 			System.out.println("\""+ m_srcFileName +"\" mapped to \""+ inFile.getAbsolutePath() +"\"");
 			try {
 			    m_image = ImageIO_read(inFile);
-			    m_iStatus = +1;
+			    m_iStatus = 1;
 			    if (m_srcRect != null) {
 			    	m_image = m_image.getSubimage(m_srcRect.x, m_srcRect.y, m_srcRect.width, m_srcRect.height);
 			    }
 			} catch (Exception ex) {
-				ex.printStackTrace();
+				MiRoeIoUtil.logException("Problem with "+m_srcFileName, ex);
 				m_iStatus = -1;
 				if (m_srcRect != null) {
 					m_image = new BufferedImage(m_srcRect.width, m_srcRect.height, BufferedImage.TYPE_3BYTE_BGR);						

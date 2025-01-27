@@ -19,6 +19,7 @@ import java.util.TimeZone;
 import javax.imageio.ImageIO;
 
 import de.dreiroeders.io.MiRoeFileExtFilter;
+import de.dreiroeders.io.MiRoeIoUtil;
 import de.dreiroeders.workingonimages.BufferedImageSetPixImg_ABGR;
 import de.dreiroeders.workingonimages.BuffrdImgSetPixelD;
 import de.dreiroeders.workingonimages.Draw1ImageI;
@@ -1643,11 +1644,25 @@ public class FotoKalender {
 			for (int iT = 0; iT < nThreads2; ++iT) {
 				if (threads[iT] != thisThread) {
 					try {
-						threads[iT].join();
+						threads[iT].join(30000);
 					} catch(Exception ex) {
 						ex.printStackTrace();
 					}
 				}
+			}
+			int nThreads3 = thisThread.getThreadGroup().enumerate(threads);
+			while (nThreads3 > 1) {
+				System.err.println("Still "+ nThreads3 +" running!");
+				for (int iT = 0; iT < nThreads3; ++iT) {
+					if (threads[iT] != thisThread) {
+						try {
+							threads[iT].join(30000);
+						} catch(Exception ex) {
+							MiRoeIoUtil.logException("", ex);
+						}
+					}
+				}
+				nThreads3 = thisThread.getThreadGroup().enumerate(threads);
 			}
 		}
 	}
