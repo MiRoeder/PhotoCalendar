@@ -99,7 +99,8 @@ public class SourceImage {
 	private static ArrayList<SrcDir> sSrcDirs;
 	
 	private void initSrcDirs() {
-		sSrcDirs = new ArrayList<SrcDir>(2);
+		sSrcDirs = new ArrayList<SrcDir>(3);
+		sSrcDirs.add(new SrcDir("PhotoCalendar"));
 		sSrcDirs.add(new SrcDir("Bilder"));
 		sSrcDirs.add(new SrcDir("C:\\Users\\MiRoe\\Pictures"));
 	}
