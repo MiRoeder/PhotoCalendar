@@ -2,12 +2,13 @@ package de.dreiroeders.fotokalender;
 
 import java.awt.Color;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import de.dreiroeders.workingonimages.MiRoesDraw;
 
 public class FotoKalenderOpt {
 
-	public static final int YEAR1 = 2025;
-	public static final int MONTH1 = Calendar.JANUARY;
+	public static int YEAR1 = 2025; // will be changed in Constructor
+	public static int MONTH1 = Calendar.JANUARY; // will be changed in Constructor
 	public static final boolean FINAL = true; // use false, if you want to create a single page to check its appearance or a draft version
 	
 	public              boolean m_bFinal;
@@ -34,9 +35,18 @@ public class FotoKalenderOpt {
 	 public static final int TITLE_SHEET = 12; 	
 	
 	public FotoKalenderOpt() {
+		GregorianCalendar startDate = new GregorianCalendar();
+		startDate.add(Calendar.MONTH, 1);
+		YEAR1 = startDate.get(Calendar.YEAR);
+		MONTH1 = startDate.get(Calendar.MONTH);
 	}
 
 	public static FotoKalenderOpt Current(int nDeltaYear) {
+		GregorianCalendar startDate = new GregorianCalendar();
+		startDate.add(Calendar.MONTH, 1);
+		//TODO add here your desired month for the first calendar sheet, or use simply this code
+		YEAR1 = startDate.get(Calendar.YEAR);
+		MONTH1 = startDate.get(Calendar.MONTH);
 		int year = nDeltaYear+YEAR1;
 		FotoKalenderOpt result = forMichael(year);
 		if (!FINAL) {
