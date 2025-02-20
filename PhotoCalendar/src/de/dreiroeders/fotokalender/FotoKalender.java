@@ -814,14 +814,20 @@ public class FotoKalender {
 			CalendarSheet sheet = new CalendarSheet(THIS_YEAR, month, this.mDates);
 			sheet.prepareImage(3414f);
 			final Color colTxt = new Color(128,192,255);
-			
+			final Color colTxtS = new Color(160,244,255);
+
 			SourceImage srcTram  = new SourceImage("http://www.3roeders.de/SamsungGalS23/20230727_114310.jpg");
 			// Original size 3414 x 2685
 			Rectangle rectDestinationIndicator = new Rectangle(1454, 1106, 160, 40);
 			sheet.drawText("Warum so ein großer Aufwand?", colTxt, Font.SERIF, Font.PLAIN, 0, 0   , 1f, 0.06);
-			sheet.drawText("In Brüssel fährt die Strassenbahn Linie Nr. 82 direkt zum Drogenboss", 
-														   colTxt, Font.SERIF, Font.PLAIN, 0, 0.07, 1f, 0.06);
-			
+			int iX3 = sheet.getUsuableWidth()/50;
+			int iW4 = sheet.getUsuableWidth()/100;
+			int iW3 = sheet.getUsuableWidth()-2*iX3-iW4;
+			int iW3a = sheet.drawText("In Brüssel fährt die Strassenbahn Linie Nr. 82 direkt zum Drogenbos",
+														   colTxt, Font.SERIF, Font.PLAIN, iX3, 0.07, iW3, 0.06);
+			int iX4 = iX3+(iW3-iW3a)/2+iW3a;
+			sheet.drawText("s",	colTxtS, Font.SERIF, Font.PLAIN, iX4, 0.07, iW4, 0.06);
+
 			sheet.drawImage(srcTram, .5f, .5f, 0,                                          0, 0.4,  1d, 0.6);
 			srcTram.setSourceBounds(rectDestinationIndicator);
 			int x0 = sheet.getX1();
@@ -1121,7 +1127,7 @@ public class FotoKalender {
 		mDates.addCalEvent(PersonalDate.createBirthday("* Marlis", 28, 1, THIS_YEAR));
 		mDates.addCalEvent(PersonalDate.createBirthday("* André", 26, 4, THIS_YEAR));
 		PersonalDate hochzeit;
-		hochzeit = PersonalDate.create1BitmapsBackground("Marlis", new File("res\\Hochzeitsringe.png"), "André", 1f, 0f, 2, 4, THIS_YEAR);
+		hochzeit = PersonalDate.create1BitmapsBackground("Marlis", new File("res/Hochzeitsringe.png"), "André", 1f, 0f, 2, 4, THIS_YEAR);
 		mDates.addCalEvent(hochzeit);
 	}
 	
@@ -1313,7 +1319,7 @@ public class FotoKalender {
 			game1.mBackgrounds = new ArrayList<IDaysBackground>(1);
 			txt = new DaysBackgroundText(1f, 0f, game1, "Finale: ");
 			game1.mBackgrounds.add(txt);
-			img = new DaysBackgroundImage(3f, 0f, new File("res\\Coupe_Henri_Delaunay_2017.png"), .8f);
+			img = new DaysBackgroundImage(3f, 0f, new File("res/Coupe_Henri_Delaunay_2017.png"), .8f);
 			game1.mBackgrounds.add(img);
 			mDates.addCalEvent(game1);
 		}
@@ -1331,7 +1337,7 @@ public class FotoKalender {
 				int iDay = (int)(fiDay+.4f);
 				float dY = fiDay-iDay;
 				fiDay += fHigh;
-				img = new DaysBackgroundImage(fHigh*1.3f, dY, new File("res\\320px-Olympic_flag.svg.png"), 0.5f);
+				img = new DaysBackgroundImage(fHigh*1.3f, dY, new File("res/320px-Olympic_flag.svg.png"), 0.5f);
 				ArrayList<IDaysBackground> imgList = new ArrayList<IDaysBackground>(1);
 				imgList.add(img);
 				if (iDay <= 31) {
@@ -1342,6 +1348,30 @@ public class FotoKalender {
 				day1.mBackgrounds = imgList;
 				mDates.addCalEvent(day1);
 			}
+		}
+	}
+
+	public void addBerlinGrueneWoche() {
+		// Die Grüne Woche findet vom 16. ? 25. Januar 2026 in den Hallen rund um den Funkturm statt.
+		PersonalDate day1;
+		IDaysBackground img;
+		float fiDay = 16f-THIS_YEAR+2026;
+		int endDate = 25-THIS_YEAR+2026;
+		float fHigh = 1.8f;
+		while (fiDay < endDate+.5f) {
+			int iDay = (int)(fiDay+.4f);
+			float dY = fiDay-iDay;
+			fiDay += fHigh;
+			img = new DaysBackgroundImage(fHigh*1.3f, dY, new File("res/GrueneWoche.png"), 0.5f);
+			ArrayList<IDaysBackground> imgList = new ArrayList<IDaysBackground>(1);
+			imgList.add(img);
+			if (iDay <= 31) {
+				day1 = new PersonalDate("", iDay,    1, THIS_YEAR, (byte)0);
+			} else {
+				day1 = new PersonalDate("", iDay-31, 2, THIS_YEAR, (byte)0);
+			}
+			day1.mBackgrounds = imgList;
+			mDates.addCalEvent(day1);
 		}
 	}
 

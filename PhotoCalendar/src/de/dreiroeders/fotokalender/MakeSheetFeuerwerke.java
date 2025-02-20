@@ -72,10 +72,17 @@ public class MakeSheetFeuerwerke extends Thread {
 		final String picRuedi6 = "http://www.3roeders.de/Feuerwerke/Ruedi2023_6.jpg";
 		final String picRuediKlo = "http://www.3roeders.de/2014-00-Neujahr/DSC01809.JPG";
 		mSheet = new CalendarSheet(THIS_YEAR, nMonth, CAL_Dates);
+		SourceImage srcMainImg = null;
 		mSheet.prepareImage(5000, Color.BLACK);
-		BufferedImageSetPixImg_ABGR img1;
-		float rotC;
-		SourceImage srcMainImg = new SourceImage("https://upload.wikimedia.org/wikipedia/commons/4/49/New_Year_Berlin.jpg");
+		if ((m_nOpt & 2) == 2) {
+			srcMainImg = new SourceImage("C:\\Users\\MiRoe\\Pictures\\Berlin\\38962551524_0ee9419415_o.jpg");
+		}
+		boolean bAddMoreFirework = true;
+		if (srcMainImg == null || !srcMainImg.isOk()) {
+			srcMainImg = new SourceImage("https://upload.wikimedia.org/wikipedia/commons/4/49/New_Year_Berlin.jpg");
+			bAddMoreFirework = !srcMainImg.isOk();
+		}
+		boolean bHintsForNewYear = (m_nOpt & 1) != 0;
 		if (srcMainImg.isOk()) {
 			BufferedImage mainImg = srcMainImg.getImage();
 			for (int ix = 0; ix < srcMainImg.getWidth(); ++ix) {
@@ -85,22 +92,49 @@ public class MakeSheetFeuerwerke extends Thread {
 					mainImg.setRGB(ix, iy, dwPix);
 				}				
 			}
-			mSheet.drawImage(mainImg , 0.5, 0.5, 0.0 , 0.000, 0.000, 1f, .799f);
+			mSheet.drawImage(mainImg , 0.5, 0.5, 0.0 , 0.000, 0.000, 1f, bHintsForNewYear ? .799f : 1f);
 		} else {
-			srcMainImg = new SourceImage("https://upload.wikimedia.org/wikipedia/commons/4/49/New_Year_Berlin.jpg");
 			//TODO
 		}
+		BufferedImageSetPixImg_ABGR img1;
 		img1 = mkPicFeuerwerk(picRuedi2, 0.5f);
-		mSheet.drawImageA(new MakeDarkTransparentRoundRect(img1.getImage(0)    , 0.5, 0.2,   0 , 0.000, 0.000, 0.350, 0.35));
+		mSheet.drawImageA(new MakeDarkTransparentRoundRect(img1.getImage(0)    , 0.5, 0.2,   0 , 0.000, 0.000, 0.250, 0.25));
 		img1 = mkPicFeuerwerk(picRuedi5, 0.4f);
-		mSheet.drawImageA(new MakeDarkTransparentRoundRect(img1.getImage(0)    , 0.5, 0.3,   0 , 0.300, 0.250, 0.350, 0.35));
+		mSheet.drawImageA(new MakeDarkTransparentRoundRect(img1.getImage(0)    , 0.5, 0.3,   0 , 0.300, 0.250, 0.250, 0.25));
 		img1 = mkPicFeuerwerk(picRuedi6, 0.4f);
-		mSheet.drawImageA(new MakeDarkTransparentRoundRect(img1.getImage(0)    , 0.5, 0.3,   0 , 0.200, 0.200, 0.300, 0.35));
+		mSheet.drawImageA(new MakeDarkTransparentRoundRect(img1.getImage(0)    , 0.5, 0.3,   0 , 0.200, 0.200, 0.200, 0.25));
 		img1 = mkPicFeuerwerk(picRuediKlo, 0.8f);
-		rotC = (float)(2456-2528) / (2829-4267) * 0.8f;
+		float rotC = (float)(2456-2528) / (2829-4267) * 0.8f;
 		mSheet.drawImageA(new MakeDarkTransparentRoundRect(img1.getImage(0)    ,  .5,  .5,-rotC, 0.920, 0.350, 0.080, 0.25f));
-		writeYear();
-		if (m_nOpt > 0) {
+		if (bAddMoreFirework) {
+			final String sD1 = "C:\\Users\\MiRoe\\Pictures\\Feuerwerke\\2020_FrankfurtM\\";
+			img1 = mkPicFeuerwerk(sD1+"20200101_000328_43a.jpg", 0.5f);
+			mSheet.drawImageA(new MakeDarkTransparentRoundRect(img1.getImage(0)    , 0.5, 0.5,   0 , 0.400, 0.100, 0.080, 0.12));
+			img1 = mkPicFeuerwerk(sD1+"20200101_000328_16b.jpg", 0.5f);
+			mSheet.drawImageA(new MakeDarkTransparentRoundRect(img1.getImage(0)    , 0.5, 0.5,   0 , 0.050, 0.000, 0.100, 0.14));
+			img1 = mkPicFeuerwerk(sD1+"20200101_000927_3a.jpg", 0.3f);
+			mSheet.drawImageA(new MakeDarkTransparentRoundRect(img1.getImage(0)    , 0.5, 0.5,   0 , 0.650, 0.200, 0.100, 0.11));
+			img1 = mkPicFeuerwerk(sD1+"20200101_000927_3a.jpg", 0.3f);
+			mSheet.drawImageA(new MakeDarkTransparentRoundRect(img1.getImage(0)    , 0.5, 0.5,   0 , 0.300, 0.200, 0.100, 0.11));
+			img1 = mkPicFeuerwerk(sD1+"20200101_000328_10b.jpg", 0.6f);
+			mSheet.drawImageA(new MakeDarkTransparentRoundRect(img1.getImage(0)    , 0.5, 0.5,   0 , 0.050, 0.200, 0.150, 0.18));
+			img1 = mkPicFeuerwerk(sD1+"20200101_000328_18c.jpg", 0.5f);
+			mSheet.drawImageA(new MakeDarkTransparentRoundRect(img1.getImage(0)    , 0.5, 0.5,   0 , 0.400, 0.200, 0.058, 0.08));
+			img1 = mkPicFeuerwerk(sD1+"20200101_000328_55a.jpg", 0.1f);
+			mSheet.drawImageA(new MakeDarkTransparentRoundRect(img1.getImage(0)    , 0.5, 0.5,   0 , 0.650, 0.100, 0.100, 0.2));
+			img1 = mkPicFeuerwerk(sD1+"20200101_000927_2a", 0.2f);
+			mSheet.drawImageA(new MakeDarkTransparentRoundRect(img1.getImage(0)    , 0.5, 0.5,   0 , 0.850, 0.100, 0.150, 0.2));
+			img1 = mkPicFeuerwerk(sD1+"20200101_002007_1a.jpg", 0.6f);
+			mSheet.drawImageA(new MakeDarkTransparentRoundRect(img1.getImage(0)    , 0.5, 0.5,   0 , 0.900, 0.000, 0.100, 0.2));
+			img1 = mkPicFeuerwerk(sD1+"20200101_002336_1_02a.jpg", 0.3f);
+			mSheet.drawImageA(new MakeDarkTransparentRoundRect(img1.getImage(0)    , 0.5, 0.5,   0 , 0.280, 0.050, 0.150, 0.095));
+			img1 = mkPicFeuerwerk(sD1+"20200101_000927_4a.jpg", 0.3f);
+			mSheet.drawImageA(new MakeDarkTransparentRoundRect(img1.getImage(0)    , 0.5, 0.5,   0 , 0.580, 0.100, 0.200, 0.3));
+		} /* end if (bAddMoreFirework) */
+		if ((m_nOpt & 4) == 0) {
+			writeYear();
+		}
+		if (bHintsForNewYear) {
 			SourceImage imgFabianVerbrenntPapier = new SourceImage("http://www.3roeders.de/Signal/signal-2021-09-05-185912.jpg");
 			int nCols = imgFabianVerbrenntPapier.isOk() ? 1 : 0;
 			// TGIF 2022 - week51
@@ -196,7 +230,7 @@ public class MakeSheetFeuerwerke extends Thread {
 				mSheet.drawImage(imgProblemsCanBeSolved, 0.5f, 0.5f, 0f, xC+w0Text, 0.800, wCol1-w0Text, 0.200f);
 				xC += wCol1 + wSteg;
 			}
-		}
+		} /* end if (bHintsForNewYear) */
 		mSheet.drawCalDates();
 		mSheet.writeExJpg(StrOUT_DIR);
 	} /* end of makeFeuerwerkBerlin() */
