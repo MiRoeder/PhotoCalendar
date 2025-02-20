@@ -28,12 +28,18 @@ public class HttpFile {
 	
 	
 	public static void copy(InputStream src, OutputStream trg, int diagLevel) throws Exception {
-		byte[] buf = new byte[2048];
+		byte[] buf = new byte[4096];
 		int iRead = 0;
+		int iRedL = -12345;
 		do {
 			iRead = src.read(buf);
 			if (diagLevel > 8) {
-				System.out.print(" "+iRead);
+				if (iRead == iRedL) {
+					System.out.print("*");
+				} else {
+					System.out.print("\n"+iRead);
+					iRedL = iRead;
+				}
 			}
 			if (iRead > 0) {
 				trg.write(buf, 0, iRead);
