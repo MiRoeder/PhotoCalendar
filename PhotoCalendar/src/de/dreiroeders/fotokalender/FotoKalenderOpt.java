@@ -7,8 +7,8 @@ import de.dreiroeders.workingonimages.MiRoesDraw;
 
 public class FotoKalenderOpt {
 
-	public static int YEAR1 = 2025; // will be changed in Constructor
-	public static int MONTH1 = Calendar.JANUARY; // will be changed in Constructor
+	public static int YEAR1 = 0;
+	public static int MONTH1 = Calendar.JANUARY;
 	public static final boolean FINAL = true; // use false, if you want to create a single page to check its appearance or a draft version
 	
 	public              boolean m_bFinal;
@@ -35,20 +35,17 @@ public class FotoKalenderOpt {
 	 public static final int TITLE_SHEET = 12; 	
 	
 	public FotoKalenderOpt() {
-		GregorianCalendar startDate = new GregorianCalendar();
-		startDate.add(Calendar.MONTH, 1);
-		YEAR1 = startDate.get(Calendar.YEAR);
-		MONTH1 = startDate.get(Calendar.MONTH);
+		if (YEAR1 == 0) {
+			GregorianCalendar startDate = new GregorianCalendar();
+			startDate.add(Calendar.MONTH, 1);
+			YEAR1 = startDate.get(Calendar.YEAR);
+			MONTH1 = startDate.get(Calendar.MONTH);
+		}
 	}
 
 	public static FotoKalenderOpt Current(int nDeltaYear) {
-		GregorianCalendar startDate = new GregorianCalendar();
-		startDate.add(Calendar.MONTH, 1);
-		//TODO add here your desired month for the first calendar sheet, or use simply this code
-		YEAR1 = startDate.get(Calendar.YEAR);
-		MONTH1 = startDate.get(Calendar.MONTH);
+		FotoKalenderOpt result = forMichael(nDeltaYear);
 		int year = nDeltaYear+YEAR1;
-		FotoKalenderOpt result = forMichael(year);
 		if (!FINAL) {
 			CalendarSheet.maxWidth = 3000; // to save space and time for draft versions
 		}
@@ -75,7 +72,7 @@ public class FotoKalenderOpt {
 	}
 	
 
-	public static FotoKalenderOpt forMichael(int year) {
+	public static FotoKalenderOpt forMichael(int nDeltaYear) {
 		CalendarSheet.fWeight = 1.65f; // myposter.de BIG BLANCO DIN A3 quer or https://www.myposter.de/wandkalender/blanko
 		CalendarSheet.sBackBackgroundCol = Color.WHITE;
 		//CalendarSheet.fWeight = 1.75f; //for whitewall.com Kalender dezent DIN A3 quer
@@ -87,7 +84,7 @@ public class FotoKalenderOpt {
 		//CalendarSheet.fWeight = 2.5f; // Titelbild for Facebook
 		//CalendarSheet.sBackBackgroundCol = Color.WHITE;
 		FotoKalenderOpt result = new FotoKalenderOpt();
-		result.m_nYear = year;
+		result.m_nYear = nDeltaYear+YEAR1;
 		result.m_bFinal = FINAL;
 		result.m_bBerlinVacations = true;
 		result.m_bBundesliga = true;
