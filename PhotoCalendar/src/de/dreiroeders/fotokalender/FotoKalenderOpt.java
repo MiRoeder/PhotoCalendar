@@ -32,9 +32,9 @@ public class FotoKalenderOpt {
 	 * ....
 	 * public static final int DECEMBER = 11;
 	 */
-	 public static final int TITLE_SHEET = 12; 	
-	
-	public FotoKalenderOpt() {
+	public static final int TITLE_SHEET = 12;
+
+	public static void initYEAR1() {
 		if (YEAR1 == 0) {
 			GregorianCalendar startDate = new GregorianCalendar();
 			startDate.add(Calendar.MONTH, 1);
@@ -43,9 +43,14 @@ public class FotoKalenderOpt {
 		}
 	}
 
+	public FotoKalenderOpt() {
+		initYEAR1();
+	}
+
 	public static FotoKalenderOpt Current(int nDeltaYear) {
-		FotoKalenderOpt result = forMichael(nDeltaYear);
+		initYEAR1();
 		int year = nDeltaYear+YEAR1;
+		FotoKalenderOpt result = forMichael(year);
 		if (!FINAL) {
 			CalendarSheet.maxWidth = 3000; // to save space and time for draft versions
 		}
@@ -72,7 +77,7 @@ public class FotoKalenderOpt {
 	}
 	
 
-	public static FotoKalenderOpt forMichael(int nDeltaYear) {
+	private static FotoKalenderOpt forMichael(int year) {
 		CalendarSheet.fWeight = 1.65f; // myposter.de BIG BLANCO DIN A3 quer or https://www.myposter.de/wandkalender/blanko
 		CalendarSheet.sBackBackgroundCol = Color.WHITE;
 		//CalendarSheet.fWeight = 1.75f; //for whitewall.com Kalender dezent DIN A3 quer
@@ -84,7 +89,7 @@ public class FotoKalenderOpt {
 		//CalendarSheet.fWeight = 2.5f; // Titelbild for Facebook
 		//CalendarSheet.sBackBackgroundCol = Color.WHITE;
 		FotoKalenderOpt result = new FotoKalenderOpt();
-		result.m_nYear = nDeltaYear+YEAR1;
+		result.m_nYear = year;
 		result.m_bFinal = FINAL;
 		result.m_bBerlinVacations = true;
 		result.m_bBundesliga = true;
@@ -108,7 +113,7 @@ public class FotoKalenderOpt {
 		return result;
 	}
 
-	public static FotoKalenderOpt forConny(int year) {
+	private static FotoKalenderOpt forConny(int year) {
 		var result = forMichael(year);
 		result.m_strOutDir = "results/2023_24/Conny(ohne Union)/"+ CalendarSheet.fWeight +"/";
 		result.m_bBundesliga = false;
@@ -116,7 +121,7 @@ public class FotoKalenderOpt {
 		
 	}
 	
-	public static FotoKalenderOpt forAdriana(int year) {
+	private static FotoKalenderOpt forAdriana(int year) {
 		CalendarSheet.fWeight = 1.65f; // myposter.de BIG BLANCO DIN A3 quer or https://www.myposter.de/wandkalender/blanko
 		CalendarSheet.sBackBackgroundCol = Color.WHITE;
 		//CalendarSheet.fWeight = 1.75f; //for whitewall.com Kalender dezent DIN A3 quer
