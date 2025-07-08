@@ -10,322 +10,352 @@ import java.util.Locale;
 public class MyFussballBundesliga {
 
 	public static void addMyFussballBundesliga(FotoKalender cal) {
-		//		SPIELPLAN
-		//		BUNDESLIGA
-		//		SAISON 2024/2025
-		//		04.07.2024
-		//		DFL Deutsche Fußball Liga e.V.
-		//		Sämtliche Rechte an dem Spielplan liegen bei DFL Deutsche Fußball Liga e.V.
-		//		Änderungen des Spielplans bleiben vorbehalten.
-		//		Alle weiteren Informationen zur Saison 2024/2025 unter bundesliga.de
-		addTermin(cal,23, 8,23, 8, 2024, " 1 1 Borussia Mönchengladbach Bayer 04 Leverkusen"); // 
-		addTermin(cal,24, 8,25, 8, 2024, " 1 2 RB Leipzig VfL Bochum 1848"); // 
-		addTermin(cal,24, 8,25, 8, 2024, " 1 3 Borussia Dortmund Eintracht Frankfurt"); // 
-		addTermin(cal,24, 8,25, 8, 2024, " 1 4 TSG Hoffenheim Holstein Kiel"); // 
-		addTermin(cal,24, 8,25, 8, 2024, " 1 5 Sport-Club Freiburg VfB Stuttgart"); // 
-		addTermin(cal,24, 8,25, 8, 2024, " 1 6 FC Augsburg SV Werder Bremen"); // 
-		addTermin(cal,24, 8,25, 8, 2024, " 1 7 VfL Wolfsburg FC Bayern München"); // 
-		addTermin(cal,24, 8,25, 8, 2024, " 1 8 1_FSV Mainz 05 1_FC Union Berlin"); // 
-		addTermin(cal,24, 8,25, 8, 2024, " 1 9 FC St_ Pauli 1_FC Heidenheim 1846"); // 
-		addTermin(cal,30, 8, 1, 9, 2024, " 2 10 Bayer 04 Leverkusen RB Leipzig"); // 
-		addTermin(cal,30, 8, 1, 9, 2024, " 2 11 VfB Stuttgart 1_FSV Mainz 05"); // 
-		addTermin(cal,30, 8, 1, 9, 2024, " 2 12 FC Bayern München Sport-Club Freiburg"); // 
-		addTermin(cal,30, 8, 1, 9, 2024, " 2 13 Eintracht Frankfurt TSG Hoffenheim"); // 
-		addTermin(cal,30, 8, 1, 9, 2024, " 2 14 1_FC Heidenheim 1846 FC Augsburg"); // 
-		addTermin(cal,30, 8, 1, 9, 2024, " 2 15 SV Werder Bremen Borussia Dortmund"); // 
-		addTermin(cal,30, 8, 1, 9, 2024, " 2 16 1_FC Union Berlin FC St_ Pauli"); // 
-		addTermin(cal,30, 8, 1, 9, 2024, " 2 17 VfL Bochum 1848 Borussia Mönchengladbach"); // 
-		addTermin(cal,30, 8, 1, 9, 2024, " 2 18 Holstein Kiel VfL Wolfsburg"); // 
-		addTermin(cal,13, 9,15, 9, 2024, " 3 19 RB Leipzig 1_FC Union Berlin"); // 
-		addTermin(cal,13, 9,15, 9, 2024, " 3 20 Borussia Dortmund 1_FC Heidenheim 1846"); // 
-		addTermin(cal,13, 9,15, 9, 2024, " 3 21 TSG Hoffenheim Bayer 04 Leverkusen"); // 
-		addTermin(cal,13, 9,15, 9, 2024, " 3 22 Sport-Club Freiburg VfL Bochum 1848"); // 
-		addTermin(cal,13, 9,15, 9, 2024, " 3 23 FC Augsburg FC St_ Pauli"); // 
-		addTermin(cal,13, 9,15, 9, 2024, " 3 24 VfL Wolfsburg Eintracht Frankfurt"); // 
-		addTermin(cal,13, 9,15, 9, 2024, " 3 25 1_FSV Mainz 05 SV Werder Bremen"); // 
-		addTermin(cal,13, 9,15, 9, 2024, " 3 26 Borussia Mönchengladbach VfB Stuttgart"); // 
-		addTermin(cal,13, 9,15, 9, 2024, " 3 27 Holstein Kiel FC Bayern München"); // 
-		addTermin(cal,20, 9,22, 9, 2024, " 4 28 Bayer 04 Leverkusen VfL Wolfsburg"); // 
-		addTermin(cal,20, 9,22, 9, 2024, " 4 29 VfB Stuttgart Borussia Dortmund"); // 
-		addTermin(cal,20, 9,22, 9, 2024, " 4 30 Eintracht Frankfurt Borussia Mönchengladbach"); // 
-		addTermin(cal,20, 9,22, 9, 2024, " 4 31 1_FC Heidenheim 1846 Sport-Club Freiburg"); // 
-		addTermin(cal,20, 9,22, 9, 2024, " 4 32 SV Werder Bremen FC Bayern München"); // 
-		addTermin(cal,20, 9,22, 9, 2024, " 4 33 FC Augsburg 1_FSV Mainz 05"); // 
-		addTermin(cal,20, 9,22, 9, 2024, " 4 34 1_FC Union Berlin TSG Hoffenheim"); // 
-		addTermin(cal,20, 9,22, 9, 2024, " 4 35 VfL Bochum 1848 Holstein Kiel"); // 
-		addTermin(cal,20, 9,22, 9, 2024, " 4 36 FC St_ Pauli RB Leipzig"); // 
-		addTermin(cal,27, 9,29, 9, 2024, " 5 37 FC Bayern München Bayer 04 Leverkusen"); // 
-		addTermin(cal,27, 9,29, 9, 2024, " 5 38 RB Leipzig FC Augsburg"); // 
-		addTermin(cal,27, 9,29, 9, 2024, " 5 39 Borussia Dortmund VfL Bochum 1848"); // 
-		addTermin(cal,27, 9,29, 9, 2024, " 5 40 TSG Hoffenheim SV Werder Bremen"); // 
-		addTermin(cal,27, 9,29, 9, 2024, " 5 41 Sport-Club Freiburg FC St_ Pauli"); // 
-		addTermin(cal,27, 9,29, 9, 2024, " 5 42 VfL Wolfsburg VfB Stuttgart"); // 
-		addTermin(cal,27, 9,29, 9, 2024, " 5 43 1_FSV Mainz 05 1_FC Heidenheim 1846"); // 
-		addTermin(cal,27, 9,29, 9, 2024, " 5 44 Borussia Mönchengladbach 1_FC Union Berlin"); // 
-		addTermin(cal,27, 9,29, 9, 2024, " 5 45 Holstein Kiel Eintracht Frankfurt"); // 
-		addTermin(cal, 4,10, 6,10, 2024, " 6 46 Bayer 04 Leverkusen Holstein Kiel"); // 
-		addTermin(cal, 4,10, 6,10, 2024, " 6 47 VfB Stuttgart TSG Hoffenheim"); // 
-		addTermin(cal, 4,10, 6,10, 2024, " 6 48 Eintracht Frankfurt FC Bayern München"); // 
-		addTermin(cal, 4,10, 6,10, 2024, " 6 49 1_FC Heidenheim 1846 RB Leipzig"); // 
-		addTermin(cal, 4,10, 6,10, 2024, " 6 50 SV Werder Bremen Sport-Club Freiburg"); // 
-		addTermin(cal, 4,10, 6,10, 2024, " 6 51 FC Augsburg Borussia Mönchengladbach"); // 
-		addTermin(cal, 4,10, 6,10, 2024, " 6 52 1_FC Union Berlin Borussia Dortmund"); // 
-		addTermin(cal, 4,10, 6,10, 2024, " 6 53 VfL Bochum 1848 VfL Wolfsburg"); // 
-		addTermin(cal, 4,10, 6,10, 2024, " 6 54 FC St_ Pauli 1_FSV Mainz 05"); // 
-		addTermin(cal,18,10,20,10, 2024, " 7 55 Bayer 04 Leverkusen Eintracht Frankfurt"); // 
-		addTermin(cal,18,10,20,10, 2024, " 7 56 FC Bayern München VfB Stuttgart"); // 
-		addTermin(cal,18,10,20,10, 2024, " 7 57 Borussia Dortmund FC St_ Pauli"); // 
-		addTermin(cal,18,10,20,10, 2024, " 7 58 TSG Hoffenheim VfL Bochum 1848"); // 
-		addTermin(cal,18,10,20,10, 2024, " 7 59 Sport-Club Freiburg FC Augsburg"); // 
-		addTermin(cal,18,10,20,10, 2024, " 7 60 VfL Wolfsburg SV Werder Bremen"); // 
-		addTermin(cal,18,10,20,10, 2024, " 7 61 1_FSV Mainz 05 RB Leipzig"); // 
-		addTermin(cal,18,10,20,10, 2024, " 7 62 Borussia Mönchengladbach 1_FC Heidenheim 1846"); // 
-		addTermin(cal,18,10,20,10, 2024, " 7 63 Holstein Kiel 1_FC Union Berlin"); // 
-		addTermin(cal,25,10,27,10, 2024, " 8 64 VfB Stuttgart Holstein Kiel"); // 
-		addTermin(cal,25,10,27,10, 2024, " 8 65 RB Leipzig Sport-Club Freiburg"); // 
-		addTermin(cal,25,10,27,10, 2024, " 8 66 1_FC Heidenheim 1846 TSG Hoffenheim"); // 
-		addTermin(cal,25,10,27,10, 2024, " 8 67 SV Werder Bremen Bayer 04 Leverkusen"); // 
-		addTermin(cal,25,10,27,10, 2024, " 8 68 FC Augsburg Borussia Dortmund"); // 
-		addTermin(cal,25,10,27,10, 2024, " 8 69 1_FSV Mainz 05 Borussia Mönchengladbach"); // 
-		addTermin(cal,25,10,27,10, 2024, " 8 70 1_FC Union Berlin Eintracht Frankfurt"); // 
-		addTermin(cal,25,10,27,10, 2024, " 8 71 VfL Bochum 1848 FC Bayern München"); // 
-		addTermin(cal,25,10,27,10, 2024, " 8 72 FC St_ Pauli VfL Wolfsburg"); // 
-		addTermin(cal, 1,11, 3,11, 2024, " 9 73 Bayer 04 Leverkusen VfB Stuttgart"); // 
-		addTermin(cal, 1,11, 3,11, 2024, " 9 74 FC Bayern München 1_FC Union Berlin"); // 
-		addTermin(cal, 1,11, 3,11, 2024, " 9 75 Borussia Dortmund RB Leipzig"); // 
-		addTermin(cal, 1,11, 3,11, 2024, " 9 76 Eintracht Frankfurt VfL Bochum 1848"); // 
-		addTermin(cal, 1,11, 3,11, 2024, " 9 77 TSG Hoffenheim FC St_ Pauli"); // 
-		addTermin(cal, 1,11, 3,11, 2024, " 9 78 Sport-Club Freiburg 1_FSV Mainz 05"); // 
-		addTermin(cal, 1,11, 3,11, 2024, " 9 79 VfL Wolfsburg FC Augsburg"); // 
-		addTermin(cal, 1,11, 3,11, 2024, " 9 80 Borussia Mönchengladbach SV Werder Bremen"); // 
-		addTermin(cal, 1,11, 3,11, 2024, " 9 81 Holstein Kiel 1_FC Heidenheim 1846"); // 
-		addTermin(cal, 8,11,10,11, 2024, " 10 82 VfB Stuttgart Eintracht Frankfurt"); // 
-		addTermin(cal, 8,11,10,11, 2024, " 10 83 RB Leipzig Borussia Mönchengladbach"); // 
-		addTermin(cal, 8,11,10,11, 2024, " 10 84 1_FC Heidenheim 1846 VfL Wolfsburg"); // 
-		addTermin(cal, 8,11,10,11, 2024, " 10 85 SV Werder Bremen Holstein Kiel"); // 
-		addTermin(cal, 8,11,10,11, 2024, " 10 86 FC Augsburg TSG Hoffenheim"); // 
-		addTermin(cal, 8,11,10,11, 2024, " 10 87 1_FSV Mainz 05 Borussia Dortmund"); // 
-		addTermin(cal, 8,11,10,11, 2024, " 10 88 1_FC Union Berlin Sport-Club Freiburg"); // 
-		addTermin(cal, 8,11,10,11, 2024, " 10 89 VfL Bochum 1848 Bayer 04 Leverkusen"); // 
-		addTermin(cal, 8,11,10,11, 2024, " 10 90 FC St_ Pauli FC Bayern München"); // 
-		addTermin(cal,22,11,24,11, 2024, " 11 91 Bayer 04 Leverkusen 1_FC Heidenheim 1846"); // 
-		addTermin(cal,22,11,24,11, 2024, " 11 92 VfB Stuttgart VfL Bochum 1848"); // 
-		addTermin(cal,22,11,24,11, 2024, " 11 93 FC Bayern München FC Augsburg"); // 
-		addTermin(cal,22,11,24,11, 2024, " 11 94 Borussia Dortmund Sport-Club Freiburg"); // 
-		addTermin(cal,22,11,24,11, 2024, " 11 95 Eintracht Frankfurt SV Werder Bremen"); // 
-		addTermin(cal,22,11,24,11, 2024, " 11 96 TSG Hoffenheim RB Leipzig"); // 
-		addTermin(cal,22,11,24,11, 2024, " 11 97 VfL Wolfsburg 1_FC Union Berlin"); // 
-		addTermin(cal,22,11,24,11, 2024, " 11 98 Borussia Mönchengladbach FC St_ Pauli"); // 
-		addTermin(cal,22,11,24,11, 2024, " 11 99 Holstein Kiel 1_FSV Mainz 05"); // 
-		addTermin(cal,29,11, 1,12, 2024, " 12 100 RB Leipzig VfL Wolfsburg"); // 
-		addTermin(cal,29,11, 1,12, 2024, " 12 101 Borussia Dortmund FC Bayern München"); // 
-		addTermin(cal,29,11, 1,12, 2024, " 12 102 1_FC Heidenheim 1846 Eintracht Frankfurt"); // 
-		addTermin(cal,29,11, 1,12, 2024, " 12 103 SV Werder Bremen VfB Stuttgart"); // 
-		addTermin(cal,29,11, 1,12, 2024, " 12 104 Sport-Club Freiburg Borussia Mönchengladbach"); // 
-		addTermin(cal,29,11, 1,12, 2024, " 12 105 FC Augsburg VfL Bochum 1848"); // 
-		addTermin(cal,29,11, 1,12, 2024, " 12 106 1_FSV Mainz 05 TSG Hoffenheim"); // 
-		addTermin(cal,30,11,30,11, 2024, " 12 107 1_FC Union Berlin Bayer 04 Leverkusen"); // 
-		addTermin(cal,29,11, 1,12, 2024, " 12 108 FC St_ Pauli Holstein Kiel"); // 
-		addTermin(cal, 6,12, 8,12, 2024, " 13 109 Bayer 04 Leverkusen FC St_ Pauli"); // 
-		addTermin(cal, 6,12, 6,12, 2024, " 13 110 VfB Stuttgart 1_FC Union Berlin"); // 
-		addTermin(cal, 6,12, 8,12, 2024, " 13 111 FC Bayern München 1_FC Heidenheim 1846"); // 
-		addTermin(cal, 6,12, 8,12, 2024, " 13 112 Eintracht Frankfurt FC Augsburg"); // 
-		addTermin(cal, 6,12, 8,12, 2024, " 13 113 TSG Hoffenheim Sport-Club Freiburg"); // 
-		addTermin(cal, 6,12, 8,12, 2024, " 13 114 VfL Wolfsburg 1_FSV Mainz 05"); // 
-		addTermin(cal, 6,12, 8,12, 2024, " 13 115 Borussia Mönchengladbach Borussia Dortmund"); // 
-		addTermin(cal, 6,12, 8,12, 2024, " 13 116 VfL Bochum 1848 SV Werder Bremen"); // 
-		addTermin(cal, 6,12, 8,12, 2024, " 13 117 Holstein Kiel RB Leipzig"); // 
-		addTermin(cal,13,12,15,12, 2024, " 14 118 RB Leipzig Eintracht Frankfurt"); // 
-		addTermin(cal,13,12,15,12, 2024, " 14 119 Borussia Dortmund TSG Hoffenheim"); // 
-		addTermin(cal,13,12,15,12, 2024, " 14 120 1_FC Heidenheim 1846 VfB Stuttgart"); // 
-		addTermin(cal,13,12,15,12, 2024, " 14 121 Sport-Club Freiburg VfL Wolfsburg"); // 
-		addTermin(cal,13,12,15,12, 2024, " 14 122 FC Augsburg Bayer 04 Leverkusen"); // 
-		addTermin(cal,13,12,15,12, 2024, " 14 123 1_FSV Mainz 05 FC Bayern München"); // 
-		addTermin(cal,13,12,15,12, 2024, " 14 124 Borussia Mönchengladbach Holstein Kiel"); // 
-		addTermin(cal,14,12,14,12, 2024, " 14 125 1_FC Union Berlin VfL Bochum 1848"); // 
-		addTermin(cal,13,12,15,12, 2024, " 14 126 FC St_ Pauli SV Werder Bremen"); // 
-		addTermin(cal,20,12,22,12, 2024, " 15 127 Bayer 04 Leverkusen Sport-Club Freiburg"); // 
-		addTermin(cal,20,12,22,12, 2024, " 15 128 VfB Stuttgart FC St_ Pauli"); // 
-		addTermin(cal,20,12,22,12, 2024, " 15 129 FC Bayern München RB Leipzig"); // 
-		addTermin(cal,20,12,22,12, 2024, " 15 130 Eintracht Frankfurt 1_FSV Mainz 05"); // 
-		addTermin(cal,20,12,22,12, 2024, " 15 131 TSG Hoffenheim Borussia Mönchengladbach"); // 
-		addTermin(cal,21,12,21,12, 2024, " 15 132 SV Werder Bremen 1_FC Union Berlin"); // 
-		addTermin(cal,20,12,22,12, 2024, " 15 133 VfL Wolfsburg Borussia Dortmund"); // 
-		addTermin(cal,20,12,22,12, 2024, " 15 134 VfL Bochum 1848 1_FC Heidenheim 1846"); // 
-		addTermin(cal,20,12,22,12, 2024, " 15 135 Holstein Kiel FC Augsburg"); // 
-		addTermin(cal,10, 1,12, 1, 2025, " 16 136 RB Leipzig SV Werder Bremen"); // 
-		addTermin(cal,10, 1,12, 1, 2025, " 16 137 Borussia Dortmund Bayer 04 Leverkusen"); // 
-		addTermin(cal,10, 1,12, 1, 2025, " 16 138 TSG Hoffenheim VfL Wolfsburg"); // 
-		addTermin(cal,11, 1,11, 1, 2025, " 16 139 1_FC Heidenheim 1846 1_FC Union Berlin"); // 
-		addTermin(cal,10, 1,12, 1, 2025, " 16 140 Sport-Club Freiburg Holstein Kiel"); // 
-		addTermin(cal,10, 1,12, 1, 2025, " 16 141 FC Augsburg VfB Stuttgart"); // 
-		addTermin(cal,10, 1,12, 1, 2025, " 16 142 1_FSV Mainz 05 VfL Bochum 1848"); // 
-		addTermin(cal,10, 1,12, 1, 2025, " 16 143 Borussia Mönchengladbach FC Bayern München"); // 
-		addTermin(cal,10, 1,12, 1, 2025, " 16 144 FC St_ Pauli Eintracht Frankfurt"); // 
-		addTermin(cal,14, 1,15, 1, 2025, " 17 145 Bayer 04 Leverkusen 1_FSV Mainz 05"); // 
-		addTermin(cal,14, 1,15, 1, 2025, " 17 146 VfB Stuttgart RB Leipzig"); // 
-		addTermin(cal,14, 1,15, 1, 2025, " 17 147 FC Bayern München TSG Hoffenheim"); // 
-		addTermin(cal,14, 1,15, 1, 2025, " 17 148 Eintracht Frankfurt Sport-Club Freiburg"); // 
-		addTermin(cal,14, 1,15, 1, 2025, " 17 149 SV Werder Bremen 1_FC Heidenheim 1846"); // 
-		addTermin(cal,14, 1,15, 1, 2025, " 17 150 VfL Wolfsburg Borussia Mönchengladbach"); // 
-		addTermin(cal,15, 1,15, 1, 2025, " 17 151 1_FC Union Berlin FC Augsburg"); // 
-		addTermin(cal,14, 1,15, 1, 2025, " 17 152 VfL Bochum 1848 FC St_ Pauli"); // 
-		addTermin(cal,14, 1,15, 1, 2025, " 17 153 Holstein Kiel Borussia Dortmund"); // 
-		addTermin(cal,17, 1,19, 1, 2025, " 18 154 Bayer 04 Leverkusen Borussia Mönchengladbach"); // 
-		addTermin(cal,17, 1,19, 1, 2025, " 18 155 VfB Stuttgart Sport-Club Freiburg"); // 
-		addTermin(cal,17, 1,19, 1, 2025, " 18 156 FC Bayern München VfL Wolfsburg"); // 
-		addTermin(cal,17, 1,19, 1, 2025, " 18 157 Eintracht Frankfurt Borussia Dortmund"); // 
-		addTermin(cal,17, 1,19, 1, 2025, " 18 158 1_FC Heidenheim 1846 FC St_ Pauli"); // 
-		addTermin(cal,17, 1,19, 1, 2025, " 18 159 SV Werder Bremen FC Augsburg"); // 
-		addTermin(cal,19, 1,19, 1, 2025, " 18 160 1_FC Union Berlin 1_FSV Mainz 05"); // 
-		addTermin(cal,17, 1,19, 1, 2025, " 18 161 VfL Bochum 1848 RB Leipzig"); // 
-		addTermin(cal,17, 1,19, 1, 2025, " 18 162 Holstein Kiel TSG Hoffenheim"); // 
-		addTermin(cal,24, 1,26, 1, 2025, " 19 163 RB Leipzig Bayer 04 Leverkusen"); // 
-		addTermin(cal,24, 1,26, 1, 2025, " 19 164 Borussia Dortmund SV Werder Bremen"); // 
-		addTermin(cal,24, 1,26, 1, 2025, " 19 165 TSG Hoffenheim Eintracht Frankfurt"); // 
-		addTermin(cal,24, 1,26, 1, 2025, " 19 166 Sport-Club Freiburg FC Bayern München"); // 
-		addTermin(cal,24, 1,26, 1, 2025, " 19 167 FC Augsburg 1_FC Heidenheim 1846"); // 
-		addTermin(cal,24, 1,26, 1, 2025, " 19 168 VfL Wolfsburg Holstein Kiel"); // 
-		addTermin(cal,24, 1,26, 1, 2025, " 19 169 1_FSV Mainz 05 VfB Stuttgart"); // 
-		addTermin(cal,24, 1,26, 1, 2025, " 19 170 Borussia Mönchengladbach VfL Bochum 1848"); // 
-		addTermin(cal,26, 1,26, 1, 2025, " 19 171 FC St_ Pauli 1_FC Union Berlin"); // 
-		addTermin(cal,31, 1, 2, 2, 2025, " 20 172 Bayer 04 Leverkusen TSG Hoffenheim"); // 
-		addTermin(cal,31, 1, 2, 2, 2025, " 20 173 VfB Stuttgart Borussia Mönchengladbach"); // 
-		addTermin(cal,31, 1, 2, 2, 2025, " 20 174 FC Bayern München Holstein Kiel"); // 
-		addTermin(cal,31, 1, 2, 2, 2025, " 20 175 Eintracht Frankfurt VfL Wolfsburg"); // 
-		addTermin(cal,31, 1, 2, 2, 2025, " 20 176 1_FC Heidenheim 1846 Borussia Dortmund"); // 
-		addTermin(cal,31, 1, 2, 2, 2025, " 20 177 SV Werder Bremen 1_FSV Mainz 05"); // 
-		addTermin(cal,31, 1, 2, 2, 2025, " 20 178 1_FC Union Berlin RB Leipzig"); // 
-		addTermin(cal,31, 1, 2, 2, 2025, " 20 179 VfL Bochum 1848 Sport-Club Freiburg"); // 
-		addTermin(cal,31, 1, 2, 2, 2025, " 20 180 FC St_ Pauli FC Augsburg"); // 
-		addTermin(cal, 7, 2, 9, 2, 2025, " 21 181 FC Bayern München SV Werder Bremen"); // 
-		addTermin(cal, 7, 2, 9, 2, 2025, " 21 182 RB Leipzig FC St_ Pauli"); // 
-		addTermin(cal, 7, 2, 9, 2, 2025, " 21 183 Borussia Dortmund VfB Stuttgart"); // 
-		addTermin(cal, 7, 2, 9, 2, 2025, " 21 184 TSG Hoffenheim 1_FC Union Berlin"); // 
-		addTermin(cal, 7, 2, 9, 2, 2025, " 21 185 Sport-Club Freiburg 1_FC Heidenheim 1846"); // 
-		addTermin(cal, 7, 2, 9, 2, 2025, " 21 186 VfL Wolfsburg Bayer 04 Leverkusen"); // 
-		addTermin(cal, 7, 2, 9, 2, 2025, " 21 187 1_FSV Mainz 05 FC Augsburg"); // 
-		addTermin(cal, 7, 2, 9, 2, 2025, " 21 188 Borussia Mönchengladbach Eintracht Frankfurt"); // 
-		addTermin(cal, 7, 2, 9, 2, 2025, " 21 189 Holstein Kiel VfL Bochum 1848"); // 
-		addTermin(cal,14, 2,16, 2, 2025, " 22 190 Bayer 04 Leverkusen FC Bayern München"); // 
-		addTermin(cal,14, 2,16, 2, 2025, " 22 191 VfB Stuttgart VfL Wolfsburg"); // 
-		addTermin(cal,14, 2,16, 2, 2025, " 22 192 Eintracht Frankfurt Holstein Kiel"); // 
-		addTermin(cal,14, 2,16, 2, 2025, " 22 193 1_FC Heidenheim 1846 1_FSV Mainz 05"); // 
-		addTermin(cal,14, 2,16, 2, 2025, " 22 194 SV Werder Bremen TSG Hoffenheim"); // 
-		addTermin(cal,14, 2,16, 2, 2025, " 22 195 FC Augsburg RB Leipzig"); // 
-		addTermin(cal,14, 2,16, 2, 2025, " 22 196 1_FC Union Berlin Borussia Mönchengladbach"); // 
-		addTermin(cal,14, 2,16, 2, 2025, " 22 197 VfL Bochum 1848 Borussia Dortmund"); // 
-		addTermin(cal,14, 2,16, 2, 2025, " 22 198 FC St_ Pauli Sport-Club Freiburg"); // 
-		addTermin(cal,21, 2,23, 2, 2025, " 23 199 FC Bayern München Eintracht Frankfurt"); // 
-		addTermin(cal,21, 2,23, 2, 2025, " 23 200 RB Leipzig 1_FC Heidenheim 1846"); // 
-		addTermin(cal,21, 2,23, 2, 2025, " 23 201 Borussia Dortmund 1_FC Union Berlin"); // 
-		addTermin(cal,21, 2,23, 2, 2025, " 23 202 TSG Hoffenheim VfB Stuttgart"); // 
-		addTermin(cal,21, 2,23, 2, 2025, " 23 203 Sport-Club Freiburg SV Werder Bremen"); // 
-		addTermin(cal,21, 2,23, 2, 2025, " 23 204 VfL Wolfsburg VfL Bochum 1848"); // 
-		addTermin(cal,21, 2,23, 2, 2025, " 23 205 1_FSV Mainz 05 FC St_ Pauli"); // 
-		addTermin(cal,21, 2,23, 2, 2025, " 23 206 Borussia Mönchengladbach FC Augsburg"); // 
-		addTermin(cal,21, 2,23, 2, 2025, " 23 207 Holstein Kiel Bayer 04 Leverkusen"); // 
-		addTermin(cal,28, 2, 2, 3, 2025, " 24 208 VfB Stuttgart FC Bayern München"); // 
-		addTermin(cal,28, 2, 2, 3, 2025, " 24 209 RB Leipzig 1_FSV Mainz 05"); // 
-		addTermin(cal,28, 2, 2, 3, 2025, " 24 210 Eintracht Frankfurt Bayer 04 Leverkusen"); // 
-		addTermin(cal,28, 2, 2, 3, 2025, " 24 211 1_FC Heidenheim 1846 Borussia Mönchengladbach"); // 
-		addTermin(cal,28, 2, 2, 3, 2025, " 24 212 SV Werder Bremen VfL Wolfsburg"); // 
-		addTermin(cal,28, 2, 2, 3, 2025, " 24 213 FC Augsburg Sport-Club Freiburg"); // 
-		addTermin(cal,28, 2, 2, 3, 2025, " 24 214 1_FC Union Berlin Holstein Kiel"); // 
-		addTermin(cal,28, 2, 2, 3, 2025, " 24 215 VfL Bochum 1848 TSG Hoffenheim"); // 
-		addTermin(cal,28, 2, 2, 3, 2025, " 24 216 FC St_ Pauli Borussia Dortmund"); // 
-		addTermin(cal, 7, 3, 9, 3, 2025, " 25 217 Bayer 04 Leverkusen SV Werder Bremen"); // 
-		addTermin(cal, 7, 3, 9, 3, 2025, " 25 218 FC Bayern München VfL Bochum 1848"); // 
-		addTermin(cal, 7, 3, 9, 3, 2025, " 25 219 Borussia Dortmund FC Augsburg"); // 
-		addTermin(cal, 7, 3, 9, 3, 2025, " 25 220 Eintracht Frankfurt 1_FC Union Berlin"); // 
-		addTermin(cal, 7, 3, 9, 3, 2025, " 25 221 TSG Hoffenheim 1_FC Heidenheim 1846"); // 
-		addTermin(cal, 7, 3, 9, 3, 2025, " 25 222 Sport-Club Freiburg RB Leipzig"); // 
-		addTermin(cal, 7, 3, 9, 3, 2025, " 25 223 VfL Wolfsburg FC St_ Pauli"); // 
-		addTermin(cal, 7, 3, 9, 3, 2025, " 25 224 Borussia Mönchengladbach 1_FSV Mainz 05"); // 
-		addTermin(cal, 7, 3, 9, 3, 2025, " 25 225 Holstein Kiel VfB Stuttgart"); // 
-		addTermin(cal,14, 3,16, 3, 2025, " 26 226 VfB Stuttgart Bayer 04 Leverkusen"); // 
-		addTermin(cal,14, 3,16, 3, 2025, " 26 227 RB Leipzig Borussia Dortmund"); // 
-		addTermin(cal,14, 3,16, 3, 2025, " 26 228 1_FC Heidenheim 1846 Holstein Kiel"); // 
-		addTermin(cal,14, 3,16, 3, 2025, " 26 229 SV Werder Bremen Borussia Mönchengladbach"); // 
-		addTermin(cal,14, 3,16, 3, 2025, " 26 230 FC Augsburg VfL Wolfsburg"); // 
-		addTermin(cal,14, 3,16, 3, 2025, " 26 231 1_FSV Mainz 05 Sport-Club Freiburg"); // 
-		addTermin(cal,14, 3,16, 3, 2025, " 26 232 1_FC Union Berlin FC Bayern München"); // 
-		addTermin(cal,14, 3,16, 3, 2025, " 26 233 VfL Bochum 1848 Eintracht Frankfurt"); // 
-		addTermin(cal,14, 3,16, 3, 2025, " 26 234 FC St_ Pauli TSG Hoffenheim"); // 
-		addTermin(cal,28, 3,30, 3, 2025, " 27 235 Bayer 04 Leverkusen VfL Bochum 1848"); // 
-		addTermin(cal,28, 3,30, 3, 2025, " 27 236 FC Bayern München FC St_ Pauli"); // 
-		addTermin(cal,28, 3,30, 3, 2025, " 27 237 Borussia Dortmund 1_FSV Mainz 05"); // 
-		addTermin(cal,28, 3,30, 3, 2025, " 27 238 Eintracht Frankfurt VfB Stuttgart"); // 
-		addTermin(cal,28, 3,30, 3, 2025, " 27 239 TSG Hoffenheim FC Augsburg"); // 
-		addTermin(cal,28, 3,30, 3, 2025, " 27 240 Sport-Club Freiburg 1_FC Union Berlin"); // 
-		addTermin(cal,28, 3,30, 3, 2025, " 27 241 VfL Wolfsburg 1_FC Heidenheim 1846"); // 
-		addTermin(cal,28, 3,30, 3, 2025, " 27 242 Borussia Mönchengladbach RB Leipzig"); // 
-		addTermin(cal,28, 3,30, 3, 2025, " 27 243 Holstein Kiel SV Werder Bremen"); // 
-		addTermin(cal, 4, 4, 6, 4, 2025, " 28 244 RB Leipzig TSG Hoffenheim"); // 
-		addTermin(cal, 4, 4, 6, 4, 2025, " 28 245 1_FC Heidenheim 1846 Bayer 04 Leverkusen"); // 
-		addTermin(cal, 4, 4, 6, 4, 2025, " 28 246 SV Werder Bremen Eintracht Frankfurt"); // 
-		addTermin(cal, 4, 4, 6, 4, 2025, " 28 247 Sport-Club Freiburg Borussia Dortmund"); // 
-		addTermin(cal, 4, 4, 6, 4, 2025, " 28 248 FC Augsburg FC Bayern München"); // 
-		addTermin(cal, 4, 4, 6, 4, 2025, " 28 249 1_FSV Mainz 05 Holstein Kiel"); // 
-		addTermin(cal, 4, 4, 6, 4, 2025, " 28 250 1_FC Union Berlin VfL Wolfsburg"); // 
-		addTermin(cal, 4, 4, 6, 4, 2025, " 28 251 VfL Bochum 1848 VfB Stuttgart"); // 
-		addTermin(cal, 4, 4, 6, 4, 2025, " 28 252 FC St_ Pauli Borussia Mönchengladbach"); // 
-		addTermin(cal,11, 4,13, 4, 2025, " 29 253 Bayer 04 Leverkusen 1_FC Union Berlin"); // 
-		addTermin(cal,11, 4,13, 4, 2025, " 29 254 VfB Stuttgart SV Werder Bremen"); // 
-		addTermin(cal,11, 4,13, 4, 2025, " 29 255 FC Bayern München Borussia Dortmund"); // 
-		addTermin(cal,11, 4,13, 4, 2025, " 29 256 Eintracht Frankfurt 1_FC Heidenheim 1846"); // 
-		addTermin(cal,11, 4,13, 4, 2025, " 29 257 TSG Hoffenheim 1_FSV Mainz 05"); // 
-		addTermin(cal,11, 4,13, 4, 2025, " 29 258 VfL Wolfsburg RB Leipzig"); // 
-		addTermin(cal,11, 4,13, 4, 2025, " 29 259 Borussia Mönchengladbach Sport-Club Freiburg"); // 
-		addTermin(cal,11, 4,13, 4, 2025, " 29 260 VfL Bochum 1848 FC Augsburg"); // 
-		addTermin(cal,11, 4,13, 4, 2025, " 29 261 Holstein Kiel FC St_ Pauli"); // 
-		addTermin(cal,19, 4,20, 4, 2025, " 30 262 RB Leipzig Holstein Kiel"); // 
-		addTermin(cal,19, 4,20, 4, 2025, " 30 263 Borussia Dortmund Borussia Mönchengladbach"); // 
-		addTermin(cal,19, 4,20, 4, 2025, " 30 264 1_FC Heidenheim 1846 FC Bayern München"); // 
-		addTermin(cal,19, 4,20, 4, 2025, " 30 265 SV Werder Bremen VfL Bochum 1848"); // 
-		addTermin(cal,19, 4,20, 4, 2025, " 30 266 Sport-Club Freiburg TSG Hoffenheim"); // 
-		addTermin(cal,19, 4,20, 4, 2025, " 30 267 FC Augsburg Eintracht Frankfurt"); // 
-		addTermin(cal,19, 4,20, 4, 2025, " 30 268 1_FSV Mainz 05 VfL Wolfsburg"); // 
-		addTermin(cal,19, 4,20, 4, 2025, " 30 269 1_FC Union Berlin VfB Stuttgart"); // 
-		addTermin(cal,19, 4,20, 4, 2025, " 30 270 FC St_ Pauli Bayer 04 Leverkusen"); // 
-		addTermin(cal,25, 4,27, 4, 2025, " 31 271 Bayer 04 Leverkusen FC Augsburg"); // 
-		addTermin(cal,25, 4,27, 4, 2025, " 31 272 VfB Stuttgart 1_FC Heidenheim 1846"); // 
-		addTermin(cal,25, 4,27, 4, 2025, " 31 273 FC Bayern München 1_FSV Mainz 05"); // 
-		addTermin(cal,25, 4,27, 4, 2025, " 31 274 Eintracht Frankfurt RB Leipzig"); // 
-		addTermin(cal,25, 4,27, 4, 2025, " 31 275 TSG Hoffenheim Borussia Dortmund"); // 
-		addTermin(cal,25, 4,27, 4, 2025, " 31 276 SV Werder Bremen FC St_ Pauli"); // 
-		addTermin(cal,25, 4,27, 4, 2025, " 31 277 VfL Wolfsburg Sport-Club Freiburg"); // 
-		addTermin(cal,25, 4,27, 4, 2025, " 31 278 VfL Bochum 1848 1_FC Union Berlin"); // 
-		addTermin(cal,25, 4,27, 4, 2025, " 31 279 Holstein Kiel Borussia Mönchengladbach"); // 
-		addTermin(cal, 2, 5, 4, 5, 2025, " 32 280 RB Leipzig FC Bayern München"); // 
-		addTermin(cal, 2, 5, 4, 5, 2025, " 32 281 Borussia Dortmund VfL Wolfsburg"); // 
-		addTermin(cal, 2, 5, 4, 5, 2025, " 32 282 1_FC Heidenheim 1846 VfL Bochum 1848"); // 
-		addTermin(cal, 2, 5, 4, 5, 2025, " 32 283 Sport-Club Freiburg Bayer 04 Leverkusen"); // 
-		addTermin(cal, 2, 5, 4, 5, 2025, " 32 284 FC Augsburg Holstein Kiel"); // 
-		addTermin(cal, 2, 5, 4, 5, 2025, " 32 285 1_FSV Mainz 05 Eintracht Frankfurt"); // 
-		addTermin(cal, 2, 5, 4, 5, 2025, " 32 286 Borussia Mönchengladbach TSG Hoffenheim"); // 
-		addTermin(cal, 2, 5, 4, 5, 2025, " 32 287 1_FC Union Berlin SV Werder Bremen"); // 
-		addTermin(cal, 2, 5, 4, 5, 2025, " 32 288 FC St_ Pauli VfB Stuttgart"); // 
-		addTermin(cal, 9, 5,11, 5, 2025, " 33 289 Bayer 04 Leverkusen Borussia Dortmund"); // 
-		addTermin(cal, 9, 5,11, 5, 2025, " 33 290 VfB Stuttgart FC Augsburg"); // 
-		addTermin(cal, 9, 5,11, 5, 2025, " 33 291 FC Bayern München Borussia Mönchengladbach"); // 
-		addTermin(cal, 9, 5,11, 5, 2025, " 33 292 Eintracht Frankfurt FC St_ Pauli"); // 
-		addTermin(cal, 9, 5,11, 5, 2025, " 33 293 SV Werder Bremen RB Leipzig"); // 
-		addTermin(cal, 9, 5,11, 5, 2025, " 33 294 VfL Wolfsburg TSG Hoffenheim"); // 
-		addTermin(cal, 9, 5,11, 5, 2025, " 33 295 1_FC Union Berlin 1_FC Heidenheim 1846"); // 
-		addTermin(cal, 9, 5,11, 5, 2025, " 33 296 VfL Bochum 1848 1_FSV Mainz 05"); // 
-		addTermin(cal, 9, 5,11, 5, 2025, " 33 297 Holstein Kiel Sport-Club Freiburg"); // 
-		addTermin(cal,17, 5,17, 5, 2025, " 34 298 RB Leipzig VfB Stuttgart"); // 
-		addTermin(cal,17, 5,17, 5, 2025, " 34 299 Borussia Dortmund Holstein Kiel"); // 
-		addTermin(cal,17, 5,17, 5, 2025, " 34 300 TSG Hoffenheim FC Bayern München"); // 
-		addTermin(cal,17, 5,17, 5, 2025, " 34 301 1_FC Heidenheim 1846 SV Werder Bremen"); // 
-		addTermin(cal,17, 5,17, 5, 2025, " 34 302 Sport-Club Freiburg Eintracht Frankfurt"); // 
-		addTermin(cal,17, 5,17, 5, 2025, " 34 303 FC Augsburg 1_FC Union Berlin"); // 
-		addTermin(cal,17, 5,17, 5, 2025, " 34 304 1_FSV Mainz 05 Bayer 04 Leverkusen"); // 
-		addTermin(cal,17, 5,17, 5, 2025, " 34 305 Borussia Mönchengladbach VfL Wolfsburg"); // 
-		addTermin(cal,17, 5,17, 5, 2025, " 34 306 FC St_ Pauli VfL Bochum 1848"); // 
+		//SPIELPLAN BUNDESLIGA SAISON 2025/2026
+		//27.06.2025 ©DFL Deutsche Fußball Liga e.V.
+		//Sämtliche Rechte an dem Spielplan liegen bei DFL Deutsche Fußball Liga e.V.
+		//Änderungen des Spielplans bleiben vorbehalten.
+		//Alle weiteren Informationen zur Saison 2025/2026 unter bundesliga.de
+		addTermin(cal, 22 , 8 , 22 , 8 , 2025 , " 1 1 FC Bayern München RB Leipzig"); //
+		addTermin(cal, 23 , 8 , 24 , 8 , 2025 , "  1 2 Bayer 04 Leverkusen  TSG Hoffenheim ");
+		addTermin(cal, 23 , 8 , 24 , 8 , 2025 , "  1 3 Eintracht Frankfurt SV Werder Bremen  ");
+		addTermin(cal, 23 , 8 , 24 , 8 , 2025 , "  1 4 Sport-Club Freiburg  FC Augsburg ");
+		addTermin(cal, 23 , 8 , 24 , 8 , 2025 , "  1 5 1.  FSV Mainz 05  1_FC Köln ");
+		addTermin(cal, 23 , 8 , 24 , 8 , 2025 , " Borussia Mönchengladbach Hamburger SV  ");
+		addTermin(cal, 23 , 8 , 24 , 8 , 2025 , " 1. FC Union Berlin VfB Stuttgart ");
+		addTermin(cal, 23 , 8 , 24 , 8 , 2025 , " FC St. Pauli Borussia Dortmund ");
+		addTermin(cal, 23 , 8 , 24 , 8 , 2025 , " 1_FC Heidenheim 1846 VfL Wolfsburg ");
+
+		addTermin(cal,29,8,31,8, 2025, "Borussia Dortmund - 1. FC Union Berlin");
+		addTermin(cal,29,8,31,8, 2025, "RB Leipzig - 1. FC Heidenheim 1846");
+		addTermin(cal,29,8,31,8, 2025, "SV Werder Bremen - Bayer 04 Leverkusen");
+		addTermin(cal,29,8,31,8, 2025, "VfB Stuttgart - Borussia Mönchengladbach");
+		addTermin(cal,29,8,31,8, 2025, "VfL Wolfsburg - 1. FSV Mainz 05");
+		addTermin(cal,29,8,31,8, 2025, "FC Augsburg - FC Bayern München");
+		addTermin(cal,29,8,31,8, 2025, "TSG Hoffenheim - Eintracht Frankfurt");
+		addTermin(cal,29,8,31,8, 2025, "1. FC Köln - Sport-Club Freiburg");
+		addTermin(cal,29,8,31,8, 2025, "Hamburger SV - FC St. Pauli");
+
+		addTermin(cal,12,9,14,9, 2025, "FC Bayern München - Hamburger SV");
+		addTermin(cal,12,9,14,9, 2025, "Bayer 04 Leverkusen - Eintracht Frankfurt");
+		addTermin(cal,12,9,14,9, 2025, "Sport-Club Freiburg - VfB Stuttgart");
+		addTermin(cal,12,9,14,9, 2025, "1. FSV Mainz 05 - RB Leipzig");
+		addTermin(cal,12,9,14,9, 2025, "Borussia Mönchengladbach - SV Werder Bremen");
+		addTermin(cal,12,9,14,9, 2025, "VfL Wolfsburg - 1. FC Köln");
+		addTermin(cal,12,9,14,9, 2025, "1. FC Union Berlin - TSG Hoffenheim");
+		addTermin(cal,12,9,14,9, 2025, "FC St. Pauli - FC Augsburg");
+		addTermin(cal,12,9,14,9, 2025, "1. FC Heidenheim 1846 - Borussia Dortmund");
+
+		addTermin(cal,19,9,21,9, 2025, "Bayer 04 Leverkusen - Borussia Mönchengladbach");
+		addTermin(cal,19,9,21,9, 2025, "Eintracht Frankfurt - 1. FC Union Berlin");
+		addTermin(cal,19,9,21,9, 2025, "Borussia Dortmund - VfL Wolfsburg");
+		addTermin(cal,19,9,21,9, 2025, "RB Leipzig - 1. FC Köln");
+		addTermin(cal,19,9,21,9, 2025, "SV Werder Bremen - Sport-Club Freiburg");
+		addTermin(cal,19,9,21,9, 2025, "VfB Stuttgart - FC St. Pauli");
+		addTermin(cal,19,9,21,9, 2025, "FC Augsburg - 1. FSV Mainz 05");
+		addTermin(cal,19,9,21,9, 2025, "TSG Hoffenheim - FC Bayern München");
+		addTermin(cal,19,9,21,9, 2025, "Hamburger SV - 1. FC Heidenheim 1846");
+
+		addTermin(cal,26,9,28,9, 2025, "FC Bayern München - SV Werder Bremen");
+		addTermin(cal,26,9,28,9, 2025, "Sport-Club Freiburg - TSG Hoffenheim");
+		addTermin(cal,26,9,28,9, 2025, "1. FSV Mainz 05 - Borussia Dortmund");
+		addTermin(cal,26,9,28,9, 2025, "Borussia Mönchengladbach - Eintracht Frankfurt");
+		addTermin(cal,26,9,28,9, 2025, "VfL Wolfsburg - RB Leipzig");
+		addTermin(cal,26,9,28,9, 2025, "1. FC Union Berlin - Hamburger SV");
+		addTermin(cal,26,9,28,9, 2025, "FC St. Pauli - Bayer 04 Leverkusen");
+		addTermin(cal,26,9,28,9, 2025, "1. FC Heidenheim 1846 - FC Augsburg");
+		addTermin(cal,26,9,28,9, 2025, "1. FC Köln - VfB Stuttgart");
+
+		addTermin(cal,3,10,5,10, 2025, "Bayer 04 Leverkusen - 1. FC Union Berlin");
+		addTermin(cal,3,10,5,10, 2025, "Eintracht Frankfurt - FC Bayern München");
+		addTermin(cal,3,10,5,10, 2025, "Borussia Dortmund - RB Leipzig");
+		addTermin(cal,3,10,5,10, 2025, "SV Werder Bremen - FC St. Pauli");
+		addTermin(cal,3,10,5,10, 2025, "VfB Stuttgart - 1. FC Heidenheim 1846");
+		addTermin(cal,3,10,5,10, 2025, "Borussia Mönchengladbach - Sport-Club Freiburg");
+		addTermin(cal,3,10,5,10, 2025, "FC Augsburg - VfL Wolfsburg");
+		addTermin(cal,3,10,5,10, 2025, "TSG Hoffenheim - 1. FC Köln");
+		addTermin(cal,3,10,5,10, 2025, "Hamburger SV - 1. FSV Mainz 05");
+
+		addTermin(cal,17,10,19,10, 2025, "FC Bayern München - Borussia Dortmund");
+		addTermin(cal,17,10,19,10, 2025, "Sport-Club Freiburg - Eintracht Frankfurt");
+		addTermin(cal,17,10,19,10, 2025, "1. FSV Mainz 05 - Bayer 04 Leverkusen");
+		addTermin(cal,17,10,19,10, 2025, "RB Leipzig - Hamburger SV");
+		addTermin(cal,17,10,19,10, 2025, "VfL Wolfsburg - VfB Stuttgart");
+		addTermin(cal,17,10,19,10, 2025, "1. FC Union Berlin - Borussia Mönchengladbach");
+		addTermin(cal,17,10,19,10, 2025, "FC St. Pauli - TSG Hoffenheim");
+		addTermin(cal,17,10,19,10, 2025, "1. FC Heidenheim 1846 - SV Werder Bremen");
+		addTermin(cal,17,10,19,10, 2025, "1. FC Köln - FC Augsburg");
+
+		addTermin(cal,24,10,26,10, 2025, "Bayer 04 Leverkusen - Sport-Club Freiburg");
+		addTermin(cal,24,10,26,10, 2025, "Eintracht Frankfurt - FC St. Pauli");
+		addTermin(cal,24,10,26,10, 2025, "Borussia Dortmund - 1. FC Köln");
+		addTermin(cal,24,10,26,10, 2025, "SV Werder Bremen - 1. FC Union Berlin");
+		addTermin(cal,24,10,26,10, 2025, "VfB Stuttgart - 1. FSV Mainz 05");
+		addTermin(cal,24,10,26,10, 2025, "Borussia Mönchengladbach - FC Bayern München");
+		addTermin(cal,24,10,26,10, 2025, "FC Augsburg - RB Leipzig");
+		addTermin(cal,24,10,26,10, 2025, "TSG Hoffenheim - 1. FC Heidenheim 1846");
+		addTermin(cal,24,10,26,10, 2025, "Hamburger SV - VfL Wolfsburg");
+
+		addTermin(cal,31,10,02,11, 2025, "FC Bayern München - Bayer 04 Leverkusen");
+		addTermin(cal,31,10,02,11, 2025, "1. FSV Mainz 05 - SV Werder Bremen");
+		addTermin(cal,31,10,02,11, 2025, "RB Leipzig - VfB Stuttgart");
+		addTermin(cal,31,10,02,11, 2025, "VfL Wolfsburg - TSG Hoffenheim");
+		addTermin(cal,31,10,02,11, 2025, "FC Augsburg - Borussia Dortmund");
+		addTermin(cal,31,10,02,11, 2025, "1. FC Union Berlin - Sport-Club Freiburg");
+		addTermin(cal,31,10,02,11, 2025, "FC St. Pauli - Borussia Mönchengladbach");
+		addTermin(cal,31,10,02,11, 2025, "1. FC Heidenheim 1846 - Eintracht Frankfurt");
+		addTermin(cal,31,10,02,11, 2025, "1. FC Köln - Hamburger SV");
+
+		addTermin(cal,7,11,9,11, 2025, "Bayer 04 Leverkusen - 1. FC Heidenheim 1846");
+		addTermin(cal,7,11,9,11, 2025, "Eintracht Frankfurt - 1. FSV Mainz 05");
+		addTermin(cal,7,11,9,11, 2025, "Sport-Club Freiburg - FC St. Pauli");
+		addTermin(cal,7,11,9,11, 2025, "SV Werder Bremen - VfL Wolfsburg");
+		addTermin(cal,7,11,9,11, 2025, "VfB Stuttgart - FC Augsburg");
+		addTermin(cal,7,11,9,11, 2025, "Borussia Mönchengladbach - 1. FC Köln");
+		addTermin(cal,7,11,9,11, 2025, "1. FC Union Berlin - FC Bayern München");
+		addTermin(cal,7,11,9,11, 2025, "TSG Hoffenheim - RB Leipzig");
+		addTermin(cal,7,11,9,11, 2025, "Hamburger SV - Borussia Dortmund");
+
+		addTermin(cal,21,11,23,11, 2025, "FC Bayern München - Sport-Club Freiburg");
+		addTermin(cal,21,11,23,11, 2025, "Borussia Dortmund - VfB Stuttgart");
+		addTermin(cal,21,11,23,11, 2025, "1. FSV Mainz 05 - TSG Hoffenheim");
+		addTermin(cal,21,11,23,11, 2025, "RB Leipzig - SV Werder Bremen");
+		addTermin(cal,21,11,23,11, 2025, "VfL Wolfsburg - Bayer 04 Leverkusen");
+		addTermin(cal,21,11,23,11, 2025, "FC Augsburg - Hamburger SV");
+		addTermin(cal,21,11,23,11, 2025, "FC St. Pauli - 1. FC Union Berlin");
+		addTermin(cal,21,11,23,11, 2025, "1. FC Heidenheim 1846 - Borussia Mönchengladbach");
+		addTermin(cal,21,11,23,11, 2025, "1. FC Köln - Eintracht Frankfurt");
+
+		addTermin(cal,28,11,30,11, 2025, "FC Bayern München - FC St. Pauli");
+		addTermin(cal,28,11,30,11, 2025, "Bayer 04 Leverkusen - Borussia Dortmund");
+		addTermin(cal,28,11,30,11, 2025, "Eintracht Frankfurt - VfL Wolfsburg");
+		addTermin(cal,28,11,30,11, 2025, "Sport-Club Freiburg - 1. FSV Mainz 05");
+		addTermin(cal,28,11,30,11, 2025, "SV Werder Bremen - 1. FC Köln");
+		addTermin(cal,28,11,30,11, 2025, "Borussia Mönchengladbach - RB Leipzig");
+		addTermin(cal,28,11,30,11, 2025, "1. FC Union Berlin - 1. FC Heidenheim 1846");
+		addTermin(cal,28,11,30,11, 2025, "TSG Hoffenheim - FC Augsburg");
+		addTermin(cal,28,11,30,11, 2025, "Hamburger SV - VfB Stuttgart");
+
+		addTermin(cal,5,12,7,12, 2025, "Borussia Dortmund - TSG Hoffenheim");
+		addTermin(cal,5,12,7,12, 2025, "1. FSV Mainz 05 - Borussia Mönchengladbach");
+		addTermin(cal,5,12,7,12, 2025, "RB Leipzig - Eintracht Frankfurt");
+		addTermin(cal,5,12,7,12, 2025, "VfB Stuttgart - FC Bayern München");
+		addTermin(cal,5,12,7,12, 2025, "VfL Wolfsburg - 1. FC Union Berlin");
+		addTermin(cal,5,12,7,12, 2025, "FC Augsburg - Bayer 04 Leverkusen");
+		addTermin(cal,5,12,7,12, 2025, "1. FC Heidenheim 1846 - Sport-Club Freiburg");
+		addTermin(cal,5,12,7,12, 2025, "1. FC Köln - FC St. Pauli");
+		addTermin(cal,5,12,7,12, 2025, "Hamburger SV - SV Werder Bremen");
+
+		addTermin(cal,12,12,14,12, 2025, "FC Bayern München - 1. FSV Mainz 05");
+		addTermin(cal,12,12,14,12, 2025, "Bayer 04 Leverkusen - 1. FC Köln");
+		addTermin(cal,12,12,14,12, 2025, "Eintracht Frankfurt - FC Augsburg");
+		addTermin(cal,12,12,14,12, 2025, "Sport-Club Freiburg - Borussia Dortmund");
+		addTermin(cal,12,12,14,12, 2025, "SV Werder Bremen - VfB Stuttgart");
+		addTermin(cal,12,12,14,12, 2025, "Borussia Mönchengladbach - VfL Wolfsburg");
+		addTermin(cal,12,12,14,12, 2025, "1. FC Union Berlin - RB Leipzig");
+		addTermin(cal,12,12,14,12, 2025, "FC St. Pauli - 1. FC Heidenheim 1846");
+		addTermin(cal,12,12,14,12, 2025, "TSG Hoffenheim - Hamburger SV");
+
+		addTermin(cal,19,12,21,12, 2025, "Borussia Dortmund - Borussia Mönchengladbach");
+		addTermin(cal,19,12,21,12, 2025, "1. FSV Mainz 05 - FC St. Pauli");
+		addTermin(cal,19,12,21,12, 2025, "RB Leipzig - Bayer 04 Leverkusen");
+		addTermin(cal,19,12,21,12, 2025, "VfB Stuttgart - TSG Hoffenheim");
+		addTermin(cal,19,12,21,12, 2025, "VfL Wolfsburg - Sport-Club Freiburg");
+		addTermin(cal,19,12,21,12, 2025, "FC Augsburg - SV Werder Bremen");
+		addTermin(cal,19,12,21,12, 2025, "1. FC Heidenheim 1846 - FC Bayern München");
+		addTermin(cal,19,12,21,12, 2025, "1. FC Köln - 1. FC Union Berlin");
+		addTermin(cal,19,12,21,12, 2025, "Hamburger SV - Eintracht Frankfurt");
+
+		addTermin(cal,9,1,11,1, 2026, "FC Bayern München - VfL Wolfsburg");
+		addTermin(cal,9,1,11,1, 2026, "Bayer 04 Leverkusen - VfB Stuttgart");
+		addTermin(cal,9,1,11,1, 2026, "Eintracht Frankfurt - Borussia Dortmund");
+		addTermin(cal,9,1,11,1, 2026, "Sport-Club Freiburg - Hamburger SV");
+		addTermin(cal,9,1,11,1, 2026, "SV Werder Bremen - TSG Hoffenheim");
+		addTermin(cal,9,1,11,1, 2026, "Borussia Mönchengladbach - FC Augsburg");
+		addTermin(cal,9,1,11,1, 2026, "1. FC Union Berlin - 1. FSV Mainz 05");
+		addTermin(cal,9,1,11,1, 2026, "FC St. Pauli - RB Leipzig");
+		addTermin(cal,9,1,11,1, 2026, "1. FC Heidenheim 1846 - 1. FC Köln");
+
+		addTermin(cal,13,1,15,1, 2026, "Borussia Dortmund - SV Werder Bremen");
+		addTermin(cal,13,1,15,1, 2026, "1. FSV Mainz 05 - 1. FC Heidenheim 1846");
+		addTermin(cal,13,1,15,1, 2026, "RB Leipzig - Sport-Club Freiburg");
+		addTermin(cal,13,1,15,1, 2026, "VfB Stuttgart - Eintracht Frankfurt");
+		addTermin(cal,13,1,15,1, 2026, "VfL Wolfsburg - FC St. Pauli");
+		addTermin(cal,13,1,15,1, 2026, "FC Augsburg - 1. FC Union Berlin");
+		addTermin(cal,13,1,15,1, 2026, "TSG Hoffenheim - Borussia Mönchengladbach");
+		addTermin(cal,13,1,15,1, 2026, "1. FC Köln - FC Bayern München");
+		addTermin(cal,13,1,15,1, 2026, "Hamburger SV - Bayer 04 Leverkusen");
+
+		addTermin(cal,16,1,18,1, 2026, "Borussia Dortmund - FC St. Pauli");
+		addTermin(cal,16,1,18,1, 2026, "RB Leipzig - FC Bayern München");
+		addTermin(cal,16,1,18,1, 2026, "SV Werder Bremen - Eintracht Frankfurt");
+		addTermin(cal,16,1,18,1, 2026, "VfB Stuttgart - 1. FC Union Berlin");
+		addTermin(cal,16,1,18,1, 2026, "VfL Wolfsburg - 1. FC Heidenheim 1846");
+		addTermin(cal,16,1,18,1, 2026, "FC Augsburg - Sport-Club Freiburg");
+		addTermin(cal,16,1,18,1, 2026, "TSG Hoffenheim - Bayer 04 Leverkusen");
+		addTermin(cal,16,1,18,1, 2026, "1. FC Köln - 1. FSV Mainz 05");
+		addTermin(cal,16,1,18,1, 2026, "Hamburger SV - Borussia Mönchengladbach");
+
+		addTermin(cal,23,1,25,1, 2026, "1. FC Union Berlin - Borussia Dortmund");
+		addTermin(cal,23,1,25,1, 2026, "1. FC Heidenheim 1846 - RB Leipzig");
+		addTermin(cal,23,1,25,1, 2026, "Bayer 04 Leverkusen - SV Werder Bremen");
+		addTermin(cal,23,1,25,1, 2026, "Borussia Mönchengladbach - VfB Stuttgart");
+		addTermin(cal,23,1,25,1, 2026, "1. FSV Mainz 05 - VfL Wolfsburg");
+		addTermin(cal,23,1,25,1, 2026, "FC Bayern München - FC Augsburg");
+		addTermin(cal,23,1,25,1, 2026, "Eintracht Frankfurt - TSG Hoffenheim");
+		addTermin(cal,23,1,25,1, 2026, "Sport-Club Freiburg - 1. FC Köln");
+		addTermin(cal,23,1,25,1, 2026, "FC St. Pauli - Hamburger SV");
+
+		addTermin(cal,30,1,1,2, 2026, "Hamburger SV - FC Bayern München");
+		addTermin(cal,30,1,1,2, 2026, "Eintracht Frankfurt - Bayer 04 Leverkusen");
+		addTermin(cal,30,1,1,2, 2026, "VfB Stuttgart - Sport-Club Freiburg");
+		addTermin(cal,30,1,1,2, 2026, "RB Leipzig - 1. FSV Mainz 05");
+		addTermin(cal,30,1,1,2, 2026, "SV Werder Bremen - Borussia Mönchengladbach");
+		addTermin(cal,30,1,1,2, 2026, "1. FC Köln - VfL Wolfsburg");
+		addTermin(cal,30,1,1,2, 2026, "TSG Hoffenheim - 1. FC Union Berlin");
+		addTermin(cal,30,1,1,2, 2026, "FC Augsburg - FC St. Pauli");
+		addTermin(cal,30,1,1,2, 2026, "Borussia Dortmund - 1. FC Heidenheim 1846");
+
+		addTermin(cal,6,2,8,2, 2026, "Borussia Mönchengladbach - Bayer 04 Leverkusen");
+		addTermin(cal,6,2,8,2, 2026, "1. FC Union Berlin - Eintracht Frankfurt");
+		addTermin(cal,6,2,8,2, 2026, "VfL Wolfsburg - Borussia Dortmund");
+		addTermin(cal,6,2,8,2, 2026, "1. FC Köln - RB Leipzig");
+		addTermin(cal,6,2,8,2, 2026, "Sport-Club Freiburg - SV Werder Bremen");
+		addTermin(cal,6,2,8,2, 2026, "FC St. Pauli - VfB Stuttgart");
+		addTermin(cal,6,2,8,2, 2026, "1. FSV Mainz 05 - FC Augsburg");
+		addTermin(cal,6,2,8,2, 2026, "FC Bayern München - TSG Hoffenheim");
+		addTermin(cal,6,2,8,2, 2026, "1. FC Heidenheim 1846 - Hamburger SV");
+
+		addTermin(cal,13,2,15,2, 2026, "SV Werder Bremen - FC Bayern München");
+		addTermin(cal,13,2,15,2, 2026, "TSG Hoffenheim - Sport-Club Freiburg");
+		addTermin(cal,13,2,15,2, 2026, "Borussia Dortmund - 1. FSV Mainz 05");
+		addTermin(cal,13,2,15,2, 2026, "Eintracht Frankfurt - Borussia Mönchengladbach");
+		addTermin(cal,13,2,15,2, 2026, "RB Leipzig - VfL Wolfsburg");
+		addTermin(cal,13,2,15,2, 2026, "Hamburger SV - 1. FC Union Berlin");
+		addTermin(cal,13,2,15,2, 2026, "Bayer 04 Leverkusen - FC St. Pauli");
+		addTermin(cal,13,2,15,2, 2026, "FC Augsburg - 1. FC Heidenheim 1846");
+		addTermin(cal,13,2,15,2, 2026, "VfB Stuttgart - 1. FC Köln");
+
+		addTermin(cal,20,2,22,2, 2026, "1. FC Union Berlin - Bayer 04 Leverkusen");
+		addTermin(cal,20,2,22,2, 2026, "FC Bayern München - Eintracht Frankfurt");
+		addTermin(cal,20,2,22,2, 2026, "RB Leipzig - Borussia Dortmund");
+		addTermin(cal,20,2,22,2, 2026, "FC St. Pauli - SV Werder Bremen");
+		addTermin(cal,20,2,22,2, 2026, "1. FC Heidenheim 1846 - VfB Stuttgart");
+		addTermin(cal,20,2,22,2, 2026, "Sport-Club Freiburg - Borussia Mönchengladbach");
+		addTermin(cal,20,2,22,2, 2026, "VfL Wolfsburg - FC Augsburg");
+		addTermin(cal,20,2,22,2, 2026, "1. FC Köln - TSG Hoffenheim");
+		addTermin(cal,20,2,22,2, 2026, "1. FSV Mainz 05 - Hamburger SV");
+
+		addTermin(cal,27,2,1,3, 2026, "Borussia Dortmund - FC Bayern München");
+		addTermin(cal,27,2,1,3, 2026, "Eintracht Frankfurt - Sport-Club Freiburg");
+		addTermin(cal,27,2,1,3, 2026, "Bayer 04 Leverkusen - 1. FSV Mainz 05");
+		addTermin(cal,27,2,1,3, 2026, "Hamburger SV - RB Leipzig");
+		addTermin(cal,27,2,1,3, 2026, "VfB Stuttgart - VfL Wolfsburg");
+		addTermin(cal,27,2,1,3, 2026, "Borussia Mönchengladbach - 1. FC Union Berlin");
+		addTermin(cal,27,2,1,3, 2026, "TSG Hoffenheim - FC St. Pauli");
+		addTermin(cal,27,2,1,3, 2026, "SV Werder Bremen - 1. FC Heidenheim 1846");
+		addTermin(cal,27,2,1,3, 2026, "FC Augsburg - 1. FC Köln");
+
+		addTermin(cal,6,3,8,3, 2026, "Sport-Club Freiburg - Bayer 04 Leverkusen");
+		addTermin(cal,6,3,8,3, 2026, "FC St. Pauli - Eintracht Frankfurt");
+		addTermin(cal,6,3,8,3, 2026, "1. FC Köln - Borussia Dortmund");
+		addTermin(cal,6,3,8,3, 2026, "1. FC Union Berlin - SV Werder Bremen");
+		addTermin(cal,6,3,8,3, 2026, "1. FSV Mainz 05 - VfB Stuttgart");
+		addTermin(cal,6,3,8,3, 2026, "FC Bayern München - Borussia Mönchengladbach");
+		addTermin(cal,6,3,8,3, 2026, "RB Leipzig - FC Augsburg");
+		addTermin(cal,6,3,8,3, 2026, "1. FC Heidenheim 1846 - TSG Hoffenheim");
+		addTermin(cal,6,3,8,3, 2026, "VfL Wolfsburg - Hamburger SV");
+
+		addTermin(cal,13,3,15,3, 2026, "Bayer 04 Leverkusen - FC Bayern München");
+		addTermin(cal,13,3,15,3, 2026, "SV Werder Bremen - 1. FSV Mainz 05");
+		addTermin(cal,13,3,15,3, 2026, "VfB Stuttgart - RB Leipzig");
+		addTermin(cal,13,3,15,3, 2026, "TSG Hoffenheim - VfL Wolfsburg");
+		addTermin(cal,13,3,15,3, 2026, "Borussia Dortmund - FC Augsburg");
+		addTermin(cal,13,3,15,3, 2026, "Sport-Club Freiburg - 1. FC Union Berlin");
+		addTermin(cal,13,3,15,3, 2026, "Borussia Mönchengladbach - FC St. Pauli");
+		addTermin(cal,13,3,15,3, 2026, "Eintracht Frankfurt - 1. FC Heidenheim 1846");
+		addTermin(cal,13,3,15,3, 2026, "Hamburger SV - 1. FC Köln");
+
+		addTermin(cal,20,3,22,3, 2026, "1. FC Heidenheim 1846 - Bayer 04 Leverkusen");
+		addTermin(cal,20,3,22,3, 2026, "1. FSV Mainz 05 - Eintracht Frankfurt");
+		addTermin(cal,20,3,22,3, 2026, "FC St. Pauli - Sport-Club Freiburg");
+		addTermin(cal,20,3,22,3, 2026, "VfL Wolfsburg - SV Werder Bremen");
+		addTermin(cal,20,3,22,3, 2026, "FC Augsburg - VfB Stuttgart");
+		addTermin(cal,20,3,22,3, 2026, "1. FC Köln - Borussia Mönchengladbach");
+		addTermin(cal,20,3,22,3, 2026, "FC Bayern München - 1. FC Union Berlin");
+		addTermin(cal,20,3,22,3, 2026, "RB Leipzig - TSG Hoffenheim");
+		addTermin(cal,20,3,22,3, 2026, "Borussia Dortmund - Hamburger SV");
+
+		addTermin(cal,4,4,5,4, 2026, "Sport-Club Freiburg - FC Bayern München");
+		addTermin(cal,4,4,5,4, 2026, "VfB Stuttgart - Borussia Dortmund");
+		addTermin(cal,4,4,5,4, 2026, "TSG Hoffenheim - 1. FSV Mainz 05");
+		addTermin(cal,4,4,5,4, 2026, "SV Werder Bremen - RB Leipzig");
+		addTermin(cal,4,4,5,4, 2026, "Bayer 04 Leverkusen - VfL Wolfsburg");
+		addTermin(cal,4,4,5,4, 2026, "Hamburger SV - FC Augsburg");
+		addTermin(cal,4,4,5,4, 2026, "1. FC Union Berlin - FC St. Pauli");
+		addTermin(cal,4,4,5,4, 2026, "Borussia Mönchengladbach - 1. FC Heidenheim 1846");
+		addTermin(cal,4,4,5,4, 2026, "Eintracht Frankfurt - 1. FC Köln");
+
+		addTermin(cal,10,4,12,4, 2026, "FC St. Pauli - FC Bayern München");
+		addTermin(cal,10,4,12,4, 2026, "Borussia Dortmund - Bayer 04 Leverkusen");
+		addTermin(cal,10,4,12,4, 2026, "VfL Wolfsburg - Eintracht Frankfurt");
+		addTermin(cal,10,4,12,4, 2026, "1. FSV Mainz 05 - Sport-Club Freiburg");
+		addTermin(cal,10,4,12,4, 2026, "1. FC Köln - SV Werder Bremen");
+		addTermin(cal,10,4,12,4, 2026, "RB Leipzig - Borussia Mönchengladbach");
+		addTermin(cal,10,4,12,4, 2026, "1. FC Heidenheim 1846 - 1. FC Union Berlin");
+		addTermin(cal,10,4,12,4, 2026, "FC Augsburg - TSG Hoffenheim");
+		addTermin(cal,10,4,12,4, 2026, "VfB Stuttgart - Hamburger SV");
+
+		addTermin(cal,17,4,19,4, 2026, "TSG Hoffenheim - Borussia Dortmund");
+		addTermin(cal,17,4,19,4, 2026, "Borussia Mönchengladbach - 1. FSV Mainz 05");
+		addTermin(cal,17,4,19,4, 2026, "Eintracht Frankfurt - RB Leipzig");
+		addTermin(cal,17,4,19,4, 2026, "FC Bayern München - VfB Stuttgart");
+		addTermin(cal,17,4,19,4, 2026, "1. FC Union Berlin - VfL Wolfsburg");
+		addTermin(cal,17,4,19,4, 2026, "Bayer 04 Leverkusen - FC Augsburg");
+		addTermin(cal,17,4,19,4, 2026, "Sport-Club Freiburg - 1. FC Heidenheim 1846");
+		addTermin(cal,17,4,19,4, 2026, "FC St. Pauli - 1. FC Köln");
+		addTermin(cal,17,4,19,4, 2026, "SV Werder Bremen - Hamburger SV");
+
+		addTermin(cal,24,4,26,4, 2026, "1. FSV Mainz 05 - FC Bayern München");
+		addTermin(cal,24,4,26,4, 2026, "1. FC Köln - Bayer 04 Leverkusen");
+		addTermin(cal,24,4,26,4, 2026, "FC Augsburg - Eintracht Frankfurt");
+		addTermin(cal,24,4,26,4, 2026, "Borussia Dortmund - Sport-Club Freiburg");
+		addTermin(cal,24,4,26,4, 2026, "VfB Stuttgart - SV Werder Bremen");
+		addTermin(cal,24,4,26,4, 2026, "VfL Wolfsburg - Borussia Mönchengladbach");
+		addTermin(cal,24,4,26,4, 2026, "RB Leipzig - 1. FC Union Berlin");
+		addTermin(cal,24,4,26,4, 2026, "1. FC Heidenheim 1846 - FC St. Pauli");
+		addTermin(cal,24,4,26,4, 2026, "Hamburger SV - TSG Hoffenheim");
+
+		addTermin(cal,2,5,3,5, 2026, "Borussia Mönchengladbach - Borussia Dortmund");
+		addTermin(cal,2,5,3,5, 2026, "FC St. Pauli - 1. FSV Mainz 05");
+		addTermin(cal,2,5,3,5, 2026, "Bayer 04 Leverkusen - RB Leipzig");
+		addTermin(cal,2,5,3,5, 2026, "TSG Hoffenheim - VfB Stuttgart");
+		addTermin(cal,2,5,3,5, 2026, "Sport-Club Freiburg - VfL Wolfsburg");
+		addTermin(cal,2,5,3,5, 2026, "SV Werder Bremen - FC Augsburg");
+		addTermin(cal,2,5,3,5, 2026, "FC Bayern München - 1. FC Heidenheim 1846");
+		addTermin(cal,2,5,3,5, 2026, "1. FC Union Berlin - 1. FC Köln");
+		addTermin(cal,2,5,3,5, 2026, "Eintracht Frankfurt - Hamburger SV");
+
+		addTermin(cal,8,5,10,5, 2026, "VfL Wolfsburg - FC Bayern München");
+		addTermin(cal,8,5,10,5, 2026, "VfB Stuttgart - Bayer 04 Leverkusen");
+		addTermin(cal,8,5,10,5, 2026, "Borussia Dortmund - Eintracht Frankfurt");
+		addTermin(cal,8,5,10,5, 2026, "Hamburger SV - Sport-Club Freiburg");
+		addTermin(cal,8,5,10,5, 2026, "TSG Hoffenheim - SV Werder Bremen");
+		addTermin(cal,8,5,10,5, 2026, "FC Augsburg - Borussia Mönchengladbach");
+		addTermin(cal,8,5,10,5, 2026, "1. FSV Mainz 05 - 1. FC Union Berlin");
+		addTermin(cal,8,5,10,5, 2026, "RB Leipzig - FC St. Pauli");
+		addTermin(cal,8,5,10,5, 2026, "1. FC Köln - 1. FC Heidenheim 1846");
+
+		addTermin(cal,16,5,16,5, 2026, "SV Werder Bremen - Borussia Dortmund");
+		addTermin(cal,16,5,16,5, 2026, "1. FC Heidenheim 1846 - 1. FSV Mainz 05");
+		addTermin(cal,16,5,16,5, 2026, "Sport-Club Freiburg - RB Leipzig");
+		addTermin(cal,16,5,16,5, 2026, "Eintracht Frankfurt - VfB Stuttgart");
+		addTermin(cal,16,5,16,5, 2026, "FC St. Pauli - VfL Wolfsburg");
+		addTermin(cal,16,5,16,5, 2026, "1. FC Union Berlin - FC Augsburg");
+		addTermin(cal,16,5,16,5, 2026, "Borussia Mönchengladbach - TSG Hoffenheim");
+		addTermin(cal,16,5,16,5, 2026, "FC Bayern München - 1. FC Köln");
+		addTermin(cal,16,5,16,5, 2026, "Bayer 04 Leverkusen - Hamburger SV");
 		
-		if (cal.THIS_YEAR == 2025) {
+		if (cal.THIS_YEAR == 2024) {
 			//BUNDESLIGA START am Freitag 23. August 2024. Im Jahr 2025 dann wohl 52 Wochen später
 			PersonalDate sp;
 			sp = PersonalDate.create2BitmapsBackground(new File("res/FC Bayern München.jpg"), " ... ", new File("res/RB Leipzig.png"), 0.7f, 0f, 23, 8, 2025);
@@ -606,7 +636,7 @@ public class MyFussballBundesliga {
 			new Club("Hamburger SV.jpg", .0f, 1f),
 			new Club("Hannover 96.jpg", .94f, 1f),
 			new Club("Hansa Rostock.png", .0f, 1f),
-			new Club("Hertha BSC.jpg", 1f, 1f),
+			new Club("Hertha BSC.jpg", 2f, 1f),
 			new Club("Holstein Kiel.png", 0f, 1f),
 			new Club("Karlsruher SC.png", .93f, 1f),
 			new Club("RB Leipzig.png", 0f, 1f),
