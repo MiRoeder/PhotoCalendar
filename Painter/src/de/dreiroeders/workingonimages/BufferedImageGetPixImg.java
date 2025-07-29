@@ -29,6 +29,10 @@ public class BufferedImageGetPixImg implements IGetPixImg {
 		return res;
 	}
 
+	public int getPixel(int x, int y) {
+		return  mImage.getRGB(x, y);
+	}
+
 	public float getBright(int x, int y, float facRed, float facGreen, float facBlue) {
 		int iRgb = mImage.getRGB(x, y);
 		float res;

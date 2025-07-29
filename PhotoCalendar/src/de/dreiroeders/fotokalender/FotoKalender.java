@@ -62,8 +62,9 @@ public class FotoKalender {
 				strLine2 = "Alle huldigen der Prinzessin";
 			}
 			float y3 = CalendarSheet.fWeight / 1.55f;
+			float y5 = 0.44f*y3;
 			float y7 = CalendarSheet.fWeight > 1 ? 1f : 0.6f;
-			float h2 = y7-0.44f*y3;
+			float h2 = y7-y5;
 			if (h2 < .2f) {
 				System.err.println("Problem in  makeViksGeburtstag(,) : h2 = "+ h2);
 			} else {
@@ -75,29 +76,20 @@ public class FotoKalender {
 			sheet.drawImage(inDir1+"20190331_175443.jpg",                           0.55,0.5,180,0.000, 0.15 *y3, 0.37 , 0.280*y3);
 			sheet.drawImage(inDir1+"20190331_182041.jpg",                           0.5, 0.54,0, 0.375, 0.115*y3, 0.31 , 0.315*y3);
 			sheet.drawImage(inDir1+"WhatsApp Image 2019-03-31 at 20.09.13_heller.jpg",.5, .5, 0, 0.690, 0.115*y3, 0.31 , 0.315*y3);
-			/* Berechne genaue Position von  Geburtstagskuchen.jpg [1105x1175] , damit nichts abgeschnitten wird. */
-			float facWid = sheet.getUsuableWidth() *.33f/1105f;
-			float facHei = sheet.getUsuableHeight()*h2/1175f;
-			if (facWid > facHei) {
-				System.err.println("Problem in  makeViksGeburtstag(,) : facWid = "+ facWid +" , facHei = "+ facHei);
-			} else {
-				System.out.println("In  makeViksGeburtstag(,) : facWid = "+ facWid +" , facHei = "+ facHei);				
-			}
-			float hGK = facWid*720/sheet.getUsuableHeight();
-			if (y7 > 0.98f) {
-				sheet.drawImage(inDirWhatsApp+"IMG-20230401-WA0003.jpg" ,            .57, 0.5, 0, 0.000f, 0.44f*y3,       0.4 , h2);
-				float y6 = 0.44f*y3+hGK*.9f;
-				if (y6 < 0.95f && y6 < y7) {
-					sheet.drawImage(inDirStep+"20220410_145536.jpg"                 , .5, 0.5, 0, 0.402,   y6     ,       0.2 ,y7-y6);
-				} else {
-					System.out.println("Problem in  makeViksGeburtstag(,) : y6 = "+ y6);
-				}
-				sheet.drawImage(inDirMsGal23+"20240414_131107.jpg",                   .5, 0.5, 0, 0.604,  0.44f*y3,     0.396, h2);
-				sheet.drawImage(inDirV21+"Geburtstagskuchen.png",                     .5, 0.5, 0, 0.402f, 0.44f*y3,     0.2  , hGK);
-				makeNumberOnViksGeburtstagskuchen(sheet,                                          0.480f,0.44f*y3+0.1f ,0.06f, hGK/4f);
-			} else {
-				sheet.drawImage(inDirConny+"20220402_152520b.jpg",                        .4 ,.3, 0, 0.0  , 0.44*y3,  1f   , 1-0.44*y3);
-			}
+			/* Berechne genaue Position von  Geburtstagstorte , damit nichts abgeschnitten wird. */
+			SourceImage imgTorte6 = new SourceImage("C:\\Users\\MiRoe\\Pictures\\WhatsApp\\Vik7\\Torte.png");
+			int widTorte6 = imgTorte6.getWidth();
+			int heiTorte6 = imgTorte6.getHeight();
+			float facT6 = Math.min( sheet.getUsuableWidth() * 0.4f / widTorte6, sheet.getUsuableHeight() * h2 / heiTorte6 );
+            int tWidT6 = (int)(widTorte6 * facT6);
+			int tHeiT6 = (int)(heiTorte6 * facT6);
+			sheet.drawImage("C:\\Users\\MiRoe\\Pictures\\WhatsApp\\Vik7\\Vik7.jpg",.48,0.5, 0, 0.000f, y5,       0.35 , h2);
+			int y6 = (int)(sheet.getUsuableHeight() * y5 + tHeiT6*.9f);
+			sheet.drawImage(inDirMsGal23+"20250406_152442.jpg",                   .5, 0.5, 90, 0.650,  y5,     0.35, h2);
+			float fH8 = h2*.4f;
+			sheet.drawImage(inDirMsGal23+"20250406_152425.jpg",                   .4, 0.5, 90, 0.354,  1-fH8, 0.29, fH8);
+			sheet.drawImage(imgTorte6,                                                        .5, 0.5, 0, 0.3f,   y5,     tWidT6  ,tHeiT6);
+			makeNumberOnViksGeburtstagskuchen(sheet,                                          0.480f,y5+0.16f ,tWidT6/4, tHeiT6/4);
 			sheet.drawCalDates();
 			sheet.writeInDir(strOutDir);	
 		} catch (Exception ex) {
@@ -105,7 +97,7 @@ public class FotoKalender {
 		}
 	} /* end of makeViksGeburtstag(int nMonth, String strOutDir) */
 	
-	public void makeNumberOnViksGeburtstagskuchen(CalendarSheet sheet, float fX, float fY, float fW, float fH) {
+	public void makeNumberOnViksGeburtstagskuchen(CalendarSheet sheet, float fX, float fY, int iW, int iH) {
 		Graphics2D painter = null;
 		try {
 			BufferedImage sColsYears = new BufferedImage(2, 2, BufferedImage.TYPE_3BYTE_BGR);
@@ -113,18 +105,14 @@ public class FotoKalender {
 			sColsYears.setRGB(0, 1, new Color(160, 184,  80).getRGB());
 			sColsYears.setRGB(1, 0, new Color( 64, 184, 160).getRGB());
 			sColsYears.setRGB(1, 1, new Color( 64, 176,  80).getRGB());
-			int iW = Math.max((int)(fW*sheet.getUsuableWidth() )+1, 160);
-			int iH = Math.max((int)(fH*sheet.getUsuableHeight())+1, 100);
 			String strNumber = Integer.toString(THIS_YEAR-2019);
 			BufferedImage tmpBuf1 = new BufferedImage(iW, iH, BufferedImage.TYPE_4BYTE_ABGR);
 			painter = tmpBuf1.createGraphics();
-			//Embassy BT  i1780.png
 			//OCR-A BT  i2434.png
-			//Bodoni Bd BT Bold Italic  i3533.png
 			Font font = new Font("OCR-A BT", Font.BOLD, iH/2);
 			MiRoesDraw.drawTextImg(strNumber, font, sColsYears, painter, iW/4, iH/2);
 			MiRoesDraw.diagOut(tmpBuf1);
-			sheet.drawImage(tmpBuf1, .5f, .5f, 15, fX, fY, fW, fH);
+			sheet.drawImage(tmpBuf1, .5f, .5f, -.05, fX, fY, iW, iH);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -1155,12 +1143,13 @@ public class FotoKalender {
 		// https://groups.google.com/g/comp.lang.java.programmer/c/ej5Gx8zurpM?pli=1
 		ev1 = new PersonalDate("ADFC Sternfahrt", d1, PersonalDate.PRIO_BIRTHDAY);
 		mDates.addCalEvent(ev1);
-		// Wahl zum deutschen Bundestag 23. Februar 2025 :
-		if (THIS_YEAR == 2025) {
-			d1 =  new GregorianCalendar(2025, Calendar.FEBRUARY, 23);
-			ev1 = new PersonalDate("Bundestagswahl", d1, PersonalDate.PRIO_BIRTHDAY);
+
+		// Die Berlinerinnen und Berliner wählen am 20. September 2026 ihr Landesparlament. :
+		if (THIS_YEAR == 2026) {
+			d1 =  new GregorianCalendar(2026, Calendar.SEPTEMBER, 20);
+			ev1 = new PersonalDate("Abgeordnetenhauswahl", d1, PersonalDate.PRIO_BIRTHDAY);
+			mDates.addCalEvent(ev1);
 		}
-		mDates.addCalEvent(ev1);
 	}
 	
 	public void addGermanPublicHolidays() {
@@ -1285,9 +1274,9 @@ public class FotoKalender {
 		IDaysBackground img;
 		DaysBackgroundText txt;
 
-		DaysBackgroundHFlag gerFlag = new DaysBackgroundHFlag(1f, 0f, new Color[]{new Color(0,0,0), new Color(255,0,0), new Color(255,204,0)}, 5f/3f); // https://de.wikipedia.org/wiki/Flagge_Deutschlands#Farbton-Empfehlung_f%C3%BCr_die_Bundesflagge_ab_1996
-
 		if (THIS_YEAR == 2024) {
+			DaysBackgroundHFlag gerFlag = new DaysBackgroundHFlag(1f, 0f, new Color[]{new Color(0,0,0), new Color(255,0,0), new Color(255,204,0)}, 5f/3f); // https://de.wikipedia.org/wiki/Flagge_Deutschlands#Farbton-Empfehlung_f%C3%BCr_die_Bundesflagge_ab_1996
+
 			game1 = new PersonalDate("{0,date,EE} ", 14, 6, 2024, (byte)0);
 			game1.mBackgrounds = new ArrayList<IDaysBackground>(3);
 			game1.mBackgrounds.add(gerFlag);
@@ -1315,11 +1304,22 @@ public class FotoKalender {
 			game1.mBackgrounds.add(flag0);
 			mDates.addCalEvent(game1);
 
-			game1 = new PersonalDate("{0,date,EE} ", 14, 7, 2024, (byte)0);
+		}
+
+		if (THIS_YEAR == 2026) {
+			game1 = new PersonalDate("{0,date,EE} ", 11, 6, 2026, (byte)0);
+			game1.mBackgrounds = new ArrayList<IDaysBackground>(1);
+			txt = new DaysBackgroundText(1f, 0f, game1, "Beginn: ");
+			game1.mBackgrounds.add(txt);
+			img = new DaysBackgroundImage(3f, 0f, new File("res/FIFA_2026.png"), .8f);
+			game1.mBackgrounds.add(img);
+			mDates.addCalEvent(game1);
+
+			game1 = new PersonalDate("{0,date,EE} ", 19, 7, 2026, (byte)0);
 			game1.mBackgrounds = new ArrayList<IDaysBackground>(1);
 			txt = new DaysBackgroundText(1f, 0f, game1, "Finale: ");
 			game1.mBackgrounds.add(txt);
-			img = new DaysBackgroundImage(3f, 0f, new File("res/Coupe_Henri_Delaunay_2017.png"), .8f);
+			img = new DaysBackgroundImage(3f, 0f, new File("res/FIFA_World_Cup_Trophy.png"), .8f);
 			game1.mBackgrounds.add(img);
 			mDates.addCalEvent(game1);
 		}
@@ -1327,13 +1327,13 @@ public class FotoKalender {
 
 	public void addOlympiade() {
 		int nYear = THIS_YEAR; // no final to avoid warnings "Comparing identical expressions" or "Dead code"
-		if (nYear == 2024) {
-			// Die Olympischen Sommerspiele 2024 (offiziell Spiele der XXXIII. Olympiade) sollen vom 26. Juli bis zum 11. August 2024 in der französischen Hauptstadt Paris stattfinden.
+		if (nYear == 2026) {
+			// Die XXV. Olympischen Winterspiele sollen vom 6. bis zum 22. Februar 2026 in Mailand und Cortina d?Ampezzo stattfinden.[
 			PersonalDate day1;
 			IDaysBackground img;
-			float fiDay = 26f;
+			float fiDay = 6f;
 			float fHigh = 1.8f;
-			while (fiDay < 31f+11.5f) {
+			while (fiDay < 22.5f) {
 				int iDay = (int)(fiDay+.4f);
 				float dY = fiDay-iDay;
 				fiDay += fHigh;
@@ -1341,9 +1341,9 @@ public class FotoKalender {
 				ArrayList<IDaysBackground> imgList = new ArrayList<IDaysBackground>(1);
 				imgList.add(img);
 				if (iDay <= 31) {
-					day1 = new PersonalDate("", iDay,    7, 2024, (byte)0);
+					day1 = new PersonalDate("", iDay,    2, 2026, (byte)0);
 				} else {
-					day1 = new PersonalDate("", iDay-31, 8, 2024, (byte)0);
+					day1 = new PersonalDate("", iDay-31, 3, 2026, (byte)0);
 				}
 				day1.mBackgrounds = imgList;
 				mDates.addCalEvent(day1);
@@ -1385,7 +1385,8 @@ public class FotoKalender {
 			}
 			addVacations("{0,date,EE} Schulfrei",  3, 2, 2025     ,  8, 2, 2025); //Winterferien 2025
 			addVacations("{0,date,EE} Schulfrei",  2, 2, 2026     ,  7, 2, 2026); //Winterferien 2026
-			
+
+			// Brückentage um Frauentag 8. März
 			GregorianCalendar march7 = new GregorianCalendar(THIS_YEAR, GregorianCalendar.MARCH, 7);
 			if (march7.get(GregorianCalendar.DAY_OF_WEEK) == GregorianCalendar.MONDAY) {
 				mDates.addCalEvent(PersonalDate.createDate("{0,date,EE} Schulfrei", march7, 0, PersonalDate.ADRIANA_HAS_FREE));
@@ -1426,8 +1427,8 @@ public class FotoKalender {
 			addVacations("{0,date,EE} Schulfrei", 20,10, 2025,  1,11, 2025);	// Herbstferien 2025
 			addVacations("{0,date,EE} Schulfrei", 19,10, 2026, 31,10, 2026);	// Herbstferien 2026
 			addVacations("{0,date,EE} Schulfrei", 11,10, 2027, 23,10, 2027);	// Herbstferien 2027
-			addVacations("{0,date,EE} Schulfrei", 23,12, 2024, 31,12, 2024); 	// Weihnachtsferien 2024/25
 			addVacations("{0,date,EE} Schulfrei", 22,12, 2025,  2, 1, 2026); 	// Weihnachtsferien 2025/26
+			addVacations("{0,date,EE} Schulfrei", 23,12, 2026, 2,1, 2027); 	// Weihnachtsferien 2026/27
 			GregorianCalendar oct2 = new GregorianCalendar(THIS_YEAR, GregorianCalendar.OCTOBER, 2);
 			if (oct2.get(GregorianCalendar.DAY_OF_WEEK) == GregorianCalendar.MONDAY) {
 				mDates.addCalEvent(PersonalDate.createDate("{0,date,EE} Schulfrei", oct2, 0, PersonalDate.ADRIANA_HAS_FREE));

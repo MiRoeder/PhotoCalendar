@@ -39,6 +39,10 @@ public class CalendarSheetAutoArrange1 extends CalendarSheet implements Runnable
 		}
 	}
 
+	public int getNumberOfImage() {
+		return mPics.size();
+	}
+
 	public void setPicRelWidth(float picRelWidth) {
 		mCalcPos.mPicRelWidth = picRelWidth;
 	}

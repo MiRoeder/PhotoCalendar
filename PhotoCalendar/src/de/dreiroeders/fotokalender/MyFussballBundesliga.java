@@ -21,7 +21,7 @@ public class MyFussballBundesliga {
 		addTermin(cal, 23 , 8 , 24 , 8 , 2025 , "  1 4 Sport-Club Freiburg  FC Augsburg ");
 		addTermin(cal, 23 , 8 , 24 , 8 , 2025 , "  1 5 1.  FSV Mainz 05  1_FC Köln ");
 		addTermin(cal, 23 , 8 , 24 , 8 , 2025 , " Borussia Mönchengladbach Hamburger SV  ");
-		addTermin(cal, 23 , 8 , 24 , 8 , 2025 , " 1. FC Union Berlin VfB Stuttgart ");
+		addTermin(cal, 23 , 8 , 23 , 8 , 2025 , " 1. FC Union Berlin VfB Stuttgart ");
 		addTermin(cal, 23 , 8 , 24 , 8 , 2025 , " FC St. Pauli Borussia Dortmund ");
 		addTermin(cal, 23 , 8 , 24 , 8 , 2025 , " 1_FC Heidenheim 1846 VfL Wolfsburg ");
 
@@ -41,7 +41,7 @@ public class MyFussballBundesliga {
 		addTermin(cal,12,9,14,9, 2025, "1. FSV Mainz 05 - RB Leipzig");
 		addTermin(cal,12,9,14,9, 2025, "Borussia Mönchengladbach - SV Werder Bremen");
 		addTermin(cal,12,9,14,9, 2025, "VfL Wolfsburg - 1. FC Köln");
-		addTermin(cal,12,9,14,9, 2025, "1. FC Union Berlin - TSG Hoffenheim");
+		addTermin(cal,13,9,13,9, 2025, "1. FC Union Berlin - TSG Hoffenheim");
 		addTermin(cal,12,9,14,9, 2025, "FC St. Pauli - FC Augsburg");
 		addTermin(cal,12,9,14,9, 2025, "1. FC Heidenheim 1846 - Borussia Dortmund");
 
@@ -60,7 +60,7 @@ public class MyFussballBundesliga {
 		addTermin(cal,26,9,28,9, 2025, "1. FSV Mainz 05 - Borussia Dortmund");
 		addTermin(cal,26,9,28,9, 2025, "Borussia Mönchengladbach - Eintracht Frankfurt");
 		addTermin(cal,26,9,28,9, 2025, "VfL Wolfsburg - RB Leipzig");
-		addTermin(cal,26,9,28,9, 2025, "1. FC Union Berlin - Hamburger SV");
+		addTermin(cal,28,9,28,9, 2025, "1. FC Union Berlin - Hamburger SV");
 		addTermin(cal,26,9,28,9, 2025, "FC St. Pauli - Bayer 04 Leverkusen");
 		addTermin(cal,26,9,28,9, 2025, "1. FC Heidenheim 1846 - FC Augsburg");
 		addTermin(cal,26,9,28,9, 2025, "1. FC Köln - VfB Stuttgart");

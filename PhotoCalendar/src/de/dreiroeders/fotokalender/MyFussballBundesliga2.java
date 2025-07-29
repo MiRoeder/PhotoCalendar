@@ -52,7 +52,7 @@ public class MyFussballBundesliga2 extends MyFussballBundesliga {
 		addTermin(cal,29,8,31,8, 2025, "Fortuna Düsseldorf - Karlsruher SC");
 		addTermin(cal,29,8,31,8, 2025, "1. FC Kaiserslautern - SV Darmstadt 98");
 		addTermin(cal,29,8,31,8, 2025, "1. FC Nürnberg - SC Paderborn 07");
-		addTermin(cal,29,8,31,8, 2025, "Hertha BSC - SV Elversberg");
+		addTermin(cal,29,8,29,8, 2025, "Hertha BSC - SV Elversberg");
 		addTermin(cal,29,8,31,8, 2025, "Eintracht Braunschweig - DSC Arminia Bielefeld");
 		addTermin(cal,29,8,31,8, 2025, "SG Dynamo Dresden - FC Schalke 04");
 
@@ -71,7 +71,7 @@ public class MyFussballBundesliga2 extends MyFussballBundesliga {
 		addTermin(cal,19,9,21,9, 2025, "Fortuna Düsseldorf - SV Darmstadt 98");
 		addTermin(cal,19,9,21,9, 2025, "1. FC Kaiserslautern - Preußen Münster");
 		addTermin(cal,19,9,21,9, 2025, "1. FC Nürnberg - VfL Bochum");
-		addTermin(cal,19,9,21,9, 2025, "Hertha BSC - SC Paderborn 07");
+		addTermin(cal,20,9,20,9, 2025, "Hertha BSC - SC Paderborn 07");
 		addTermin(cal,19,9,21,9, 2025, "Eintracht Braunschweig - SV Elversberg");
 		addTermin(cal,19,9,21,9, 2025, "DSC Arminia Bielefeld - SpVgg Greuther Fürth");
 		addTermin(cal,19,9,21,9, 2025, "SG Dynamo Dresden - Hannover 96");

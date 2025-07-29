@@ -36,7 +36,8 @@ public class CalendarSheet {
 	/* for fWeight : */
 	public static final float FWeight_posterXXL_Background_A2_hoch = 0.9997f;
 	public static final float FWeight_whitewall_A2_hoch_facX1 = 1f/7f;
-	public static final float FWeight_whitewall_A2_hoch = (17.3f/21f)/(1+FWeight_whitewall_A2_hoch_facX1); // de.whitewall.com MARKANT (WEISS) A2 hoch 
+	public static final float FWeight_whitewall_A2_hoch = (17.3f/21f)/(1+FWeight_whitewall_A2_hoch_facX1); // de.whitewall.com MARKANT (WEISS) A2 hoch
+	public static final float FWeight_A3_landscape_0 = 1.26f; // for Kalender DIN A3 quer ohne sonstige Texte
 	
 	public static int maxWidth = 20000;
 	public static int maxHeight= 20000;
