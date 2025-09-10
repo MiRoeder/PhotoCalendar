@@ -108,13 +108,21 @@ public class SourceImage {
 	
 	private static int nCurrentNumber = 1000;
 	
-	public static synchronized int getNextNumer() {
+	public static synchronized int getNextNumber() {
 		return ++nCurrentNumber;
 	}
-	
+
+	@SuppressWarnings("ReassignedVariable")
 	public static File loadFile(String internetAddr) throws Exception {
-		int nr = getNextNumer();
-		File retVal = new File("tmp/www"+nr);
+		int nr = getNextNumber();
+		int iDot = internetAddr.lastIndexOf('.');
+		String strExt = iDot > 0 ? internetAddr.substring(iDot) : "";
+		if (   strExt.indexOf('/') >= 0 || strExt.indexOf('\\')>= 0 || strExt.indexOf(':') >= 0
+			|| strExt.indexOf('*') >= 0 || strExt.indexOf('<') >= 0 || strExt.indexOf('>') >= 0
+			|| strExt.indexOf('?') >= 0 ) {
+			strExt = "";
+		}
+		File retVal = new File("tmp/www" + nr + strExt);
 		HttpFile.HttpToFile(internetAddr, retVal, 10);
 		return retVal;
 	}
