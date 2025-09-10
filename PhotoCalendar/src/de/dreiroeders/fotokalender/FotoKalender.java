@@ -1232,7 +1232,6 @@ public class FotoKalender {
 	}
 	
 	public void addSundays4Buying() {
-		// Berliner Morgenpost 2. November 2024
 		if (this.THIS_YEAR == 2025) {
 			GregorianCalendar sun4buy;
 			sun4buy = new GregorianCalendar(2025, Calendar.JANUARY, 26);  //Anlass ist die Grüne Woche in Berlin
@@ -1257,13 +1256,14 @@ public class FotoKalender {
 		// Adventssonntage: Veranstaltung von zahlreichen Weihnachtsmärkten, bereits in addAdvents() gesetzt
 		// 7. und 21. Dezember 2025
 		if (this.THIS_YEAR > 2025) {
-			// vorläufige Einschätzungen:
+			// TODO: vorläufige Einschätzungen, denn am 10. September 2025:
+			// Für 2026 gibt es in Berlin noch keine festen Termine für verkaufsoffene Sonntage, da diese oft kurzfristig anlassbezogen festgelegt werden.
 			GregorianCalendar sun4buy;
-			sun4buy = new GregorianCalendar(2023, Calendar.JANUARY, 29);  //29. Januar 2023 - Anlass ist die Grüne Woche in Berlin
-			sun4buy.add(GregorianCalendar.DAY_OF_YEAR, (this.THIS_YEAR - 2023)*52); // wohl 52 Wochen später in 2024
+			sun4buy = new GregorianCalendar(2025, Calendar.JANUARY, 26);  //Anlass ist die Grüne Woche in Berlin
+			sun4buy.add(GregorianCalendar.WEEK_OF_YEAR, (int)((this.THIS_YEAR - 2025)*52.18f)); // wohl 52 Wochen später in 2026
 			mDates.addCalEvent(new PersonalDate("", sun4buy, PersonalDate.SUNDAY4BUYING));
 			sun4buy = new GregorianCalendar(2025, Calendar.SEPTEMBER, 7); // Anlass ist die Internationale Funkausstellung (IFA)
-			sun4buy.add(GregorianCalendar.DAY_OF_YEAR, (this.THIS_YEAR - 2025)*52); // 08.09.2024 Anlass: Internationale Funkausstellung IFA
+			sun4buy.add(GregorianCalendar.WEEK_OF_YEAR, (int)((this.THIS_YEAR - 2025)*52.18f)); // wohl 52 Wochen später in 2026
 			mDates.addCalEvent(new PersonalDate("", sun4buy, PersonalDate.SUNDAY4BUYING));
 		}
 	}
