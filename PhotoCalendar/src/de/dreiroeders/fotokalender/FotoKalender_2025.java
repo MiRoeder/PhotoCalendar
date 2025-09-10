@@ -3,8 +3,12 @@ package de.dreiroeders.fotokalender;
 import de.dreiroeders.io.MiRoeIoUtil;
 import de.dreiroeders.workingonimages.Draw1ImageI;
 import de.dreiroeders.workingonimages.IHintsDrawImages;
+import de.dreiroeders.workingonimages.MiRoesDraw;
+import de.dreiroeders.workingonimages.SourceImage;
 
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -109,15 +113,24 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
 
         if (trgOpt.bDoIt(Calendar.JUNE)) try {
-            var sheet = new CalendarSheetCenterImage(THIS_YEAR, Calendar.JUNE, mDates);
-            Draw1ImageI img;
-            img = new Draw1ImageI("C:\\Users\\MiRoe\\Documents\\F\\docs\\2025_Norwegen\\Bordfotograf\\Brücke.jpg");
-            img.dRot = 180;
-            sheet.setImage1(img);
-            sheet.startMakingIt(strOutDir);
+            makeMichaPolarTaufe(Calendar.JUNE, strOutDir);
             trgOpt.m_bDoIt[Calendar.JUNE] = false; // because already created.
         } catch (Exception ex) {
             MiRoeIoUtil.logException("Problem with FotoKalender_2025 Calendar.JUNE", ex);
+        }
+
+        if (trgOpt.bDoIt(Calendar.JULY)) try {
+            var sheet = new CalendarSheetCenterImage(THIS_YEAR, Calendar.JULY, mDates);
+            Draw1ImageI img;
+            img = new Draw1ImageI("C:\\Users\\MiRoe\\Documents\\F\\docs\\2025_Norwegen\\Bordfotograf\\Brücke.jpg");
+            sheet.setImage1(img);
+            Random randomGen = new Random(THIS_YEAR * 12L + Calendar.SEPTEMBER);
+            add2025_NorwayImages1(sheet, null, randomGen, .05f);
+            add2025_NorwayImages2(sheet, null, randomGen, .1f);
+            sheet.startMakingIt(strOutDir);
+            trgOpt.m_bDoIt[Calendar.JULY] = false; // because already created.
+        } catch (Exception ex) {
+            MiRoeIoUtil.logException("Problem with FotoKalender_2025 Calendar.JULY", ex);
         }
 
         if (trgOpt.bDoIt(Calendar.SEPTEMBER)) try {
@@ -157,7 +170,135 @@ public class FotoKalender_2025 extends FotoKalender2 {
     } /* end of makeFamilyCal(FotoKalenderOpt trgOpt) */
 
     @SuppressWarnings("ReassignedVariable")
-    public void add2025_NorwayImages1(ICalendarSheetAddImage sheet,
+    public void makeMichaPolarTaufe(int nMonth, String strOutDir) throws IOException {
+        final String strMainImg = "C:\\Users\\MiRoe\\Documents\\F\\docs\\2025_Norwegen\\Bordfotograf\\Polartaufe.jpg";
+        final int CIX = 48;
+        final int CIY = 19;
+        final int CIW = 1212 - CIX;
+        final int CIH = 808 - CIY;
+        final String strKlippe = "C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20250617_170424.jpg";
+        final int KlX = 400;
+        final int KlY = 700;
+        final int KlW = 2050 - KlX;
+        final int KlH = 1800 - KlY;
+        var sheet = new CalendarSheet(THIS_YEAR, nMonth, mDates);
+        sheet.prepareImage(4000);
+        final int trgW = sheet.getUsuableWidth();
+        final int trgH = sheet.getUsuableHeight();
+        final int iSteg = (trgW+trgH) / 300 + 1;
+        var klipPic = new SourceImage(strKlippe).getImage();
+        var klipImg = klipPic.getSubimage(KlX, KlY, KlW, KlH);
+        float facX = (float)trgW/KlW;
+        float facY = (float)trgH/KlH;
+        float fac = Math.min(facX, facY)*.5f;
+        int trgKlW = (int)(KlW*fac);
+        int trgKlH = (int)(KlH*fac);
+        sheet.drawImage(klipImg, .5f, .5f, -0.015, 0, 0, trgKlW, trgKlH);
+        final String strHochebene = "C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20250617_170433.jpg";
+        var northCupReg = new SourceImage(strHochebene).getImage().getSubimage(1550, 800, 2300-1550, 350);
+        var primeImg = new SourceImage(strMainImg);
+        var centerImg = primeImg.getImage().getSubimage(CIX, CIY, CIW, CIH);
+        facX = (float)trgW/CIW;
+        facY = (float)trgH/CIH;
+        fac = Math.min(facX, facY)*.55f;
+        int trgCIW = (int)(CIW*fac);
+        int trgCIH = (int)(CIH*fac);
+        int x3 = (trgW-trgCIW)/2;
+        int y3 = (trgH-trgCIH)/2;
+        int northCupRegH = y3-iSteg;
+        sheet.drawImage(northCupReg, .5f, .5f, 0, trgKlW+iSteg, 0, trgW-(trgKlW+iSteg), northCupRegH);
+        sheet.drawImage(centerImg, .5f, .5f, 0, x3, y3, trgCIW, trgCIH);
+        var painter = sheet.getPainter();
+        painter.setColor(sheet.getBackgroundCol());
+        int x0 = sheet.getX1();
+        int y0 = sheet.getY1();
+        painter.fillRect(x0+x3-iSteg, y0+y3-iSteg, trgCIW+2*iSteg, iSteg);
+        painter.fillRect(x0+x3-iSteg, y0+y3, iSteg, trgCIH);
+        painter.fillRect(x0+x3+trgCIW, y0+y3, iSteg, trgCIH);
+        sheet.diag();
+        int y4 = trgKlH+iSteg;
+        int h4 = y3+trgCIH-y4;
+        sheet.drawImage("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20250619_173227.jpg", .5f,.5f,0, 0, y4, x3-iSteg, h4);
+        y4 = northCupRegH+iSteg;
+        h4 = y3+trgCIH-y4;
+        sheet.drawImage("N:\\ConniesS9\\Phone\\DCIM\\Camera\\20250617_215037.jpg", .28f,.35f,90, trgW-(x3-iSteg), y4, x3-iSteg, h4);
+        int y7 = y4 + h4 + iSteg;
+        int h7 = trgH - y7;
+        if (h7 > 3*iSteg) {
+            String strMichasTaufschein = "N:\\ConniesS9\\Phone\\DCIM\\Camera\\20250615_113640.jpg";
+            final int MTX = 250;
+            final int MTY = 300;
+            final int MTW = 2400 - MTX;
+            final int MTH = 3300 - MTY;
+            var imgMichasTaufschein = new SourceImage(strMichasTaufschein).getImage().getSubimage(MTY, 3024-MTW-MTX, MTH, MTW);
+            facY = (float)h7/MTH;
+            int x8 = trgW-(int)(facY*MTW);
+            sheet.drawImage(imgMichasTaufschein, .5f, .5f, 90, x8, y7, (trgW-x8), h7);
+            String strPolarTaufTeam = "N:\\ConniesS9\\Phone\\DCIM\\Camera\\20250615_120500.jpg";
+            final int TTW = 4032;
+            final int TTH = 3024;
+            var imgPolarTaufTeam = new SourceImage(strPolarTaufTeam).getImage();
+            facY = (float)h7/TTH;
+            int w7 = (int)(facY*TTW);
+            int x7 = x8-w7-iSteg;
+            sheet.drawImage(imgPolarTaufTeam, .5f, .5f, 0, x7, y7, w7, h7);
+            int w6 = (int)(trgW*.38f);
+            String strTaufTeamMarsch1 = "C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20250615_111723_1.png";
+            sheet.drawImage(strTaufTeamMarsch1, .51f, .58f, -0.02, x7-w6-iSteg, y7, w6, h7);
+            int w5 = (int)(trgW*.4f);
+            int w5o = (int)(trgW*.35f);
+            int x5 = x7-w6-w5o-iSteg;
+            System.out.println("makeMichaPolarTaufe: x5 = "+ x5);
+            if (x5 < iSteg) {
+                w5 += x5/2;
+                w5o += x5/2;
+                x5 = 0;
+            }
+            if (w5 > iSteg) {
+                drawImageRightTransparent(sheet, "C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20250615_111723_2.png",
+                        .5f, .5f, 0, x5, y7, w5, h7, w5o);
+            }
+            if (x5 > 1) {
+                drawImageRightTransparent(sheet,"C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20250615_111723_3.jpg",
+                        .5f, .5f, 0, 0, y7, 2*x5, h7, x5);
+            }
+        } /* end if (h7 > 3*iSteg) */
+        sheet.drawCalDates();
+        sheet.writeInDir(strOutDir);
+    }
+
+    public void drawImageRightTransparent(
+            CalendarSheet sheet,
+            String strInFileName,
+            float centerPointX,
+            float centerPointY,
+            float rotator,
+            int tx0,
+            int ty0,
+            int tWidth,
+            int tHeight,
+            int tWidthOpaque
+    ) {
+        Draw1ImageI img = new Draw1ImageI(strInFileName);
+        img.setCenterPoint(centerPointX, centerPointY);
+        img.dRot = rotator;
+        img.outputImage = new BufferedImage(tWidth, tHeight, BufferedImage.TYPE_4BYTE_ABGR);
+        img.iOutRect = new Rectangle(0, 0, tWidth, tHeight);
+        MiRoesDraw.drawImage(img);
+        int tWt  = tWidth-tWidthOpaque;
+        for (int iX = 0; iX < tWt; ++iX) {
+            int alpha = (255 - 255 * iX / tWt) << 24;
+            for (int iY = 0; iY < tHeight; ++iY) {
+                int pix = img.outputImage.getRGB(tWidthOpaque+iX, iY);
+                pix = (pix & 0xFFFFFF) | alpha;
+                img.outputImage.setRGB(tWidthOpaque+iX, iY, pix);
+            }
+        }
+        sheet.drawImage(img.outputImage, .5f, .5f, 0, tx0, ty0, tWidth, tHeight);
+    }
+
+    @SuppressWarnings("ReassignedVariable")
+    public static void add2025_NorwayImages1(ICalendarSheetAddImage sheet,
                                       IHintsDrawImages hints,
                                       Random randomGen,
                                       float maxRandomToPaint) {
@@ -171,7 +312,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
-        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint/3)) {
             img = new Draw1ImageI(sDir1 + "20250610_120141.jpg");
             img.dRot = 90;
             sheet.addImage(img, hints);
@@ -259,6 +400,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250611_154242.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -294,6 +436,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250612_073411.jpg");
+            img.dRot = -.07f;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -324,6 +467,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250612_101017.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -360,6 +504,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250612_102458.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -391,6 +536,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250612_102903.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -451,12 +597,15 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250612_104110.jpg");
-            img.dRot = 90;
+            img.dRot = 1.5f;
+            img.setCenterPoint(.7f, .5f);
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250612_104503.jpg");
+            img.dRot = 90;
+            img.setCenterPoint(.6f, .5f);
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -527,12 +676,14 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250612_105409.jpg");
+            img.setCenterPoint(.4f, .5f);
             img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250612_105414.jpg");
+            img.setCenterPoint(.45f, .5f);
             img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
@@ -589,6 +740,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250612_114720.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -653,7 +805,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
-        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint/2)) {
             img = new Draw1ImageI(sDir1 + "20250613_081802.jpg");
             img.dRot = 90;
             sheet.addImage(img, hints);
@@ -681,6 +833,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250613_083117.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -717,6 +870,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250613_083758.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -742,6 +896,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250613_084623.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -767,6 +922,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250613_084818.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -1028,6 +1184,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250613_101029.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -1044,6 +1201,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250613_101150.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -1121,12 +1279,13 @@ public class FotoKalender_2025 extends FotoKalender2 {
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
-        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint/2)) {
             img = new Draw1ImageI(sDir1 + "20250613_104901.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
-        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint/2)) {
             img = new Draw1ImageI(sDir1 + "20250613_104902.jpg");
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
@@ -1141,7 +1300,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
-        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint/2)) {
             img = new Draw1ImageI(sDir1 + "20250613_113354.jpg");
             img.dRot = 90;
             sheet.addImage(img, hints);
@@ -1159,6 +1318,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250613_113552.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -1189,7 +1349,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
-        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint/2)) {
             img = new Draw1ImageI(sDir1 + "20250613_120457.jpg");
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
@@ -1201,6 +1361,8 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250613_123335.jpg");
+            img.dRot = 90;
+            img.setCenterPoint(.35f, .5f);
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -1236,10 +1398,11 @@ public class FotoKalender_2025 extends FotoKalender2 {
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
-        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+        if ((randomGen == null || randomGen.nextFloat() < maxRandomToPaint/2)) {
             img = new Draw1ImageI(sDir1 + "20250613_125821.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
-            iLastAdded = nSkipImages;
+            /* sign declaring these pictures. So no need to skip the next pictures */
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250613_125844.jpg");
@@ -1253,6 +1416,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250613_125906.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -1261,17 +1425,18 @@ public class FotoKalender_2025 extends FotoKalender2 {
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
-        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint/2)) {
             img = new Draw1ImageI(sDir1 + "20250613_130404.jpg");
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
-        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint/2)) {
             img = new Draw1ImageI(sDir1 + "20250613_130408.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
-        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint/2)) {
             img = new Draw1ImageI(sDir1 + "20250613_130409.jpg");
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
@@ -1369,6 +1534,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250613_231640.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -1395,6 +1561,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250614_093736.jpg");
             img.dRot = 90;
+            img.setCenterPoint(.45f, .5f);
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -1445,12 +1612,15 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250614_095232.jpg");
+            img.dRot = 90;
+            img.setCenterPoint(.6f, .5f);
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250614_095256.jpg");
             img.dRot = 90;
+            img.setCenterPoint(.6f, .5f);
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -1479,7 +1649,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
-        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint/2)) {
             img = new Draw1ImageI(sDir1 + "20250614_104341.jpg");
             img.dRot = 90;
             sheet.addImage(img, hints);
@@ -1497,6 +1667,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250614_104922.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -1553,11 +1724,13 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250614_170402.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250614_170742.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -1589,6 +1762,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250615_111729.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -1605,6 +1779,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250615_111733.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -1737,6 +1912,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250616_083242.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -1777,6 +1953,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250616_085107.jpg");
+            img.dRot = -0.01f;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -1827,6 +2004,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250616_090722.jpg");
+            img.dRot = .045f;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -1842,6 +2020,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250616_090840.jpg");
+            img.dRot = .075f;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -1862,6 +2041,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250616_091319.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -2118,6 +2298,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250616_103426.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -2186,13 +2367,15 @@ public class FotoKalender_2025 extends FotoKalender2 {
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
-        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint/2)) {
             img = new Draw1ImageI(sDir1 + "20250616_104857.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250616_104908.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -2233,6 +2416,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250616_105137.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -2246,18 +2430,19 @@ public class FotoKalender_2025 extends FotoKalender2 {
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
-        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint/3)) {
             img = new Draw1ImageI(sDir1 + "20250616_105434.jpg");
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
-        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint/2)) {
             img = new Draw1ImageI(sDir1 + "20250616_105439.jpg");
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
-        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint/2)) {
             img = new Draw1ImageI(sDir1 + "20250616_105446.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -2296,7 +2481,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
-        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint/2)) {
             img = new Draw1ImageI(sDir1 + "20250616_110107.jpg");
             img.dRot = 90;
             sheet.addImage(img, hints);
@@ -2332,7 +2517,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
-        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint/2)) {
             img = new Draw1ImageI(sDir1 + "20250616_110405.jpg");
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
@@ -2350,6 +2535,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250616_110704.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -2479,6 +2665,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250617_010216.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -2504,16 +2691,19 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250617_010302.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250617_010321.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250617_010325.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -2539,12 +2729,13 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250617_010411.jpg");
+            img.dRot = -.03f;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250617_010456.jpg");
-            img.dRot = 90;
+            img.dRot = 1.6f;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -2582,6 +2773,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250617_164451.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -2607,11 +2799,13 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250617_165812.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
-        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint/2)) {
             img = new Draw1ImageI(sDir1 + "20250617_165841.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -2637,6 +2831,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250617_170225.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -2723,6 +2918,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250617_210115.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -2748,6 +2944,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250617_213337.jpg");
+            img.setCenterPoint(.4f, .5f);
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -2809,6 +3006,8 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250617_215607.jpg");
+            img.dRot = 90;
+            img.setCenterPoint(.45f, .5f);
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -2834,6 +3033,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250617_215658.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -2883,7 +3083,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
-        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint/4)) {
             img = new Draw1ImageI(sDir1 + "20250617_221235.jpg");
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
@@ -2984,9 +3184,9 @@ public class FotoKalender_2025 extends FotoKalender2 {
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
-        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint/2)) {
             img = new Draw1ImageI(sDir1 + "20250618_155929.jpg");
-            img.dRot = 90;
+            img.dRot = 1.54f;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -2997,6 +3197,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250618_160212.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -3022,6 +3223,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250618_161751.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -3112,6 +3314,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250618_170612.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -3137,6 +3340,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250618_171300.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -3147,6 +3351,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250618_175402.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -3157,6 +3362,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250618_180554.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -3182,6 +3388,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250618_183000.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -3258,12 +3465,13 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250619_172556.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250619_172816.jpg");
-            img.dRot = 90;
+            img.dRot = 1.61f;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -3284,11 +3492,14 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250619_173110.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250619_173121.jpg");
+            img.dRot = 90;
+            img.setCenterPoint(.7f, .5f);
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -3486,6 +3697,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250621_091902.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -3617,6 +3829,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250621_213508.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -3662,6 +3875,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250622_112624.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -3708,6 +3922,8 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20250622_122427.jpg");
+            img.dRot = 90;
+            img.setCenterPoint(.4f, .5f);
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -3814,14 +4030,21 @@ public class FotoKalender_2025 extends FotoKalender2 {
         }
     } /* end  add2025_NorwayImages1(CalendarSheetCenterImage sheet, Random randomGen, float maxRandomToPaint) */
 
+    public static void add2025_NorwayImages2(ICalendarSheetAddImage sheet,
+                                             IHintsDrawImages hints,
+                                             Random randomGen,
+                                             float maxRandomToPaint) {
+        add2025_NorwayImages2(sheet, hints, randomGen, maxRandomToPaint, 5);
+    }
+
     @SuppressWarnings("ReassignedVariable")
-    public void add2025_NorwayImages2(ICalendarSheetAddImage sheet,
+    public static void add2025_NorwayImages2(ICalendarSheetAddImage sheet,
                                       IHintsDrawImages hints,
                                       Random randomGen,
-                                      float maxRandomToPaint) {
+                                      float maxRandomToPaint,
+                                      int nSkipImages ) {
         final String sDir1 = "N:\\ConniesS9\\Phone\\DCIM\\Camera\\";
         Draw1ImageI img;
-        final int nSkipImages = 5;
         int iLastAdded = 0; // if an image is chosen, we skip the next images, because they may be very similar.
 
         if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
@@ -3879,7 +4102,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
-        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint/4)) {
             img = new Draw1ImageI(inDirS23 + "20250623_171500.jpg");
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
@@ -3989,7 +4212,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
-        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+        if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint/2)) {
             img = new Draw1ImageI(inDirS23 + "20250624_080749.jpg");
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
@@ -4000,7 +4223,6 @@ public class FotoKalender_2025 extends FotoKalender2 {
             iLastAdded = nSkipImages;
         }
     } /* end of add2025_NorwayImages2(....) */
-
 
 }
 
