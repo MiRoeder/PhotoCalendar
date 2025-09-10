@@ -17,6 +17,12 @@ public class MakeDarkTransparentRoundRect extends MakeDarkTransparent {
 		mSizeRound = 500;
 	}
 
+	public MakeDarkTransparentRoundRect(BufferedImage image, double centerPointX, double centerPointY, double rotator,
+										double tx0, double ty0, double tWidth, double tHeight, int sizeRound) {
+		super(image, centerPointX, centerPointY, rotator, tx0, ty0, tWidth, tHeight);
+		mSizeRound = sizeRound;
+	}
+
 	public MakeDarkTransparentRoundRect(String srcFileName, double centerPointX, double centerPointY, double rotator,
 			double tx0, double ty0, double tWidth, double tHeight) {
 		super(srcFileName, centerPointX, centerPointY, rotator, tx0, ty0, tWidth, tHeight);

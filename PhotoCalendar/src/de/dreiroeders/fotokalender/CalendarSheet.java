@@ -1228,7 +1228,7 @@ public class CalendarSheet {
 		disposePainter();
 		outFile.getParentFile().mkdirs();
 		ImageIO.write(mOutImage, "jpg", outFile);
-		System.out.println(outFile.getAbsolutePath());
+		System.out.println(outFile.getAbsolutePath() + " finished.");
 		System.out.println("===========================================================");
 	}
 	

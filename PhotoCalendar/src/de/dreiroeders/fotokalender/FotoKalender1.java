@@ -13,18 +13,21 @@ import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class FotoKalender1 extends PhotoCalendar {
 
-	public final String inDirAndre2023 = "C:\\Users\\MiRoe\\Pictures\\2023 Famile Senior Köhler\\";
-	public final String inDirS23 = "C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\";
+	public final static String inDirAndre2023 = "C:\\Users\\MiRoe\\Pictures\\2023 Famile Senior Köhler\\";
+	public final static String inDirS23 = "C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\";
 
 	public static void main(String[] args) {
 		try {
 			Date curTime = new Date();
 			DateFormat dateFormatter = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT);
 			System.out.println("Procedure "+ FotoKalender1.class.getName() +".main( ) started creating FotoKalender: "+ dateFormatter.format(curTime) +" "+ curTime.getTime() + " ms.");
+			Logger.getGlobal().log(Level.INFO, "Procedure "+ FotoKalender1.class.getName() +".main( ) started creating FotoKalender: ");
 			createEmptyTmpDir();
 			makeFamilyCal(0);
 			FotoKalenderOpt trgOpt = makeFamilyCal(1);
@@ -98,12 +101,7 @@ public class FotoKalender1 extends PhotoCalendar {
 		}
 
 		if (trgOpt.bDoIt(Calendar.JANUARY)) try {
-			if (trgOpt.m_nYear == 2025) {
-				MakeSheetFeuerwerke.startMaking(trgOpt.m_nYear, Calendar.JANUARY, mDates, strOutDir, 1);
-			} else {
-				var thrd = MakeSheetFeuerwerke.startMaking(trgOpt.m_nYear, Calendar.JANUARY, mDates, strOutDir, 6);
-				thrd.join();
-			}
+			MakeSheetFeuerwerke.startMaking(trgOpt.m_nYear, Calendar.JANUARY, mDates, strOutDir, 1);
 		} catch (Exception ex) {
 			MiRoeIoUtil.logException("Problem with JANUARY sheet", ex);
 		}
