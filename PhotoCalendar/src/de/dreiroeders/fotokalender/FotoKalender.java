@@ -1,5 +1,16 @@
 package de.dreiroeders.fotokalender;
 
+import de.dreiroeders.io.MiRoeFileExtFilter;
+import de.dreiroeders.io.MiRoeIoUtil;
+import de.dreiroeders.workingonimages.BufferedImageSetPixImg_ABGR;
+import de.dreiroeders.workingonimages.BuffrdImgSetPixelD;
+import de.dreiroeders.workingonimages.Draw1ImageI;
+import de.dreiroeders.workingonimages.EFillType;
+import de.dreiroeders.workingonimages.IHintsDrawImages;
+import de.dreiroeders.workingonimages.MiRoesDraw;
+import de.dreiroeders.workingonimages.SourceImage;
+
+import javax.imageio.ImageIO;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -15,19 +26,6 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Random;
 import java.util.TimeZone;
-
-import javax.imageio.ImageIO;
-
-import de.dreiroeders.io.MiRoeFileExtFilter;
-import de.dreiroeders.io.MiRoeIoUtil;
-import de.dreiroeders.workingonimages.BufferedImageSetPixImg_ABGR;
-import de.dreiroeders.workingonimages.BuffrdImgSetPixelD;
-import de.dreiroeders.workingonimages.Draw1ImageI;
-import de.dreiroeders.workingonimages.EFillType;
-import de.dreiroeders.workingonimages.IHintsDrawImages;
-import de.dreiroeders.workingonimages.MiRoesDraw;
-import de.dreiroeders.workingonimages.SourceImage;
-
 
 public class FotoKalender {
 
@@ -490,13 +488,21 @@ public class FotoKalender {
 			System.out.println("Text Breite:"+ wi);
 			int x0 = sheet.getX(0.5);
 			sheet.drawText(TITLE, font1, Color.BLACK, x0-wi/2, yL);
-			
+
+			float cPX4 = .5f;
+			SourceImage imgBig1Arch = new SourceImage("https://upload.wikimedia.org/wikipedia/commons/b/b2/Delicate_Arch_Arches_NP.JPG");
+			if (!imgBig1Arch.isOk()) {
+				imgBig1Arch = new SourceImage("https://usareisetipps.com/wp-content/uploads/arches-national-park-delicate-arch-jpg-webp.webphttps://usareisetipps.com/wp-content/uploads/arches-national-park-delicate-arch-jpg-webp.webp");
+			}
+			if (!imgBig1Arch.isOk()) {
+				imgBig1Arch = new SourceImage("https://images.canusa.de/img/regionen/usa/suedwesten/utah/arches-nationalpark/sonne-delicate-arch.cr4000x1752-0x152.1280x0.q80.jpg");
+				cPX4 = .4f;
+			}
 			if (sheet.fWeight > 1.0) {
 				sheet.drawImage(s0+"DSC04911.JPG", 0.5,  0.5, 0f, 0.00, 0.05, 0.31, 0.31);
 				sheet.drawImage(s0+"DSC04838.JPG", 0.5,  0.3, 0f, 0.32, 0.05, 0.36, 0.30);
 				sheet.drawImage(s0+"DSC04833.JPG", 0.5,  0.4, 0f, 0.69, 0.05, 0.31, 0.31);
-				sheet.drawImage("https://upload.wikimedia.org/wikipedia/commons/b/b2/Delicate_Arch_Arches_NP.JPG",
-												   0.5,  0.5, 0f, 0.00, 0.37, 0.31, 0.36);
+				sheet.drawImage(imgBig1Arch.getImage(),		    		 cPX4,  0.5, 0f, 0.00, 0.37, 0.31, 0.36);
 				sheet.drawImage(s0+"DSC04889.JPG", 0.5,  0.5, 0f, 0.32, 0.36, 0.36, 0.37);
 				sheet.drawImage(s0+"DSC04888.JPG", 0.5,  0.4, 0f, 0.69, 0.37, 0.31, 0.36);
 				//sheet.drawImage(s0+"DSC04877.JPG", 0.5,  0.5, 0f, 0.00, 0.74, 0.31, 0.26);
@@ -508,8 +514,7 @@ public class FotoKalender {
 				sheet.drawImage(s0+"DSC04911.JPG", 0.5,  0.5, 0f, 0.50, 0.05, 0.495, 0.186);
 				sheet.drawImage(s0+"DSC04838.JPG", 0.5,  0.3, 0f, 0.00, 0.24, 0.495, 0.156);
 				sheet.drawImage(s0+"DSC04833.JPG", 0.5,  0.4, 0f, 0.50, 0.24, 0.495, 0.156);
-				sheet.drawImage("https://upload.wikimedia.org/wikipedia/commons/b/b2/Delicate_Arch_Arches_NP.JPG",
-												   0.5,  0.45,0f, 0.00, 0.40, 0.495, 0.250);
+				sheet.drawImage(imgBig1Arch.getImage(),		   cPX4,  0.45,0f, 0.00, 0.40, 0.495, 0.250);
 				sheet.drawImage(s0+"DSC04889.JPG", 0.5,  0.5, 0f, 0.50, 0.40, 0.495, 0.250);
 				sheet.drawImage(s0+"DSC04888.JPG", 0.45, 0.4, 0f, 0.00, 0.654,0.495, 0.156);
 				sheet.drawImage(s0+"DSC04840.JPG", 0.5,  0.5, 0f, 0.50, 0.654,0.495, 0.156);
