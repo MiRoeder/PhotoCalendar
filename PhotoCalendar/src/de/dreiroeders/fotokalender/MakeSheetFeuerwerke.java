@@ -101,8 +101,8 @@ public class MakeSheetFeuerwerke extends Thread {
 			new Feuerwerk1("20200101_002007_7a.jpg", .6f),
 			new Feuerwerk1("20200101_002336_1_01.jpg", .6f),
 			new Feuerwerk1("20200101_002336_1_02a.jpg", .3f),
-			new Feuerwerk1("20200101_000328_29a.jpg", .6f),
 			new Feuerwerk1("20200101_000328_72b.jpg", .6f),
+			new Feuerwerk1("20200101_000328_29a.jpg", .6f),
 			new Feuerwerk1("20200101_002007_1_01a.jpg", .6f),
 			new Feuerwerk1("20200101_002007_2a.jpg", .6f),
 			new Feuerwerk1("20200101_002007_8a.png", .6f),
@@ -117,6 +117,7 @@ public class MakeSheetFeuerwerke extends Thread {
 	private final String StrOUT_DIR;
 	private final int m_nOpt;
 	private CalendarSheet mSheet;
+	private int mNewYearDigitsCenterSpace;
 	
 	public MakeSheetFeuerwerke(int nYear, int month, PersonalDates mDates, String strOutDir, int nOpt) {
 		THIS_YEAR = nYear;
@@ -126,6 +127,7 @@ public class MakeSheetFeuerwerke extends Thread {
 		StrOUT_DIR= strOutDir;
 		m_nOpt = nOpt;
 		setName("MakeSheetFeuerwerke_"+nYear+"-"+month);
+		mNewYearDigitsCenterSpace = 0;
 	}
 
 	@Override
@@ -139,7 +141,7 @@ public class MakeSheetFeuerwerke extends Thread {
 		}
 	}
 
-	@SuppressWarnings("ReassignedVariable")
+	@SuppressWarnings({"ReassignedVariable", "ConstantConditions"})
 	public void makeFeuerwerkBerlin() throws Exception {
 		mSheet = new CalendarSheet(THIS_YEAR, nMonth, CAL_Dates);
 		mSheet.mBackBackgroundCol = Color.BLACK;
@@ -153,8 +155,10 @@ public class MakeSheetFeuerwerke extends Thread {
 			srcMainImg = new SourceImage("https://upload.wikimedia.org/wikipedia/commons/4/49/New_Year_Berlin.jpg");
 			bAddMoreFirework = !srcMainImg.isOk();
 		}
+
 		if (!srcMainImg.isOk()) {
 			srcMainImg = new SourceImage("https://media.cntraveller.de/photos/67b461ca5030272ccf64ee16/16:9/w_2240,c_limit/Feenstaub%20und%20Pyrotechnik-PR-global-3.jpg");
+			mNewYearDigitsCenterSpace = mSheet.getUsuableWidth()/12;
 			bAddMoreFirework = !srcMainImg.isOk();
 		}
 		boolean bHintsForNewYear = (m_nOpt & 1) != 0;
@@ -186,7 +190,6 @@ public class MakeSheetFeuerwerke extends Thread {
 			img1 = mkPicFeuerwerk(picRuediKlo, 0.8f);
 			float rotC = (float)(2456-2528) / (2829-4267) * 0.8f;
 			mSheet.drawImageA(new MakeDarkTransparentRoundRect(img1.getImage(0)    ,  .5,  .5,-rotC, 0.920, 0.350, 0.080, 0.25f));
-			final String sD1 = "https://www.3roeders.de/Feuerwerke/2020_FrankfurtM/";
 			img1 = getPicFeuerwerk(26);
 			mSheet.drawImageA(new MakeDarkTransparentRoundRect(img1.getImage(0)    , 0.5, 0.5,   0 , 0.400, 0.100, 0.080, 0.12));
 			img1 = getPicFeuerwerk(8);
@@ -211,7 +214,7 @@ public class MakeSheetFeuerwerke extends Thread {
 			mSheet.drawImageA(new MakeDarkTransparentRoundRect(img1.getImage(0)    , 0.5, 0.5,   0 , 0.580, 0.100, 0.200, 0.3));
 		} /* end if (bAddMoreFirework) */
 		if ((m_nOpt & 4) == 0) {
-			writeYear(1.3f, 1.2f, 1.4f, 10);
+			writeYear(1.2f, 1.2f, 1.4f, 10);
 		}
 		if (bHintsForNewYear) {
 			SourceImage imgFabianVerbrenntPapier = new SourceImage("http://www.3roeders.de/Signal/signal-2021-09-05-185912.jpg");
@@ -221,42 +224,24 @@ public class MakeSheetFeuerwerke extends Thread {
 			if (imgXMasMenPutInGarbage.isOk()) {
 				++nCols;
 			}
-			// TGIF 2024 - week22
-			SourceImage imgDeepLearning = new SourceImage("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEicO7UjPnP5DsTmTDGX8jssmsgdHCszdX38onClGHmyDMTfXLgPUJYMoTX3csGGc7vpUandtsfpRy1ClxUlbJo1GJOm0zPftYOvwMX7gwoKEqd0PrwUiQxEgdpJEUHpjWQBWpKmkqmpD9q1TvrD3AGK0gMfjWrZeBjFu6EuV4d7KW6gLvpKZd12SSnwY1I/s772/pc11_deeplearning.jpg");
-			if (imgDeepLearning.isOk()) {
+			// https://debeste.de/bilder/neue-jahr/4
+			SourceImage imgImportantSpouseAtEndOfYear = new SourceImage("https://debeste.de/upload/662fe51acca66d5f28545507aac5726b4778.jpg");
+			if (imgImportantSpouseAtEndOfYear.isOk()) {
 				++nCols;
 			}
-			// TGIF 2024 - week12
-			SourceImage imgHaeufigerErnaehrungsfehler = new SourceImage("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhODJSzhkIBp671XKkQcstsGmpSHuaDMVdLkUI0NnL1brjEpltGFJ52D2b-eOgrCZLaW7bTaaTgl2GDwsqfecwT0ZsI8ASe3Y1w368ebVcjV0Jf_W_YDhyozVePzhq_qqE6RXJJrOQs2Jw62u18s325KzZc9CJMIMFq6XajBKCvo7SXLJbT1tt2TaLkIhk/s320/essen01_diaet02.jpg");
-			if (imgHaeufigerErnaehrungsfehler.isOk()) {
-				++nCols;
+			if (nCols < 5) {
+				++nCols; // Space for text: Ich brauche keine neuen Vorsätze ...
 			}
-			SourceImage imgProblemsCanBeSolved = new SourceImage("C:/Users/MiRoe/Pictures/SamsungGalS23/DCIM/Facebook/FB_IMG_1733302251541.jpg");
-			if (imgProblemsCanBeSolved.isOk()) {
-				++nCols;
+			boolean bWriteToDoList;
+            bWriteToDoList = nCols < 5;
+            if (bWriteToDoList) {
+				++nCols; // Space for ToDo Liste ...
 			}
-			// TGIF 2024 - week18
-			SourceImage imgPerfekteFrau = new SourceImage("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijQFeICxcFvmPQ9l9J32oWMKrLA4DE1bQvbgPGbmbsu9VtCts4qtHMb5vJR2Cheb_7JmZ5GxTrxYBK5SjoIPDnWQ5scJivaboJWyUlyCuzC1shYQ4AWMHkucj5ivBuL3YjNRaxpgIF4Z0vBxYvhVHu4IWYJMkID-ZQVPf9nhCaXQz-GEtw0dItNb_5iRo/s640/arbeit09_kellnerin.jpg");
-			if (imgPerfekteFrau.isOk()) {
-				++nCols;
-			}
-
 			final float wSteg = CalendarSheet.fWeight < 1 ? .005f : .003f;
 			final float wCol1 = (1 - (nCols-1)*wSteg) / nCols;
 			final Color colTxt = new Color(192,224,255);
 			mSheet.drawText("Achtung! Bitte im neuen Jahr "+ SHOW_YEAR +" beachten:", colTxt, Font.SANS_SERIF, Font.PLAIN, .1f, 0.75f, .8f, 0.048);
 			float xC = 0f;
-			if (imgHaeufigerErnaehrungsfehler.isOk()) {
-				float wPicSrc = 0.200f*imgHaeufigerErnaehrungsfehler.getWidth()/imgHaeufigerErnaehrungsfehler.getHeight()*mSheet.getUsuableHeight();	
-				float wText = wCol1/3f;
-				float wPicTrg = (wCol1-wText)*mSheet.getUsuableWidth();
-				float wPic = Math.min(wPicSrc, wPicTrg);
-				mSheet.drawImage(imgHaeufigerErnaehrungsfehler    , 0.5, 0.5, 0,  xC+wText, 0.800, wPic , 0.200f);
-				mSheet.drawText(" Sich ",    colTxt, Font.SERIF,      Font.PLAIN, xC,       0.860, wText, 0.020f);
-				mSheet.drawText(" gesund",   colTxt, Font.SERIF,      Font.PLAIN, xC,       0.895, wText, 0.020f);
-				mSheet.drawText(" ernähren:",colTxt, Font.SERIF,      Font.PLAIN, xC,       0.930, wText, 0.020f);
-				xC += wCol1 + wSteg;
-			}
 			if (imgFabianVerbrenntPapier.isOk()) {
 				float wText = wCol1/3f;
 				float wPic = wCol1-wText;
@@ -270,44 +255,37 @@ public class MakeSheetFeuerwerke extends Thread {
 			if (imgXMasMenPutInGarbage.isOk()) {
 				float wPicSrc = 0.200f*imgXMasMenPutInGarbage.getWidth()/imgXMasMenPutInGarbage.getHeight()*mSheet.getUsuableHeight();	
 				float wText = wCol1/3f;
-				float wPicTrg = (wCol1-wText)*mSheet.getUsuableWidth();
+				float wPicTrg = (wCol1)*mSheet.getUsuableWidth();
 				float wPic = Math.min(wPicSrc, wPicTrg);
-				mSheet.drawImage(imgXMasMenPutInGarbage           , .65, 0.5, 0,  xC+wText, 0.800, wPic , 0.200f);
-				mSheet.drawText(" Alten ",   colTxt, Font.SERIF,      Font.PLAIN, xC,       0.850, wText, 0.025f);
-				mSheet.drawText(" Kram",     colTxt, Font.SERIF,      Font.PLAIN, xC,       0.885, wText, 0.025f);
-				mSheet.drawText("weg-",      colTxt, Font.SERIF,      Font.PLAIN, xC,       0.920, wText, 0.025f);
-				mSheet.drawText("schmeißen", colTxt, Font.SERIF,      Font.PLAIN, xC,       0.955, wText, 0.025f);
+				Color coltx1 = new Color(255, 192, 16);
+				mSheet.drawImage(imgXMasMenPutInGarbage           , .6, 0.5, 0,  xC, 0.800, wPic , 0.200f);
+				mSheet.drawText(" Alten ",   coltx1, Font.SERIF,      Font.PLAIN, xC,       0.830, wText, 0.025f);
+				mSheet.drawText(" Kram",     coltx1, Font.SERIF,      Font.PLAIN, xC,       0.865, wText, 0.025f);
+				mSheet.drawText("weg-",      coltx1, Font.SERIF,      Font.PLAIN, xC,       0.900, wText, 0.025f);
+				mSheet.drawText("schmeißen", coltx1, Font.SERIF,      Font.PLAIN, xC,       0.935, wText, 0.025f);
 				xC += wCol1 + wSteg;
 			}
-			if (imgDeepLearning.isOk()) {
-				float wPicSrc = 0.200f*imgDeepLearning.getWidth()/imgDeepLearning.getHeight()*mSheet.getUsuableHeight();	
-				float wText = wCol1/3f;
-				float wPicTrg = (wCol1-wText)*mSheet.getUsuableWidth();
-				float wPic = Math.min(wPicSrc, wPicTrg);
-				mSheet.drawImage(imgDeepLearning                        , 0.5, 0.5, 0,  xC+wText, 0.800, wPic , 0.200f);
-				mSheet.drawText("Aktuellen",       colTxt, Font.SERIF,      Font.PLAIN, xC,       0.850, wText, 0.025f);
-				mSheet.drawText("Stand der",       colTxt, Font.SERIF,      Font.PLAIN, xC,       0.885, wText, 0.025f);
-				mSheet.drawText("Technik",         colTxt, Font.SERIF,      Font.PLAIN, xC,       0.920, wText, 0.025f);
-				mSheet.drawText("verwenden",       colTxt, Font.SERIF,      Font.PLAIN, xC,       0.955, wText, 0.025f);
+			if (bWriteToDoList) {
+				mSheet.drawText("To-Do-Liste:",                        colTxt, Font.SERIF,      Font.PLAIN, xC, 0.810, wCol1, 0.030f);
+				mSheet.drawText("\u2611 To-Do-Liste erstellen       ", colTxt, Font.MONOSPACED, Font.PLAIN, xC, 0.860, wCol1, 0.020f);
+				mSheet.drawText("\u2611 1. Punkt abhaken            ", colTxt, Font.MONOSPACED, Font.PLAIN, xC, 0.890, wCol1, 0.020f);
+				mSheet.drawText("\u2611 mich freuen über Erledigung ", colTxt, Font.MONOSPACED, Font.PLAIN, xC, 0.920, wCol1, 0.020f);
+				mSheet.drawText("\u2610 nach getaner Arbeit: Pause  ", colTxt, Font.MONOSPACED, Font.PLAIN, xC, 0.950, wCol1, 0.020f);
 				xC += wCol1 + wSteg;
 			}
-			if (imgPerfekteFrau.isOk()) {
-				float wPicSrc = 0.200f*imgPerfekteFrau.getWidth()/imgPerfekteFrau.getHeight()*mSheet.getUsuableHeight();	
-				float wText = wCol1/3f;
-				float wPicTrg = (wCol1-wText)*mSheet.getUsuableWidth();
+			if (imgImportantSpouseAtEndOfYear.isOk()) {
+				float wPicSrc = 0.200f*imgImportantSpouseAtEndOfYear.getWidth()/imgImportantSpouseAtEndOfYear.getHeight()*mSheet.getUsuableHeight();
+				float wPicTrg = wCol1*mSheet.getUsuableWidth();
 				float wPic = Math.min(wPicSrc, wPicTrg);
-				float centX = .75f-wPic/wPicSrc/4;
-				mSheet.drawImage(imgPerfekteFrau                    , centX, 0.5, 0,  xC+wText, 0.800, wPic , 0.200f);
-				mSheet.drawText("Die perfekte",  colTxt, Font.SERIF,      Font.PLAIN, xC,       0.850, wText, 0.025f);
-				mSheet.drawText("Frau ist",      colTxt, Font.SERIF,      Font.PLAIN, xC,       0.885, wText, 0.025f);
-				mSheet.drawText("selten. Warte", colTxt, Font.SERIF,      Font.PLAIN, xC,       0.920, wText, 0.025f);
-				mSheet.drawText("nicht auf sie", colTxt, Font.SERIF,      Font.PLAIN, xC,       0.955, wText, 0.025f);
+				mSheet.drawImage(imgImportantSpouseAtEndOfYear, 0.5, 0.5, 0,  xC, 0.800, wPic , 0.200f);
 				xC += wCol1 + wSteg;
 			}
-			if (imgProblemsCanBeSolved.isOk()) {
-				float w0Text = wCol1/4f;
-				mSheet.drawImage(imgProblemsCanBeSolved, 0.5f, 0.5f, 0f, xC+w0Text, 0.800, wCol1-w0Text, 0.200f);
-				xC += wCol1 + wSteg;
+			float wText  = 1-xC;
+			if (wText > 4*wSteg) {
+				mSheet.drawText("Ich brauche keine neuen", colTxt, Font.SERIF, Font.PLAIN, xC, 0.830, wText, 0.025f);
+				mSheet.drawText("Gute Vorsätze",           colTxt, Font.SERIF, Font.PLAIN, xC, 0.865, wText, 0.025f);
+				mSheet.drawText("Die Alten sind noch",     colTxt, Font.SERIF, Font.PLAIN, xC, 0.920, wText, 0.025f);
+				mSheet.drawText("praktisch unangetastet",  colTxt, Font.SERIF, Font.PLAIN, xC, 0.955, wText, 0.025f);
 			}
 		} /* end if (bHintsForNewYear) */
 		mSheet.drawCalDates();
@@ -315,7 +293,7 @@ public class MakeSheetFeuerwerke extends Thread {
 	} /* end of makeFeuerwerkBerlin() */
 
 	@SuppressWarnings("ReassignedVariable")
-	public void writeYear(float facHigherCenterDigits, float facWiderBorderDigits, float facOverlap, int nRepeatFireworks) {
+	public void writeYear(float facWiderBorderDigits, float facHigherCenterDigits, float facOverlap, int nRepeatFireworks) {
 		String strYear = Integer.toString(SHOW_YEAR);
 		final int iFH = 11;
 		BufferedImage imgText = new BufferedImage(iFH*4, iFH*2, BufferedImage.TYPE_BYTE_GRAY);
@@ -334,7 +312,7 @@ public class MakeSheetFeuerwerke extends Thread {
 		int iTX0 = iFH*5;
 		int iTX9 = 0;
 		do {
-			boolean bFoundTxt = false;
+			boolean bFoundTxt;
 			for (int iX = 0; iX < iFH*4; ++iX) {
 				int pix = imgText.getRGB(iX, iY);
 				bFoundTxt = (pix & 0xFFFFFF) < 0x101010;
@@ -361,8 +339,8 @@ public class MakeSheetFeuerwerke extends Thread {
 				painterD.dispose();
 				MiRoesDraw.diagOut(imgText);
 			}
-			final int iTotW = mSheet.getUsuableWidth()*3/4;
-			final int iTotH = mSheet.getUsuableHeight()/3;
+			final int iTotW = mSheet.getUsuableWidth()*4/5-mNewYearDigitsCenterSpace;
+			final int iTotH = mSheet.getUsuableHeight()*2/5;
 			final int iWPixs1FW = (int)( iTotW / ( Math.max(facWiderBorderDigits, 1f) * iTW));
 			final int iHPixs1FW = (int)( iTotH / (Math.max(facHigherCenterDigits, 1f) * iTH));
 			final int iWPixs1FWo = (int)(iWPixs1FW * facOverlap + .5f);
@@ -374,17 +352,12 @@ public class MakeSheetFeuerwerke extends Thread {
 				iTTX0 -= iWPixs1FWo-iWPixs1FW;
 				iTTY0 += iHPixs1FWo-iHPixs1FW;
 			}
-			if (facHigherCenterDigits > 1f) {
-				iTTY0 += (int)((facHigherCenterDigits - 1f) * iTH * iHPixs1FW);
-			}
 			final int iRoundRec = (int)(Math.min(iWPixs1FW, iHPixs1FW) * Math.max(facOverlap, 1f));
+			iTTX0 += (int)((facWiderBorderDigits-1f)*iTotW/2f+.5f);
 			for (int iSY = 0; iSY < iTH; ++iSY) {
 				float facY = 1f - (float)iSY / (float) iTH;
 				float facWiderDigit = facY * (facWiderBorderDigits-1f);
-				int iTTX0y = iTTX0;
-				if (facWiderBorderDigits > 1f) {
-					iTTX0y -= (int)(facWiderDigit*iTotW/2f+.5f);
-				}
+				int iTTX0y = iTTX0 - (int)(facWiderDigit*iTotW/2f+.5f);
 				facWiderDigit += 1f;
 				for (int iSX = 0; iSX < iTW; ++iSX) {
 					int pix = imgText.getRGB(iSX+iTX0, iSY+iTY);
@@ -393,11 +366,12 @@ public class MakeSheetFeuerwerke extends Thread {
 						float iFromCenterX = Math.abs(iTW/2-iSX);
 						float facHigherDigit = (1f - iFromCenterX/(iTW/2f)) * (facHigherCenterDigits-1f) +1f;
 						//On Diagnosis: System.out.println("iSX = "+ iSX +", iSY = "+ iSY +", iFromCenterX = "+ iFromCenterX +", facHigherDigit = " + facHigherDigit);
-						int tx = (int)(iSX * iWPixs1FW * facWiderDigit +.5f) + iTTX0y;
+						int tx = (int)(iSX * iWPixs1FW * facWiderDigit +.5f) + iTTX0y + (iSX < iTW/2 ? -mNewYearDigitsCenterSpace : mNewYearDigitsCenterSpace);
 						int ty = (int)(iHPixs1FW * (iSY * facHigherDigit + (facHigherCenterDigits-facHigherDigit) * iTH)) + iTTY0;
 						BufferedImageSetPixImg_ABGR img1;
 						for (int iF = 0; iF < nRepeatFireworks; ++iF) {
-							img1 = getPicFeuerwerk(randomGen.nextInt(69));
+							int rF = nRepeatFireworks > 1 ? randomGen.nextInt(69) : randomGen.nextInt(5) +70;
+							img1 = getPicFeuerwerk(rF);
 							mSheet.drawImageA(new MakeDarkTransparentRoundRect(img1.getImage(0)    , 0.5, 0.5,   0 , tx, ty, iWPixs1FWo*facWiderDigit, iHPixs1FWo*facHigherDigit, iRoundRec));
 						}
 					}
