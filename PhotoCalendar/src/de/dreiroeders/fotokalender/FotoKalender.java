@@ -495,6 +495,10 @@ public class FotoKalender {
 				imgBig1Arch = new SourceImage("https://usareisetipps.com/wp-content/uploads/arches-national-park-delicate-arch-jpg-webp.webphttps://usareisetipps.com/wp-content/uploads/arches-national-park-delicate-arch-jpg-webp.webp");
 			}
 			if (!imgBig1Arch.isOk()) {
+				// https://pixabay.com/photos/sandstone-landmark-natural-arch-4625/
+				imgBig1Arch = new SourceImage("https://cdn.pixabay.com/photo/2011/01/17/18/16/sandstone-4625_1280.jpg");
+			}
+			if (!imgBig1Arch.isOk()) {
 				imgBig1Arch = new SourceImage("https://images.canusa.de/img/regionen/usa/suedwesten/utah/arches-nationalpark/sonne-delicate-arch.cr4000x1752-0x152.1280x0.q80.jpg");
 				cPX4 = .4f;
 			}
