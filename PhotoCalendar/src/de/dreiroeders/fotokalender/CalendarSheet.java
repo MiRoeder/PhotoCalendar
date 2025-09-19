@@ -216,7 +216,7 @@ public class CalendarSheet {
 			int h2 = (int)(w2/fWeight+.9);
 			mX0 = (int)(w2/20f+0.99);
 			mY0 = (int)(w2/20f+0.99);;
-			mX1 = w2/6+1;
+			mX1 = w2*2/11+1;
 			mX9 = mX0;
 			mY9 = mY0;
 			mX5 = w2;

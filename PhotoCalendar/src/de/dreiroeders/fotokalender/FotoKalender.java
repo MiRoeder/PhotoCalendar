@@ -1160,7 +1160,21 @@ public class FotoKalender {
 			mDates.addCalEvent(ev1);
 		}
 	}
-	
+
+	public void addHouseParty14197() {
+		// Hausfest jeweils am ersten Sonnabend im September
+		GregorianCalendar d1 =  new GregorianCalendar(THIS_YEAR, Calendar.SEPTEMBER, 1);
+		int day1 = d1.get(GregorianCalendar.DAY_OF_WEEK);
+		int days2Sat = GregorianCalendar.SATURDAY - day1;
+		if (days2Sat < 0) {
+			days2Sat += 7;
+		}
+		d1.add(GregorianCalendar.DAY_OF_MONTH, days2Sat);
+		PersonalDate ev1;
+		ev1 = new PersonalDate("Hausfest", d1, PersonalDate.PRIO_BIRTHDAY);
+		mDates.addCalEvent(ev1);
+	}
+
 	public void addGermanPublicHolidays() {
 		mDates.addCalEvent(PersonalDate.createFixedHoliday("Neujahr", 1, 1, THIS_YEAR, PersonalDate.PRIO_PUBLIC_GERMAN_HOLIDAY));
 		mDates.addCalEvent(PersonalDate.createFixedHoliday("Tag der Arbeit", 1, 5, THIS_YEAR, PersonalDate.PRIO_PUBLIC_GERMAN_HOLIDAY));
@@ -1361,17 +1375,17 @@ public class FotoKalender {
 	}
 
 	public void addBerlinGrueneWoche() {
-		// Die Grüne Woche findet vom 16. ? 25. Januar 2026 in den Hallen rund um den Funkturm statt.
+		// Die Grüne Woche findet vom 16. bis 25. Januar 2026 in den Hallen rund um den Funkturm statt.
 		PersonalDate day1;
 		IDaysBackground img;
-		float fiDay = 16f-THIS_YEAR+2026;
+		float fiDay = 16f-THIS_YEAR+2026; // 2027 beginnt die Grüne Woche wohl am 15.Januar
 		int endDate = 25-THIS_YEAR+2026;
-		float fHigh = 1.8f;
+		float fHigh = 1.7f;
 		while (fiDay < endDate+.5f) {
 			int iDay = (int)(fiDay+.4f);
 			float dY = fiDay-iDay;
 			fiDay += fHigh;
-			img = new DaysBackgroundImage(fHigh*1.3f, dY, new File("res/GrueneWoche.png"), 0.5f);
+			img = new DaysBackgroundImage(fHigh*1.65f, dY, new File("res/GrueneWoche.png"), 0.5f);
 			ArrayList<IDaysBackground> imgList = new ArrayList<IDaysBackground>(1);
 			imgList.add(img);
 			if (iDay <= 31) {

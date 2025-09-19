@@ -237,20 +237,21 @@ public class MakeSheetFeuerwerke extends Thread {
             if (bWriteToDoList) {
 				++nCols; // Space for ToDo Liste ...
 			}
-			final float wSteg = CalendarSheet.fWeight < 1 ? .005f : .003f;
+			final float wSteg = .006f;
 			final float wCol1 = (1 - (nCols-1)*wSteg) / nCols;
 			final Color colTxt = new Color(192,224,255);
 			mSheet.drawText("Achtung! Bitte im neuen Jahr "+ SHOW_YEAR +" beachten:", colTxt, Font.SANS_SERIF, Font.PLAIN, .1f, 0.75f, .8f, 0.048);
 			float xC = 0f;
 			if (imgFabianVerbrenntPapier.isOk()) {
-				float wText = wCol1/3f;
-				float wPic = wCol1-wText;
+				float wCol11 = wCol1 * 1.2f; // ich mache dieses Feld ein bisschen breiter
+				float wText = wCol11/3f;
+				float wPic = wCol11-wText;
 				mSheet.drawImage(imgFabianVerbrenntPapier          , 0.5, 0.5, 0,  xC+wText, 0.800, wPic , 0.200f);
 				mSheet.drawText("Alte Akten", colTxt, Font.SERIF,      Font.PLAIN, xC,       0.850, wText, 0.025f);
 				mSheet.drawText("vernichten", colTxt, Font.SERIF,      Font.PLAIN, xC,       0.885, wText, 0.025f);
 				mSheet.drawText("  gemäß",    colTxt, Font.SERIF,      Font.PLAIN, xC,       0.920, wText, 0.025f);
 				mSheet.drawText("DSGVO:",     colTxt, Font.SERIF,      Font.PLAIN, xC,       0.955, wText, 0.025f);
-				xC += wCol1 + wSteg;
+				xC += wCol11 + wSteg;
 			}
 			if (imgXMasMenPutInGarbage.isOk()) {
 				float wPicSrc = 0.200f*imgXMasMenPutInGarbage.getWidth()/imgXMasMenPutInGarbage.getHeight()*mSheet.getUsuableHeight();	
@@ -278,7 +279,7 @@ public class MakeSheetFeuerwerke extends Thread {
 				float wPicTrg = wCol1*mSheet.getUsuableWidth();
 				float wPic = Math.min(wPicSrc, wPicTrg);
 				mSheet.drawImage(imgImportantSpouseAtEndOfYear, 0.5, 0.5, 0,  xC, 0.800, wPic , 0.200f);
-				xC += wCol1 + wSteg;
+				xC += wPic/mSheet.getUsuableWidth() + wSteg;
 			}
 			float wText  = 1-xC;
 			if (wText > 4*wSteg) {
