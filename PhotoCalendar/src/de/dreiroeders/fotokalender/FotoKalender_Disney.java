@@ -1,6 +1,8 @@
 package de.dreiroeders.fotokalender;
 
 import de.dreiroeders.io.MiRoeIoUtil;
+import de.dreiroeders.workingonimages.Draw1ImageI;
+import de.dreiroeders.workingonimages.IHintsDrawImages;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -77,21 +79,22 @@ public class FotoKalender_Disney extends FotoKalender2 {
         addSpecialEvents();
         addMuttertag();
 
-        if (FotoKalenderOpt.MONTH1 == Calendar.DECEMBER && trgOpt.bDoIt(Calendar.DECEMBER) && THIS_YEAR == FotoKalenderOpt.YEAR1) try {
-            MakeSheetFeuerwerke.startMaking(trgOpt.m_nYear, Calendar.DECEMBER, mDates, strOutDir, 1);
-            trgOpt.m_bDoIt[Calendar.DECEMBER] = false; // because already created.
-        } catch (Exception ex) {
-            MiRoeIoUtil.logException("Problem with FotoKalender_Disney 1st sheet", ex);
-        }
+        if (FotoKalenderOpt.MONTH1 == Calendar.DECEMBER && trgOpt.bDoIt(Calendar.DECEMBER) && THIS_YEAR == FotoKalenderOpt.YEAR1)
+            try {
+                MakeSheetFeuerwerke.startMaking(trgOpt.m_nYear, Calendar.DECEMBER, mDates, strOutDir, 1);
+                trgOpt.m_bDoIt[Calendar.DECEMBER] = false; // because already created.
+            } catch (Exception ex) {
+                MiRoeIoUtil.logException("Problem with FotoKalender_Disney 1st sheet", ex);
+            }
 
         for (int nMonth = Calendar.JANUARY; nMonth <= Calendar.DECEMBER; ++nMonth) {
             if (trgOpt.bDoIt(nMonth)) {
                 try {
                     var sheet = new CalendarSheetAutoArrange1(THIS_YEAR, nMonth, mDates);
                     Random randomGen = new Random(THIS_YEAR * 12L + nMonth);
-                    float flSel = .001f;
+                    float flSel = .01f;
                     do {
-                        add2024_Dk_No_GB_Images3(sheet, null, randomGen, flSel);
+                        addDisneyParkPics(sheet, null, randomGen, flSel);
                         flSel *= 2f;
                     } while (sheet.getNumberOfImage() <= 0 && flSel < 2f);
                     sheet.startMakingIt(strOutDir);
@@ -105,5 +108,27 @@ public class FotoKalender_Disney extends FotoKalender2 {
         System.out.println("Kalender " + THIS_YEAR + " creating / created in " + strOutDir);
     } /* end of makeFamilyCal(FotoKalenderOpt trgOpt) */
 
-}
+    @SuppressWarnings("ReassignedVariable")
+    public void addDisneyParkPics(ICalendarSheetAddImage sheet,
+                                  IHintsDrawImages hints,
+                                  Random randomGen,
+                                  float maxRandomToPaint) {
+        final String sDir1 = "C:\\Users\\MiRoe\\Pictures\\S_K\u00F6hler_2025-09\\Disney Photos\\DisneylandParis-id";
+        Draw1ImageI img;
+        final int nSkipImages = 3;
+        int iLastAdded = 0; // if an image is chosen, we skip the next images, because they may be very similar.
 
+        for (int iF = 79051317; iF <= 79051405; ++iF) {
+            if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
+                img = new Draw1ImageI(sDir1 + iF +".jpg");
+                if (img.isOk()) {
+                    if (img.getWidth() < img.getHeight()*7/5) {
+                        img.setCenterPoint(.5f, .45f);
+                    }
+                    sheet.addImage(img, hints);
+                    iLastAdded = nSkipImages;
+                }
+            }
+        }
+    }
+}
