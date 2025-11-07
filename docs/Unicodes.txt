@@ -1,0 +1,6 @@
+\u00E4 = ä  alias a umlaut
+\u00F6 = ö  alias o umlaut
+\u00FC = ü  alias u umlaut
+\u00DF = ß  alias szet oder scharfes szet
+
+see also https://javabeginners.de/String/Sonderzeichen.php
