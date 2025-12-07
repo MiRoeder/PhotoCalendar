@@ -7,11 +7,13 @@ import java.util.GregorianCalendar;
 public class DaysBackgroundVFlag extends DaysBackground1 {
 
 	public Color[] mCols = null;
+    private float mWidth;
 
 	public DaysBackgroundVFlag(float highBackgroudIcos, float deltaY,
-			Color[] cols) {
+			Color[] cols, float width) {
 		super(highBackgroudIcos, deltaY);
 		this.mCols = cols;
+        this.mWidth = width;
 	}
 
 	public int draw(CalendarSheet sheet, GregorianCalendar cal, int iX, int iY) {

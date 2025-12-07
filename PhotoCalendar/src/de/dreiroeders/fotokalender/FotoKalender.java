@@ -124,7 +124,7 @@ public class FotoKalender {
 		try {
 			CalendarSheet sheet = new CalendarSheet(THIS_YEAR, Calendar.DECEMBER, this.mDates);
 			sheet.prepareImage(3494);
-			sheet.drawText("Weiße Weihnachten?", sheet.getDefaultTextCol(), "Times New Roman", 0, 0, 0.00, 1, 0.04);
+			sheet.drawText("Weiï¿½e Weihnachten?", sheet.getDefaultTextCol(), "Times New Roman", 0, 0, 0.00, 1, 0.04);
 			sheet.drawText("23. Dezember 2012:", sheet.getDefaultTextCol(), "Times New Roman", 0, 0, 0.05, 1, 0.03);
 			sheet.drawImage("http://www.3roeders.de/Dezember2012/2012-12-23.png",
 					                                                                0.5, 0.5,  0, 0, 0.09, 1, 0.41 );
@@ -189,7 +189,7 @@ public class FotoKalender {
 			double hText = 0.07;
 			double hTxt = hText-0.003;  // text height
 			int iText2 = sheet.getUsuableHeight()*14/100;
-			sheet.drawSerifText("Manche Leute genießen das Leben in vollen Zügen.",                  0,    0.00, 1d, hTxt     );
+			sheet.drawSerifText("Manche Leute genieï¿½en das Leben in vollen Zï¿½gen.",                  0,    0.00, 1d, hTxt     );
 			sheet.drawSerifText("Andere lieber auf der Autobahn.",                                   0,   hText, 1d, hTxt     );
 			Path2D trapezShape;
 			trapezShape = new Path2D.Double();
@@ -274,7 +274,7 @@ public class FotoKalender {
 			CalendarSheet sheet = new CalendarSheet(THIS_YEAR, month, this.mDates);
 			sheet.prepareImage(picW, picH, bckCol);
 			int height = sheet.getUsuableHeight();
-			System.out.println("'Oma sagt, warm anziehen' Gesamthöhe: " + height);
+			System.out.println("'Oma sagt, warm anziehen' Gesamthï¿½he: " + height);
 			int x0 = sheet.getX(0.0);
 			int x1 = sheet.getX(0.5)-picW/2;
 			int x05=x1 - (int)(800/1.777*sheet.fWeight); // 'warm' Breite:749 wenn fWight = 1.776
@@ -301,7 +301,7 @@ public class FotoKalender {
 			
 			font1 = new Font("Serif", Font.PLAIN, h1);
 			yL += h1+10+h1/2;
-			wi = sheet.drawText("„Zieh", font1, txtCol, x05, yL);
+			wi = sheet.drawText("ï¿½Zieh", font1, txtCol, x05, yL);
 			System.out.println("'Zieh Dich Breite:"+ wi);
 			yL += h1+10;
 			wi = sheet.drawText("Dich", font1, txtCol, x05, yL);
@@ -310,7 +310,7 @@ public class FotoKalender {
 			wi = sheet.drawText("warm", font1, txtCol, x05, yL);
 			System.out.println("'warm' Breite:"+ wi);
 			yL += h1+10;
-			wi = sheet.drawText("an!“", font1, txtCol, x05, yL);
+			wi = sheet.drawText("an!ï¿½", font1, txtCol, x05, yL);
 			
 			font1 = new Font("Arial", Font.PLAIN, h1);
 			yL = 2*h1+10;
@@ -318,7 +318,7 @@ public class FotoKalender {
 			
 			font1 = new Font("Serif", Font.PLAIN, h1);
 			yL += h1+10+h1/2;
-			wi = sheet.drawText(" „Ist der", font1, txtCol, x2, yL);
+			wi = sheet.drawText(" ï¿½Ist der", font1, txtCol, x2, yL);
 			yL += h1+10;
 			wi = sheet.drawText(" Mantel", font1, txtCol, x2, yL);
 			yL += h1+10;
@@ -326,7 +326,7 @@ public class FotoKalender {
 			yL += h1+10;
 			wi = sheet.drawText(" zu", font1, txtCol, x2, yL);
 			yL += h1+10;
-			wi = sheet.drawText(" dünn?“", font1, txtCol, x2, yL);
+			wi = sheet.drawText(" dï¿½nn?ï¿½", font1, txtCol, x2, yL);
 
 			sheet.drawCalDates();
 			sheet.writeJpg(strOutDir+ (month<9?"0":"") + (month+1) +".jpg");
@@ -345,7 +345,7 @@ public class FotoKalender {
 			CalendarSheet sheet = new CalendarSheet(THIS_YEAR, month, this.mDates);
 			sheet.prepareImage(picW, picH, bckCol);
 			int height = sheet.getUsuableHeight();
-			System.out.println("'Familie im Zoo' Gesamthöhe: " + height);
+			System.out.println("'Familie im Zoo' Gesamthï¿½he: " + height);
 			int x0 = sheet.getX(0.0);
 			int x1 = sheet.getX(0.5)-picW/2;
 			int x2 = sheet.getX(0.5)+picW/2;
@@ -375,7 +375,7 @@ public class FotoKalender {
 			CalendarSheet sheet = new CalendarSheet(THIS_YEAR, month, this.mDates);
 			sheet.prepareImage(picW+400, picH+400, sheet.getDefaultBackgroundCol());
 			int height = sheet.getUsuableHeight();
-			System.out.println("'AmbiLightH' Gesamtbreite: "+ sheet.getUsuableWidth() +" Gesamthöhe: " + height);
+			System.out.println("'AmbiLightH' Gesamtbreite: "+ sheet.getUsuableWidth() +" Gesamthï¿½he: " + height);
 			int x0 = sheet.getX(0.0);
 			int x1 = sheet.getX(0.5)-picW/2;
 			int x2 = sheet.getX(0.5)+picW/2;
@@ -409,7 +409,7 @@ public class FotoKalender {
 			CalendarSheet sheet = new CalendarSheet(THIS_YEAR, month, this.mDates);
 			sheet.prepareImage(picW, picH, sheet.getDefaultBackgroundCol());
 			int height = sheet.getUsuableHeight();
-			System.out.println("'AmbiLightH' Gesamtbreite: "+ sheet.getUsuableWidth() +" Gesamthöhe: " + height);
+			System.out.println("'AmbiLightH' Gesamtbreite: "+ sheet.getUsuableWidth() +" Gesamthï¿½he: " + height);
 			int x0 = sheet.getX(0.0);
 			int x1 = sheet.getX(0.5)-picW/2;
 			int x2 = sheet.getX(0.5)+picW/2;
@@ -451,14 +451,14 @@ public class FotoKalender {
 			h1 = height/5;
 			font1 = new Font("Serif", Font.PLAIN, h1);
 			yL += h1+10;
-			wi = sheet.drawText("können alles", font1, Color.BLACK, x0+346, yL);
-			System.out.println("kön all Breite:"+ wi +" "+ (width*3-wi)/2);
+			wi = sheet.drawText("kï¿½nnen alles", font1, Color.BLACK, x0+346, yL);
+			System.out.println("kï¿½n all Breite:"+ wi +" "+ (width*3-wi)/2);
 			
 			h1 = height/4;
 			font1 = new Font("Serif", Font.PLAIN, h1);
 			yL += h1+10;
-			wi = sheet.drawText("außer", font1, Color.BLACK, x0+661, yL);
-			System.out.println("außer Breite:"+ wi +" "+ (width*3-wi)/2);
+			wi = sheet.drawText("auï¿½er", font1, Color.BLACK, x0+661, yL);
+			System.out.println("auï¿½er Breite:"+ wi +" "+ (width*3-wi)/2);
 			
 			sheet.drawImage(s0+"Flughafen.jpg", 0, 0, x0, yL, 620, 310);
 			sheet.drawImage(s0+"SBahn420_dpa.jpg", 1.5f, 0f, 0, 0, x0+width, yL, 627, 314);
@@ -476,7 +476,7 @@ public class FotoKalender {
 		try {
 			final String s0 = "http://www.3roeders.de/USA2015/";
 			CalendarSheet sheet = new CalendarSheet(THIS_YEAR, month, this.mDates);
-			final int USABLE_WIDTH = 4960;	// maximale Kantenlänge bei posterxxl.de angeblich 8000 pixel
+			final int USABLE_WIDTH = 4960;	// maximale Kantenlï¿½nge bei posterxxl.de angeblich 8000 pixel
 			sheet.prepareImage(USABLE_WIDTH, new Color(255, 224, 192));
 			int height = sheet.getUsuableHeight();
 			
@@ -616,7 +616,7 @@ public class FotoKalender {
 			sheet.drawImage("C:\\Users\\MiRoe\\Pictures\\lumas.de\\showimg_mtr15_full.jpg", 0.5f, 0.6f, 0.0,wi+0.01, 0.74, 0.99-wi, 0.26);
 			sheet.drawText("Mein Bug?", sheet.getDefaultTextCol(), "Serif", 0,            0.05, 0.05, 0.93-wi, 0.1);
 			sheet.drawText("Dein Bug?", sheet.getDefaultTextCol(), "Serif", 0,            0.05, 0.17, 0.93-wi, 0.1);
-			sheet.drawText("Bugs sind für uns alle da",
+			sheet.drawText("Bugs sind fï¿½r uns alle da",
 						               sheet.getDefaultTextCol(), "Serif", 0,             wi+0.01,hi, 0.98-wi, 0.07);
 			sheet.drawText("Bild von lumas.de",
 		                               sheet.getDefaultTextCol(), "SansSerif", Font.ITALIC,wi+0.1,0.98,0.9-wi, 0.02);
@@ -713,7 +713,7 @@ public class FotoKalender {
 			Font font1 = new Font("Arial", Font.PLAIN, h1);
 			int y1 = h1;
 			final String str12 = "Berlin";
-			final String str21 = "Alle Wege führen nach ";
+			final String str21 = "Alle Wege fï¿½hren nach ";
 			final String str22 = "Rom";
 			int x0 = sheet.getX(0.0);
 			int x9 = sheet.getX(1.0);
@@ -816,11 +816,11 @@ public class FotoKalender {
 			SourceImage srcTram  = new SourceImage("http://www.3roeders.de/SamsungGalS23/20230727_114310.jpg");
 			// Original size 3414 x 2685
 			Rectangle rectDestinationIndicator = new Rectangle(1454, 1106, 160, 40);
-			sheet.drawText("Warum so ein großer Aufwand?", colTxt, Font.SERIF, Font.PLAIN, 0, 0   , 1f, 0.06);
+			sheet.drawText("Warum so ein groï¿½er Aufwand?", colTxt, Font.SERIF, Font.PLAIN, 0, 0   , 1f, 0.06);
 			int iX3 = sheet.getUsuableWidth()/50;
 			int iW4 = sheet.getUsuableWidth()/100;
 			int iW3 = sheet.getUsuableWidth()-2*iX3-iW4;
-			int iW3a = sheet.drawText("In Brüssel fährt die Strassenbahn Linie Nr. 82 direkt zum Drogenbos",
+			int iW3a = sheet.drawText("In Brï¿½ssel fï¿½hrt die Strassenbahn Linie Nr. 82 direkt zum Drogenbos",
 														   colTxt, Font.SERIF, Font.PLAIN, iX3, 0.07, iW3, 0.06);
 			int iX4 = iX3+(iW3-iW3a)/2+iW3a;
 			sheet.drawText("s",	colTxtS, Font.SERIF, Font.PLAIN, iX4, 0.07, iW4, 0.06);
@@ -883,7 +883,7 @@ public class FotoKalender {
 			painter.fillRect(x01, y01, w1 -x01, y02-y01);
 			painter.fillRect(x01, y01, x02-x01, h1 -y01);
 
-			// Mosel-U-bei-Sonnenschein.jpg 659x241 pixel Ränder top 7, left 6, right 9, bottom 9
+			// Mosel-U-bei-Sonnenschein.jpg 659x241 pixel Rï¿½nder top 7, left 6, right 9, bottom 9
 			sheet.drawImage(s1+"Mosel-U-bei-Sonnenschein.jpg", 0.5, 0.5, 0f, x2, y2, 1-x2, 1-y2);
 			x01 = sheet.getX(x2-0.0025);
 			y01 = sheet.getY(y2-0.0025);
@@ -992,7 +992,7 @@ public class FotoKalender {
 			int w1 = width/9-5;
 			double f1 = w1/2048.0;
 			int h1 = (int)(1536*f1)+6;
-			System.out.println("Höhe Dampflokeinzelbilder: "+ h1);
+			System.out.println("Hï¿½he Dampflokeinzelbilder: "+ h1);
 			sheet.drawImage(s0+"18052010916.jpg", f1,0, 0, 0,         x0,       0, w1, h1);
 			sheet.drawImage(s0+"18052010915.jpg", f1,0, 0, 0,         x0,      h1, w1, h1);
 			sheet.drawImage(s0+"18052010914.jpg", f1,0, 0, 0,      w1+x0,       0, w1, h1);
@@ -1122,9 +1122,9 @@ public class FotoKalender {
 	
 	public void addStephansFamilyEvents() {
 		mDates.addCalEvent(PersonalDate.createBirthday("* Marlis", 28, 1, THIS_YEAR));
-		mDates.addCalEvent(PersonalDate.createBirthday("* André", 26, 4, THIS_YEAR));
+		mDates.addCalEvent(PersonalDate.createBirthday("* Andrï¿½", 26, 4, THIS_YEAR));
 		PersonalDate hochzeit;
-		hochzeit = PersonalDate.create1BitmapsBackground("Marlis", new File("res/Hochzeitsringe.png"), "André", 1f, 0f, 2, 4, THIS_YEAR);
+		hochzeit = PersonalDate.create1BitmapsBackground("Marlis", new File("res/Hochzeitsringe.png"), "Andrï¿½", 1f, 0f, 2, 4, THIS_YEAR);
 		mDates.addCalEvent(hochzeit);
 	}
 	
@@ -1153,7 +1153,7 @@ public class FotoKalender {
 		ev1 = new PersonalDate("ADFC Sternfahrt", d1, PersonalDate.PRIO_BIRTHDAY);
 		mDates.addCalEvent(ev1);
 
-		// Die Berlinerinnen und Berliner wählen am 20. September 2026 ihr Landesparlament. :
+		// Die Berlinerinnen und Berliner wï¿½hlen am 20. September 2026 ihr Landesparlament. :
 		if (THIS_YEAR == 2026) {
 			d1 =  new GregorianCalendar(2026, Calendar.SEPTEMBER, 20);
 			ev1 = new PersonalDate("Abgeordnetenhauswahl", d1, PersonalDate.PRIO_BIRTHDAY);
@@ -1190,7 +1190,7 @@ public class FotoKalender {
 		mDates.addCalEvent(PersonalDate.createDate("Aschermittwoch", easterSunday, -46, (byte)0));
 		mDates.addCalEvent(PersonalDate.createDate("Karfeitag", easterSunday, -2, PersonalDate.PRIO_PUBLIC_GERMAN_HOLIDAY));
 		if (easterSunday.get(GregorianCalendar.DAY_OF_MONTH) != 31) {
-			// wenn Ostersonntag auf den 31. März fällt, dann stehen dort 3 Termine: Viktorias Geburtstag, Beginn der Sommerzeit und Ostersonntag.
+			// wenn Ostersonntag auf den 31. Mï¿½rz fï¿½llt, dann stehen dort 3 Termine: Viktorias Geburtstag, Beginn der Sommerzeit und Ostersonntag.
 			// Das ist mir zuviel.
 			mDates.addCalEvent(new PersonalDate("Ostersonntag", easterSunday, PersonalDate.PRIO_PUBLIC_GERMAN_HOLIDAY));
 		}
@@ -1216,7 +1216,7 @@ public class FotoKalender {
 	}
 	
 	public void addBavarianPublicHolidays() {
-		addCalEventWhenNotFree(PersonalDate.createFixedHoliday("{0,date,EE} Heilige 3 Könige", 6, 1, THIS_YEAR, PersonalDate.PRIO_PUBLIC_BAVARIAN_HOLIDAY));
+		addCalEventWhenNotFree(PersonalDate.createFixedHoliday("{0,date,EE} Heilige 3 Kï¿½nige", 6, 1, THIS_YEAR, PersonalDate.PRIO_PUBLIC_BAVARIAN_HOLIDAY));
 		GregorianCalendar easterSunday = EasterSunday.createEasterSunday(THIS_YEAR);
 		mDates.addCalEvent(PersonalDate.createDate("", easterSunday, -47, (byte)(PersonalDate.HALFSUNDAY|PersonalDate.PRIO_PUBLIC_BAVARIAN_HOLIDAY))); // Fastnachtsdienstag
 		addCalEventWhenNotFree(PersonalDate.createFixedHoliday("{0,date,EE} Maria Himmelfahrt", 15, 8, THIS_YEAR, PersonalDate.PRIO_PUBLIC_BAVARIAN_HOLIDAY));
@@ -1257,17 +1257,17 @@ public class FotoKalender {
 	public void addSundays4Buying() {
 		if (this.THIS_YEAR == 2025) {
 			GregorianCalendar sun4buy;
-			sun4buy = new GregorianCalendar(2025, Calendar.JANUARY, 26);  //Anlass ist die Grüne Woche in Berlin
+			sun4buy = new GregorianCalendar(2025, Calendar.JANUARY, 26);  //Anlass ist die Grï¿½ne Woche in Berlin
 			mDates.addCalEvent(new PersonalDate("", sun4buy, PersonalDate.SUNDAY4BUYING));
 			//sun4buy = new GregorianCalendar(2020, Calendar.FEBRUARY, 23);  //Berlinale 17. Februar 2019
 			//mDates.addCalEvent(new PersonalDate("", sun4buy, PersonalDate.SUNDAY4BUYING));
-			//sun4buy = new GregorianCalendar(2019, Calendar.MARCH, 10);  //Internationale TourismusBörse Berlin (ITB)
+			//sun4buy = new GregorianCalendar(2019, Calendar.MARCH, 10);  //Internationale TourismusBï¿½rse Berlin (ITB)
 			//mDates.addCalEvent(new PersonalDate("", sun4buy, PersonalDate.SUNDAY4BUYING));
-			//sun4buy = new GregorianCalendar(2020, Calendar.JUNE, 21);  // Fête de la musique
+			//sun4buy = new GregorianCalendar(2020, Calendar.JUNE, 21);  // Fï¿½te de la musique
 			//mDates.addCalEvent(new PersonalDate("", sun4buy, PersonalDate.SUNDAY4BUYING));
 			sun4buy = new GregorianCalendar(2025, Calendar.SEPTEMBER, 7); // Anlass ist die Internationale Funkausstellung (IFA)
 			mDates.addCalEvent(new PersonalDate("", sun4buy, PersonalDate.SUNDAY4BUYING));
-			// 01.10.2017: Feier zum Tag der Deutschen Einheit, Eröffnungswochenende Berlin leuchtet – Lichterfest 2017 
+			// 01.10.2017: Feier zum Tag der Deutschen Einheit, Erï¿½ffnungswochenende Berlin leuchtet ï¿½ Lichterfest 2017 
 			//sun4buy = new GregorianCalendar(2017, Calendar.OCTOBER, 1);
 			//sun4buy.add(GregorianCalendar.DAY_OF_YEAR, 7*52);
 			//mDates.addCalEvent(new PersonalDate("", sun4buy, PersonalDate.SUNDAY4BUYING));
@@ -1276,17 +1276,17 @@ public class FotoKalender {
 			//sun4buy.add(GregorianCalendar.DAY_OF_YEAR, 7*52);
 			//mDates.addCalEvent(new PersonalDate("", sun4buy, PersonalDate.SUNDAY4BUYING));
 		}
-		// Adventssonntage: Veranstaltung von zahlreichen Weihnachtsmärkten, bereits in addAdvents() gesetzt
+		// Adventssonntage: Veranstaltung von zahlreichen Weihnachtsmï¿½rkten, bereits in addAdvents() gesetzt
 		// 7. und 21. Dezember 2025
 		if (this.THIS_YEAR > 2025) {
-			// TODO: vorläufige Einschätzungen, denn am 10. September 2025:
-			// Für 2026 gibt es in Berlin noch keine festen Termine für verkaufsoffene Sonntage, da diese oft kurzfristig anlassbezogen festgelegt werden.
+			// TODO: vorlï¿½ufige Einschï¿½tzungen, denn am 10. September 2025:
+			// Fï¿½r 2026 gibt es in Berlin noch keine festen Termine fï¿½r verkaufsoffene Sonntage, da diese oft kurzfristig anlassbezogen festgelegt werden.
 			GregorianCalendar sun4buy;
-			sun4buy = new GregorianCalendar(2025, Calendar.JANUARY, 26);  //Anlass ist die Grüne Woche in Berlin
-			sun4buy.add(GregorianCalendar.WEEK_OF_YEAR, (int)((this.THIS_YEAR - 2025)*52.18f)); // wohl 52 Wochen später in 2026
+			sun4buy = new GregorianCalendar(2025, Calendar.JANUARY, 26);  //Anlass ist die Grï¿½ne Woche in Berlin
+			sun4buy.add(GregorianCalendar.WEEK_OF_YEAR, (int)((this.THIS_YEAR - 2025)*52.18f)); // wohl 52 Wochen spï¿½ter in 2026
 			mDates.addCalEvent(new PersonalDate("", sun4buy, PersonalDate.SUNDAY4BUYING));
 			sun4buy = new GregorianCalendar(2025, Calendar.SEPTEMBER, 7); // Anlass ist die Internationale Funkausstellung (IFA)
-			sun4buy.add(GregorianCalendar.WEEK_OF_YEAR, (int)((this.THIS_YEAR - 2025)*52.18f)); // wohl 52 Wochen später in 2026
+			sun4buy.add(GregorianCalendar.WEEK_OF_YEAR, (int)((this.THIS_YEAR - 2025)*52.18f)); // wohl 52 Wochen spï¿½ter in 2026
 			mDates.addCalEvent(new PersonalDate("", sun4buy, PersonalDate.SUNDAY4BUYING));
 		}
 	}
@@ -1297,38 +1297,6 @@ public class FotoKalender {
 		IDaysBackground img;
 		DaysBackgroundText txt;
 
-		if (THIS_YEAR == 2024) {
-			DaysBackgroundHFlag gerFlag = new DaysBackgroundHFlag(1f, 0f, new Color[]{new Color(0,0,0), new Color(255,0,0), new Color(255,204,0)}, 5f/3f); // https://de.wikipedia.org/wiki/Flagge_Deutschlands#Farbton-Empfehlung_f%C3%BCr_die_Bundesflagge_ab_1996
-
-			game1 = new PersonalDate("{0,date,EE} ", 14, 6, 2024, (byte)0);
-			game1.mBackgrounds = new ArrayList<IDaysBackground>(3);
-			game1.mBackgrounds.add(gerFlag);
-			txt = new DaysBackgroundText(1f, 0f, game1, " : ");
-			game1.mBackgrounds.add(txt);
-			DaysBackground1 flag0 = new DaysBackgroundScottishFlag(1f, 0f);
-			game1.mBackgrounds.add(flag0);
-			mDates.addCalEvent(game1);
-
-			game1 = new PersonalDate("{0,date,EE} ", 19, 6, 2024, (byte)0);
-			game1.mBackgrounds = new ArrayList<IDaysBackground>(3);
-			game1.mBackgrounds.add(gerFlag);
-			txt = new DaysBackgroundText(1f, 0f, game1, " : ");
-			game1.mBackgrounds.add(txt);
-			flag0 = new DaysBackgroundHFlag(1f, 0f, new Color[]{new Color(206,41,57), Color.WHITE, new Color(71,112,80)}, 2); // https://commons.wikimedia.org/wiki/File:Flag_of_Hungary.svg  Dec-25-2023
-			game1.mBackgrounds.add(flag0);
-			mDates.addCalEvent(game1);
-
-			game1 = new PersonalDate("{0,date,EE} ", 23, 6, 2024, (byte)0);
-			game1.mBackgrounds = new ArrayList<IDaysBackground>(3);
-			game1.mBackgrounds.add(gerFlag);
-			txt = new DaysBackgroundText(1f, 0f, game1, " : ");
-			game1.mBackgrounds.add(txt);
-			flag0 = new DaysBackgroundSwissFlag(1f, 0f);
-			game1.mBackgrounds.add(flag0);
-			mDates.addCalEvent(game1);
-
-		}
-
 		if (THIS_YEAR == 2026) {
 			game1 = new PersonalDate("{0,date,EE} ", 11, 6, 2026, (byte)0);
 			game1.mBackgrounds = new ArrayList<IDaysBackground>(1);
@@ -1338,7 +1306,41 @@ public class FotoKalender {
 			game1.mBackgrounds.add(img);
 			mDates.addCalEvent(game1);
 
-			game1 = new PersonalDate("{0,date,EE} ", 19, 7, 2026, (byte)0);
+            DaysBackgroundHFlag gerFlag = new DaysBackgroundHFlag(1f, 0f, new Color[]{new Color(0,0,0), new Color(255,0,0), new Color(255,204,0)}, 5f/3f); // https://de.wikipedia.org/wiki/Flagge_Deutschlands#Farbton-Empfehlung_f%C3%BCr_die_Bundesflagge_ab_1996
+            File flagFil;
+            DaysBackground1 flag0;
+
+            game1 = new PersonalDate("{0,date,EE} ", 14, 6, 2026, (byte)0);
+            game1.mBackgrounds = new ArrayList<IDaysBackground>(3);
+            game1.mBackgrounds.add(gerFlag);
+            txt = new DaysBackgroundText(1f, 0f, game1, " : ");
+            game1.mBackgrounds.add(txt);
+            flagFil = new File("res/960px-Flag_of_Cura\u00E7ao.svg.png");
+            flag0 = new DaysBackgroundImage(1f, 0f, flagFil, 1f);
+            game1.mBackgrounds.add(flag0);
+            mDates.addCalEvent(game1);
+
+            game1 = new PersonalDate("{0,date,EE} ", 20, 6, 2026, (byte)0);
+            game1.mBackgrounds = new ArrayList<IDaysBackground>(3);
+            game1.mBackgrounds.add(gerFlag);
+            txt = new DaysBackgroundText(1f, 0f, game1, " : ");
+            game1.mBackgrounds.add(txt);
+            // https://de.wikipedia.org/wiki/Flagge_der_Elfenbeink%C3%BCste
+            flag0 = new DaysBackgroundVFlag(1f, 0f, new Color[]{new Color(247,127,0), Color.WHITE, new Color(0,158,96)}, 3f/2f);
+            game1.mBackgrounds.add(flag0);
+            mDates.addCalEvent(game1);
+
+            game1 = new PersonalDate("{0,date,EE} ", 25, 6, 2026, (byte)0);
+            game1.mBackgrounds = new ArrayList<IDaysBackground>(3);
+            game1.mBackgrounds.add(gerFlag);
+            txt = new DaysBackgroundText(1f, 0f, game1, " : ");
+            game1.mBackgrounds.add(txt);
+            flagFil = new File("res/960px-Flag_of_Ecuador.svg.png");
+            flag0 = new DaysBackgroundImage(1f, 0f, flagFil, 1f);
+            game1.mBackgrounds.add(flag0);
+            mDates.addCalEvent(game1);
+
+            game1 = new PersonalDate("{0,date,EE} ", 19, 7, 2026, (byte)0);
 			game1.mBackgrounds = new ArrayList<IDaysBackground>(1);
 			txt = new DaysBackgroundText(1f, 0f, game1, "Finale: ");
 			game1.mBackgrounds.add(txt);
@@ -1375,10 +1377,10 @@ public class FotoKalender {
 	}
 
 	public void addBerlinGrueneWoche() {
-		// Die Grüne Woche findet vom 16. bis 25. Januar 2026 in den Hallen rund um den Funkturm statt.
+		// Die Grï¿½ne Woche findet vom 16. bis 25. Januar 2026 in den Hallen rund um den Funkturm statt.
 		PersonalDate day1;
 		IDaysBackground img;
-		float fiDay = 16f-THIS_YEAR+2026; // 2027 beginnt die Grüne Woche wohl am 15.Januar
+		float fiDay = 16f-THIS_YEAR+2026; // 2027 beginnt die Grï¿½ne Woche wohl am 15.Januar
 		int endDate = 25-THIS_YEAR+2026;
 		float fHigh = 1.7f;
 		while (fiDay < endDate+.5f) {
@@ -1409,7 +1411,7 @@ public class FotoKalender {
 			addVacations("{0,date,EE} Schulfrei",  3, 2, 2025     ,  8, 2, 2025); //Winterferien 2025
 			addVacations("{0,date,EE} Schulfrei",  2, 2, 2026     ,  7, 2, 2026); //Winterferien 2026
 
-			// Brückentage um Frauentag 8. März
+			// Brï¿½ckentage um Frauentag 8. Mï¿½rz
 			GregorianCalendar march7 = new GregorianCalendar(THIS_YEAR, GregorianCalendar.MARCH, 7);
 			if (march7.get(GregorianCalendar.DAY_OF_WEEK) == GregorianCalendar.MONDAY) {
 				mDates.addCalEvent(PersonalDate.createDate("{0,date,EE} Schulfrei", march7, 0, PersonalDate.ADRIANA_HAS_FREE));
@@ -1488,7 +1490,7 @@ public class FotoKalender {
 	}
 
 	public void addMunichWiesn(int maxFactor) {
-		final String imgDirWiesn = "C:\\Users\\MiRoe\\Pictures\\Münchener Wiesn\\";
+		final String imgDirWiesn = "C:\\Users\\MiRoe\\Pictures\\Mï¿½nchener Wiesn\\";
 		GregorianCalendar oct1 = new GregorianCalendar(THIS_YEAR, Calendar.OCTOBER, 1);
 		GregorianCalendar lastSunday = (GregorianCalendar)oct1.clone();
 		while (lastSunday.get(GregorianCalendar.DAY_OF_WEEK) != GregorianCalendar.SUNDAY) {

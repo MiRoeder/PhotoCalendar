@@ -647,7 +647,7 @@ public class MyFussballBundesliga {
 			new Club("Hamburger SV.jpg", .0f, 1f),
 			new Club("Hannover 96.jpg", .94f, 1f),
 			new Club("Hansa Rostock.png", .0f, 1f),
-			new Club("Hertha BSC.jpg", 2f, 1.5f),
+			new Club("Hertha BSC.jpg", 1f, 1f),
 			new Club("Holstein Kiel.png", 0f, 1f),
 			new Club("Karlsruher SC.png", .93f, 1f),
 			new Club("RB Leipzig.png", 0f, 1f),
