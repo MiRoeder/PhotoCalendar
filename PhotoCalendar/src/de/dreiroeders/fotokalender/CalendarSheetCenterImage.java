@@ -55,6 +55,10 @@ public class CalendarSheetCenterImage
 		}
 	}
 
+    public int getNumberOfImage() {
+        return mPics[0].size() + mPics[1].size();
+    }
+
 	public void addImages(File inDir, FileFilter fileFilter) {
 		File[] inFiles = inDir.listFiles(fileFilter);
 		if (inFiles != null) {

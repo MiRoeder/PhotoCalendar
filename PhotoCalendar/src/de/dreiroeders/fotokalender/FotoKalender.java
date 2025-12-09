@@ -189,7 +189,7 @@ public class FotoKalender {
 			double hText = 0.07;
 			double hTxt = hText-0.003;  // text height
 			int iText2 = sheet.getUsuableHeight()*14/100;
-			sheet.drawSerifText("Manche Leute genie�en das Leben in vollen Z�gen.",                  0,    0.00, 1d, hTxt     );
+			sheet.drawSerifText("Manche Leute genie\u00DFen das Leben in vollen Z\u00FCgen.",        0,    0.00, 1d, hTxt     );
 			sheet.drawSerifText("Andere lieber auf der Autobahn.",                                   0,   hText, 1d, hTxt     );
 			Path2D trapezShape;
 			trapezShape = new Path2D.Double();
@@ -713,7 +713,7 @@ public class FotoKalender {
 			Font font1 = new Font("Arial", Font.PLAIN, h1);
 			int y1 = h1;
 			final String str12 = "Berlin";
-			final String str21 = "Alle Wege f�hren nach ";
+			final String str21 = "Alle Wege f\u00FChren nach ";
 			final String str22 = "Rom";
 			int x0 = sheet.getX(0.0);
 			int x9 = sheet.getX(1.0);
@@ -816,11 +816,11 @@ public class FotoKalender {
 			SourceImage srcTram  = new SourceImage("http://www.3roeders.de/SamsungGalS23/20230727_114310.jpg");
 			// Original size 3414 x 2685
 			Rectangle rectDestinationIndicator = new Rectangle(1454, 1106, 160, 40);
-			sheet.drawText("Warum so ein gro�er Aufwand?", colTxt, Font.SERIF, Font.PLAIN, 0, 0   , 1f, 0.06);
+			sheet.drawText("Warum so ein gro\u00DFer Aufwand?", colTxt, Font.SERIF, Font.PLAIN, 0, 0   , 1f, 0.06);
 			int iX3 = sheet.getUsuableWidth()/50;
 			int iW4 = sheet.getUsuableWidth()/100;
 			int iW3 = sheet.getUsuableWidth()-2*iX3-iW4;
-			int iW3a = sheet.drawText("In Br�ssel f�hrt die Strassenbahn Linie Nr. 82 direkt zum Drogenbos",
+			int iW3a = sheet.drawText("In Br\u00FCssel f\u00E4hrt die Strassenbahn Linie Nr. 82 direkt zum Drogenbos",
 														   colTxt, Font.SERIF, Font.PLAIN, iX3, 0.07, iW3, 0.06);
 			int iX4 = iX3+(iW3-iW3a)/2+iW3a;
 			sheet.drawText("s",	colTxtS, Font.SERIF, Font.PLAIN, iX4, 0.07, iW4, 0.06);
@@ -1050,7 +1050,6 @@ public class FotoKalender {
 		}
 		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
 			img = new Draw1ImageI("https://www.3roeders.de/SamsungGalS23/20240520_175650.jpg");
-			img.dRot = 90;
 			sheet.addImage(img, hints);
 		}
 		if (randomGen == null || randomGen.nextFloat() < maxRandomToPaint) {
@@ -1122,9 +1121,9 @@ public class FotoKalender {
 	
 	public void addStephansFamilyEvents() {
 		mDates.addCalEvent(PersonalDate.createBirthday("* Marlis", 28, 1, THIS_YEAR));
-		mDates.addCalEvent(PersonalDate.createBirthday("* Andr�", 26, 4, THIS_YEAR));
+		mDates.addCalEvent(PersonalDate.createBirthday("* Andr\u00E9", 26, 4, THIS_YEAR));
 		PersonalDate hochzeit;
-		hochzeit = PersonalDate.create1BitmapsBackground("Marlis", new File("res/Hochzeitsringe.png"), "Andr�", 1f, 0f, 2, 4, THIS_YEAR);
+		hochzeit = PersonalDate.create1BitmapsBackground("Marlis", new File("res/Hochzeitsringe.png"), "Andr\u00E9", 1f, 0f, 2, 4, THIS_YEAR);
 		mDates.addCalEvent(hochzeit);
 	}
 	

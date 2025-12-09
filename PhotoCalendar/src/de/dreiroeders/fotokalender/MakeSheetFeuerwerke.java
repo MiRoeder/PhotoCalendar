@@ -230,7 +230,7 @@ public class MakeSheetFeuerwerke extends Thread {
 				++nCols;
 			}
 			if (nCols < 5) {
-				++nCols; // Space for text: Ich brauche keine neuen Vorsätze ...
+				++nCols; // Space for text: Ich brauche keine neuen VorsÃ¤tze ...
 			}
 			boolean bWriteToDoList;
             bWriteToDoList = nCols < 5;
@@ -249,7 +249,7 @@ public class MakeSheetFeuerwerke extends Thread {
 				mSheet.drawImage(imgFabianVerbrenntPapier          , 0.5, 0.5, 0,  xC+wText, 0.800, wPic , 0.200f);
 				mSheet.drawText("Alte Akten", colTxt, Font.SERIF,      Font.PLAIN, xC,       0.850, wText, 0.025f);
 				mSheet.drawText("vernichten", colTxt, Font.SERIF,      Font.PLAIN, xC,       0.885, wText, 0.025f);
-				mSheet.drawText("  gemäß",    colTxt, Font.SERIF,      Font.PLAIN, xC,       0.920, wText, 0.025f);
+				mSheet.drawText("  gem\u00E4\u00DF",colTxt,Font.SERIF, Font.PLAIN, xC,       0.920, wText, 0.025f);
 				mSheet.drawText("DSGVO:",     colTxt, Font.SERIF,      Font.PLAIN, xC,       0.955, wText, 0.025f);
 				xC += wCol11 + wSteg;
 			}
@@ -263,14 +263,14 @@ public class MakeSheetFeuerwerke extends Thread {
 				mSheet.drawText(" Alten ",   coltx1, Font.SERIF,      Font.PLAIN, xC,       0.830, wText, 0.025f);
 				mSheet.drawText(" Kram",     coltx1, Font.SERIF,      Font.PLAIN, xC,       0.865, wText, 0.025f);
 				mSheet.drawText("weg-",      coltx1, Font.SERIF,      Font.PLAIN, xC,       0.900, wText, 0.025f);
-				mSheet.drawText("schmeißen", coltx1, Font.SERIF,      Font.PLAIN, xC,       0.935, wText, 0.025f);
+				mSheet.drawText("schmei\u00DFen",coltx1,Font.SERIF,   Font.PLAIN, xC,       0.935, wText, 0.025f);
 				xC += wCol1 + wSteg;
 			}
 			if (bWriteToDoList) {
 				mSheet.drawText("To-Do-Liste:",                        colTxt, Font.SERIF,      Font.PLAIN, xC, 0.810, wCol1, 0.030f);
 				mSheet.drawText("\u2611 To-Do-Liste erstellen       ", colTxt, Font.MONOSPACED, Font.PLAIN, xC, 0.860, wCol1, 0.020f);
 				mSheet.drawText("\u2611 1. Punkt abhaken            ", colTxt, Font.MONOSPACED, Font.PLAIN, xC, 0.890, wCol1, 0.020f);
-				mSheet.drawText("\u2611 mich freuen über Erledigung ", colTxt, Font.MONOSPACED, Font.PLAIN, xC, 0.920, wCol1, 0.020f);
+				mSheet.drawText("\u2611 mich freuen \u00FCber Erledigung ", colTxt, Font.MONOSPACED, Font.PLAIN, xC, 0.920, wCol1, 0.020f);
 				mSheet.drawText("\u2610 nach getaner Arbeit: Pause  ", colTxt, Font.MONOSPACED, Font.PLAIN, xC, 0.950, wCol1, 0.020f);
 				xC += wCol1 + wSteg;
 			}
@@ -284,7 +284,7 @@ public class MakeSheetFeuerwerke extends Thread {
 			float wText  = 1-xC;
 			if (wText > 4*wSteg) {
 				mSheet.drawText("Ich brauche keine neuen", colTxt, Font.SERIF, Font.PLAIN, xC, 0.830, wText, 0.025f);
-				mSheet.drawText("Gute Vorsätze",           colTxt, Font.SERIF, Font.PLAIN, xC, 0.865, wText, 0.025f);
+				mSheet.drawText("Gute Vors\u00E4tze",           colTxt, Font.SERIF, Font.PLAIN, xC, 0.865, wText, 0.025f);
 				mSheet.drawText("Die Alten sind noch",     colTxt, Font.SERIF, Font.PLAIN, xC, 0.920, wText, 0.025f);
 				mSheet.drawText("praktisch unangetastet",  colTxt, Font.SERIF, Font.PLAIN, xC, 0.955, wText, 0.025f);
 			}

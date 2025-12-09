@@ -7,6 +7,7 @@ import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import de.dreiroeders.io.MiRoeIoUtil;
 import de.dreiroeders.workingonimages.Draw1ImageI;
 import de.dreiroeders.workingonimages.Draw1ImageWithTxt;
 import de.dreiroeders.workingonimages.SourceImage;
@@ -47,7 +48,7 @@ public class PhotoCalendar extends FotoKalender {
 		String strOutDir = trgOpt.m_strOutDir;
 
 		//TODO all of these constants have to be replaced by your own paths to your pictures.
-		final String inDirRBB = "C:/Users/MiRoe/Videos/rbb Fernsehen Weihnachtssingen an der Alten Försterei/";
+		final String inDirRBB = "C:/Users/MiRoe/Videos/rbb Fernsehen Weihnachtssingen an der Alten Fï¿½rsterei/";
 
 		m_trgOpt = trgOpt;
 		
@@ -88,7 +89,7 @@ public class PhotoCalendar extends FotoKalender {
 				double hTxt = hText-hSteg;  // text height
 				double h1 = 0.4; // Height of the images in the first row
 				double wImg2 = (1d-wSteg)/2; // Width of the image in the first row
-				sheet.drawSerifText("Berliner Häuser",             0    ,  0.00,  1d  ,  hTxt);
+				sheet.drawSerifText("Berliner H\u00E4user",                            0    ,  0.00,  1d  ,  hTxt);
 				sheet.drawImage(inDir1+"IMG_0216.JPG", .5,.5, 0,   0    , hText, wImg2, h1);
 				sheet.drawImage(inDir1+"IMG_0222.JPG", .5,.5, 0, 1-wImg2, hText, wImg2, h1);
 				double y2 = hText+h1+hSteg; // Y-Coord of the images in the second row
@@ -115,7 +116,7 @@ public class PhotoCalendar extends FotoKalender {
 			CalendarSheetAutoArrange1 sheet = new CalendarSheetAutoArrange1(THIS_YEAR, Calendar.MAY, mDates);
 			Draw1ImageI img;
 			if (CalendarSheet.fWeight > 1) {
-				img = new Draw1ImageI(inDir+"EingangGülPark.jpg");
+				img = new Draw1ImageI(inDir+"EingangG\u00FClPark.jpg");
 				sheet.addImage(img);
 			}
 			img = new Draw1ImageI(inDir+"BarcelonaKirchePanaroma2.jpg");
@@ -160,7 +161,7 @@ public class PhotoCalendar extends FotoKalender {
 			var sheetCI = new CalendarSheetCenterImage(THIS_YEAR, Calendar.SEPTEMBER, mDates);
 			Draw1ImageWithTxt img1;
 			img1 = new Draw1ImageWithTxt("Examples.res/20220821_174416b.jpg",
-					                     "Fotografin: Sophie Viktoria Köhler (3 Jahre)",
+					                     "Fotografin: Sophie Viktoria K\u00F6hler (3 Jahre)",
 					                     new Color(224, 32, 128), Font.SERIF, Font.ITALIC, 200 );
 			sheetCI.setImage1(img1);
 			addManyPlaygroundImages(sheetCI, null, null, 1f);
@@ -176,18 +177,65 @@ public class PhotoCalendar extends FotoKalender {
 		}
 
 		if (trgOpt.bDoIt(Calendar.NOVEMBER)) try {
-			MakeSheetShadesOfGrey.startMaking(500, THIS_YEAR, Calendar.NOVEMBER, mDates, strOutDir);
+            CalendarSheetCenterImage sheetCI = null;
+            Draw1ImageI img = null;
+            if (THIS_YEAR % 5 != 0) {
+                img = new Draw1ImageI("https://www.3roeders.de/SamsungGalS23/20240604_155404a.jpg");
+                if (img.isOk()) {
+                    sheetCI = new CalendarSheetCenterImage(THIS_YEAR, Calendar.NOVEMBER, mDates);
+                    sheetCI.setImage1(img);
+                    sheetCI.addImage(new Draw1ImageI("https://gdkfiles.visitdenmark.com/files/382/164757_Nyhavn_Jacob-Schjrring-og-Simon-Lau.jpg?width=987"), null);
+                    sheetCI.addImage(new Draw1ImageI("https://www.visitdenmark.de/sites/visitdenmark.com/files/styles/map_list/public/2019-03/Tivoli_Photo_Martin%20Heiberg_Copenhagen%20Media%20Center.jpg?h=170ba4b8&itok=7qOXyhyl"), null);
+                    sheetCI.addImage(new Draw1ImageI("https://www.visitdenmark.de/sites/visitdenmark.com/files/styles/map_list/public/2019-03/Amalienborg-palace-copenhagen.jpg?h=4aa1a1ac&itok=rGM074dw"), null);
+                    sheetCI.addImage(new Draw1ImageI("https://www.visitdenmark.de/daenemark/reiseplanung/canal-tours-grand-tour-copenhagen-gdk410731"), null);
+                    sheetCI.addImage(new Draw1ImageI("https://www.daenemark.citysam.de/fotos-daenemark-i/kopenhagen-3.jpg"), null);
+                    sheetCI.addImage(new Draw1ImageI("https://www.daenemark.citysam.de/fotos-daenemark-i/kopenhagen-4.jpg"), null);
+                    sheetCI.addImage(new Draw1ImageI("https://www.shutterstock.com/de/image-photo/copenhagen-old-town-panorama-nyhavn-harbor-1900231666?trackingId=17d8bdc6-2cb6-4a0e-85b4-1c7b9f716260"), null);
+                    sheetCI.addImage(new Draw1ImageI("https://cdn.pixabay.com/photo/2024/02/26/12/15/photo-8597811_1280.jpg"), null);
+                    sheetCI.addImage(new Draw1ImageI("https://cdn.pixabay.com/photo/2013/03/15/20/06/copenhagen-94100_1280.jpg"), null);
+                    sheetCI.addImage(new Draw1ImageI("https://cdn.pixabay.com/photo/2020/04/25/11/56/metro-5090499_1280.jpg"), null);
+                }
+            }
+            if (sheetCI != null && sheetCI.getNumberOfImage() >= 4) {
+                sheetCI.makingIt(strOutDir);
+                trgOpt.m_bDoIt[Calendar.NOVEMBER] = false; // because already created.
+            }
 		} catch (Exception ex) {
-			ex.printStackTrace();
+            MiRoeIoUtil.logException("Problem in calendar sheet NOVEMBER", ex);
 		}
 
+        if (trgOpt.bDoIt(Calendar.NOVEMBER)) try {
+            MakeSheetShadesOfGrey.startMaking(500, THIS_YEAR, Calendar.NOVEMBER, mDates, strOutDir);
+        } catch (Exception ex) {
+            MiRoeIoUtil.logException("Problem in calendar sheet NOVEMBER", ex);
+        }
+
 		if (trgOpt.bDoIt(Calendar.DECEMBER)) try {
-			makeWhiteXMas(strOutDir);
+            var sheet = new CalendarSheetAutoArrange1(THIS_YEAR, Calendar.DECEMBER, mDates);
+            sheet.addImage(new Draw1ImageI("https://cdn.pixabay.com/photo/2019/12/19/10/56/lights-4705882_1280.jpg"), null);
+            sheet.addImage(new Draw1ImageI("https://cdn.pixabay.com/photo/2020/06/15/05/44/cologne-5300430_1280.jpg"), null);
+            sheet.addImage(new Draw1ImageI("https://cdn.pixabay.com/photo/2014/12/10/15/25/weihnachts-zauber-563165_1280.jpg"), null);
+            sheet.addImage(new Draw1ImageI("https://cdn.pixabay.com/photo/2014/12/13/15/55/christmas-566749_1280.jpg"), null);
+            sheet.addImage(new Draw1ImageI("https://www.berlin.de/binaries/asset/image_assets/8580141/source/1701160202/1000x500/"), null);
+            sheet.addImage(new Draw1ImageI("https://www.berlin.de/binaries/asset/image_assets/7880868/source/1704803197/1000x500/"), null);
+            sheet.addImage(new Draw1ImageI("https://www.berlin.de/binaries/asset/image_assets/3696437/source/1417433746/1000x500/"), null);
+            sheet.addImage(new Draw1ImageI("https://i.pinimg.com/736x/6b/97/78/6b9778d46e52d17f134a79c5e06703d3.jpg"), null);
+            sheet.addImage(new Draw1ImageI("https://i.pinimg.com/originals/7e/a4/16/7ea4164d3b6907424cda0490c87c6804.jpg"), null);
+            if (sheet.getNumberOfImage() >= 4) {
+                sheet.makingIt(strOutDir);
+                trgOpt.m_bDoIt[Calendar.DECEMBER] = false; // because already created.
+            }
 		} catch (Exception ex) {
-			ex.printStackTrace();
+            MiRoeIoUtil.logException("Problem in calendar sheet DECEMBER "+THIS_YEAR, ex);
 		}
-		
-		System.out.println("Kalender "+ THIS_YEAR +" creating / created in "+ strOutDir);
+
+        if (trgOpt.bDoIt(Calendar.DECEMBER)) try {
+            makeWhiteXMas(strOutDir);
+        } catch (Exception ex) {
+            MiRoeIoUtil.logException("Problem in calendar sheet DECEMBER "+THIS_YEAR, ex);
+        }
+
+        System.out.println("Kalender "+ THIS_YEAR +" creating / created in "+ strOutDir);
 	} /* end of makeFamilyCal(int year) */
 	
 	public PhotoCalendar(int year) {
@@ -196,9 +244,10 @@ public class PhotoCalendar extends FotoKalender {
 
 	public void addDates() {
 		/* TODO put your own events and dates here: Most of these methods are defined in base class FotoKalender :*/
-		addFamilyEvents();
-		addStephansFamilyEvents();
+		//addFamilyEvents();
+		//addStephansFamilyEvents();
 		//addOlafsFamilyEvents();
+        addBerlinGrueneWoche();
 		addBerlinHolidays();
 		//addBavarianPublicHolidays();
 		addVacations(m_trgOpt.m_bBerlinVacations, false);
