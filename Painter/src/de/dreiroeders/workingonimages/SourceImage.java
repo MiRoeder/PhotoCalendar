@@ -176,8 +176,8 @@ public class SourceImage {
 			System.out.println("\""+ m_srcFileName +"\" mapped to \""+ inFile.getAbsolutePath() +"\"");
 			try {
 			    m_image = ImageIO_read(inFile);
-			    m_iStatus = 1;
-			    if (m_srcRect != null) {
+			    m_iStatus = m_image != null && m_image.getWidth() >= 1 && m_image.getWidth() >= 1 ? +1 : -1;
+			    if (m_srcRect != null && m_image != null) {
 			    	m_image = m_image.getSubimage(m_srcRect.x, m_srcRect.y, m_srcRect.width, m_srcRect.height);
 			    }
 			} catch (Exception ex) {
