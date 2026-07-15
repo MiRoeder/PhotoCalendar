@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 
 public class FotoKalender_Disney extends FotoKalender2 {
 
-    final String sDir1 = "C:\\Users\\MiRoe\\Pictures\\S_K\u00F6hler_2025-09\\Disney Photos\\DisneylandParis-id";
+    public static final String sDir1 = "C:\\Users\\MiRoe\\Pictures\\S_K\u00F6hler_2025-09\\Disney Photos\\DisneylandParis-id";
 
     public FotoKalender_Disney(int year) {
         super(year);
@@ -239,7 +239,7 @@ public class FotoKalender_Disney extends FotoKalender2 {
     } /* end of makeFamilyCal(FotoKalenderOpt trgOpt) */
 
     @SuppressWarnings("ReassignedVariable")
-    public void addDisneyParkPics(ICalendarSheetAddImage sheet,
+    public static void addDisneyParkPics(ICalendarSheetAddImage sheet,
                                   IHintsDrawImages hints,
                                   Random randomGen,
                                   float maxRandomToPaint, int nSkipImages) {

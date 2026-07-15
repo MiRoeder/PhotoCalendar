@@ -99,44 +99,12 @@ public class FotoKalender2 extends FotoKalender1 {
         if (nMonth2 > Calendar.DECEMBER) {
             nMonth2 = Calendar.JANUARY;
         }
-        if (trgOpt.bDoIt(nMonth2)) {
-            try {
-                var sheet = new CalendarSheetCenterImage(THIS_YEAR, nMonth2, mDates);
-                Draw1ImageI img;
-                img = new Draw1ImageI(inDirMsGal23 + "20240604_155404a.jpg");
-                img.setCenterPoint(.5f, .41f);
-                img.dRot = -0.01f;
-                sheet.setImage1(img);
-                img = new Draw1ImageI(inDirMsGal23 + "20240604_091751.jpg");
-                sheet.addImage1(img);
-                img = new Draw1ImageI(inDirMsGal23 + "20240606_164949a.jpg");
-                sheet.addImage1(img);
-                img = new Draw1ImageI(inDirMsGal23 + "20240604_092730.jpg");
-                sheet.addImage1(img);
-                img = new Draw1ImageI(inDirMsGal23 + "20240604_093703(0).jpg");
-                img.dRot = 90;
-                sheet.addImage1(img);
-                img = new Draw1ImageI(inDirMsGal23 + "20240604_105147.jpg");
-                img.dRot = -.06f;
-                sheet.addImage2(img);
-                img = new Draw1ImageI(inDirMsGal23 + "20240604_110244.jpg");
-                sheet.addImage2(img);
-                img = new Draw1ImageI(inDirMsGal23 + "20240604_171040.jpg");
-                sheet.addImage2(img);
-                img = new Draw1ImageI(inDirMsGal23 + "20240604_112108.jpg");
-                sheet.addImage2(img);
-                sheet.startMakingIt(strOutDir);
-                trgOpt.m_bDoIt[nMonth2] = false; // because already created.
-            } catch (Exception ex) {
-                MiRoeIoUtil.logException("Problem with 2nd sheet", ex);
-            }
-        }
 
         if (trgOpt.bDoIt(Calendar.MARCH)) {
             try {
                 var sheet = new CalendarSheetCenterImage(THIS_YEAR, Calendar.MARCH, mDates);
                 Draw1ImageI img;
-                img = new Draw1ImageI("N:\\ConniesS9\\Phone\\DCIM\\Camera\\20240611_215348.jpg");
+                img = new Draw1ImageI("M:\\bak18T\\SSD2T_N\\ConniesS9\\Phone\\DCIM\\Camera\\20240611_215348.jpg");
                 Rectangle rect = new Rectangle(0, 700, 4032, 1500);
                 img.setSourceBounds(rect);
                 sheet.setImage1(img);
@@ -155,7 +123,7 @@ public class FotoKalender2 extends FotoKalender1 {
             try {
                 var sheet = new CalendarSheetCenterImage(THIS_YEAR, Calendar.MAY, mDates);
                 Draw1ImageI img;
-                img = new Draw1ImageI("N:\\ConniesS9\\Phone\\DCIM\\Camera\\20240608_110212.jpg");
+                img = new Draw1ImageI("M:\\bak18T\\SSD2T_N\\ConniesS9\\Phone\\DCIM\\Camera\\20240608_110212.jpg");
                 img.dRot = 90;
                 sheet.setImage1(img);
                 Random randomGen = new Random(THIS_YEAR * 12L + Calendar.MAY);
@@ -197,7 +165,7 @@ public class FotoKalender2 extends FotoKalender1 {
                                          IHintsDrawImages hints,
                                          Random randomGen,
                                          float maxRandomToPaint) {
-        final String sDir1 = "N:\\ConniesS9\\Phone\\DCIM\\Camera\\";
+        final String sDir1 = "M:\\bak18T\\SSD2T_N\\ConniesS9\\Phone\\DCIM\\Camera\\";
         Draw1ImageI img;
         final int nSkipImages = 5;
         int iLastAdded = 0; // if an image is chosen, we skip the next images, because they may be very similar.
@@ -390,6 +358,7 @@ public class FotoKalender2 extends FotoKalender1 {
         }
         if (--iLastAdded < 0 && (randomGen == null || randomGen.nextFloat() < maxRandomToPaint)) {
             img = new Draw1ImageI(sDir1 + "20240604_092534.jpg");
+            img.dRot = 90;
             sheet.addImage(img, hints);
             iLastAdded = nSkipImages;
         }
@@ -4183,7 +4152,7 @@ public class FotoKalender2 extends FotoKalender1 {
                                          IHintsDrawImages hints,
                                          Random randomGen,
                                          float maxRandomToPaint) {
-        final String sDir1 = "N:\\ConniesS9\\Phone\\DCIM\\Camera\\";
+        final String sDir1 = "M:\\bak18T\\SSD2T_N\\ConniesS9\\Phone\\DCIM\\Camera\\";
         Draw1ImageI img;
         final int nSkipImages = 5;
         int iLastAdded = 0; // if an image is chosen, we skip the next images, because they may be very similar.
@@ -7582,7 +7551,7 @@ public class FotoKalender2 extends FotoKalender1 {
                                          IHintsDrawImages hints,
                                          Random randomGen,
                                          float maxRandomToPaint) {
-        final String sDir1 = "N:\\ConniesS9\\Phone\\DCIM\\Camera\\";
+        final String sDir1 = "M:\\bak18T\\SSD2T_N\\ConniesS9\\Phone\\DCIM\\Camera\\";
         Draw1ImageI img;
         final int nSkipImages = 5;
         int iLastAdded = 0; // if an image is chosen, we skip the next images, because they may be very similar.

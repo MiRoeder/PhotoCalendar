@@ -221,7 +221,7 @@ public class MyFussballBundesliga {
 		addTermin(cal,30,1,1,2, 2026, "Borussia Dortmund - 1. FC Heidenheim 1846");
 
 		addTermin(cal,6,2,8,2, 2026, "Borussia M\u00F6nchengladbach - Bayer 04 Leverkusen");
-		addTermin(cal,6,2,8,2, 2026, "1. FC Union Berlin - Eintracht Frankfurt");
+		addTermin(cal,6,2,6,2, 2026, "1. FC Union Berlin - Eintracht Frankfurt");
 		addTermin(cal,6,2,8,2, 2026, "VfL Wolfsburg - Borussia Dortmund");
 		addTermin(cal,6,2,8,2, 2026, "1. FC K\u00F6ln - RB Leipzig");
 		addTermin(cal,6,2,8,2, 2026, "Sport-Club Freiburg - SV Werder Bremen");
@@ -240,7 +240,7 @@ public class MyFussballBundesliga {
 		addTermin(cal,13,2,15,2, 2026, "FC Augsburg - 1. FC Heidenheim 1846");
 		addTermin(cal,13,2,15,2, 2026, "VfB Stuttgart - 1. FC K\u00F6ln");
 
-		addTermin(cal,20,2,22,2, 2026, "1. FC Union Berlin - Bayer 04 Leverkusen");
+		addTermin(cal,21,2,21,2, 2026, "1. FC Union Berlin - Bayer 04 Leverkusen");
 		addTermin(cal,20,2,22,2, 2026, "FC Bayern M\u00FCnchen - Eintracht Frankfurt");
 		addTermin(cal,20,2,22,2, 2026, "RB Leipzig - Borussia Dortmund");
 		addTermin(cal,20,2,22,2, 2026, "FC St. Pauli - SV Werder Bremen");

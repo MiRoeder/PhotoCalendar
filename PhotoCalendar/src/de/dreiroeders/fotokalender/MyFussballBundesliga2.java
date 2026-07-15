@@ -215,11 +215,14 @@ public class MyFussballBundesliga2 extends MyFussballBundesliga {
 		addTermin(cal,30,1,1,2, 2026, "Fortuna D\u00FCsseldorf - SC Paderborn 07");
 		addTermin(cal,30,1,1,2, 2026, "Eintracht Braunschweig - Karlsruher SC");
 		addTermin(cal,30,1,1,2, 2026, "1. FC Magdeburg - Hannover 96");
-		addTermin(cal,30,1,1,2, 2026, "Hertha BSC - SV Darmstadt 98");
+		addTermin(cal, 1,2,1,2, 2026, "Hertha BSC - SV Darmstadt 98");
 		addTermin(cal,30,1,1,2, 2026, "Holstein Kiel - SpVgg Greuther F\u00FCrth");
 		addTermin(cal,30,1,1,2, 2026, "VfL Bochum - FC Schalke 04");
 		addTermin(cal,30,1,1,2, 2026, "1. FC N\u00FCrnberg - Preu\u00DFen M\u00FCnster");
 		addTermin(cal,30,1,1,2, 2026, "SG Dynamo Dresden - DSC Arminia Bielefeld");
+
+		//DFB Pokal Viertelfinale
+		addTermin(cal,10,2,10,2, 2026, "Hertha BSC - Sport-Club Freiburg");
 
 		addTermin(cal,6,2,8,2, 2026, "Hannover 96 - Holstein Kiel");
 		addTermin(cal,6,2,8,2, 2026, "Preu\u00DFen M\u00FCnster - VfL Bochum");
@@ -234,7 +237,7 @@ public class MyFussballBundesliga2 extends MyFussballBundesliga {
 		addTermin(cal,13,2,15,2, 2026, "SG Dynamo Dresden - SV Elversberg");
 		addTermin(cal,13,2,15,2, 2026, "VfL Bochum - SC Paderborn 07");
 		addTermin(cal,13,2,15,2, 2026, "1. FC N\u00FCrnberg - Karlsruher SC");
-		addTermin(cal,13,2,15,2, 2026, "Hertha BSC - Hannover 96");
+		addTermin(cal,14,2,14,2, 2026, "Hertha BSC - Hannover 96");
 		addTermin(cal,13,2,15,2, 2026, "Eintracht Braunschweig - SV Darmstadt 98");
 		addTermin(cal,13,2,15,2, 2026, "1. FC Kaiserslautern - SpVgg Greuther F\u00FCrth");
 		addTermin(cal,13,2,15,2, 2026, "Holstein Kiel - FC Schalke 04");
@@ -256,7 +259,7 @@ public class MyFussballBundesliga2 extends MyFussballBundesliga {
 		addTermin(cal,27,2,1,3, 2026, "1. FC Kaiserslautern - SC Paderborn 07");
 		addTermin(cal,27,2,1,3, 2026, "1. FC Magdeburg - Karlsruher SC");
 		addTermin(cal,27,2,1,3, 2026, "DSC Arminia Bielefeld - Hannover 96");
-		addTermin(cal,27,2,1,3, 2026, "Hertha BSC - 1. FC N\u00FCrnberg");
+		addTermin(cal, 1,3,1,3, 2026, "Hertha BSC - 1. FC N\u00FCrnberg");
 		addTermin(cal,27,2,1,3, 2026, "SG Dynamo Dresden - SV Darmstadt 98");
 		addTermin(cal,27,2,1,3, 2026, "SpVgg Greuther F\u00FCrth - FC Schalke 04");
 		addTermin(cal,27,2,1,3, 2026, "Eintracht Braunschweig - Preu\u00DFen M\u00FCnster");
