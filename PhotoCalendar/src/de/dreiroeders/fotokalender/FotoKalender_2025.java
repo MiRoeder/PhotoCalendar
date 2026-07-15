@@ -169,8 +169,12 @@ public class FotoKalender_2025 extends FotoKalender2 {
         System.out.println("Kalender " + THIS_YEAR + " creating / created in " + strOutDir);
     } /* end of makeFamilyCal(FotoKalenderOpt trgOpt) */
 
-    @SuppressWarnings("ReassignedVariable")
     public void makeMichaPolarTaufe(int nMonth, String strOutDir) throws IOException {
+        makeMichaPolarTaufe(THIS_YEAR, nMonth, this.mDates, strOutDir);
+    }
+
+        @SuppressWarnings("ReassignedVariable")
+    public static void makeMichaPolarTaufe(int nYear, int nMonth, PersonalDates mDates, String strOutDir) throws IOException {
         final String strMainImg = "C:\\Users\\MiRoe\\Documents\\F\\docs\\2025_Norwegen\\Bordfotograf\\Polartaufe.jpg";
         final int CIX = 48;
         final int CIY = 19;
@@ -181,7 +185,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         final int KlY = 700;
         final int KlW = 2050 - KlX;
         final int KlH = 1800 - KlY;
-        var sheet = new CalendarSheet(THIS_YEAR, nMonth, mDates);
+        var sheet = new CalendarSheet(nYear, nMonth, mDates);
         sheet.prepareImage(4000);
         final int trgW = sheet.getUsuableWidth();
         final int trgH = sheet.getUsuableHeight();
@@ -221,11 +225,11 @@ public class FotoKalender_2025 extends FotoKalender2 {
         sheet.drawImage("C:\\Users\\MiRoe\\Pictures\\SamsungGalS23\\DCIM\\Camera\\20250619_173227.jpg", .5f,.5f,0, 0, y4, x3-iSteg, h4);
         y4 = northCupRegH+iSteg;
         h4 = y3+trgCIH-y4;
-        sheet.drawImage("N:\\ConniesS9\\Phone\\DCIM\\Camera\\20250617_215037.jpg", .28f,.35f,90, trgW-(x3-iSteg), y4, x3-iSteg, h4);
+        sheet.drawImage("O:\\ConniesS9\\Phone\\DCIM\\Camera\\20250617_215037.jpg", .28f,.35f,90, trgW-(x3-iSteg), y4, x3-iSteg, h4);
         int y7 = y4 + h4 + iSteg;
         int h7 = trgH - y7;
         if (h7 > 3*iSteg) {
-            String strMichasTaufschein = "N:\\ConniesS9\\Phone\\DCIM\\Camera\\20250615_113640.jpg";
+            String strMichasTaufschein = "O:\\ConniesS9\\Phone\\DCIM\\Camera\\20250615_113640.jpg";
             final int MTX = 250;
             final int MTY = 300;
             final int MTW = 2400 - MTX;
@@ -234,7 +238,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
             facY = (float)h7/MTH;
             int x8 = trgW-(int)(facY*MTW);
             sheet.drawImage(imgMichasTaufschein, .5f, .5f, 90, x8, y7, (trgW-x8), h7);
-            String strPolarTaufTeam = "N:\\ConniesS9\\Phone\\DCIM\\Camera\\20250615_120500.jpg";
+            String strPolarTaufTeam = "O:\\ConniesS9\\Phone\\DCIM\\Camera\\20250615_120500.jpg";
             final int TTW = 4032;
             final int TTH = 3024;
             var imgPolarTaufTeam = new SourceImage(strPolarTaufTeam).getImage();
@@ -267,7 +271,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
         sheet.writeInDir(strOutDir);
     }
 
-    public void drawImageRightTransparent(
+    public static void drawImageRightTransparent(
             CalendarSheet sheet,
             String strInFileName,
             float centerPointX,
@@ -302,7 +306,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
                                       IHintsDrawImages hints,
                                       Random randomGen,
                                       float maxRandomToPaint) {
-        final String sDir1 = "N:\\ConniesS9\\Phone\\DCIM\\Camera\\";
+        final String sDir1 = "O:\\ConniesS9\\Phone\\DCIM\\Camera\\";
         Draw1ImageI img;
         final int nSkipImages = 5;
         int iLastAdded = 0; // if an image is chosen, we skip the next images, because they may be very similar.
@@ -4043,7 +4047,7 @@ public class FotoKalender_2025 extends FotoKalender2 {
                                       Random randomGen,
                                       float maxRandomToPaint,
                                       int nSkipImages ) {
-        final String sDir1 = "N:\\ConniesS9\\Phone\\DCIM\\Camera\\";
+        final String sDir1 = "O:\\ConniesS9\\Phone\\DCIM\\Camera\\";
         Draw1ImageI img;
         int iLastAdded = 0; // if an image is chosen, we skip the next images, because they may be very similar.
 

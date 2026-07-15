@@ -71,7 +71,12 @@ public class Draw1ImageI extends SourceImage {
 			return (float)getWidth() / (float)getHeight();
 		}
 	}
-	
+
+	public void autoRotate() {
+		// todo TODO to do
+		dRot = 90;
+	}
+
 	public void predrawOnIntermediate(BufferedImage imgIntermediate, int iXExtraRand, int iYExtraRand, Graphics2D painter, AffineTransform transform) {
 	}
 

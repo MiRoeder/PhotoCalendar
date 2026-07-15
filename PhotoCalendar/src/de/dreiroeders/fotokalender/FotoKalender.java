@@ -1407,8 +1407,8 @@ public class FotoKalender {
 			if (easterSunday == null) {
 				easterSunday = EasterSunday.createEasterSunday(THIS_YEAR);
 			}
-			addVacations("{0,date,EE} Schulfrei",  3, 2, 2025     ,  8, 2, 2025); //Winterferien 2025
 			addVacations("{0,date,EE} Schulfrei",  2, 2, 2026     ,  7, 2, 2026); //Winterferien 2026
+			addVacations("{0,date,EE} Schulfrei",  1, 2, 2027     ,  6, 2, 2027); //Winterferien 2027
 
 			// Br�ckentage um Frauentag 8. M�rz
 			GregorianCalendar march7 = new GregorianCalendar(THIS_YEAR, GregorianCalendar.MARCH, 7);
@@ -1445,14 +1445,14 @@ public class FotoKalender {
 				mDates.addCalEvent(PersonalDate.createDate("{0,date,EE} Schulfrei", may02, 0, PersonalDate.ADRIANA_HAS_FREE));
 			}
 			
-			addVacations("{0,date,EE} Schulfrei", 24, 7, 2025,  6, 9, 2025); 	// Sommerferien 2025
 			addVacations("{0,date,EE} Schulfrei",  9, 7, 2026, 22, 8, 2026); 	// Sommerferien 2026
 			addVacations("{0,date,EE} Schulfrei",  1, 7, 2027, 14, 8, 2027); 	// Sommerferien 2027
-			addVacations("{0,date,EE} Schulfrei", 20,10, 2025,  1,11, 2025);	// Herbstferien 2025
 			addVacations("{0,date,EE} Schulfrei", 19,10, 2026, 31,10, 2026);	// Herbstferien 2026
 			addVacations("{0,date,EE} Schulfrei", 11,10, 2027, 23,10, 2027);	// Herbstferien 2027
-			addVacations("{0,date,EE} Schulfrei", 22,12, 2025,  2, 1, 2026); 	// Weihnachtsferien 2025/26
 			addVacations("{0,date,EE} Schulfrei", 23,12, 2026, 2,1, 2027); 	// Weihnachtsferien 2026/27
+			addVacations("{0,date,EE} Schulfrei", 22,12, 2027,  2, 1, 2028); 	// Weihnachtsferien 2027/28
+
+			// Brueckentag um 3. Oktober
 			GregorianCalendar oct2 = new GregorianCalendar(THIS_YEAR, GregorianCalendar.OCTOBER, 2);
 			if (oct2.get(GregorianCalendar.DAY_OF_WEEK) == GregorianCalendar.MONDAY) {
 				mDates.addCalEvent(PersonalDate.createDate("{0,date,EE} Schulfrei", oct2, 0, PersonalDate.ADRIANA_HAS_FREE));
